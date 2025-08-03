@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "InstrumentSerif-italic";
+  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2"),
+    url("/fonts/InstrumentSerif-Italic.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "InstrumentSerif-Regular";
+  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2"),
+    url("/fonts/InstrumentSerif-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "InterTight-Medium";
+  src: url("/fonts/InterTight-Medium.woff2") format("woff2"),
+    url("/fonts/InterTight-Medium.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "InterTight-Regular";
+  src: url("/fonts/InterTight-Regular.woff2") format("woff2"),
+    url("/fonts/InterTight-Regular.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "InterTight-SemiBold";
+  src: url("/fonts/InterTight-SemiBold.woff2") format("woff2"),
+    url("/fonts/InterTight-SemiBold.ttf") format("ttf");
+}
+
+@theme {
+  --spacing-sm-pad: 5.8rem;
+  --spacing-md-pad: 8rem;
+  --spacing-lg-pad: 13rem;
+
+  --color-primary: #0a221f;
+  --color-light-bg: #f6f9f2;
+  --color-mid-bg: #e6ecd6;
+  --color-green-accent: #d8ff85;
+  --color-green-accent-dark: #2a4e45;
+
+  --font-instrumental-serif: "InstrumentSerif-Italic";
+  --font-instrumental-regular: "InstrumentSerif-Regular";
+
+  --font-interTight-medium: "InterTight-Medium";
+  --font-interTight-semibold: "InterTight-SemiBold";
+  --font-interTight-regular: "InterTight-Regular";
+}
+
+:root {
+  font-family: "InterTight-Regular", Helvetica, Arial, sans-serif;
+
+  color-scheme: light dark;
+  color: var(--color-primary);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  h1 {
+    @apply text-[2.25rem]     
+           md:text-[4rem]    
+           lg:text-[6rem]  
+           leading-tight;
+  }
+
+  h2 {
+    @apply text-[2rem]        
+           md:text-[3rem]    
+           lg:text-[4.5rem]  
+           leading-tight;
+  }
+
+  h3 {
+    @apply text-[1.75rem]     
+           md:text-[2.5rem]   
+           lg:text-[3.75rem]  
+           mb-2;
+  }
+
+  h4 {
+    @apply text-[1.25rem]     
+           md:text-[1.5rem]   
+           lg:text-[2rem]     
+           mb-1;
+  }
+
+  h5 {
+    @apply text-[1.375rem]    
+           md:text-[1.75rem]  
+           lg:text-[2rem]     
+           mb-1;
+  }
+
+  p {
+    @apply text-base          
+           lg:text-[1.125rem] 
+           leading-tight
+           m-0
+           p-0
+           font-interTight-regular;
+  }
+
+  .mx-container {
+    @apply max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html,
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--color-light-bg);
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
