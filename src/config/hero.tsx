@@ -6,13 +6,18 @@ import {
   Fidelity,
   Google,
   GtB,
+  GF,
   InnerWheel,
   PressOne,
   Shopify,
   Stanbic,
   Wakanow,
   WakanowWhite,
+  TheNew,
   GoogleWhite,
+  Seid,
+  SaroAfrice,
+  SeamlessHR,
 } from "../assets/icons";
 
 export const CAROUSEL_BRANDS = [
@@ -26,114 +31,103 @@ export const CAROUSEL_BRANDS = [
   InnerWheel,
   Fidelity,
   Wakanow,
+  GF,
+  TheNew,
 ];
 
 export const TESTIMONIALS = [
   {
     id: 0,
-    Logo: Shopify,
+    Logo: GtB,
     quote: (
       <p className="text-3xl">
-        “
+        “Working with {"  "}
         <em className="font-interTight-semibold">
-          Araba took the time to learn about our company,
+          {" "}
+          The SoundBaking Company was a lifesaver on several time-sensitive
+          GTBank campaigns.
         </em>{" "}
-        applied their insights from various design projects and sought to meet
-        our needs, even if it meant going through some additional edits.”
+        They consistently delivered quality creative assets—fast. What stood out
+        was how quickly they grasped our briefs and turned them into work that
+        needed little to no revisions. Their reliability and responsiveness made
+        them one of our most trusted production partners.”
       </p>
     ),
-    author: "Xander Shapiro",
-    role: "Chief Marketing Officer at ZEA",
-    stats: [],
-    caseStudy: null,
+    author: "Ibilola Balogun",
+    role: "Digital Advertising, GTBank",
   },
   {
     id: 1,
-    Logo: Shopify,
+    Logo: Seid,
     quote: (
       <p className="text-3xl">
-        “
+        “One of the major things I look at when working with anyone is
+        flexibility and ease.
         <em className="font-interTight-semibold">
-          Araba took the time to learn about our company,
+          Working with you guys was definitely easy and smooth and it was
+          evident in the results.
         </em>{" "}
-        applied their insights from various design projects and sought to meet
-        our needs, even if it meant going through some additional edits.”
+        I didn't have to do so much directing to get the required outcome. We
+        definitely will be doing more projects together.”
       </p>
     ),
-    author: "Billy Schneider",
-    role: "Director of Digital Marketing at Oportun",
-    stats: [],
-    caseStudy: null,
+    author: "Blessing Omoruyi",
+    role: "Creative Director, SEID HQ",
   },
   {
     id: 2,
-    Logo: Shopify,
+    Logo: SaroAfrice,
     quote: (
       <p className="text-3xl">
         “
         <em className="font-interTight-semibold">
-          Araba took the time to learn about our company,
+          Working with the ARABA team on our 10-year documentary was such a
+          gift.
         </em>{" "}
-        applied their insights from various design projects and sought to meet
-        our needs, even if it meant going through some additional edits.”
+        We came to them with raw footage and big emotions, and they somehow
+        turned it into a story that made us dance. Literally. The level of
+        thought, heart, and storytelling they brought to the project went beyond
+        our expectations. We’re truly, truly grateful — thank you for helping us
+        see our journey in such a beautiful light.”
       </p>
     ),
-    author: "Joseph Bradley",
-    role: "Global VP of IoT & Digital Services at Cisco",
-    stats: [],
-    caseStudy: null,
+    author: "Funke Bolodeoku",
+    role: "Sustainability Manager, Saroafrica International LTD",
   },
   {
     id: 3,
     Logo: Shopify,
     quote: (
       <p className="text-3xl">
-        “
+        “Few partners can handle pressure and still bring excellence. For the
+        Goalkeepers project, we had less than a day to deliver.
         <em className="font-interTight-semibold">
-          Araba took the time to learn about our company,
+          The SoundBaking Company cast the right voice, gave us multiple
+          top-tier options, and made our lives easier.
         </em>{" "}
-        applied their insights from various design projects and sought to meet
-        our needs, even if it meant going through some additional edits.”
+        They just get it.”
       </p>
     ),
-    author: "Justin Rands",
-    role: "Director of Brand at Oyster",
-    stats: [
-      { value: "57%", label: "Production time saved" },
-      { value: "$10,775", label: "Cost savings" },
-      { value: "20", label: "Videos delivered" },
-    ],
-    caseStudy: {
-      thumbnail: "/images/1(9).jpg",
-      title: "How Oyster Automates Global Social Media Campaigns",
-      link: "#",
-    },
+    author: "Jimmy Adesanya",
+    role: "JM Films",
   },
   {
     id: 4,
-    Logo: Shopify,
+    Logo: SeamlessHR,
     quote: (
       <p className="text-3xl">
         “
         <em className="font-interTight-semibold">
-          Araba took the time to learn about our company,
+          If there’s one thing I love about Araba Collective, it’s the fact that
+          they go the extra mile to point out and proffer solutions to loop
+          holes in your creative process.
         </em>{" "}
-        applied their insights from various design projects and sought to meet
-        our needs, even if it meant going through some additional edits.”
+        I’ve seen them come through with ideas that have positively impacted the
+        results of our creative ideas”
       </p>
     ),
-    author: "Marc Vitulli",
-    role: "VP Marketing at S&S Activewear",
-    stats: [
-      { value: "4×", label: "Increase in design capacity" },
-      { value: "60%", label: "Reduction in time to market" },
-      { value: "60+", label: "Number of brands" },
-    ],
-    caseStudy: {
-      thumbnail: "/images/1(7).jpg",
-      title: "How To Keep Creative Fresh for 60+ Different Brands",
-      link: "#",
-    },
+    author: "Justice Anaba",
+    role: "SeamlessHR",
   },
   {
     id: 5,
@@ -150,16 +144,15 @@ export const TESTIMONIALS = [
     ),
     author: "Amir Jaffari",
     role: "Growth Lead at Shopify",
-    stats: [
-      { value: "4,375", label: "Assets per concept delivered" },
-      { value: "12h-24h", label: "Turnaround time" },
-    ],
-    caseStudy: {
-      thumbnail: "/thumbnails/shopify.jpg",
-      title: "How Shopify Built a Growth Workshop to Unlock Rapid…",
-      link: "#",
-    },
   },
+];
+
+export const TESTIMONIAL_IMAGES = [
+  "/images/face/Ibilolaalogun.png",
+  "/images/face/BLESSINGOMORUYI.png",
+  "/images/face/FUNKEBOLODEOKU.png",
+  "/images/face/JIMIADESANYA.png",
+  "/images/face/JUSTICANABA.png",
 ];
 
 export const VERTICAL_CAROUSEL_ONE = [

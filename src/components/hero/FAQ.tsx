@@ -1,5 +1,4 @@
-// src/components/FaqAccordion.jsx
-import React, { useRef, useState, useLayoutEffect } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import gsap from "gsap";
 import { Plus } from "lucide-react";
 
@@ -137,19 +136,27 @@ export default function FaqAccordion() {
                   <div key={id} className="border-b border-light-bg/20 py-5">
                     <button
                       onClick={() => toggle(id)}
-                      className="w-full flex justify-between items-center text-left"
+                      className="w-full grid grid-cols-[1fr_30px] gap-5 justify-between items-center text-left "
                     >
-                      <span className=" text-[20px] font-interTight-medium">
+                      <span className=" text-xl font-interTight-medium ">
                         {q}
                       </span>
-                      <Plus
-                        ref={(el) => (iconRefs.current[id] = el!)}
-                        className="w-5 h-5 transition-transform"
-                      />
+                      <span className="">
+                        <Plus
+                          size={28}
+                          strokeWidth={1}
+                          ref={(el): void => {
+                            iconRefs.current[id] = el!;
+                          }}
+                          className="transition-transform"
+                        />
+                      </span>
                     </button>
                     <div
-                      ref={(el) => (answerRefs.current[id] = el!)}
-                      className="overflow-hidden mt-2 text-white/80"
+                      ref={(el): void => {
+                        answerRefs.current[id] = el!;
+                      }}
+                      className="overflow-hidden mt-2 text-white/80 "
                     >
                       <p className="py-2">{a}</p>
                     </div>

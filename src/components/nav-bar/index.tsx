@@ -78,7 +78,7 @@ function NavigationBar() {
                         DropDown={ActiveDropDown}
                         open={open}
                         setOpen={setOpen}
-                        setActiveDropDown={setActiveDropDown}
+                        // setActiveDropDown={setActiveDropDown}
                       />
                     )}
                   </>
@@ -107,10 +107,11 @@ const DropDownholder = ({
   DropDown,
   open,
   setOpen,
-  setActiveDropDown,
-}: {
+}: // setActiveDropDown,
+{
   DropDown: ReactNode;
   open: boolean;
+  setOpen: any;
 }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
@@ -136,7 +137,6 @@ const DropDownholder = ({
           y: 20,
           duration: 0.1,
           ease: "power1.out",
-          // onComplete: () => setActiveDropDown(null),
         }
       );
     }
@@ -149,10 +149,8 @@ const DropDownholder = ({
       onMouseEnter={() => {
         console.log("Entered");
         setOpen(true);
-        // menuRef.current!.style.pointerEvents = "all";
       }}
       onMouseLeave={() => {
-        // menuRef.current!.style.pointerEvents = "none";
         setOpen(false);
       }}
     >

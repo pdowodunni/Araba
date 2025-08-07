@@ -1,3 +1,5 @@
+import ShowcaseCardVertical from "../shared/showcase-card-vertical";
+
 {
   /* 
     ============================= 
@@ -45,33 +47,28 @@ export default function HowWeSolveProblem() {
     <section>
       <div className="mx-container">
         <div className="pt-md-pad pb-md-pad flex flex-col gap-20">
-          <h3 className="m-0 p-0">
-            We help businesses{" "}
-            <em className="font-instrumental-serif">
-              be seen, heard, and felt
-            </em>{" "}
-            through three core pillars of storytelling
-          </h3>
+          <div className="flex flex-col gap-8 mb-4 items-center">
+            <span className="flex justify-center w-full pb-3 uppercase tracking-wide font-interTight-regular">
+              How we solve problems
+            </span>
+            <h4 className="m-0 p-0 max-w-[820px] leading-tight text-center">
+              We help businesses{" "}
+              <em className="font-instrumental-serif">
+                be seen, heard, and felt
+              </em>{" "}
+              through three core pillars of storytelling
+            </h4>
+          </div>
 
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             {FEATURES.map(({ title, text, img, bg }, idx) => (
-              <div
-                key={idx}
-                className="group grid h-[720px] grid-rows-[1fr_150px] overflow-hidden rounded-xl transition-all duration-300 hover:grid-rows-[1fr_200px]"
-              >
-                <div className="h-full w-full">
-                  <img
-                    src={img}
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className={`${bg} p-[40px] pb-[16px]`}>
-                  {title}
-                  <div className="mt-2 opacity-0 translate-y-2 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:translate-y-0">
-                    <p>{text}</p>
-                  </div>
-                </div>
+              <div key={idx}>
+                <ShowcaseCardVertical
+                  title={title}
+                  text={text}
+                  img={img}
+                  bg={bg}
+                />
               </div>
             ))}
           </div>

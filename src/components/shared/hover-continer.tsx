@@ -1,5 +1,4 @@
-import gsap from "gsap";
-import { useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 
 {
   /* 
@@ -13,71 +12,34 @@ import { useRef, type ReactNode } from "react";
   */
 }
 
-function HoverContainer({
+export default function HoverContainer({
   children,
   color,
 }: {
   children: ReactNode;
   color: string;
 }) {
-  const dotRef = useRef(null);
-  const textRef = useRef(null);
-
-  const handleMouseEnter = () => {
-    const tEl = textRef.current;
-    const dEl = dotRef.current;
-
-    const tl = gsap.timeline();
-
-    tl.to(tEl, {
-      x: 13,
-      duration: 0.15,
-    }).to(
-      dEl,
-      {
-        opacity: 1,
-      },
-      "-=0.2"
-    );
-  };
-
-  const handleMouseLeave = () => {
-    const tEl = textRef.current;
-    const dEl = dotRef.current;
-
-    const tl = gsap.timeline();
-
-    tl.to(dEl, {
-      opacity: 0,
-    }).to(
-      tEl,
-      {
-        x: 0,
-        duration: 0.15,
-      },
-      "-=0.4"
-    );
-  };
-
   return (
-    <div
-      className="relative"
-      onMouseEnter={() => handleMouseEnter()}
-      onMouseLeave={() => handleMouseLeave()}
-    >
-      <span className="top-1/2 -translate-y-1/2 absolute">
+    <div className="relative group">
+      <span className="absolute left-0 top-1/2 -translate-y-1/2">
         <div
-          className="w-[5px] aspect-square rounded-full"
-          style={{
-            backgroundColor: color,
-            opacity: 0,
-          }}
-          ref={dotRef}
+          ref={null}
+          style={{ backgroundColor: color }}
+          className="
+            w-[5px] h-[5px] rounded-full
+            opacity-0 transition-opacity duration-150 ease-out
+            group-hover:opacity-100
+          "
         />
       </span>
-      <div ref={textRef}>{children}</div>
+      <div
+        className="
+        transition-transform duration-150 ease-out
+        group-hover:translate-x-[13px]
+      "
+      >
+        {children}
+      </div>
     </div>
   );
 }
-
-export default HoverContainer;

@@ -3,9 +3,9 @@ import BrandCarousel from "../components/hero/brand-carousel";
 import FaqAccordion from "../components/hero/FAQ";
 import HeroHeader from "../components/hero/header";
 import HowWeSolveProblem from "../components/hero/how-solve-problem";
-// import OurDifferenceSection from "../components/hero/our-difference";
+import OurDifferenceSection from "../components/hero/our-difference";
 import WorkShowcase from "../components/hero/our-work";
-import ScrollGrowBox from "../components/shared/scroll-grow-box";
+// import ScrollGrowBox from "../components/shared/scroll-grow-box";
 import VerticalSnapCarousel from "../components/shared/testimonial";
 
 function Home() {
@@ -15,9 +15,9 @@ function Home() {
       <BrandCarousel />
       <About />
       <WorkShowcase />
-      <ScrollGrowBox />
+      {/* <ScrollGrowBox /> */}
       <HowWeSolveProblem />
-      {/* <OurDifferenceSection /> */}
+      <OurDifferenceSection />
       <VerticalSnapCarousel />
       <FaqAccordion />
     </main>

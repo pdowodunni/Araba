@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
-import { TESTIMONIALS } from "../../config/hero";
+import { TESTIMONIAL_IMAGES, TESTIMONIALS } from "../../config/hero";
 import gsap from "gsap";
-import { ArrowDown, ArrowUp, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUp } from "lucide-react";
 
 {
   /* 
@@ -12,14 +12,6 @@ import { ArrowDown, ArrowUp, ArrowUpRight } from "lucide-react";
     ============================= 
   */
 }
-
-const images = [
-  "/images/face/1.jpg",
-  "/images/face/2.jpg",
-  "/images/face/3.jpg",
-  "/images/face/4.jpg",
-  "/images/face/5.jpg",
-];
 
 export default function VerticalSnapCarousel() {
   const containerRef = useRef(null);
@@ -62,7 +54,7 @@ export default function VerticalSnapCarousel() {
 
   // PREVIOUS & NEXT
   const changeIndex = (newIndex: number) => {
-    const max = images.length - 1;
+    const max = TESTIMONIAL_IMAGES.length - 1;
     const idx = Math.min(Math.max(newIndex, 0), max);
     setActiveIndex(idx);
     const c = containerRef.current;
@@ -75,9 +67,6 @@ export default function VerticalSnapCarousel() {
 
   // CONTENT LOGIC
   const [data, setData] = useState(TESTIMONIALS[0]);
-
-  // const data =
-  //   TESTIMONIALS.find((t) => t.id === activeIndex) || TESTIMONIALS[0];
 
   const contentRef = useRef(null);
 
@@ -97,7 +86,7 @@ export default function VerticalSnapCarousel() {
     <div className="bg-mid-bg">
       <div className="mx-container h-[750px]">
         <div className="flex items-center justify-between">
-          {/* PROFIL IMAGE SLIDER */}
+          {/* =============================  PROFIL IMAGE SLIDER =============================  */}
           <div
             ref={containerRef}
             className="h-[750px] w-[300px] overflow-y-scroll snap-y snap-mandatory scroll-smooth cursor-grab scrollbar-hide py-60"
@@ -106,7 +95,7 @@ export default function VerticalSnapCarousel() {
             onMouseUp={stopDrag}
             onMouseLeave={stopDrag}
           >
-            {images.map((src, i) => (
+            {TESTIMONIAL_IMAGES.map((src, i) => (
               <div
                 key={i}
                 className={`snap-center pointer-events-none select-none flex justify-center items-center h-[250px] transition-all duration-200 ${
@@ -123,7 +112,7 @@ export default function VerticalSnapCarousel() {
               </div>
             ))}
           </div>
-          {/* CONTENT */}
+          {/* ============================= CONTENT=============================  */}
           <div
             ref={contentRef}
             className="max-w-4xl mx-auto flex-1 flex flex-col gap-16"
@@ -131,7 +120,7 @@ export default function VerticalSnapCarousel() {
           >
             <div className="flex flex-col gap-10">
               <div className="flex items-center justify-start w-40 ">
-                <data.Logo />
+                <data.Logo color="--color-primary" />
               </div>
               {data.quote}
               <p className="">
@@ -139,7 +128,7 @@ export default function VerticalSnapCarousel() {
               </p>
             </div>
 
-            <div className="flex gap-6 ">
+            {/* <div className="flex gap-6 ">
               {data.stats.length > 0 && (
                 <div className="flex gap-6 my-3">
                   {data.stats.map(({ value, label }, i) => (
@@ -173,10 +162,7 @@ export default function VerticalSnapCarousel() {
                       backgroundPosition: "center",
                     }}
                   >
-                    {/* <img
-                      src={data.caseStudy.thumbnail}
-                      alt={data.caseStudy.title}
-                    /> */}
+  
                   </div>
 
                   <div className="flex flex-col justify-between">
@@ -187,8 +173,10 @@ export default function VerticalSnapCarousel() {
                   </div>
                 </a>
               )}
-            </div>
+            </div> */}
           </div>
+
+          {/* ============================= ARROW CONTROLS=============================  */}
           <div className="flex flex-col gap-4 justify-center items-center">
             <div
               className="p-4 border border-primary flex justify-center items-center rounded-full"

@@ -65,7 +65,12 @@ function SlideUpButton({
           style={{ color: textColor }}
         >
           {Array.from({ length: 2 }).map((_, idx) => (
-            <span key={idx} className="relative">
+            <span
+              key={idx}
+              className={`relative ${
+                idx === 1 && "font-instrumental-serif text-[18px]"
+              }`}
+            >
               {children}
             </span>
           ))}

@@ -1,4 +1,4 @@
-export default function AboutUsDropDown() {
+export default function ServiceDropDown() {
   const ABOUT_DATA = [
     {
       image: "/images/1(12).jpg",
