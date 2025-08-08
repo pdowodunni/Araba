@@ -67,8 +67,8 @@
 @layer utilities {
   h1 {
     @apply text-[2.25rem]     
-           md:text-[4rem]    
-           lg:text-[6rem]  
+           md:text-[3.75rem]    
+           lg:text-[5.5rem]  
            leading-tight;
   }
 
@@ -112,6 +112,12 @@
 
   .mx-container {
     @apply max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .s-heading {
+    @apply flex justify-center w-full pb-3 uppercase tracking-[3px] font-interTight-regular;
+  }
+  .p-main {
+    @apply pt-[100px] min-h-screen;
   }
 }
 
