@@ -129,6 +129,8 @@ function Solution() {
 	);
 }
 
+// System is currently at 8%, I will continue now once done
+//
 function DifferencesItem() {
 	return (
 		<>
