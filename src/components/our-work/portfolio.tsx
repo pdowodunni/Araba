@@ -9,11 +9,11 @@ function Portfolio() {
     [
       {
         span: 2,
-        assetLink: "/images/five.jpg",
-        assetType: "image",
-        title: "Pernod Ricard",
-        desc: "eBook & Digital Reports, Video Production",
-        href: "#",
+        assetLink: "/video/ina-stretch.webm",
+        assetType: "video",
+        title: "INA",
+        desc: "Faith, Culture & Experiential Events",
+        href: "/our-work/ina",
       },
       {
         span: 2,
