@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BrandCarousel from "../components/hero/brand-carousel";
 import SlideUpButton from "../components/shared/slide-up-button";
 import VerticalSnapCarousel from "../components/shared/testimonial";
+import { Lightbulb, NotebookPenIcon, Star } from "lucide-react";
 
 function Service() {
 	return (
@@ -10,7 +11,7 @@ function Service() {
 				<ServiceHero />
 				<BrandCarousel />
 				<Solution />
-				<DifferencesItem />
+				<StoryItem />
 				<VerticalSnapCarousel />
 			</main>
 		</>
@@ -23,7 +24,7 @@ function ServiceHero() {
 	return (
 		<>
 			<header>
-				<div className="flex items-center justify-center min-h-screen bg-primary mt-10">
+				<div className="flex bg-primary items-center justify-center min-h-screen mt-10 relative">
 					<div className="mx-container">
 						<div className="grid grid-cols-1 md:grid-cols-2 ">
 							<div className="flex flex-col justify-center gap-4">
@@ -41,7 +42,7 @@ function ServiceHero() {
 										unforgettable.
 									</p>
 								</div>
-								<div className="flex gap-1">
+								<div className="flex gap-1 z-10">
 									<SlideUpButton
 										type="fill"
 										bgColor="var(--color-green-accent)"
@@ -52,6 +53,7 @@ function ServiceHero() {
 							</div>
 						</div>
 					</div>
+					<div className="absolute inset-0 bg-[url('/images/1(13).jpg')] bg-cover opacity-10 z-0 scale-x-[-1]"></div>
 				</div>
 			</header>
 		</>
@@ -59,7 +61,7 @@ function ServiceHero() {
 }
 
 const problemList = [
-	"Not because your product isn’t great or your story isnt powerful But because the delivery didn’t connect. Sound familiar?",
+	"Not because your product isn’t great or your story isn't powerful But because the delivery didn’t connect. Sound familiar?",
 	"You're stuck using whoever’s available, not who fits the story.",
 	"Your script sounds like a script, not like real people talking.",
 	" Your last VO project felt… flat.",
@@ -67,11 +69,18 @@ const problemList = [
 	" You’re wasting time giving feedback, doing pickups, and still not getting what you want.",
 	" You’re using AI voice tools… but deep down, you know they’re missing a soul.",
 ];
+
 function Solution() {
 	const [loaded, setLoaded] = useState(false);
+	const [show, setShow] = useState(false);
+
+	useEffect(() => {
+		setShow(true);
+	}, []);
+
 	return (
 		<>
-			<div className="bg-white text-primary py-30 ">
+			<div className="bg-white text-primary py-10 ">
 				<div className="mx-container w-full">
 					<div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-2">
 						<div className="flex flex-col justify-center gap-2">
@@ -87,8 +96,15 @@ function Solution() {
 							</h5>
 							<div className="max-w-[540px]">
 								<ul>
-									{problemList.map((item) => (
-										<li className="pb-1 list-disc">{item}</li>
+									{problemList.map((item, index) => (
+										<li
+											className={`list-disc pb-1 transform transition-opacity duration-500 ${
+												show ? "opacity-100" : "opacity-0"
+											}`}
+											style={{ transitionDelay: `${index * 1000}ms` }}
+											key={index}>
+											{item}
+										</li>
 									))}
 								</ul>
 								<h5 className="">And that’s where we come in</h5>
@@ -129,14 +145,55 @@ function Solution() {
 	);
 }
 
-// System is currently at 8%, I will continue now once done
-//
-function DifferencesItem() {
+const storyItem = [
+	{
+		icon: Lightbulb,
+		subText: "Warm & Friendly",
+		heading: "Share Your Story",
+		text: "Send your script and tell us your vision",
+	},
+	{
+		icon: NotebookPenIcon,
+		subText: "Bold & Energetic",
+		heading: "We Bring It to Life",
+		text: "Tailored voice style, tone, and emotion",
+	},
+	{
+		icon: Star,
+		subText: "Calm & Inspiring",
+		heading: "You Get the Perfect Take",
+		text: "Ready-to-use, high-quality audio",
+	},
+];
+
+function StoryItem() {
 	return (
 		<>
 			<div className="bg-white text-primary py-30 ">
+				<div className="border-t-2 mt-1 mb-4 w-full"></div>
 				<div className="mx-container">
-					<p className="text-white text-xs">OUR DIFFERENCES</p>
+					<div className="text-center">
+						<p className="text-xs">YOUR STORY DESERVES TO BE HEARD</p>
+						<h4 className="font-interTight-regular mb-8">
+							We bring human warmth, emotional depth, and professional precision
+							to{" "}
+							<span className="font-instrumental-serif">every voiceover.</span>
+						</h4>
+					</div>
+					<div className="flex flex-col justify-between items-center gap-2 md:flex-row">
+						{storyItem.map((item) => (
+							<div key={item.heading} className="flex items-start gap-2">
+								<div className="bg-slate-400 flex items-center justify-center p-2">
+									<item.icon className="text-primary" />
+								</div>
+								<div>
+									<p className="text-xs">{item.subText}</p>
+									<h5 className="font-interTight-regular">{item.heading}</h5>
+									<p className="text-sm">{item.text}</p>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</>
