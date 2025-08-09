@@ -1,26 +1,32 @@
 import React from "react";
-import { ShowCaseCardHorizontal } from "../shared/showcase-card-horizontal";
+import {
+  ShowCaseCardHorizontal,
+  type ShowcaseCardHorizontalProps,
+} from "../shared/showcase-card-horizontal";
 
 function Portfolio() {
-  const ROWS = [
+  const ROWS: ShowcaseCardHorizontalProps[][] = [
     [
       {
         span: 2,
-        img: "/images/five.jpg",
+        assetLink: "/images/five.jpg",
+        assetType: "image",
         title: "Pernod Ricard",
         desc: "eBook & Digital Reports, Video Production",
         href: "#",
       },
       {
         span: 2,
-        img: "/images/five.jpg",
+        assetLink: "/images/five.jpg",
+        assetType: "image",
         title: "Salesforce",
         desc: "Motion Design, Ad Creative",
         href: "#",
       },
       {
         span: 4,
-        img: "/images/four.jpg",
+        assetLink: "/images/four.jpg",
+        assetType: "image",
         title: "Roland",
         desc: "Ad Creative, Social Media Creative",
         href: "#",
@@ -29,21 +35,24 @@ function Portfolio() {
     [
       {
         span: 4,
-        img: "/images/four.jpg",
+        assetLink: "/images/four.jpg",
+        assetType: "image",
         title: "Antler",
         desc: "Brand Identity, Motion Design, Social Media Creative",
         href: "#",
       },
       {
         span: 2,
-        img: "/images/five.jpg",
+        assetLink: "/images/five.jpg",
+        assetType: "image",
         title: "Shopify",
         desc: "Ad Creative",
         href: "#",
       },
       {
         span: 2,
-        img: "/images/five.jpg",
+        assetLink: "/images/five.jpg",
+        assetType: "image",
         title: "Reddit",
         desc: "Motion Design, Social Media Creative",
         href: "#",
@@ -52,7 +61,8 @@ function Portfolio() {
     [
       {
         span: 2,
-        img: "/images/four.jpg",
+        assetLink: "/images/four.jpg",
+        assetType: "image",
         title: "Antler",
         desc: "Brand Identity, Motion Design, Social Media Creative",
         href: "#",
