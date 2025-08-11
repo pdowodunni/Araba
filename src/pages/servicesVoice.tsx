@@ -174,11 +174,11 @@ function StoryItem() {
 				<div className="mx-container">
 					<div className="text-center">
 						<p className="text-xs">YOUR STORY DESERVES TO BE HEARD</p>
-						<h4 className="font-interTight-regular mb-8">
+						<h5 className="font-inter Tight-regular mb-8">
 							We bring human warmth, emotional depth, and professional precision
 							to{" "}
 							<span className="font-instrumental-serif">every voiceover.</span>
-						</h4>
+						</h5>
 					</div>
 					<div className="flex flex-col justify-between items-center gap-2 md:flex-row">
 						{storyItem.map((item) => (
