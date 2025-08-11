@@ -1,15 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function BreadCrumb({ pages }: { pages: string[] }) {
+export interface BreadcrumbPagesProps {
+  page: string;
+  href: string;
+}
+function BreadCrumb({ pages }: { pages: BreadcrumbPagesProps[] }) {
   return (
-    <div>
-      {pages.map((p, idx) => {
-        return (
-          <span key={idx}>
-            <em>{p}</em>
-          </span>
-        );
-      })}
+    <div className="max-w-[1800px] mx-auto pt-sm-pad">
+      <div className="flex gap-2">
+        {pages.map((p, idx) => {
+          return (
+            <span key={idx} className="flex gap-2 ">
+              <Link to={p.href}>
+                <em className="tracking-[2px] text-sm font-interTight-semibold">
+                  {p.page}
+                </em>
+              </Link>
+
+              {idx < pages.length - 1 && (
+                <span className="tracking-[2px] text-sm font-interTight-semibold">
+                  /
+                </span>
+              )}
+            </span>
+          );
+        })}
+      </div>
     </div>
   );
 }
