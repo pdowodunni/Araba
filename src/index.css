@@ -114,10 +114,13 @@
     @apply max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8;
   }
   .s-heading {
-    @apply flex justify-center w-full pb-3 uppercase tracking-[3px] font-interTight-regular;
+    @apply flex w-full pb-3 uppercase tracking-[2px] text-sm font-interTight-semibold;
   }
   .p-main {
     @apply pt-[100px] min-h-screen;
+  }
+  .case-container {
+    @apply max-w-[1385px] px-6 py-8 mx-auto;
   }
 }
 
