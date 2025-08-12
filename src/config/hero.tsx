@@ -233,3 +233,81 @@ export const VERTICAL_CAROUSEL_THREE = [
     Logo: GoogleWhite,
   },
 ];
+
+export const HORIZONTAL_CAROUSEL_ONE = [
+  {
+    image: "/images/1(6).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(7).jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/1(8).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(9).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(10).jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/1(11).jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/1(5).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(2).jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/1(12).jpg",
+    Logo: GoogleWhite,
+  },
+];
+
+export const HORIZONTAL_CAROUSEL_TWO = [
+  {
+    image: "/images/1(1).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(3).jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/1(4).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(4).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(9).jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/three.jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/1(2).jpg",
+    Logo: WakanowWhite,
+  },
+  {
+    image: "/images/two.jpg",
+    Logo: GoogleWhite,
+  },
+  {
+    image: "/images/three.jpg",
+    Logo: GoogleWhite,
+  },
+];

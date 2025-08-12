@@ -74,8 +74,9 @@
 
   h2 {
     @apply text-[2rem]        
-           md:text-[3rem]    
-           lg:text-[4.5rem]  
+           md:text-[3rem]
+           lg:text-[4rem]    
+           2xl:text-[4.5rem]  
            leading-tight;
   }
 
