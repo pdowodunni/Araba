@@ -40,7 +40,7 @@ export const TESTIMONIALS = [
     id: 0,
     Logo: GtB,
     quote: (
-      <p className="text-3xl">
+      <p className="text-xl 2xl:text-3xl">
         “Working with {"  "}
         <em className="font-interTight-semibold">
           {" "}
@@ -60,7 +60,7 @@ export const TESTIMONIALS = [
     id: 1,
     Logo: Seid,
     quote: (
-      <p className="text-3xl">
+      <p className="text-xl 2xl:text-3xl">
         “One of the major things I look at when working with anyone is
         flexibility and ease.
         <em className="font-interTight-semibold">
@@ -78,7 +78,7 @@ export const TESTIMONIALS = [
     id: 2,
     Logo: SaroAfrice,
     quote: (
-      <p className="text-3xl">
+      <p className="text-xl 2xl:text-3xl">
         “
         <em className="font-interTight-semibold">
           Working with the ARABA team on our 10-year documentary was such a
@@ -98,7 +98,7 @@ export const TESTIMONIALS = [
     id: 3,
     Logo: Shopify,
     quote: (
-      <p className="text-3xl">
+      <p className="text-xl 2xl:text-3xl">
         “Few partners can handle pressure and still bring excellence. For the
         Goalkeepers project, we had less than a day to deliver.
         <em className="font-interTight-semibold">
@@ -115,7 +115,7 @@ export const TESTIMONIALS = [
     id: 4,
     Logo: SeamlessHR,
     quote: (
-      <p className="text-3xl">
+      <p className="text-xl 2xl:text-3xl">
         “
         <em className="font-interTight-semibold">
           If there’s one thing I love about Araba Collective, it’s the fact that
@@ -133,7 +133,7 @@ export const TESTIMONIALS = [
     id: 5,
     Logo: Shopify,
     quote: (
-      <p className="text-3xl">
+      <p className="text-xl 2xl:text-3xl">
         “
         <em className="font-interTight-semibold">
           Araba took the time to learn about our company,

@@ -178,6 +178,10 @@ function Card({ image, Logo }: Item) {
       <img
         src={image}
         className="w-[140px] h-[200px] rounded-lg block"
+        style={{
+          objectPosition: "center",
+          objectFit: "cover",
+        }}
         alt=""
         loading="lazy"
       />

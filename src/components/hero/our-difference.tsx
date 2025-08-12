@@ -37,7 +37,9 @@ export default function OurDifferenceSection() {
       <div className="mx-container">
         <div className="pt-md-pad pb-md-pad flex flex-col gap-20">
           <div className="flex flex-col gap-8 mb-4 items-center">
-            <span className="s-heading">OUR DIFFERENCE</span>
+            <span className="s-heading flex justify-center w-full">
+              OUR DIFFERENCE
+            </span>
             <h4 className="m-0 p-0 max-w-[820px] leading-tight text-center">
               Araba is the{" "}
               <em className="font-instrumental-serif">perfect fit</em> for fast
