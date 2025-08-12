@@ -13,9 +13,7 @@ function BreadCrumb({ pages }: { pages: BreadcrumbPagesProps[] }) {
           return (
             <span key={idx} className="flex gap-2 ">
               <Link to={p.href}>
-                <em className="tracking-[2px] text-sm font-interTight-semibold">
-                  {p.page}
-                </em>
+                <em className="s-heading">{p.page}</em>
               </Link>
 
               {idx < pages.length - 1 && (
