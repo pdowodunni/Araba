@@ -31,9 +31,9 @@
 }
 
 @theme {
-  --spacing-sm-pad: 5.8rem;
-  --spacing-md-pad: 8rem;
-  --spacing-lg-pad: 13rem;
+  --spacing-sm-pad: clamp(2rem, 6vw, 5.8rem);
+  --spacing-md-pad: clamp(4rem, 8vw, 8rem);
+  --spacing-lg-pad: clamp(4rem, 10vw, 13rem);
 
   --breakpoint-2xl: 103.125rem;
 

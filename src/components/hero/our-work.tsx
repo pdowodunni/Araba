@@ -94,7 +94,7 @@ export default function WorkShowcase() {
             </div>
           </div>
           {/* </ScrollReveal> */}
-          <div className="flex flex-col gap-0 md:gap-20">
+          <div className="flex flex-col gap-2 md:gap-20">
             {ROWS.map((row, i) => (
               <div key={i} className="mx-auto w-full flex justify-center">
                 <div className="block md:grid w-full grid-cols-8 md:gap-4">

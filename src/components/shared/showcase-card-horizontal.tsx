@@ -27,7 +27,7 @@ export function ShowCaseCardHorizontal({
       style={{ gridColumn: `span ${span} / span ${span}` }}
     >
       <Link to={href}>
-        <div className="group w-full flex flex-col cursor-pointer gap-6 mb-8 md:mb-0">
+        <div className="group w-full flex flex-col cursor-pointer gap-6 mb-12 md:mb-0">
           {assetType === "image" ? (
             <div
               className="

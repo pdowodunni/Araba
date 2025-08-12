@@ -78,7 +78,7 @@ export default function Footer() {
     <>
       <section>
         <div className="bg-primary text-white">
-          <div className="mx-container flex justify-center pb-lg-pad">
+          <div className="mx-container flex justify-center py-sm-pad">
             <div className="max-w-5xl">
               <h1 className="text-center">
                 Your <em className="font-instrumental-serif">creative</em>{" "}
