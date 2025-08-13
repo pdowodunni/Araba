@@ -29,7 +29,9 @@ const Holder = ({
 }) => {
   return (
     <div className="flex flex-col gap-4">
-      <span className="s-heading w-full border-b-2">0{index}</span>
+      <span className="s-heading w-full border-b-2 border-[#D9D9D9]">
+        0{index}
+      </span>
       <h5>{title}</h5>
       <p className="max-w-[320px]">{text}</p>
     </div>
