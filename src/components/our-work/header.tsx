@@ -6,7 +6,7 @@ function Header() {
       <div className="mx-container">
         <div className="pt-md-pad pb-md-pad flex flex-col gap-20">
           <div className="flex flex-col gap-4 mb-4 items-center">
-            <span className="s-heading">Our work</span>
+            <span className="s-heading flex justify-center">Our work</span>
             <h1 className="m-0 p-0 max-w-[820px] leading-tight text-center">
               Creative that <em className="font-instrumental-serif">works</em>{" "}
             </h1>

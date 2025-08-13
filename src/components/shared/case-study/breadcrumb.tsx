@@ -7,7 +7,7 @@ export interface BreadcrumbPagesProps {
 }
 function BreadCrumb({ pages }: { pages: BreadcrumbPagesProps[] }) {
   return (
-    <div className="max-w-[1800px] mx-auto pt-sm-pad">
+    <div className="max-w-[1800px] mx-auto pt-sm-pad px-4 sm:px-6 lg:px-8">
       <div className="flex gap-2">
         {pages.map((p, idx) => {
           return (

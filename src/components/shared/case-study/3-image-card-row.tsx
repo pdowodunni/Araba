@@ -8,7 +8,7 @@ function ThreeImgCrdRow({
   return (
     <section>
       <div className="case-container my-sm-pad">
-        <div className="w-full gap-8 flex flex-row justify-between">
+        <div className="w-full xl:gap-8 md:gap-4 gap-6 flex flex-col md:flex-row justify-between">
           <div
             style={{
               backgroundImage: `url('${imagesUrl[0]}')`,

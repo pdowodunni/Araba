@@ -16,10 +16,6 @@ function NavigationBar() {
   const [ActiveDropDown, setActiveDropDown] = useState<ReactNode | null>(null);
 
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    console.log(open);
-  }, [open]);
   return (
     <>
       <div className="bg-primary w-screen fixed top-0 z-50">

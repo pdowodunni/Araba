@@ -6,7 +6,9 @@ function OurWork() {
   return (
     <main className="p-main">
       <Header />
-      <LogoCarousel />
+      <div className="mx-container">
+        <LogoCarousel />
+      </div>
       <Portfolio />
     </main>
   );

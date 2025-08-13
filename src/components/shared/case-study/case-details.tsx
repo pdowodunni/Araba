@@ -11,12 +11,12 @@ function CaseDetails({
   return (
     <section>
       <div className="mx-container">
-        <div className="flex justify-between gap-6">
+        <div className="flex justify-between gap-6 flex-col lg:flex-row">
           {/* WORD COLUMN */}
-          <div className="flex flex-col justify-center gap-12 w-[700px] py-sm-pad">
+          <div className="flex flex-col justify-center gap-12 max-w-[700px] w-full py-sm-pad">
             <div className="flex flex-col gap-1">
               <span className="s-heading">Project Summary</span>
-              <h4 className="font-interTight-regular leading-tight">
+              <h4 className=" font-interTight-regular leading-tight">
                 <span>
                   The New is passionate about Jesus encounters and life
                   transformation.
@@ -51,7 +51,7 @@ function CaseDetails({
           </div>
 
           {/* VIDEO COLUMN */}
-          <div className="max-w-[680px] w-full relative min-h-full bg-amber-600 overflow-hidden rounded-lg">
+          <div className="2xl:w-[680px] lg:w-[40%] w-full aspect-[9/10] relative lg:min-h-full bg-amber-600 overflow-hidden rounded-lg">
             {assetType === "image" ? (
               <div
                 className="

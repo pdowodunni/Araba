@@ -8,7 +8,7 @@ function FourimgCrd({
   return (
     <section>
       <div className="case-container my-sm-pad">
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           <div
             style={{
               backgroundImage: `url('${imagesUrl[0]}')`,
@@ -16,7 +16,7 @@ function FourimgCrd({
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
             }}
-            className="w-full aspect-[1/0.65] bg-mid-bg rounded-lg"
+            className="w-full aspect-[1/0.65] bg-mid-bg"
           />
           <div
             style={{
@@ -25,7 +25,7 @@ function FourimgCrd({
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
             }}
-            className="w-full aspect-[1/0.65] bg-mid-bg rounded-lg"
+            className="w-full aspect-[1/0.65] bg-mid-bg"
           />
           <div
             style={{
@@ -34,7 +34,7 @@ function FourimgCrd({
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
             }}
-            className="w-full aspect-[1/0.65] bg-mid-bg rounded-lg"
+            className="w-full aspect-[1/0.65] bg-mid-bg"
           />
           <div
             style={{
@@ -43,7 +43,7 @@ function FourimgCrd({
               backgroundSize: "cover",
               backgroundRepeat: "no-repeat",
             }}
-            className="w-full aspect-[1/0.65] bg-mid-bg rounded-lg"
+            className="w-full aspect-[1/0.65] bg-mid-bg"
           />
         </div>
       </div>

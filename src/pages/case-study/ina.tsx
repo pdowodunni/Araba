@@ -117,8 +117,16 @@ function Ina() {
           "/images/casestudy/ina-8.png",
         ]}
       />
-
-      <Execution data={EXECUTION_DATA} />
+      <section>
+        <div className="case-container">
+          <div className=" py-sm-pad flex flex-col gap-8">
+            <span className="s-heading w-full flex justify-center">
+              Execution & Experience Design
+            </span>
+            <Execution data={EXECUTION_DATA} />
+          </div>
+        </div>
+      </section>
 
       {/* RESULT */}
       <section>

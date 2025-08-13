@@ -4,9 +4,9 @@ function CaseStudyVideoHeader({ videoUrl }: { videoUrl: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <section>
-      <div className="mx-container">
+      <div className="max-w-[1680px] mx-auto px-0 lg:px-8">
         <div className="py-sm-pad">
-          <div className="w-full relative aspect-video bg-mid-bg rounded-lg overflow-hidden">
+          <div className="w-full relative aspect-video bg-mid-bg lg:rounded-lg overflow-hidden">
             <video
               playsInline
               autoPlay
