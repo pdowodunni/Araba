@@ -20,7 +20,7 @@ export default function HoverContainer({
   color: string;
 }) {
   return (
-    <div className="relative group">
+    <div className="relative group ">
       <span className="absolute left-0 top-1/2 -translate-y-1/2">
         <div
           ref={null}

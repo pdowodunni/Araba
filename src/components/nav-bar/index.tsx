@@ -40,6 +40,7 @@ function NavigationBar() {
                   <>
                     <li
                       key={idx}
+                      className="h-[78px] flex justify-center items-center"
                       onMouseEnter={() => {
                         setActiveDropDown(i.dropDown ?? null);
                         if (i.dropDown) setOpen(true);
@@ -51,7 +52,7 @@ function NavigationBar() {
                     >
                       <Link
                         to={i.href}
-                        className="text-white  text-sm px-4 py-2 hover:bg-secondary transition-colors font-interTight-regular"
+                        className="text-white  text-sm px-2 py-2 hover:bg-secondary transition-colors font-interTight-regular"
                       >
                         <HoverContainer color="white">
                           <div className="flex items-center gap-1 h-[60px]">
