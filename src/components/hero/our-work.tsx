@@ -1,6 +1,9 @@
 import SlideUpButton from "../shared/slide-up-button";
 // import ScrollReveal from "../shared/scrool-reveal";
-import { ShowCaseCardHorizontal } from "../shared/showcase-card-horizontal";
+import {
+  ShowCaseCardHorizontal,
+  type ShowcaseCardHorizontalProps,
+} from "../shared/showcase-card-horizontal";
 
 {
   /* 
@@ -9,25 +12,28 @@ import { ShowCaseCardHorizontal } from "../shared/showcase-card-horizontal";
     ============================= 
   */
 }
-const ROWS = [
+const ROWS: ShowcaseCardHorizontalProps[][] = [
   [
     {
       span: 2,
-      img: "/images/five.jpg",
+      assetLink: "/images/five.jpg",
+      assetType: "image",
       title: "Pernod Ricard",
       desc: "eBook & Digital Reports, Video Production",
       href: "#",
     },
     {
       span: 2,
-      img: "/images/five.jpg",
+      assetLink: "/images/five.jpg",
+      assetType: "image",
       title: "Salesforce",
       desc: "Motion Design, Ad Creative",
       href: "#",
     },
     {
       span: 4,
-      img: "/images/four.jpg",
+      assetLink: "/images/four.jpg",
+      assetType: "image",
       title: "Roland",
       desc: "Ad Creative, Social Media Creative",
       href: "#",
@@ -36,21 +42,24 @@ const ROWS = [
   [
     {
       span: 4,
-      img: "/images/four.jpg",
+      assetLink: "/images/four.jpg",
+      assetType: "image",
       title: "Antler",
       desc: "Brand Identity, Motion Design, Social Media Creative",
       href: "#",
     },
     {
       span: 2,
-      img: "/images/five.jpg",
+      assetLink: "/images/five.jpg",
+      assetType: "image",
       title: "Shopify",
       desc: "Ad Creative",
       href: "#",
     },
     {
       span: 2,
-      img: "/images/five.jpg",
+      assetLink: "/images/five.jpg",
+      assetType: "image",
       title: "Reddit",
       desc: "Motion Design, Social Media Creative",
       href: "#",
@@ -85,7 +94,7 @@ export default function WorkShowcase() {
             </div>
           </div>
           {/* </ScrollReveal> */}
-          <div className="flex flex-col gap-0 md:gap-20">
+          <div className="flex flex-col gap-2 md:gap-20">
             {ROWS.map((row, i) => (
               <div key={i} className="mx-auto w-full flex justify-center">
                 <div className="block md:grid w-full grid-cols-8 md:gap-4">

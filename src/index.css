@@ -31,9 +31,9 @@
 }
 
 @theme {
-  --spacing-sm-pad: 5.8rem;
-  --spacing-md-pad: 8rem;
-  --spacing-lg-pad: 13rem;
+  --spacing-sm-pad: clamp(2rem, 6vw, 5.8rem);
+  --spacing-md-pad: clamp(4rem, 8vw, 8rem);
+  --spacing-lg-pad: clamp(4rem, 10vw, 13rem);
 
   --breakpoint-2xl: 103.125rem;
 
@@ -74,8 +74,9 @@
 
   h2 {
     @apply text-[2rem]        
-           md:text-[3rem]    
-           lg:text-[4.5rem]  
+           md:text-[3rem]
+           lg:text-[4rem]    
+           2xl:text-[4.5rem]  
            leading-tight;
   }
 
@@ -90,14 +91,14 @@
   h4 {
     @apply text-[1.55rem]     
            md:text-[2rem]   
-           lg:text-[3rem]     
+           2xl:text-[3rem]     
            mb-1;
   }
 
   h5 {
     @apply text-[1.375rem]    
            md:text-[1.75rem]  
-           lg:text-[2rem]     
+           2xl:text-[2rem]     
            mb-1;
   }
 
@@ -114,10 +115,25 @@
     @apply max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8;
   }
   .s-heading {
-    @apply flex justify-center w-full pb-3 uppercase tracking-[3px] font-interTight-regular;
+    @apply flex w-full pb-3 uppercase tracking-[2px]  font-interTight-semibold;
   }
   .p-main {
     @apply pt-[100px] min-h-screen;
+  }
+  .case-container {
+    @apply max-w-[1385px] px-4 py-8 mx-auto;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  .h2-sm {
+    @apply xl:text-[2rem]    
+           2xl:text-[4.5rem];
   }
 }
 

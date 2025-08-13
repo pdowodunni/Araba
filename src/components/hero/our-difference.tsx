@@ -35,9 +35,11 @@ export default function OurDifferenceSection() {
   return (
     <section className="">
       <div className="mx-container">
-        <div className="pt-md-pad pb-md-pad flex flex-col gap-20">
+        <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
           <div className="flex flex-col gap-8 mb-4 items-center">
-            <span className="s-heading">OUR DIFFERENCE</span>
+            <span className="s-heading flex justify-center w-full">
+              OUR DIFFERENCE
+            </span>
             <h4 className="m-0 p-0 max-w-[820px] leading-tight text-center">
               Araba is the{" "}
               <em className="font-instrumental-serif">perfect fit</em> for fast
@@ -46,18 +48,15 @@ export default function OurDifferenceSection() {
           </div>
           <div className="mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {ITEMS.map(({ icon: Icon, label, title, description }, idx) => (
-              <div
-                key={idx}
-                className="flex gap-3 flex-col text-center sm:text-left"
-              >
-                <div className="mx-auto sm:mx-0 flex h-20 w-20 items-center justify-center rounded bg-gray-200">
+              <div key={idx} className="flex gap-3 flex-col">
+                <div className="mx-0 flex scale-60 h-20 w-20 items-center justify-center rounded bg-gray-200">
                   <Icon color="#0a221f" />
                 </div>
                 <span className="block uppercase tracking-widest text-gray-500">
                   {label}
                 </span>
                 <h5 className="p-0 m-0">{title}</h5>
-                <p className="text-lg">{description}</p>
+                <p className="">{description}</p>
               </div>
             ))}
           </div>

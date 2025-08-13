@@ -4,9 +4,11 @@ import LogoCarousel from "../components/shared/logo-carousel";
 
 function OurWork() {
   return (
-    <main className="p-main ">
+    <main className="p-main">
       <Header />
-      <LogoCarousel />
+      <div className="mx-container">
+        <LogoCarousel />
+      </div>
       <Portfolio />
     </main>
   );
