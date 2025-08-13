@@ -2,155 +2,220 @@ import { NAV_LINKS } from "../../config/navigator";
 import { Link } from "react-router-dom";
 import SlideUpButton from "../shared/slide-up-button";
 import React, {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  type ReactNode,
+	useLayoutEffect,
+	useRef,
+	useState,
+	type ReactNode,
 } from "react";
 import HoverContainer from "../shared/hover-continer";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import gsap from "gsap";
 
 function NavigationBar() {
-  const [ActiveDropDown, setActiveDropDown] = useState<ReactNode | null>(null);
+	const [ActiveDropDown, setActiveDropDown] = useState<ReactNode | null>(null);
+	const [isOpen, setIsOpen] = useState(false);
+	const [open, setOpen] = useState(false);
+	return (
+		<>
+			<div className="bg-primary w-screen fixed top-0 z-50">
+				{open && (
+					<div className="top-[74px] absolute left-0 w-screen min-h-screen inset-0 bg-black/10 backdrop-blur-md" />
+				)}
 
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <div className="bg-primary w-screen fixed top-0 z-50">
-        {open && (
-          <div className="top-[74px] absolute left-0 w-screen h-screen inset-0 bg-black/10 backdrop-blur-md" />
-        )}
+				<div className="mx-container h-[78px] flex items-center justify-between">
+					<div>
+						<Link to={"/"}>
+							<img
+								src="/images/logo.webp"
+								alt="araba's logo"
+								className="w-[90px] select-none pointer-events-none"
+							/>
+						</Link>
+					</div>
+					<nav>
+						<ul className="hidden md:flex gap-10 justify-center items-center">
+							{NAV_LINKS.map((i, idx) => {
+								return (
+									<>
+										<li
+											key={idx}
+											onMouseEnter={() => {
+												setActiveDropDown(i.dropDown ?? null);
+												if (i.dropDown) setOpen(true);
+											}}
+											onMouseLeave={() => {
+												// setActiveDropDown(null);
+												setOpen(false);
+											}}>
+											<Link
+												to={i.href}
+												className="text-white  text-sm px-4 py-2 hover:bg-secondary transition-colors font-interTight-regular">
+												<HoverContainer color="white">
+													<div className="flex items-center gap-1 min-h-[60px]">
+														{i.label}{" "}
+														{i.dropDown && (
+															<span>
+																<ChevronDown
+																	color="white"
+																	size={16}
+																	strokeWidth={1}
+																/>
+															</span>
+														)}
+													</div>
+												</HoverContainer>
+											</Link>
+										</li>
+										{i.dropDown && ActiveDropDown && (
+											<DropDownholder
+												DropDown={ActiveDropDown}
+												open={open}
+												setOpen={setOpen}
+												// setActiveDropDown={setActiveDropDown}
+											/>
+										)}
+									</>
+								);
+							})}
+						</ul>
+					</nav>
+					<div className="flex gap-4 justify-center items-center">
+						<SlideUpButton
+							type="fill"
+							bgColor="var(--color-green-accent"
+							textColor="var(--color-primary)">
+							Let's talk
+						</SlideUpButton>
+					</div>
 
-        <div className="mx-container h-[78px] flex items-center justify-between">
-          <div>
-            <Link to={"/"}>
-              <img
-                src="/images/logo.webp"
-                alt="araba's logo"
-                className="w-[90px] select-none pointer-events-none"
-              />
-            </Link>
-          </div>
-          <nav>
-            <ul className="flex gap-10 justify-center items-center">
-              {NAV_LINKS.map((i, idx) => {
-                return (
-                  <>
-                    <li
-                      key={idx}
-                      onMouseEnter={() => {
-                        setActiveDropDown(i.dropDown ?? null);
-                        if (i.dropDown) setOpen(true);
-                      }}
-                      onMouseLeave={() => {
-                        // setActiveDropDown(null);
-                        setOpen(false);
-                      }}
-                    >
-                      <Link
-                        to={i.href}
-                        className="text-white  text-sm px-4 py-2 hover:bg-secondary transition-colors font-interTight-regular"
-                      >
-                        <HoverContainer color="white">
-                          <div className="flex items-center gap-1 h-[60px]">
-                            {i.label}{" "}
-                            {i.dropDown && (
-                              <span>
-                                <ChevronDown
-                                  color="white"
-                                  size={16}
-                                  strokeWidth={1}
-                                />
-                              </span>
-                            )}
-                          </div>
-                        </HoverContainer>
-                      </Link>
-                    </li>
-                    {i.dropDown && ActiveDropDown && (
-                      <DropDownholder
-                        DropDown={ActiveDropDown}
-                        open={open}
-                        setOpen={setOpen}
-                        // setActiveDropDown={setActiveDropDown}
-                      />
-                    )}
-                  </>
-                );
-              })}
-            </ul>
-          </nav>
-          <div className="flex gap-4 justify-center items-center">
-            <SlideUpButton
-              type="fill"
-              bgColor="var(--color-green-accent"
-              textColor="var(--color-primary)"
-            >
-              Let's talk
-            </SlideUpButton>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+					<button
+						className="md:hidden"
+						onClick={() => setIsOpen(!isOpen)}
+						aria-label="Toggle Menu">
+						{isOpen ? (
+							<X size={24} className="text-white" />
+						) : (
+							<Menu size={24} className="text-white" />
+						)}
+					</button>
+				</div>
+				{isOpen && (
+					<>
+						<ul className="absolute top-19 min-h-screen overflow-scroll bg-primary bottom-0 left-0 right-0 z-9 md:hidden flex flex-col space-y-19 pt-7">
+							{NAV_LINKS.map((i, idx) => {
+								return (
+									<>
+										<li
+											key={idx}
+											onMouseEnter={() => {
+												setActiveDropDown(i.dropDown ?? null);
+												if (i.dropDown) setOpen(true);
+											}}
+											onMouseLeave={() => {
+												// setActiveDropDown(null);
+												setOpen(false);
+											}}>
+											<Link
+												to={i.href}
+												className="text-white text-base hover:bg-secondary transition-colors font-interTight-regular">
+												<HoverContainer color="white">
+													<div className="flex items-center gap-1">
+														{i.label}{" "}
+														{i.dropDown && (
+															<span>
+																<ChevronDown
+																	color="white"
+																	size={16}
+																	strokeWidth={1}
+																/>
+															</span>
+														)}
+													</div>
+													<div className="border-b-2 w-full my-2"></div>
+												</HoverContainer>
+											</Link>
+										</li>
+										{i.dropDown && ActiveDropDown && (
+											<DropDownholder
+												DropDown={ActiveDropDown}
+												open={open}
+												setOpen={setOpen}
+												// setActiveDropDown={setActiveDropDown}
+											/>
+										)}
+									</>
+								);
+							})}
+
+							<div className="w-full">
+								<SlideUpButton
+									type="fill"
+									bgColor="var(--color-green-accent"
+									textColor="var(--color-primary)">
+									Let's talk
+								</SlideUpButton>
+							</div>
+						</ul>
+					</>
+				)}
+			</div>
+		</>
+	);
 }
 
 export default NavigationBar;
 
 const DropDownholder = ({
-  DropDown,
-  open,
-  setOpen,
+	DropDown,
+	open,
+	setOpen,
 }: // setActiveDropDown,
 {
-  DropDown: ReactNode;
-  open: boolean;
-  setOpen: any;
+	DropDown: ReactNode;
+	open: boolean;
+	setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
-  const menuRef = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
-    const el = menuRef.current;
-    if (!el) return;
-    if (open) {
-      gsap.fromTo(
-        el,
-        { autoAlpha: 0, y: 20 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.2,
-          ease: "power1.out",
-        }
-      );
-    } else {
-      gsap.fromTo(
-        el,
-        { autoAlpha: 1, y: 0 },
-        {
-          autoAlpha: 0,
-          y: 20,
-          duration: 0.1,
-          ease: "power1.out",
-        }
-      );
-    }
-  }, [open]);
+	const menuRef = useRef<HTMLDivElement>(null);
+	useLayoutEffect(() => {
+		const el = menuRef.current;
+		if (!el) return;
+		if (open) {
+			gsap.fromTo(
+				el,
+				{ autoAlpha: 0, y: 20 },
+				{
+					autoAlpha: 1,
+					y: 0,
+					duration: 0.2,
+					ease: "power1.out",
+				}
+			);
+		} else {
+			gsap.fromTo(
+				el,
+				{ autoAlpha: 1, y: 0 },
+				{
+					autoAlpha: 0,
+					y: 20,
+					duration: 0.1,
+					ease: "power1.out",
+				}
+			);
+		}
+	}, [open]);
 
-  return (
-    <div
-      className="fixed top-[78px] bg-light-bg shadow z-10 w-screen"
-      ref={menuRef}
-      onMouseEnter={() => {
-        console.log("Entered");
-        setOpen(true);
-      }}
-      onMouseLeave={() => {
-        setOpen(false);
-      }}
-    >
-      {DropDown}
-    </div>
-  );
+	return (
+		<div
+			className="fixed top-19 h-screen overflow-auto bg-light-bg shadow z-10 w-screen"
+			ref={menuRef}
+			onMouseEnter={() => {
+				console.log("Entered");
+				setOpen(true);
+			}}
+			onMouseLeave={() => {
+				setOpen(false);
+			}}>
+			{DropDown}
+		</div>
+	);
 };
