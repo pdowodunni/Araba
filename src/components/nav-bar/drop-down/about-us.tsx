@@ -4,7 +4,7 @@ import HoverContainer from "../../shared/hover-continer";
 export default function ServiceDropDown() {
   const ABOUT_DATA = [
     {
-      image: "/images/1(13).jpg",
+      image: "/images/113.jpg",
       title: "Voiceover",
       text: "Only real-sounding brands get remembered",
       href: "/voiceover-service",
@@ -16,7 +16,7 @@ export default function ServiceDropDown() {
       href: "/music-sound-design",
     },
     {
-      image: "/images/1(12).jpg",
+      image: "/images/112.jpg",
       title: "Immersive & Experiential Audio",
       text: "Meet our dedicated team",
       href: "/Immersive-experiential-audio",

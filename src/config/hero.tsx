@@ -158,11 +158,11 @@ export const TESTIMONIAL_IMAGES = [
 
 export const VERTICAL_CAROUSEL_ONE = [
   {
-    image: "/images/1(4).jpg",
+    image: "/images/14.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(9).jpg",
+    image: "/images/19.jpg",
     Logo: GoogleWhite,
   },
   {
@@ -170,7 +170,7 @@ export const VERTICAL_CAROUSEL_ONE = [
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(2).jpg",
+    image: "/images/12.jpg",
     Logo: WakanowWhite,
   },
   {
@@ -184,115 +184,115 @@ export const VERTICAL_CAROUSEL_ONE = [
 ];
 export const VERTICAL_CAROUSEL_TWO = [
   {
-    image: "/images/1(1).jpg",
+    image: "/images/11.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(3).jpg",
+    image: "/images/13.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(4).jpg",
+    image: "/images/14.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(5).jpg",
+    image: "/images/15.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(2).jpg",
+    image: "/images/12.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(12).jpg",
+    image: "/images/112.jpg",
     Logo: GoogleWhite,
   },
 ];
 export const VERTICAL_CAROUSEL_THREE = [
   {
-    image: "/images/1(6).jpg",
+    image: "/images/16.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(7).jpg",
+    image: "/images/17.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(8).jpg",
+    image: "/images/18.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(9).jpg",
+    image: "/images/19.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(10).jpg",
+    image: "/images/110.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(11).jpg",
+    image: "/images/111.jpg",
     Logo: GoogleWhite,
   },
 ];
 
 export const HORIZONTAL_CAROUSEL_ONE = [
   {
-    image: "/images/1(6).jpg",
+    image: "/images/16.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(7).jpg",
+    image: "/images/17.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(8).jpg",
+    image: "/images/18.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(9).jpg",
+    image: "/images/19.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(10).jpg",
+    image: "/images/110.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(11).jpg",
+    image: "/images/111.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(5).jpg",
+    image: "/images/15.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(2).jpg",
+    image: "/images/12.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(12).jpg",
+    image: "/images/112.jpg",
     Logo: GoogleWhite,
   },
 ];
 
 export const HORIZONTAL_CAROUSEL_TWO = [
   {
-    image: "/images/1(1).jpg",
+    image: "/images/11.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(3).jpg",
+    image: "/images/13.jpg",
     Logo: GoogleWhite,
   },
   {
-    image: "/images/1(4).jpg",
+    image: "/images/14.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(4).jpg",
+    image: "/images/14.jpg",
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(9).jpg",
+    image: "/images/19.jpg",
     Logo: GoogleWhite,
   },
   {
@@ -300,7 +300,7 @@ export const HORIZONTAL_CAROUSEL_TWO = [
     Logo: WakanowWhite,
   },
   {
-    image: "/images/1(2).jpg",
+    image: "/images/12).jpg",
     Logo: WakanowWhite,
   },
   {
