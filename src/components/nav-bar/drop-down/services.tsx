@@ -3,13 +3,13 @@ import HoverContainer from "../../shared/hover-continer";
 import { Link } from "react-router-dom";
 
 export default function ServicesDropDown() {
-	{
-		/* 
+  {
+    /* 
     ============================= 
     Move all these to the config folder later.
     ============================= 
   */
-	}
+  }
 
   const AUDIO_EXPERIENCE_SERVICES = [
     {
@@ -79,7 +79,7 @@ export default function ServicesDropDown() {
   ];
 
   return (
-    <div className="relative z-5">
+    <div className="relative z-5 bg-red-700">
       <div className="pointer-events-auto relative top-full left-0 w-screen bg-light-bg shadow-lg pt-12">
         <div className="grid grid-cols-3 gap-8 mx-container h-fit">
           {/* Column 1 */}
