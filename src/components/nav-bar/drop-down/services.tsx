@@ -14,17 +14,17 @@ export default function ServicesDropDown() {
   const AUDIO_EXPERIENCE_SERVICES = [
     {
       mainText: "Voiceover Services",
-      subText: "Eye-catching designs that perform",
+      subText: "Distinct voices that sound like your brand.",
       href: "#",
     },
     {
       mainText: "Music & Sound design",
-      subText: "Engaging assets for all platforms",
+      subText: "Original scores and soundscapes that stick.",
       href: "#",
     },
     {
-      mainText: "PImmersive & Experiential Audio",
-      subText: "Captivating slides that tell your story",
+      mainText: "Immersive & Experiential Audio",
+      subText: "Audio worlds you can step into.",
       href: "#",
     },
   ];
@@ -32,22 +32,22 @@ export default function ServicesDropDown() {
   const SPECIALIZED_SERVICES = [
     {
       mainText: "Phygital Storytelling",
-      subText: "Effortless video production at scale",
+      subText: "Bridge real and digital into one story.",
       href: "#",
     },
     {
       mainText: "Podcast Production",
-      subText: "For websites, ads, and presentations",
+      subText: "Concept, booking, recording, polish, done.",
       href: "#",
     },
     {
       mainText: "Audiobook Production",
-      subText: "Innovative solutions for 3D design services",
+      subText: "Books performed with nuance and pace.",
       href: "#",
     },
     {
       mainText: "Storytelling Sprint",
-      subText: "Innovative solutions for 3D design services",
+      subText: "Tight timelines, strong ideas, shipped.",
       href: "#",
     },
   ];
@@ -55,7 +55,7 @@ export default function ServicesDropDown() {
   const STRATEGIC_STORYTELLING_SERVICES = [
     {
       mainText: "Marketing Strategy",
-      subText: "Human brilliance powered by AI",
+      subText: "Positioning, messaging, and measurable plans.",
       href: "#",
     },
   ];
@@ -63,17 +63,17 @@ export default function ServicesDropDown() {
   const VISUAL_STORYTELLING_SERVICES = [
     {
       mainText: "Video Production",
-      subText: "Grow your brand with expert consultants",
+      subText: "Cinematic stories built for every channel.",
       href: "#",
     },
     {
       mainText: "Motion Graphics & Animation",
-      subText: "Grow your brand with expert consultants",
+      subText: "Punchy animations that explain fast.",
       href: "#",
     },
     {
       mainText: "AI-Storytelling",
-      subText: "Grow your brand with expert consultants",
+      subText: "Co-created with AI for speed and scale.",
       href: "#",
     },
   ];

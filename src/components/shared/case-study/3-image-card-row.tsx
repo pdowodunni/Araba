@@ -13,7 +13,7 @@ function ThreeImgCrdRow({
             style={{
               backgroundImage: `url('${imagesUrl[0]}')`,
               backgroundPosition: "center",
-              backgroundSize: "contain",
+              backgroundSize: "cover",
             }}
             className="w-full aspect-[1/1.05] bg-mid-bg rounded-lg"
           />
@@ -21,13 +21,14 @@ function ThreeImgCrdRow({
             style={{
               backgroundImage: `url('${imagesUrl[1]}')`,
               backgroundPosition: "center",
+              backgroundSize: "cover",
             }}
             className="w-full aspect-[1/1.05] bg-mid-bg rounded-lg"
           />
           <div
             style={{
               backgroundImage: `url('${imagesUrl[2]}')`,
-              backgroundSize: "contain",
+              backgroundSize: "cover",
             }}
             className="w-full aspect-[1/1.05] bg-mid-bg rounded-lg"
           />
