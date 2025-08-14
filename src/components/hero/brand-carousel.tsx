@@ -1,5 +1,5 @@
 import LogoCarousel from "../shared/logo-carousel";
-import ScrollReveal from "../shared/scrool-reveal";
+// import ScrollReveal from "../shared/scrool-reveal";
 
 function BrandCarousel() {
   return (
@@ -12,9 +12,8 @@ function BrandCarousel() {
             </h5>
           </div>
           {/* ============================= Carousel ============================= */}
-          <ScrollReveal>
-            <LogoCarousel />
-          </ScrollReveal>
+
+          <LogoCarousel />
         </div>
       </div>
     </section>

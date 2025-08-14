@@ -40,7 +40,12 @@ function Yascf() {
   return (
     <main className="p-main">
       <BreadCrumb pages={BREADCRUMB_PAGES} />
-      <CaseStudyVideoHeader videoUrl={"/video/yascf-3.mp4"} />
+
+      <CaseStudyVideoHeader
+        videoUrl={"/video/yascf-3.mp4"}
+        poster="/images/casestudy/ina-16.webp"
+      />
+
       <CaseDetails
         assetType="image"
         assetLink="/images/casestudy/yascf-1.png"
@@ -51,6 +56,7 @@ function Yascf() {
         industry="Non-profit, Education, Impact Storytelling"
         service="Narrative Development • Voiceover • Sound Design • Creative Direction • Video Post-production"
       />
+
       {/* THE BRIEF */}
       <section>
         <div className="case-container">
@@ -134,6 +140,7 @@ function Yascf() {
         </div>
       </section>
       {/* RESULT */}
+
       <ProjectPager />
     </main>
   );

@@ -18,6 +18,7 @@ function MainLayout() {
         <Route path="/our-work" element={<OurWork />} />
         <Route path="/our-work/ina" element={<Ina />} />
         <Route path="/our-work/shimon-doyin" element={<Shido />} />
+        <Route path="/our-work/tale-two-house" element={<Shido />} />
         <Route path="/our-work/yascf" element={<Yascf />} />
       </Routes>
       <Footer />

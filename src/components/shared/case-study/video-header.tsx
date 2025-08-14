@@ -3,9 +3,11 @@ import { useState } from "react";
 function CaseStudyVideoHeader({
   videoUrl,
   videoFormat,
+  poster,
 }: {
   videoUrl: string;
   videoFormat?: string;
+  poster?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -19,6 +21,7 @@ function CaseStudyVideoHeader({
               muted
               loop
               onLoadedData={() => setLoaded(true)}
+              poster={poster}
               className="absolute inset-0 w-full h-full object-cover"
             >
               <source src={videoUrl} type={videoFormat ?? "video/mp4"} />

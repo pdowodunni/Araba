@@ -43,6 +43,7 @@ function Shido() {
       <CaseStudyVideoHeader
         videoUrl={"/video/shido-1.webm"}
         videoFormat={"video/webm"}
+        poster="/images/casestudy/shido-9.webp"
       />
 
       <CaseDetails

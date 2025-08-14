@@ -9,6 +9,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
       title: "INA",
       desc: "Faith, Culture & Experiential Events",
       href: "/our-work/ina",
+      poster: "/images/casestudy/ina-7.png",
     },
     {
       span: 2,
