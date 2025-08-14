@@ -3,9 +3,21 @@ import React, { useState } from "react";
 function CaseDetails({
   assetType,
   assetLink,
+  client,
+  year,
+  industry,
+  service,
+  aboutHead,
+  aboutBody,
 }: {
   assetType: string;
   assetLink: string;
+  client: string;
+  year: string;
+  industry: string;
+  service: string;
+  aboutHead: string;
+  aboutBody: string;
 }) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -17,53 +29,42 @@ function CaseDetails({
             <div className="flex flex-col gap-1">
               <span className="s-heading">Project Summary</span>
               <h4 className=" font-interTight-regular leading-tight">
-                <span>
-                  The New is passionate about Jesus encounters and life
-                  transformation.
-                </span>
+                <span>{aboutHead}</span>
               </h4>
               <div className="">
-                <p className="">
-                  Scale your in-house creative team with top global talent
-                  powered by industry-leading AI workflows, delivering anything
-                  you can imagine fast and affordably.
-                </p>
+                <p className="">{aboutBody}</p>
               </div>
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex gap-10">
-                <InfoHelper title="Client" text="The New" />
-                <InfoHelper title="Year" text="2024" />
+                <InfoHelper title="Client" text={client} />
+                <InfoHelper title="Year" text={year} />
               </div>
               <div>
-                <InfoHelper
-                  title="Industry"
-                  text="Faith Culture & Experimental Events"
-                />
+                <InfoHelper title="Industry" text={industry} />
               </div>
               <div>
-                <InfoHelper
-                  title="Industry"
-                  text="Scriptwriting & Concept Development • Voice Casting • Voice Acting • Sound Design • Creative Direction"
-                />
+                <InfoHelper title="Service" text={service} />
               </div>
             </div>
           </div>
 
           {/* VIDEO COLUMN */}
-          <div className="2xl:w-[680px] lg:w-[40%] w-full aspect-[9/10] relative lg:min-h-full bg-amber-600 overflow-hidden rounded-lg">
+          <div className="2xl:w-[680px] lg:w-[40%] w-full aspect-[9/10] relative lg:min-h-full bg-[#e6ecd6] overflow-hidden rounded-lg">
             {assetType === "image" ? (
               <div
                 className="
                     w-full h-full rounded-lg
-                    bg-center
-                    bg-[length:100%]
-                    group-hover:bg-[length:115%]
                     transition-all
                     duration-300
                     
                   "
-                style={{ backgroundImage: `url('${assetLink}')` }}
+                style={{
+                  backgroundImage: `url('${assetLink}')`,
+                  backgroundPosition: "center",
+                  backgroundSize: "cover",
+                  backgroundRepeat: "no-repeat",
+                }}
               />
             ) : assetType === "video" ? (
               <div

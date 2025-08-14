@@ -5,10 +5,12 @@ import Footer from "../components/shared/footer";
 import OurWork from "../pages/our-work";
 import Ina from "../pages/case-study/ina";
 import Yascf from "../pages/case-study/yascf";
+import ScrollToTop from "../components/scroll-to-top";
 
 function MainLayout() {
   return (
     <>
+      <ScrollToTop />
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />

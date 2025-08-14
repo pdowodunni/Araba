@@ -38,7 +38,18 @@ function Ina() {
     <main className="p-main">
       <BreadCrumb pages={BREADCRUMB_PAGES} />
       <CaseStudyVideoHeader videoUrl={"/video/ina-disp.mp4"} />
-      <CaseDetails assetType="video" assetLink="/video/ina-stretch.webm" />
+      <CaseDetails
+        assetType="video"
+        assetLink="/video/ina-stretch.webm"
+        aboutHead="The New is passionate about Jesus encounters and life transformation."
+        aboutBody="Scale your in-house creative team with top global talent
+                  powered by industry-leading AI workflows, delivering anything
+                  you can imagine fast and affordably."
+        client="The New"
+        year="2024"
+        industry="Faith Culture & Experimental Events"
+        service="Scriptwriting & Concept Development • Voice Casting • Voice Acting • Sound Design • Creative Direction"
+      />
       <ThreeImgCrdRow
         imagesUrl={[
           "/images/casestudy/ina-14.png",
