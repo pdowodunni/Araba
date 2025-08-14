@@ -9,6 +9,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
       title: "INA",
       desc: "Faith, Culture & Experiential Events",
       href: "/our-work/ina",
+      poster: "/images/casestudy/ina-7.png",
     },
     {
       span: 2,
@@ -24,7 +25,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
       assetType: "image",
       title: "Doyin & Shimon Atunde",
       desc: "Non-profit, Education, Impact Storytelling",
-      href: "#",
+      href: "/our-work/shimon-doyin",
     },
   ],
   [

@@ -28,7 +28,7 @@ const FEATURES = [
       </h5>
     ),
     text: "From cinematic voiceovers to textured soundscapes, Soundbaking Company.",
-    img: "/images/placeholder.jpg",
+    img: "/images/1(14).webp",
     bg: "bg-mid-bg text-primary",
   },
   {
@@ -38,7 +38,7 @@ const FEATURES = [
       </h5>
     ),
     text: "We remix your raw moments, missions, or memories into films that feel.",
-    img: "/images/placeholder.jpg",
+    img: "/images/1(15).webp",
     bg: "bg-green-accent text-primary",
   },
 ];
