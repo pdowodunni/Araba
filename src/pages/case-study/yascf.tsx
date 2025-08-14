@@ -4,6 +4,7 @@ import BreadCrumb, {
 } from "../../components/shared/case-study/breadcrumb";
 import CaseDetails from "../../components/shared/case-study/case-details";
 import Execution from "../../components/shared/case-study/execution";
+import ProjectPager from "../../components/shared/case-study/project-pager";
 import CaseStudyVideoHeader from "../../components/shared/case-study/video-header";
 
 function Yascf() {
@@ -133,6 +134,7 @@ function Yascf() {
         </div>
       </section>
       {/* RESULT */}
+      <ProjectPager />
     </main>
   );
 }

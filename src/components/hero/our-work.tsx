@@ -4,68 +4,7 @@ import {
   ShowCaseCardHorizontal,
   type ShowcaseCardHorizontalProps,
 } from "../shared/showcase-card-horizontal";
-
-{
-  /* 
-    ============================= 
-    Move all these to the config folder later.
-    ============================= 
-  */
-}
-const ROWS: ShowcaseCardHorizontalProps[][] = [
-  [
-    {
-      span: 2,
-      assetLink: "/video/ina-stretch.webm",
-      assetType: "video",
-      title: "INA",
-      desc: "Faith, Culture & Experiential Events",
-      href: "/our-work/ina",
-    },
-    {
-      span: 2,
-      assetLink: "/images/casestudy/yascf-2.png",
-      assetType: "image",
-      title: "YASCF",
-      desc: "Non-profit, Education, Impact Storytelling",
-      href: "/our-work/yascf",
-    },
-    {
-      span: 4,
-      assetLink: "/images/casestudy/sd-1.jpg",
-      assetType: "image",
-      title: "Doyin & Shimon Atunde",
-      desc: "Non-profit, Education, Impact Storytelling",
-      href: "#",
-    },
-  ],
-  [
-    {
-      span: 4,
-      assetLink: "/images/four.jpg",
-      assetType: "image",
-      title: "Antler",
-      desc: "Brand Identity, Motion Design, Social Media Creative",
-      href: "#",
-    },
-    {
-      span: 2,
-      assetLink: "/images/casestudy/tth-1.webp",
-      assetType: "image",
-      title: "Niyi Adekunle",
-      desc: "Family • Faith • Finance • Values",
-      href: "#",
-    },
-    {
-      span: 2,
-      assetLink: "/images/five.jpg",
-      assetType: "image",
-      title: "Reddit",
-      desc: "Motion Design, Social Media Creative",
-      href: "#",
-    },
-  ],
-];
+import { PROJECT_LIST } from "../../config/case-study";
 
 export default function WorkShowcase() {
   return (
@@ -95,7 +34,7 @@ export default function WorkShowcase() {
           </div>
           {/* </ScrollReveal> */}
           <div className="flex flex-col gap-2 md:gap-20">
-            {ROWS.map((row, i) => (
+            {PROJECT_LIST.map((row, i) => (
               <div key={i} className="mx-auto w-full flex justify-center">
                 <div className="block md:grid w-full grid-cols-8 md:gap-4">
                   {row.map((item, idx) => (

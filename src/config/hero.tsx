@@ -18,6 +18,7 @@ import {
   Seid,
   SaroAfrice,
   SeamlessHR,
+  JM,
 } from "../assets/icons";
 
 export const CAROUSEL_BRANDS = [
@@ -96,7 +97,7 @@ export const TESTIMONIALS = [
   },
   {
     id: 3,
-    Logo: Shopify,
+    Logo: JM,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “Few partners can handle pressure and still bring excellence. For the

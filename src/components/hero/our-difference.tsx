@@ -49,7 +49,7 @@ export default function OurDifferenceSection() {
           <div className="mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {ITEMS.map(({ icon: Icon, label, title, description }, idx) => (
               <div key={idx} className="flex gap-3 flex-col">
-                <div className="mx-0 flex scale-60 h-20 w-20 items-center justify-center rounded bg-gray-200">
+                <div className="mx-0 flex mb-2 scale-80 sm:scale-100 h-18 w-18 items-center justify-center rounded bg-gray-200">
                   <Icon color="#0a221f" />
                 </div>
                 <span className="block uppercase tracking-widest text-gray-500">
