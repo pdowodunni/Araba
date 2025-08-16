@@ -1,13 +1,11 @@
 import type { ReactNode } from "react";
 import OneImgCrd from "../../components/shared/case-study/1-image-card";
 import TwoImgCrdRow from "../../components/shared/case-study/2-image-card-row";
-import ThreeImgCrdRow from "../../components/shared/case-study/3-image-card-row";
 import FourimgCrd from "../../components/shared/case-study/4-image-card";
 import BreadCrumb, {
   type BreadcrumbPagesProps,
 } from "../../components/shared/case-study/breadcrumb";
 import CaseDetails from "../../components/shared/case-study/case-details";
-import Execution from "../../components/shared/case-study/execution";
 import IndxGrdLt from "../../components/shared/case-study/index-gird-list";
 import ProjectPager from "../../components/shared/case-study/project-pager";
 import CaseStudyVideoHeader from "../../components/shared/case-study/video-header";
@@ -21,21 +19,6 @@ function TaleTwoHouse() {
     {
       page: "A TALE OT TWO HOUSE",
       href: "",
-    },
-  ];
-
-  const EXECUTION_DATA = [
-    {
-      title: "Scriptwriting",
-      text: "We wrote a cinematic monologue that paired poetic theology with cultural storytelling.",
-    },
-    {
-      title: "Voice casting",
-      text: "We casted a male and female voice actor, whose tones embodied the fire and mystery of the script.",
-    },
-    {
-      title: "Sound design",
-      text: "Mythical textures blended with suspenseful pads.",
     },
   ];
 
