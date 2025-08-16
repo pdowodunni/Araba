@@ -21,7 +21,11 @@ function OneImgCrd({
  
         
       "
-              style={{ backgroundImage: `url('${assetLink}')` }}
+              style={{
+                backgroundImage: `url('${assetLink}')`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}
             />
           ) : assetType === "video" ? (
             <div

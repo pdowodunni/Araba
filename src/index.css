@@ -134,6 +134,9 @@
     @apply xl:text-[2rem]    
            2xl:text-[4.5rem];
   }
+  .p-lg {
+    @apply text-2xl mb-2;
+  }
 }
 
 @layer base {

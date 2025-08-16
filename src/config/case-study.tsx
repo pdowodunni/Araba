@@ -31,11 +31,11 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
   [
     {
       span: 4,
-      assetLink: "/images/four.jpg",
+      assetLink: "/images/casestudy/unscene-1.webp",
       assetType: "image",
-      title: "Antler",
-      desc: "Brand Identity, Motion Design, Social Media Creative",
-      href: "#",
+      title: "The Un-scenes",
+      desc: "Phygital Documentary Prototype",
+      href: "/our-work/unscene",
     },
     {
       span: 2,
@@ -43,7 +43,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
       assetType: "image",
       title: "Niyi Adekunle",
       desc: "Family • Faith • Finance • Values",
-      href: "#",
+      href: "/our-work/tale-two-house",
     },
     {
       span: 2,

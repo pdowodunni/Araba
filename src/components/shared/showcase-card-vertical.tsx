@@ -12,7 +12,7 @@ function ShowcaseCardVertical({
   bg: string;
 }) {
   return (
-    <div className="group grid w-[328px] h-[525px] xl:w-[390px] xl:h-[588px] 2xl:h-[760px] 2xl:w-[525px] grid-rows-[1fr_160px] overflow-hidden rounded-lg transition-all duration-300 hover:grid-rows-[1fr_200px]">
+    <div className="group grid w-[328px] h-[525px] xl:w-[390px] xl:h-[588px] 2xl:h-[760px] 2xl:w-[525px] grid-rows-[1fr_130px] overflow-hidden rounded-lg transition-all duration-300 hover:grid-rows-[1fr_200px]">
       <div className="h-full w-full bg-mid-bg overflow-hidden">
         <img src={img} alt="" className="h-full w-full object-cover" />
       </div>
