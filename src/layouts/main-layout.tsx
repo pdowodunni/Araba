@@ -7,6 +7,7 @@ import Ina from "../pages/case-study/ina";
 import Yascf from "../pages/case-study/yascf";
 import ScrollToTop from "../components/scroll-to-top";
 import Shido from "../pages/case-study/shimon-doyin";
+import TaleTwoHouse from "../pages/case-study/tales-two-house";
 
 function MainLayout() {
   return (
@@ -18,7 +19,7 @@ function MainLayout() {
         <Route path="/our-work" element={<OurWork />} />
         <Route path="/our-work/ina" element={<Ina />} />
         <Route path="/our-work/shimon-doyin" element={<Shido />} />
-        <Route path="/our-work/tale-two-house" element={<Shido />} />
+        <Route path="/our-work/tale-two-house" element={<TaleTwoHouse />} />
         <Route path="/our-work/yascf" element={<Yascf />} />
       </Routes>
       <Footer />

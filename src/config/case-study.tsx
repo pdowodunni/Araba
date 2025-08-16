@@ -43,7 +43,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
       assetType: "image",
       title: "Niyi Adekunle",
       desc: "Family • Faith • Finance • Values",
-      href: "#",
+      href: "/our-work/tale-two-house",
     },
     {
       span: 2,
