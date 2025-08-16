@@ -115,7 +115,7 @@
     @apply max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8;
   }
   .s-heading {
-    @apply flex w-full pb-3 uppercase tracking-[2px]  font-interTight-semibold;
+    @apply flex w-full pb-3 uppercase tracking-[2px];
   }
   .p-main {
     @apply pt-[100px] min-h-screen;
@@ -123,13 +123,12 @@
   .case-container {
     @apply max-w-[1385px] px-4 py-8 mx-auto;
   }
-
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
   .scrollbar-hide {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   .h2-sm {
     @apply xl:text-[2rem]    

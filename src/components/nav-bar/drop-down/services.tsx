@@ -20,7 +20,7 @@ export default function ServicesDropDown() {
     {
       mainText: "Music & Sound design",
       subText: "Original scores and soundscapes that stick.",
-      href: "#",
+      href: "/service/music-sound-design",
     },
     {
       mainText: "Immersive & Experiential Audio",

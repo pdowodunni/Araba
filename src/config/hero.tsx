@@ -301,7 +301,6 @@ export const HORIZONTAL_CAROUSEL_TWO = [
   },
   {
     image: "/images/12.jpg",
-    Logo: WakanowWhite,
   },
   {
     image: "/images/two.jpg",
