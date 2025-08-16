@@ -9,7 +9,7 @@ function TwoImgCrdRow({ imagesUrl }: { imagesUrl: [string, string] }) {
             style={{
               backgroundImage: `url('${imagesUrl[0]}')`,
               backgroundPosition: "center",
-              backgroundSize: "contain",
+              backgroundSize: "cover",
             }}
             className="w-full aspect-[1/1.3] bg-mid-bg rounded-lg"
           />
@@ -17,6 +17,7 @@ function TwoImgCrdRow({ imagesUrl }: { imagesUrl: [string, string] }) {
             style={{
               backgroundImage: `url('${imagesUrl[1]}')`,
               backgroundPosition: "center",
+              backgroundSize: "cover",
             }}
             className="w-full aspect-[1/1.3] bg-mid-bg rounded-lg"
           />

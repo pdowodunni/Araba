@@ -9,6 +9,7 @@ export interface ShowcaseCardHorizontalProps {
   title: string;
   desc: string;
   href: string;
+  poster?: string;
 }
 
 export function ShowCaseCardHorizontal({
@@ -18,6 +19,7 @@ export function ShowCaseCardHorizontal({
   title,
   desc,
   href,
+  poster,
 }: ShowcaseCardHorizontalProps) {
   const [loaded, setLoaded] = useState(false);
   return (
@@ -31,26 +33,25 @@ export function ShowCaseCardHorizontal({
           {assetType === "image" ? (
             <div
               className="
-        w-full h-[180px] xl:h-[396px] rounded-lg
-        bg-center
-        bg-[length:100%]
-        group-hover:bg-[length:115%]
-        transition-all
-        duration-300
-        
-      "
+                  w-full h-[180px] xl:h-[396px] rounded-lg
+                  bg-center
+                  bg-[length:100%]
+                  group-hover:bg-[length:115%]
+                  transition-all
+                  duration-300
+                "
               style={{ backgroundImage: `url('${assetLink}')` }}
             />
           ) : assetType === "video" ? (
             <div
               className="
-        w-full h-[180px] xl:h-[396px] rounded-lg
-        bg-center
-        transition-all
-        duration-300
-        relative
-        overflow-hidden
-      "
+                w-full h-[180px] xl:h-[396px] rounded-lg
+                bg-center
+                transition-all
+                duration-300
+                relative
+                overflow-hidden
+              "
             >
               {" "}
               <video
@@ -59,6 +60,7 @@ export function ShowCaseCardHorizontal({
                 muted
                 loop
                 onLoadedData={() => setLoaded(true)}
+                poster={poster}
                 className="absolute inset-0 w-full h-full object-cover"
               >
                 {/* SWITCH TO VIDEO LINK LATER */}

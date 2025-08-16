@@ -1,6 +1,14 @@
 import { useState } from "react";
 
-function CaseStudyVideoHeader({ videoUrl }: { videoUrl: string }) {
+function CaseStudyVideoHeader({
+  videoUrl,
+  videoFormat,
+  poster,
+}: {
+  videoUrl: string;
+  videoFormat?: string;
+  poster?: string;
+}) {
   const [loaded, setLoaded] = useState(false);
   return (
     <section>
@@ -13,9 +21,10 @@ function CaseStudyVideoHeader({ videoUrl }: { videoUrl: string }) {
               muted
               loop
               onLoadedData={() => setLoaded(true)}
+              poster={poster}
               className="absolute inset-0 w-full h-full object-cover"
             >
-              <source src={videoUrl} type="video/mp4" />
+              <source src={videoUrl} type={videoFormat ?? "video/mp4"} />
             </video>
             {!loaded && (
               <img
