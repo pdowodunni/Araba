@@ -1,5 +1,5 @@
 import { NAV_LINKS } from "../../config/navigator";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import SlideUpButton from "../shared/slide-up-button";
 import {
   useLayoutEffect,
@@ -14,9 +14,40 @@ import gsap from "gsap";
 
 type DropRenderable = ReactNode | (() => JSX.Element);
 
+/* Page style map */
+const PAGE_STYLES: Record<
+  string,
+  {
+    bg: string; // background class when solid
+    text: string; // text color class for links/icons
+  }
+> = {
+  "/": { bg: "bg-primary", text: "text-white" }, // landing
+  "/our-work": { bg: "bg-light-bg", text: "text-primary" },
+};
+
+/* Fallback for any route not listed */
+const DEFAULT_STYLE = { bg: "bg-light-bg", text: "text-primary" };
+
 function NavigationBar() {
+  const location = useLocation();
+  const { bg: pageBg, text: textClass } =
+    PAGE_STYLES[location.pathname] ?? DEFAULT_STYLE;
+
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
+  const [solidBG, setSolidBG] = useState(false); // false = transparent, true = route bg
+
+  // --- scroll toggle at 200px (instant, not linked to scroll) ---
+  useEffect(() => {
+    const onScroll = () => {
+      const atOrPast = window.scrollY >= 200;
+      setSolidBG(atOrPast);
+    };
+    onScroll(); // set initial
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const overLink = useRef(false);
   const overPanel = useRef(false);
@@ -50,7 +81,7 @@ function NavigationBar() {
     openTimer.current = window.setTimeout(() => {
       setActiveIdx(idx);
       setPanelOpen(true);
-    }, 350);
+    }, 500); // 0.5s delay
   };
 
   const maybeClose = () => {
@@ -86,7 +117,12 @@ function NavigationBar() {
 
   return (
     <>
-      <div className="bg-primary w-screen fixed top-0 z-50">
+      <div
+        className={`${
+          solidBG ? pageBg : "bg-transparent"
+        } w-screen fixed top-0 z-50`}
+        /* no transition classes -> instantaneous swap at 200px */
+      >
         {panelOpen && (
           <div className="top-[74px] absolute left-0 w-screen h-screen inset-0 bg-black/10 backdrop-blur-md" />
         )}
@@ -123,18 +159,20 @@ function NavigationBar() {
                   >
                     <Link
                       to={i.href}
-                      className="text-white text-sm px-4 py-2 hover:bg-secondary transition-colors font-interTight-regular"
+                      className={`${textClass} text-sm px-4 py-2 hover:bg-secondary transition-colors font-interTight-regular`}
                     >
-                      <HoverContainer color="white">
+                      <HoverContainer
+                        color={
+                          textClass === "text-white"
+                            ? "white"
+                            : "var(--color-primary)"
+                        }
+                      >
                         <div className="flex items-center gap-1 h-[60px]">
                           {i.label}
                           {hasDD && (
-                            <span>
-                              <ChevronDown
-                                color="white"
-                                size={16}
-                                strokeWidth={1}
-                              />
+                            <span className={textClass}>
+                              <ChevronDown size={16} strokeWidth={1} />
                             </span>
                           )}
                         </div>
@@ -215,7 +253,7 @@ function DropDownHolder({
     }
   }, [open]);
 
-  // Event delegation: close when any <a> (or element marked with data-close-dropdown) is clicked
+  // Close on any anchor (or explicit marker) click inside the dropdown
   const onClickCapture: React.MouseEventHandler<HTMLDivElement> = (e) => {
     const target = e.target as HTMLElement | null;
     if (!target) return;
