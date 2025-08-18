@@ -306,7 +306,7 @@ export default function VerticalSnapCarousel({
 
   return (
     <div className="bg-mid-bg">
-      <div className="mx-container min-h-[680px] flex justify-center items-center">
+      <div className="mx-container min-h-[750px] flex justify-center items-center">
         {/* < xl (horizontal) */}
         <div className="flex xl:hidden flex-col items-center gap-6 pt-12 pb-10 text-center select-none">
           <div
@@ -375,7 +375,7 @@ export default function VerticalSnapCarousel({
 
         {/* ≥ xl (vertical) */}
         <div className="hidden xl:block w-full select-none">
-          <div className="h-[680px] w-full flex items-center justify-between gap-8">
+          <div className="h-[750px] w-full flex items-center justify-between gap-8">
             <div
               className="relative h-[750px] w-[300px] overflow-hidden touch-none"
               onPointerDown={onPointerDown}
