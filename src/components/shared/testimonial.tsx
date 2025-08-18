@@ -16,7 +16,7 @@ export default function VerticalSnapCarousel({
   showGuides = false,
   centerOffsetSm = 0,
   centerOffsetLg,
-  autoPlayMs = 10000,
+  autoPlayMs = 5000,
 }: Props) {
   const smWrapRef = useRef<HTMLDivElement | null>(null);
   const lgWrapRef = useRef<HTMLDivElement | null>(null);

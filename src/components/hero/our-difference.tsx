@@ -11,23 +11,23 @@ const ITEMS = [
   {
     icon: PenIcon,
     label: "Scalable",
-    title: "Boost your in-house creative",
+    title: "Grow your impact, not your overhead",
     description:
-      "We handle the heavy lifting so you can focus on strategic, high-impact work without adding overhead.",
+      "Whether it's one story or a storytelling ecosystem, we scale with you across projects, formats, and channels without breaking the rhythm.",
   },
   {
     icon: CheckNoteIcon,
     label: "Flexible",
-    title: "Say yes to more projects",
+    title: "Plug us in where you need magic",
     description:
-      "Whether you need more bandwidth or different skills, Araba has the resources you need to get the job done.",
+      "Need voice casting today, a documentary next week, or a full campaign by month's end? We shape-shift to meet your story where it's hot.",
   },
   {
     icon: StarIcon,
-    label: "Responsive",
-    title: "Don't sacrifice quality for speed",
+    label: "Tech-Enhanced",
+    title: "Human-first, AI-smart",
     description:
-      "Our global team delivers agency-level work in a fraction of the time.",
+      "We blend raw, lived emotion with AI-powered production to create content that feels intimate—but moves at speed and scale.",
   },
 ];
 
