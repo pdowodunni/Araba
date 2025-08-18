@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 import { TESTIMONIAL_IMAGES, TESTIMONIALS } from "../../config/hero";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
@@ -8,23 +8,26 @@ type Props = {
   /** px offset from the true center: + moves RIGHT on <xl, + moves DOWN on ≥xl */
   centerOffsetSm?: number;
   centerOffsetLg?: number;
+  /** autoplay interval in ms; 0 disables */
+  autoPlayMs?: number;
 };
 
 export default function VerticalSnapCarousel({
   showGuides = false,
   centerOffsetSm = 0,
   centerOffsetLg,
+  autoPlayMs = 10000,
 }: Props) {
-  const smWrapRef = useRef<HTMLDivElement | null>(null); // < xl (horizontal track)
-  const lgWrapRef = useRef<HTMLDivElement | null>(null); // ≥ xl (vertical track)
+  const smWrapRef = useRef<HTMLDivElement | null>(null);
+  const lgWrapRef = useRef<HTMLDivElement | null>(null);
   const smItemsRef = useRef<HTMLDivElement[]>([]);
   const lgItemsRef = useRef<HTMLDivElement[]>([]);
 
   const detailsRefSm = useRef<HTMLDivElement | null>(null);
   const detailsRefLg = useRef<HTMLDivElement | null>(null);
 
-  const [previewIdx, setPreviewIdx] = useState(0); // item nearest/overlapping the guide
-  const [detailIdx, setDetailIdx] = useState(0); // content index after snap
+  const [previewIdx, setPreviewIdx] = useState(0);
+  const [detailIdx, setDetailIdx] = useState(0);
 
   // sizes
   const GAP_SM = 12;
@@ -44,6 +47,26 @@ export default function VerticalSnapCarousel({
   const posStart = useRef(0);
   const rafId = useRef<number | null>(null);
   const isSnapping = useRef(false);
+
+  // autoplay
+  const autoTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const clearAuto = () => {
+    if (autoTimer.current) {
+      clearTimeout(autoTimer.current);
+      autoTimer.current = null;
+    }
+  };
+  const scheduleAuto = () => {
+    clearAuto();
+    if (!autoPlayMs) return;
+    autoTimer.current = setTimeout(() => {
+      if (dragging.current || isSnapping.current) {
+        scheduleAuto();
+        return;
+      }
+      next(); // advance forward/down
+    }, autoPlayMs);
+  };
 
   const isXL = () =>
     typeof window !== "undefined" &&
@@ -229,6 +252,7 @@ export default function VerticalSnapCarousel({
 
     return () => {
       if (rafId.current) cancelAnimationFrame(rafId.current);
+      clearAuto();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [centerOffsetSm, centerOffsetLg]);
@@ -263,9 +287,17 @@ export default function VerticalSnapCarousel({
     });
   }, [detailIdx]);
 
+  // (Re)schedule autoplay whenever the active detail changes or timing changes
+  useEffect(() => {
+    scheduleAuto();
+    return clearAuto;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [detailIdx, autoPlayMs]);
+
   // POINTER (mouse/touch/pen)
   const onPointerDown = (e: React.PointerEvent) => {
     dragging.current = true;
+    clearAuto();
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
     if (isXL()) {
       dragStart.current = e.clientY;
@@ -294,13 +326,20 @@ export default function VerticalSnapCarousel({
     if (!dragging.current) return;
     (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
     dragging.current = false;
-    (isXL() ? lgLane.current : smLane.current)?.snapToNearest();
+    (isXL() ? lgLane.current : smLane.current)?.snapToNearest(() => {
+      scheduleAuto();
+    });
   };
 
-  const prev = () =>
+  // arrows
+  const prev = () => {
+    clearAuto();
     isXL() ? lgLane.current?.stepBy(-1) : smLane.current?.stepBy(-1);
-  const next = () =>
+  };
+  const next = () => {
+    clearAuto();
     isXL() ? lgLane.current?.stepBy(1) : smLane.current?.stepBy(1);
+  };
 
   const data = TESTIMONIALS[detailIdx];
 
@@ -317,7 +356,7 @@ export default function VerticalSnapCarousel({
             onPointerCancel={onPointerUp}
             onContextMenu={(e) => e.preventDefault()}
           >
-            {/* side fades to make edges flush */}
+            {/* side fades */}
             <div
               className="pointer-events-none absolute inset-y-0 left-0 w-10 z-10 bg-mid-bg"
               style={{
@@ -333,14 +372,12 @@ export default function VerticalSnapCarousel({
                 maskImage: "linear-gradient(to left, black, transparent)",
               }}
             />
-
             {showGuides && (
               <div
                 className="pointer-events-none absolute inset-y-0 w-px bg-white/60 z-20"
                 style={{ left: `calc(50% + ${centerOffsetSm}px)` }}
               />
             )}
-
             <div ref={smWrapRef} className="absolute inset-0 z-0" />
           </div>
 
