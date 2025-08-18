@@ -90,7 +90,7 @@ export default function ServicesDropDown() {
             <ul className="flex flex-col gap-7">
               {AUDIO_EXPERIENCE_SERVICES.map((it, idx) => {
                 return (
-                  <li key={idx} className="cursor-pointer">
+                  <li key={idx} className="cursor-pointer w-fit">
                     <Link to={it.href}>
                       <div className="relative group">
                         <HoverContainer color="#0a211f">
@@ -115,7 +115,7 @@ export default function ServicesDropDown() {
             <ul className="flex flex-col gap-7">
               {SPECIALIZED_SERVICES.map((it, idx) => {
                 return (
-                  <li key={idx}>
+                  <li key={idx} className="cursor-pointer w-fit">
                     <Link to={it.href}>
                       <div className="relative group">
                         <HoverContainer color="#0a211f">
@@ -140,7 +140,7 @@ export default function ServicesDropDown() {
             <ul className="flex flex-col gap-7 mb-10">
               {STRATEGIC_STORYTELLING_SERVICES.map((it, idx) => {
                 return (
-                  <li key={idx}>
+                  <li key={idx} className="cursor-pointer w-fit">
                     <Link to={it.href}>
                       <div className="relative group">
                         <HoverContainer color="#0a211f">
@@ -162,7 +162,7 @@ export default function ServicesDropDown() {
             <ul className="flex flex-col gap-7 mb-10">
               {VISUAL_STORYTELLING_SERVICES.map((it, idx) => {
                 return (
-                  <li key={idx}>
+                  <li key={idx} className="cursor-pointer w-fit">
                     <Link to={it.href}>
                       <div className="relative group">
                         <HoverContainer color="#0a211f">
