@@ -19,7 +19,7 @@ const PAGE_STYLES: Record<
   string,
   {
     bg: string; // background class when solid
-    text: string; // text color class for links/icons
+    text: string; // text color class for links/iconsx`
   }
 > = {
   "/": { bg: "bg-primary", text: "text-white" }, // landing
