@@ -1,275 +1,355 @@
-import { useRef, useState, useEffect } from "react";
-import { TESTIMONIAL_IMAGES, TESTIMONIALS } from "../../config/hero";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { TESTIMONIAL_IMAGES, TESTIMONIALS } from "../../config/hero";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 
-const REPEAT = 3; // triple the list for seamless looping
-const IMAGES = TESTIMONIAL_IMAGES;
-const N = IMAGES.length;
-const LOOP = Array.from({ length: REPEAT }, () => IMAGES).flat();
+type Props = {
+  showGuides?: boolean;
+  /** px offset from the true center: + moves RIGHT on <xl, + moves DOWN on ≥xl */
+  centerOffsetSm?: number;
+  centerOffsetLg?: number;
+};
 
-const mod = (n: number, m: number) => ((n % m) + m) % m;
+export default function VerticalSnapCarousel({
+  showGuides = false,
+  centerOffsetSm = 0,
+  centerOffsetLg,
+}: Props) {
+  const smWrapRef = useRef<HTMLDivElement | null>(null); // < xl (horizontal track)
+  const lgWrapRef = useRef<HTMLDivElement | null>(null); // ≥ xl (vertical track)
+  const smItemsRef = useRef<HTMLDivElement[]>([]);
+  const lgItemsRef = useRef<HTMLDivElement[]>([]);
 
-export default function VerticalSnapCarousel() {
-  // refs for scrollers
-  const smallRef = useRef<HTMLDivElement | null>(null); // < xl (horizontal)
-  const largeRef = useRef<HTMLDivElement | null>(null); // >= xl (vertical)
+  const detailsRefSm = useRef<HTMLDivElement | null>(null);
+  const detailsRefLg = useRef<HTMLDivElement | null>(null);
 
-  // details fade
-  const DETAIL_DELAY = 0.2;
-  const detailsTl = useRef<gsap.core.Timeline | null>(null);
+  const [previewIdx, setPreviewIdx] = useState(0); // item nearest/overlapping the guide
+  const [detailIdx, setDetailIdx] = useState(0); // content index after snap
 
-  // drag
-  const isDragging = useRef(false);
-  const startCoord = useRef(0);
-  const scrollStart = useRef(0);
+  // sizes
+  const GAP_SM = 12;
+  const ITEM_W_SM = 96;
+  const GAP_LG = 12;
+  const ITEM_H_LG = 250;
+  const REPEATS = 5;
+
+  centerOffsetLg = ITEM_H_LG / 0.9;
+  centerOffsetSm = ITEM_W_SM / 1;
 
   // state
-  const [activeIndex, setActiveIndex] = useState(0); // 0..N-1
-  const [bp, setBp] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia("(min-width: 1280px)").matches
-  );
-  const isXL = useRef<boolean>(bp);
-  const isAnimating = useRef(false);
-  const pendingIndex = useRef<number>(0);
-  const DRAG_FACTOR = 2;
+  const posSm = useRef(0);
+  const posLg = useRef(0);
+  const dragging = useRef(false);
+  const dragStart = useRef(0);
+  const posStart = useRef(0);
+  const rafId = useRef<number | null>(null);
+  const isSnapping = useRef(false);
 
-  useEffect(() => {
-    isXL.current = bp;
-  }, [bp]);
+  const isXL = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(min-width: 1280px)").matches;
 
-  // breakpoint
-  useEffect(() => {
-    const mql = window.matchMedia("(min-width: 1280px)");
-    const onChange = () => setBp(mql.matches);
-    mql.addEventListener("change", onChange);
-    return () => mql.removeEventListener("change", onChange);
-  }, []);
+  function setupLane(
+    axis: "x" | "y",
+    wrapper: HTMLDivElement,
+    items: HTMLDivElement[],
+    itemSize: number,
+    gap: number,
+    posRef: React.MutableRefObject<number>,
+    guideOffsetPx: number
+  ) {
+    const setters = items.map((el) => gsap.quickSetter(el, axis, "px"));
+    const stride = itemSize + gap;
+    const baseLen = TESTIMONIAL_IMAGES.length;
+    const loopLen = baseLen * REPEATS;
+    const total = stride * loopLen;
 
-  // helpers for layout geometry
-  const getContainer = () =>
-    (isXL.current ? largeRef.current : smallRef.current)!;
+    const half =
+      axis === "x" ? wrapper.clientWidth / 2 : wrapper.clientHeight / 2;
 
-  const getGapPx = (c: HTMLDivElement) => {
-    const cs = getComputedStyle(c);
-    const g = isXL.current ? cs.rowGap : cs.columnGap || cs.gap;
-    const val = parseFloat(g || "0");
-    return Number.isFinite(val) ? val : 0;
-  };
-  const getItemSizePx = (c: HTMLDivElement) => {
-    const el = c.firstElementChild as HTMLElement | null;
-    if (!el) return 1;
-    const rect = el.getBoundingClientRect();
-    return isXL.current ? rect.height : rect.width;
-  };
-  const getStridePx = (c: HTMLDivElement) => getItemSizePx(c) + getGapPx(c);
+    const centerOffset = half - itemSize / 2;
+    const bases = Array.from({ length: loopLen }, (_, i) => i * stride);
 
-  const getScroll = (c: HTMLDivElement) =>
-    isXL.current ? c.scrollTop : c.scrollLeft;
-  const setScroll = (c: HTMLDivElement, v: number) =>
-    isXL.current ? (c.scrollTop = v) : (c.scrollLeft = v);
+    const render = () => {
+      let p = posRef.current;
+      const wrapBound = total / 2;
+      if (p <= -wrapBound) p += total;
+      if (p > wrapBound) p -= total;
+      posRef.current = p;
 
-  const centerOffset = (c: HTMLDivElement) =>
-    c.clientWidth / 2 - getItemSizePx(c) / 2;
+      for (let i = 0; i < loopLen; i++) {
+        let v = (bases[i] + p) % total;
+        if (v < 0) v += total;
+        setters[i](v - centerOffset);
+      }
+    };
 
-  // convert scroll -> raw index in LOOP (0..LOOP.length-1)
-  const rawIndexFromScroll = (c: HTMLDivElement) => {
-    const stride = getStridePx(c);
-    if (isXL.current) {
-      return Math.round(getScroll(c) / stride);
-    } else {
-      return Math.round((getScroll(c) + centerOffset(c)) / stride);
-    }
-  };
+    const nearestBaseIndex = () => {
+      const adjPos = posRef.current - guideOffsetPx;
+      const idxFloat = (-adjPos + centerOffset) / stride;
+      const idxBase = ((Math.round(idxFloat) % baseLen) + baseLen) % baseLen;
+      return idxBase;
+    };
 
-  // convert raw index -> scroll position
-  const scrollForRawIndex = (c: HTMLDivElement, raw: number) => {
-    const stride = getStridePx(c);
-    if (isXL.current) {
-      return raw * stride;
-    } else {
-      return raw * stride - centerOffset(c);
-    }
-  };
+    const targetPosForIndex = (baseIndex: number) => {
+      const midRepeat = Math.floor(REPEATS / 2);
+      const targetAtTrueCenter =
+        -(baseIndex + midRepeat * baseLen) * stride + centerOffset;
+      const ideal = targetAtTrueCenter + guideOffsetPx;
 
-  // keep user in the middle block [N, 2N) to avoid hitting ends
-  const recenterIfNeeded = (c: HTMLDivElement) => {
-    const raw = rawIndexFromScroll(c);
-    if (raw < N || raw >= 2 * N) {
-      const normalized = mod(raw, N);
-      const targetRaw = N + normalized;
-      const prev = c.style.scrollSnapType;
-      c.style.scrollSnapType = "none";
-      setScroll(c, scrollForRawIndex(c, targetRaw));
-      c.style.scrollSnapType = prev;
-      return targetRaw;
-    }
-    return raw;
-  };
+      const loopStride = baseLen * stride;
+      let best = ideal;
+      let bestDist = Math.abs(ideal - posRef.current);
+      for (let k = -REPEATS; k <= REPEATS; k++) {
+        const cand = ideal + k * loopStride;
+        const d = Math.abs(cand - posRef.current);
+        if (d < bestDist) {
+          best = cand;
+          bestDist = d;
+        }
+      }
+      return best;
+    };
 
-  // initial positioning into middle block
-  useEffect(() => {
-    const c = getContainer();
-    if (!c) return;
-    // wait a frame so sizes are correct
-    const id = requestAnimationFrame(() => {
-      const prev = c.style.scrollSnapType;
-      c.style.scrollSnapType = "none";
-      setScroll(c, scrollForRawIndex(c, N + activeIndex));
-      c.style.scrollSnapType = prev;
-    });
-    return () => cancelAnimationFrame(id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bp]);
+    const snapToNearest = (onComplete?: () => void) => {
+      if (isSnapping.current) return;
+      isSnapping.current = true;
+      const toIdx = nearestBaseIndex();
+      const target = targetPosForIndex(toIdx);
+      setPreviewIdx(toIdx);
+      gsap.to(posRef, {
+        current: target,
+        duration: 0.45,
+        ease: "power2.out",
+        onComplete: () => {
+          setDetailIdx(toIdx);
+          isSnapping.current = false;
+          onComplete?.();
+        },
+      });
+    };
 
-  // SCROLL -> INDEX (ignore while animating)
-  const handleScroll = () => {
-    if (isAnimating.current) return;
-    const c = getContainer();
-    if (!c) return;
+    const stepBy = (dir: 1 | -1) => {
+      if (isSnapping.current) return;
+      const curr = nearestBaseIndex();
+      const next = (((curr + dir) % baseLen) + baseLen) % baseLen;
+      const target = targetPosForIndex(next);
+      setPreviewIdx(next);
+      isSnapping.current = true;
+      gsap.to(posRef, {
+        current: target,
+        duration: 0.45,
+        ease: "power2.out",
+        onComplete: () => {
+          setDetailIdx(next);
+          isSnapping.current = false;
+        },
+      });
+    };
 
-    const raw = recenterIfNeeded(c);
-    const normalized = mod(raw, N);
-    setActiveIndex(normalized);
-  };
+    return {
+      render,
+      nearestBaseIndex,
+      targetPosForIndex,
+      snapToNearest,
+      stepBy,
+      centerOffset,
+      half,
+    };
+  }
 
-  // DRAG
-  const handleMouseDown = (e: React.MouseEvent) => {
-    const c = getContainer();
-    isDragging.current = true;
-    startCoord.current = isXL.current
-      ? e.pageY - c.offsetTop
-      : e.pageX - c.offsetLeft;
-    scrollStart.current = getScroll(c);
-  };
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current) return;
-    e.preventDefault();
-    const c = getContainer();
-    const coord = isXL.current ? e.pageY - c.offsetTop : e.pageX - c.offsetLeft;
-    const d = coord - startCoord.current;
-    setScroll(c, scrollStart.current - d * DRAG_FACTOR);
-  };
-  const stopDrag = () => {
-    isDragging.current = false;
-  };
+  const smLane = useRef<ReturnType<typeof setupLane> | null>(null);
+  const lgLane = useRef<ReturnType<typeof setupLane> | null>(null);
 
-  // bind scroll to visible scroller
-  useEffect(() => {
-    const c = getContainer();
-    if (!c) return;
-    c.addEventListener("scroll", handleScroll, { passive: true });
-    return () => c.removeEventListener("scroll", handleScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bp]);
+  useLayoutEffect(() => {
+    const smWrap = smWrapRef.current;
+    const lgWrap = lgWrapRef.current;
+    if (!smWrap || !lgWrap) return;
 
-  // ---- ARROWS: animate within middle block and update details after tween ----
-  const animateToRawIndex = (targetRaw: number) => {
-    const c = getContainer();
-    const prevSnap = c.style.scrollSnapType;
-    c.style.scrollSnapType = "none";
-    isAnimating.current = true;
-    pendingIndex.current = mod(targetRaw, N);
+    const build = (wrap: HTMLDivElement, key: "sm" | "lg", count: number) => {
+      const nodes: HTMLDivElement[] = [];
+      wrap.innerHTML = "";
+      for (let r = 0; r < REPEATS; r++) {
+        for (let i = 0; i < count; i++) {
+          const box = document.createElement("div");
+          box.dataset.itm = key;
+          box.className =
+            key === "sm"
+              ? "absolute top-1/2 -translate-y-1/2 w-[96px] h-[96px] grid place-items-center will-change-transform"
+              : "absolute left-1/2 -translate-x-1/2 h-[250px] w-[250px] grid place-items-center will-change-transform";
+          const img = document.createElement("img");
+          img.src = TESTIMONIAL_IMAGES[i];
+          img.alt = "";
+          img.draggable = false;
+          img.className =
+            key === "sm"
+              ? "rounded-full h-24 w-24 object-cover pointer-events-none"
+              : "rounded-full h-60 w-60 object-cover pointer-events-none";
+          box.appendChild(img);
+          wrap.appendChild(box);
+          nodes.push(box);
+        }
+      }
+      return nodes;
+    };
 
-    gsap.killTweensOf(c);
+    smItemsRef.current = build(smWrap, "sm", TESTIMONIAL_IMAGES.length);
+    lgItemsRef.current = build(lgWrap, "lg", TESTIMONIAL_IMAGES.length);
 
-    const props = isXL.current
-      ? { scrollTop: scrollForRawIndex(c, targetRaw) }
-      : { scrollLeft: scrollForRawIndex(c, targetRaw) };
+    smLane.current = setupLane(
+      "x",
+      smWrap,
+      smItemsRef.current,
+      ITEM_W_SM,
+      GAP_SM,
+      posSm,
+      centerOffsetSm
+    );
+    lgLane.current = setupLane(
+      "y",
+      lgWrap,
+      lgItemsRef.current,
+      ITEM_H_LG,
+      GAP_LG,
+      posLg,
+      centerOffsetLg as number
+    );
 
-    gsap.to(c, {
-      ...props,
-      duration: 0.45,
-      ease: "power2.out",
-      onComplete: () => {
-        // keep in middle block after anim
-        const normalized = mod(targetRaw, N);
-        const midRaw = N + normalized;
-        setScroll(c, scrollForRawIndex(c, midRaw));
-        c.style.scrollSnapType = prevSnap;
-        isAnimating.current = false;
-        setActiveIndex(pendingIndex.current);
-      },
-    });
-  };
+    posSm.current = smLane.current.targetPosForIndex(0);
+    posLg.current = lgLane.current.targetPosForIndex(0);
+    setPreviewIdx(0);
+    setDetailIdx(0);
 
-  const changeIndex = (delta: number) => {
-    const c = getContainer();
-    const currentRaw = recenterIfNeeded(c);
-    animateToRawIndex(currentRaw + delta);
-  };
-
-  const handlePrev = () => changeIndex(-1);
-  const handleNext = () => changeIndex(1);
-
-  // CONTENT FADE (fires once when activeIndex is updated after tween completes)
-  const contentRefInline = useRef<HTMLDivElement | null>(null);
-  const contentRefXL = useRef<HTMLDivElement | null>(null);
-  const [data, setData] = useState(TESTIMONIALS[0]);
-
-  useEffect(() => {
-    const el = (bp && contentRefXL.current) || contentRefInline.current;
-    if (!el) return;
-
-    detailsTl.current?.kill();
-    const tl = gsap.timeline();
-    detailsTl.current = tl;
-
-    tl.to(el, { opacity: 0, duration: 0.5, ease: "power2.out" })
-      .to({}, { duration: DETAIL_DELAY })
-      .add(() => setData(TESTIMONIALS[activeIndex]))
-      .to(el, { opacity: 1, duration: 0.5, ease: "power2.out" });
+    const loop = () => {
+      smLane.current?.render();
+      lgLane.current?.render();
+      rafId.current = requestAnimationFrame(loop);
+    };
+    rafId.current = requestAnimationFrame(loop);
 
     return () => {
-      tl.kill();
+      if (rafId.current) cancelAnimationFrame(rafId.current);
     };
-  }, [activeIndex, bp]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [centerOffsetSm, centerOffsetLg]);
+
+  useLayoutEffect(() => {
+    const len = TESTIMONIAL_IMAGES.length;
+    const anim = (items: HTMLDivElement[], isSm: boolean) => {
+      items.forEach((el, i) => {
+        const active = i % len === previewIdx;
+        gsap.to(el, {
+          opacity: active ? 1 : isSm ? 0.3 : 0.2,
+          scale: active ? 1 : isSm ? 0.9 : 0.95,
+          duration: 0.3,
+          ease: "power2.out",
+        });
+      });
+    };
+    anim(smItemsRef.current, true);
+    anim(lgItemsRef.current, false);
+  }, [previewIdx]);
+
+  useLayoutEffect(() => {
+    const els = [detailsRefSm.current, detailsRefLg.current].filter(
+      Boolean
+    ) as HTMLDivElement[];
+    els.forEach((el) => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }
+      );
+    });
+  }, [detailIdx]);
+
+  // POINTER (mouse/touch/pen)
+  const onPointerDown = (e: React.PointerEvent) => {
+    dragging.current = true;
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    if (isXL()) {
+      dragStart.current = e.clientY;
+      posStart.current = posLg.current;
+    } else {
+      dragStart.current = e.clientX;
+      posStart.current = posSm.current;
+    }
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!dragging.current) return;
+    e.preventDefault();
+    const xl = isXL();
+    const coord = xl ? e.clientY : e.clientX;
+    const d = coord - dragStart.current;
+
+    if (xl) {
+      posLg.current = posStart.current + d;
+      setPreviewIdx(lgLane.current!.nearestBaseIndex());
+    } else {
+      posSm.current = posStart.current + d;
+      setPreviewIdx(smLane.current!.nearestBaseIndex());
+    }
+  };
+  const onPointerUp = (e: React.PointerEvent) => {
+    if (!dragging.current) return;
+    (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
+    dragging.current = false;
+    (isXL() ? lgLane.current : smLane.current)?.snapToNearest();
+  };
+
+  const prev = () =>
+    isXL() ? lgLane.current?.stepBy(-1) : smLane.current?.stepBy(-1);
+  const next = () =>
+    isXL() ? lgLane.current?.stepBy(1) : smLane.current?.stepBy(1);
+
+  const data = TESTIMONIALS[detailIdx];
 
   return (
     <div className="bg-mid-bg">
-      <div className="mx-container min-h-[750px] flex justify-center items-center">
-        {/* -------- BELOW XL (horizontal, infinite) -------- */}
-        <div className="flex xl:hidden flex-col items-center gap-5 pt-12 pb-8 text-center ">
+      <div className="mx-container min-h-[680px] flex justify-center items-center">
+        {/* < xl (horizontal) */}
+        <div className="flex xl:hidden flex-col items-center gap-6 pt-12 pb-10 text-center select-none">
           <div
-            ref={smallRef}
-            className="w-[260px] h-[160px] overflow-x-scroll snap-x snap-mandatory scroll-smooth cursor-grab scrollbar-hide flex items-center gap-3 px-2"
-            style={{
-              scrollPaddingLeft: "calc(50% - 60px)",
-              scrollPaddingRight: "calc(50% - 60px)",
-            }}
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={stopDrag}
-            onMouseLeave={stopDrag}
+            className="relative w-[260px] h-[120px] overflow-hidden touch-none"
+            onPointerDown={onPointerDown}
+            onPointerMove={onPointerMove}
+            onPointerUp={onPointerUp}
+            onPointerCancel={onPointerUp}
+            onContextMenu={(e) => e.preventDefault()}
           >
-            {LOOP.map((src, i) => (
+            {/* side fades to make edges flush */}
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 w-10 z-10 bg-mid-bg"
+              style={{
+                WebkitMaskImage:
+                  "linear-gradient(to right, black, transparent)",
+                maskImage: "linear-gradient(to right, black, transparent)",
+              }}
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-10 z-10 bg-mid-bg"
+              style={{
+                WebkitMaskImage: "linear-gradient(to left, black, transparent)",
+                maskImage: "linear-gradient(to left, black, transparent)",
+              }}
+            />
+
+            {showGuides && (
               <div
-                key={`sm-loop-${i}`}
-                className={`snap-center flex-shrink-0 w-[120px] h-full flex justify-center items-center transition-all duration-200 ${
-                  mod(i, N) === activeIndex
-                    ? "opacity-100 scale-100"
-                    : "opacity-30 scale-90"
-                }`}
-              >
-                <img
-                  src={src}
-                  alt=""
-                  className="rounded-full h-24 w-24 object-cover"
-                  draggable={false}
-                />
-              </div>
-            ))}
+                className="pointer-events-none absolute inset-y-0 w-px bg-white/60 z-20"
+                style={{ left: `calc(50% + ${centerOffsetSm}px)` }}
+              />
+            )}
+
+            <div ref={smWrapRef} className="absolute inset-0 z-0" />
           </div>
 
           <div
-            ref={contentRefInline}
-            className="max-w-3xl min-h-[400px] justify-center mx-auto flex flex-col gap-6 items-center"
-            style={{ opacity: 0 }}
+            ref={detailsRefSm}
+            className="max-w-3xl min-h-[360px] mx-auto flex flex-col gap-6 items-center"
           >
             <div className="scale-120 flex items-center justify-center">
-              <data.Logo color="--color-primary" />
+              <data.Logo />
             </div>
             {data.quote}
             <p>
@@ -277,62 +357,49 @@ export default function VerticalSnapCarousel() {
             </p>
           </div>
 
-          <div className="flex gap-4 justify-center items-center">
+          <div className="flex gap-4">
             <button
-              type="button"
               className="p-2.5 border border-primary rounded-full"
-              onClick={handlePrev}
+              onClick={prev}
             >
               <ArrowLeft size={16} />
             </button>
             <button
-              type="button"
               className="p-2.5 border border-primary rounded-full"
-              onClick={handleNext}
+              onClick={next}
             >
               <ArrowRight size={16} />
             </button>
           </div>
         </div>
 
-        {/* -------- XL & UP (vertical, infinite) -------- */}
-        <div className="hidden xl:block w-full">
-          <div className="h-[750px] w-full flex items-center justify-between gap-8">
+        {/* ≥ xl (vertical) */}
+        <div className="hidden xl:block w-full select-none">
+          <div className="h-[680px] w-full flex items-center justify-between gap-8">
             <div
-              ref={largeRef}
-              className="h-[750px] w-[300px] overflow-y-scroll snap-y snap-mandatory scroll-smooth cursor-grab scrollbar-hide py-55"
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={stopDrag}
-              onMouseLeave={stopDrag}
+              className="relative h-[750px] w-[300px] overflow-hidden touch-none"
+              onPointerDown={onPointerDown}
+              onPointerMove={onPointerMove}
+              onPointerUp={onPointerUp}
+              onPointerCancel={onPointerUp}
+              onContextMenu={(e) => e.preventDefault()}
             >
-              {LOOP.map((src, i) => (
+              {showGuides && (
                 <div
-                  key={`lg-loop-${i}`}
-                  className={`snap-center pointer-events-none select-none flex justify-center items-center h-[250px] transition-all duration-200 ${
-                    mod(i, N) === activeIndex
-                      ? "scale-100 opacity-100"
-                      : "scale-85 opacity-20"
-                  }`}
-                >
-                  <img
-                    src={src}
-                    alt=""
-                    className="rounded-full h-60 w-60 object-cover"
-                    draggable={false}
-                  />
-                </div>
-              ))}
+                  className="pointer-events-none absolute inset-x-0 h-px bg-white/60 z-20"
+                  style={{ top: `calc(50% + ${centerOffsetLg}px)` }}
+                />
+              )}
+              <div ref={lgWrapRef} className="absolute inset-0" />
             </div>
 
             <div
-              ref={contentRefXL}
+              ref={detailsRefLg}
               className="max-w-4xl mx-auto flex-1 flex flex-col gap-16"
-              style={{ opacity: 0 }}
             >
               <div className="flex flex-col gap-10">
                 <div className="flex items-center justify-start w-40">
-                  <data.Logo color="--color-primary" />
+                  <data.Logo />
                 </div>
                 {data.quote}
                 <p>
@@ -341,25 +408,23 @@ export default function VerticalSnapCarousel() {
               </div>
             </div>
 
-            <div className="flex flex-col gap-4 justify-center items-center">
+            <div className="flex flex-col gap-4">
               <button
-                type="button"
                 className="p-4 border border-primary rounded-full"
-                onClick={handlePrev}
+                onClick={prev}
               >
                 <ArrowUp />
               </button>
               <button
-                type="button"
                 className="p-4 border border-primary rounded-full"
-                onClick={handleNext}
+                onClick={next}
               >
                 <ArrowDown />
               </button>
             </div>
           </div>
         </div>
-        {/* -------- / XL & UP -------- */}
+        {/* / ≥ xl */}
       </div>
     </div>
   );

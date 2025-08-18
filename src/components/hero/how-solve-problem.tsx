@@ -74,7 +74,7 @@ export default function HowWeSolveProblem() {
             ))}
           </div>
           <div className="block md:hidden">
-            <StickyStackCardsGSAP topOffset={-20} items={FEATURES} />
+            {/* <StickyStackCardsGSAP topOffset={-20} items={FEATURES} /> */}
           </div>
         </div>
       </section>
