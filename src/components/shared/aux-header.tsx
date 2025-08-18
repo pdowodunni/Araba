@@ -9,7 +9,7 @@ function AuxHeader() {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex h-fit  mt-[78px]">
+      <div className="flex h-fit  pt-[78px]">
         <div className="mx-container w-full">
           <div className="flex pt-md-pad pb-sm-pad">
             <div className="flex flex-col gap-10">

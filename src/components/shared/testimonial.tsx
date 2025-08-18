@@ -3,17 +3,29 @@ import { TESTIMONIAL_IMAGES, TESTIMONIALS } from "../../config/hero";
 import gsap from "gsap";
 import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 
+const REPEAT = 3; // triple the list for seamless looping
+const IMAGES = TESTIMONIAL_IMAGES;
+const N = IMAGES.length;
+const LOOP = Array.from({ length: REPEAT }, () => IMAGES).flat();
+
+const mod = (n: number, m: number) => ((n % m) + m) % m;
+
 export default function VerticalSnapCarousel() {
+  // refs for scrollers
   const smallRef = useRef<HTMLDivElement | null>(null); // < xl (horizontal)
   const largeRef = useRef<HTMLDivElement | null>(null); // >= xl (vertical)
+
+  // details fade
   const DETAIL_DELAY = 0.2;
   const detailsTl = useRef<gsap.core.Timeline | null>(null);
 
+  // drag
   const isDragging = useRef(false);
   const startCoord = useRef(0);
   const scrollStart = useRef(0);
 
-  const [activeIndex, setActiveIndex] = useState(0);
+  // state
+  const [activeIndex, setActiveIndex] = useState(0); // 0..N-1
   const [bp, setBp] = useState(
     () =>
       typeof window !== "undefined" &&
@@ -21,7 +33,7 @@ export default function VerticalSnapCarousel() {
   );
   const isXL = useRef<boolean>(bp);
   const isAnimating = useRef(false);
-  const pendingIndex = useRef<number>(0); // apply after scroll animation completes
+  const pendingIndex = useRef<number>(0);
   const DRAG_FACTOR = 2;
 
   useEffect(() => {
@@ -36,10 +48,10 @@ export default function VerticalSnapCarousel() {
     return () => mql.removeEventListener("change", onChange);
   }, []);
 
+  // helpers for layout geometry
   const getContainer = () =>
     (isXL.current ? largeRef.current : smallRef.current)!;
 
-  // stride = item size + gap
   const getGapPx = (c: HTMLDivElement) => {
     const cs = getComputedStyle(c);
     const g = isXL.current ? cs.rowGap : cs.columnGap || cs.gap;
@@ -59,18 +71,68 @@ export default function VerticalSnapCarousel() {
   const setScroll = (c: HTMLDivElement, v: number) =>
     isXL.current ? (c.scrollTop = v) : (c.scrollLeft = v);
 
+  const centerOffset = (c: HTMLDivElement) =>
+    c.clientWidth / 2 - getItemSizePx(c) / 2;
+
+  // convert scroll -> raw index in LOOP (0..LOOP.length-1)
+  const rawIndexFromScroll = (c: HTMLDivElement) => {
+    const stride = getStridePx(c);
+    if (isXL.current) {
+      return Math.round(getScroll(c) / stride);
+    } else {
+      return Math.round((getScroll(c) + centerOffset(c)) / stride);
+    }
+  };
+
+  // convert raw index -> scroll position
+  const scrollForRawIndex = (c: HTMLDivElement, raw: number) => {
+    const stride = getStridePx(c);
+    if (isXL.current) {
+      return raw * stride;
+    } else {
+      return raw * stride - centerOffset(c);
+    }
+  };
+
+  // keep user in the middle block [N, 2N) to avoid hitting ends
+  const recenterIfNeeded = (c: HTMLDivElement) => {
+    const raw = rawIndexFromScroll(c);
+    if (raw < N || raw >= 2 * N) {
+      const normalized = mod(raw, N);
+      const targetRaw = N + normalized;
+      const prev = c.style.scrollSnapType;
+      c.style.scrollSnapType = "none";
+      setScroll(c, scrollForRawIndex(c, targetRaw));
+      c.style.scrollSnapType = prev;
+      return targetRaw;
+    }
+    return raw;
+  };
+
+  // initial positioning into middle block
+  useEffect(() => {
+    const c = getContainer();
+    if (!c) return;
+    // wait a frame so sizes are correct
+    const id = requestAnimationFrame(() => {
+      const prev = c.style.scrollSnapType;
+      c.style.scrollSnapType = "none";
+      setScroll(c, scrollForRawIndex(c, N + activeIndex));
+      c.style.scrollSnapType = prev;
+    });
+    return () => cancelAnimationFrame(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bp]);
+
   // SCROLL -> INDEX (ignore while animating)
   const handleScroll = () => {
     if (isAnimating.current) return;
     const c = getContainer();
     if (!c) return;
-    const stride = getStridePx(c);
-    if (isXL.current) {
-      setActiveIndex(Math.round(c.scrollTop / stride));
-    } else {
-      const centerOffset = c.clientWidth / 2 - getItemSizePx(c) / 2;
-      setActiveIndex(Math.round((c.scrollLeft + centerOffset) / stride));
-    }
+
+    const raw = recenterIfNeeded(c);
+    const normalized = mod(raw, N);
+    setActiveIndex(normalized);
   };
 
   // DRAG
@@ -103,56 +165,46 @@ export default function VerticalSnapCarousel() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bp]);
 
-  // ---- ARROWS: delay details update until scroll animation completes ----
-  const animateToIndex = (idx: number) => {
+  // ---- ARROWS: animate within middle block and update details after tween ----
+  const animateToRawIndex = (targetRaw: number) => {
     const c = getContainer();
-    const stride = getStridePx(c);
     const prevSnap = c.style.scrollSnapType;
-    c.style.scrollSnapType = "none"; // prevent snap fight
+    c.style.scrollSnapType = "none";
     isAnimating.current = true;
-    pendingIndex.current = idx;
+    pendingIndex.current = mod(targetRaw, N);
 
     gsap.killTweensOf(c);
 
-    if (isXL.current) {
-      const target = idx * stride;
-      gsap.to(c, {
-        scrollTop: target,
-        duration: 0.45,
-        ease: "power2.out",
-        onComplete: () => {
-          c.style.scrollSnapType = prevSnap;
-          isAnimating.current = false;
-          setActiveIndex(pendingIndex.current); // details change now
-        },
-      });
-    } else {
-      const centerOffset = c.clientWidth / 2 - getItemSizePx(c) / 2;
-      let target = idx * stride - centerOffset;
-      target = Math.max(0, Math.min(target, c.scrollWidth - c.clientWidth));
-      gsap.to(c, {
-        scrollLeft: target,
-        duration: 0.45,
-        ease: "power2.out",
-        onComplete: () => {
-          c.style.scrollSnapType = prevSnap;
-          isAnimating.current = false;
-          setActiveIndex(pendingIndex.current); // details change now
-        },
-      });
-    }
+    const props = isXL.current
+      ? { scrollTop: scrollForRawIndex(c, targetRaw) }
+      : { scrollLeft: scrollForRawIndex(c, targetRaw) };
+
+    gsap.to(c, {
+      ...props,
+      duration: 0.45,
+      ease: "power2.out",
+      onComplete: () => {
+        // keep in middle block after anim
+        const normalized = mod(targetRaw, N);
+        const midRaw = N + normalized;
+        setScroll(c, scrollForRawIndex(c, midRaw));
+        c.style.scrollSnapType = prevSnap;
+        isAnimating.current = false;
+        setActiveIndex(pendingIndex.current);
+      },
+    });
   };
 
-  const changeIndex = (newIndex: number) => {
-    const max = TESTIMONIAL_IMAGES.length - 1;
-    const idx = Math.min(Math.max(newIndex, 0), max);
-    animateToIndex(idx); // DO NOT setActiveIndex here
+  const changeIndex = (delta: number) => {
+    const c = getContainer();
+    const currentRaw = recenterIfNeeded(c);
+    animateToRawIndex(currentRaw + delta);
   };
 
-  const handlePrev = () => changeIndex(activeIndex - 1);
-  const handleNext = () => changeIndex(activeIndex + 1);
+  const handlePrev = () => changeIndex(-1);
+  const handleNext = () => changeIndex(1);
 
-  // CONTENT FADE (fires once when activeIndex is set after tween completes)
+  // CONTENT FADE (fires once when activeIndex is updated after tween completes)
   const contentRefInline = useRef<HTMLDivElement | null>(null);
   const contentRefXL = useRef<HTMLDivElement | null>(null);
   const [data, setData] = useState(TESTIMONIALS[0]);
@@ -161,20 +213,15 @@ export default function VerticalSnapCarousel() {
     const el = (bp && contentRefXL.current) || contentRefInline.current;
     if (!el) return;
 
-    // kill any prior timeline
     detailsTl.current?.kill();
-
     const tl = gsap.timeline();
     detailsTl.current = tl;
 
     tl.to(el, { opacity: 0, duration: 0.5, ease: "power2.out" })
       .to({}, { duration: DETAIL_DELAY })
-      .add(() => {
-        setData(TESTIMONIALS[activeIndex]);
-      })
+      .add(() => setData(TESTIMONIALS[activeIndex]))
       .to(el, { opacity: 1, duration: 0.5, ease: "power2.out" });
 
-    // IMPORTANT: return a function that returns void
     return () => {
       tl.kill();
     };
@@ -183,11 +230,11 @@ export default function VerticalSnapCarousel() {
   return (
     <div className="bg-mid-bg">
       <div className="mx-container min-h-[750px] flex justify-center items-center">
-        {/* -------- BELOW XL (horizontal) -------- */}
+        {/* -------- BELOW XL (horizontal, infinite) -------- */}
         <div className="flex xl:hidden flex-col items-center gap-5 pt-12 pb-8 text-center ">
           <div
             ref={smallRef}
-            className="w-[200px] h-[160px] overflow-x-scroll snap-x snap-mandatory scroll-smooth cursor-grab scrollbar-hide flex items-center gap-3 px-2"
+            className="w-[260px] h-[160px] overflow-x-scroll snap-x snap-mandatory scroll-smooth cursor-grab scrollbar-hide flex items-center gap-3 px-2"
             style={{
               scrollPaddingLeft: "calc(50% - 60px)",
               scrollPaddingRight: "calc(50% - 60px)",
@@ -197,18 +244,18 @@ export default function VerticalSnapCarousel() {
             onMouseUp={stopDrag}
             onMouseLeave={stopDrag}
           >
-            {TESTIMONIAL_IMAGES.map((src, i) => (
+            {LOOP.map((src, i) => (
               <div
-                key={`sm-${i}`}
+                key={`sm-loop-${i}`}
                 className={`snap-center flex-shrink-0 w-[120px] h-full flex justify-center items-center transition-all duration-200 ${
-                  i === activeIndex
+                  mod(i, N) === activeIndex
                     ? "opacity-100 scale-100"
                     : "opacity-30 scale-90"
                 }`}
               >
                 <img
                   src={src}
-                  alt={`Person ${i}`}
+                  alt=""
                   className="rounded-full h-24 w-24 object-cover"
                   draggable={false}
                 />
@@ -248,7 +295,7 @@ export default function VerticalSnapCarousel() {
           </div>
         </div>
 
-        {/* -------- XL & UP (vertical) -------- */}
+        {/* -------- XL & UP (vertical, infinite) -------- */}
         <div className="hidden xl:block w-full">
           <div className="h-[750px] w-full flex items-center justify-between gap-8">
             <div
@@ -259,18 +306,18 @@ export default function VerticalSnapCarousel() {
               onMouseUp={stopDrag}
               onMouseLeave={stopDrag}
             >
-              {TESTIMONIAL_IMAGES.map((src, i) => (
+              {LOOP.map((src, i) => (
                 <div
-                  key={`lg-${i}`}
+                  key={`lg-loop-${i}`}
                   className={`snap-center pointer-events-none select-none flex justify-center items-center h-[250px] transition-all duration-200 ${
-                    i === activeIndex
+                    mod(i, N) === activeIndex
                       ? "scale-100 opacity-100"
                       : "scale-85 opacity-20"
                   }`}
                 >
                   <img
                     src={src}
-                    alt={`Person ${i}`}
+                    alt=""
                     className="rounded-full h-60 w-60 object-cover"
                     draggable={false}
                   />

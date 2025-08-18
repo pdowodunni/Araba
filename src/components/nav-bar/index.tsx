@@ -1,13 +1,7 @@
 import { NAV_LINKS } from "../../config/navigator";
 import { Link } from "react-router-dom";
 import SlideUpButton from "../shared/slide-up-button";
-import React, {
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import HoverContainer from "../shared/hover-continer";
 import { ChevronDown } from "lucide-react";
 import gsap from "gsap";
