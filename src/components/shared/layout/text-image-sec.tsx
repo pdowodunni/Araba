@@ -1,4 +1,4 @@
-import SlideUpButton from "./slide-up-button";
+import SlideUpButton from "../slide-up-button";
 
 function TxtImgSec() {
   return (
@@ -7,7 +7,7 @@ function TxtImgSec() {
         <div className="grid gap-12 xl:grid-cols-2">
           <div className="w-full h-full flex justify-center items-center">
             <div className="flex flex-col gap-2">
-              <div className="flex flex-col gap-8 mb-4">
+              <div className="flex flex-col gap-4 mb-4">
                 <span className="s-heading border-b border-primary">
                   SONIC STORIES, POWERFULLY TOLD
                 </span>
@@ -19,16 +19,32 @@ function TxtImgSec() {
                 </h4>
               </div>
 
-              <div className="flex flex-col gap-8 max-w-[760px]">
+              <div className="flex flex-col gap-6 max-w-[720px]">
                 <p className="p-lg">
                   We understand the role of sound in shaping how people feel,
                   think, and connect. In today's crowded content landscape,
                   sonic identity is no longer optional; it's everything.
                 </p>
                 <p>
-                  We specialize in High-Impact, Story-led experiences delivered
-                  across three formats: Strategy, Sound, and Screen.
+                  Our end-to-end music and sound design services are built for
+                  storytellers, filmmakers, content teams, and brands who want
+                  to move people with more than visuals. From subtle ambient
+                  textures to unforgettable theme music, we deliver audio that
+                  resonates, lingers, and elevates your story.
                 </p>
+                <div>
+                  <ul className="mt-2 p-lg flex flex-col gap-2 list-disc pl-10">
+                    <li>
+                      Collaborate with world-class composers and sound artists
+                    </li>
+                    <li>
+                      Create custom scores, stingers, themes, and ambient beds
+                    </li>
+                    <li>
+                      Design immersive SFX and audio signatures that stand out
+                    </li>
+                  </ul>
+                </div>
                 <div className="flex gap-4">
                   <SlideUpButton
                     type="fill"

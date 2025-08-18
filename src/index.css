@@ -31,7 +31,7 @@
 }
 
 @theme {
-  --spacing-sm-pad: clamp(2rem, 6vw, 5.8rem);
+  --spacing-sm-pad: clamp(2rem, 6vw, 5rem);
   --spacing-md-pad: clamp(4rem, 8vw, 8rem);
   --spacing-lg-pad: clamp(4rem, 10vw, 13rem);
 

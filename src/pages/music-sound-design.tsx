@@ -1,6 +1,9 @@
 import AuxHeader from "../components/shared/aux-header";
 import LogoCarousel from "../components/shared/logo-carousel";
-import TxtImgSec from "../components/shared/text-image-sec";
+import TxtImgSec from "../components/shared/layout/text-image-sec";
+import RightImgTextSec from "../components/shared/layout/rght-Img-tex-sec";
+import ProdGrdSec from "../components/shared/layout/producion-grid-sec";
+import LeftImgTextSec from "../components/shared/layout/left-img-txt-sec";
 
 function MusicSoundDesign() {
   return (
@@ -12,7 +15,10 @@ function MusicSoundDesign() {
         </span>
         <LogoCarousel />
       </div>
+      <LeftImgTextSec />
       <TxtImgSec />
+      <RightImgTextSec />
+      <ProdGrdSec />
     </main>
   );
 }
