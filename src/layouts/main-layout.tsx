@@ -11,7 +11,6 @@ import TaleTwoHouse from "../pages/case-study/tales-two-house";
 import Unscene from "../pages/case-study/unscenes";
 import MusicSoundDesign from "../pages/music-sound-design";
 
-
 function MainLayout() {
   return (
     <>

@@ -7,7 +7,7 @@ import LeftImgTextSec from "../components/shared/layout/left-img-txt-sec";
 
 function MusicSoundDesign() {
   return (
-    <main>
+    <main className="z-[-1]">
       <AuxHeader />
       <div className="mx-container py-sm-pad flex flex-col gap-12">
         <span className="s-heading flex justify-center text-sm">

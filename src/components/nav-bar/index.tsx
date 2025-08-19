@@ -18,27 +18,56 @@ type DropRenderable = ReactNode | (() => JSX.Element);
 const PAGE_STYLES: Record<
   string,
   {
-    bg: string; // background class when solid
-    text: string; // text color class for links/iconsx`
+    bg: string;
+    text: string;
+    initialText: string;
+    initailLogo: string;
+    logo: string;
   }
 > = {
-  "/": { bg: "bg-primary", text: "text-white" }, // landing
-  "/our-work": { bg: "bg-light-bg", text: "text-primary" },
+  "/": {
+    bg: "bg-primary",
+    text: "text-white",
+    initialText: "text-light-bg",
+    logo: "/images/logo.webp",
+    initailLogo: "/images/logo.webp",
+  }, // landing
+  "/our-work": {
+    bg: "bg-light-bg",
+    text: "text-primary",
+    initialText: "bg-transparent text-primary",
+    logo: "/images/logo-color.webp",
+    initailLogo: "/images/logo-color.webp",
+  },
+  "/service/music-sound-design": {
+    bg: "bg-light-bg",
+    text: "text-primary",
+    initialText: "text-light-bg",
+    logo: "/images/logo-color.webp",
+    initailLogo: "/images/logo.webp",
+  },
 };
 
-/* Fallback for any route not listed */
-const DEFAULT_STYLE = { bg: "bg-light-bg", text: "text-primary" };
+const DEFAULT_STYLE = {
+  bg: "bg-light-bg",
+  text: "text-primary",
+  initialText: "text-primary",
+};
 
 function NavigationBar() {
   const location = useLocation();
-  const { bg: pageBg, text: textClass } =
-    PAGE_STYLES[location.pathname] ?? DEFAULT_STYLE;
+  const {
+    bg: pageBg,
+    text: textClass,
+    initialText: initialText,
+    initailLogo,
+    logo,
+  } = PAGE_STYLES[location.pathname] ?? DEFAULT_STYLE;
 
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
-  const [solidBG, setSolidBG] = useState(false); // false = transparent, true = route bg
+  const [solidBG, setSolidBG] = useState(false);
 
-  // --- scroll toggle at 200px (instant, not linked to scroll) ---
   useEffect(() => {
     const onScroll = () => {
       const atOrPast = window.scrollY >= 200;
@@ -119,8 +148,8 @@ function NavigationBar() {
     <>
       <div
         className={`${
-          solidBG ? pageBg : "bg-transparent"
-        } w-screen fixed top-0 z-50`}
+          solidBG ? pageBg : `bg-transparent ${initialText}`
+        } w-screen fixed top-0 z-50 transform duration-400`}
         /* no transition classes -> instantaneous swap at 200px */
       >
         {panelOpen && (
@@ -131,7 +160,7 @@ function NavigationBar() {
           <div>
             <Link to={"/"}>
               <img
-                src="/images/logo.webp"
+                src={solidBG ? logo : initailLogo}
                 alt="araba's logo"
                 className="w-[90px] select-none pointer-events-none"
               />
@@ -168,7 +197,11 @@ function NavigationBar() {
                             : "var(--color-primary)"
                         }
                       >
-                        <div className="flex items-center gap-1 h-[60px]">
+                        <div
+                          className={`flex items-center gap-1 h-[60px]  ${
+                            solidBG ? textClass : initialText
+                          }`}
+                        >
                           {i.label}
                           {hasDD && (
                             <span className={textClass}>
@@ -241,14 +274,14 @@ function DropDownHolder({
     if (open) {
       gsap.fromTo(
         el,
-        { autoAlpha: 0, y: 70 },
+        { autoAlpha: 0, y: 60 },
         { autoAlpha: 1, y: 0, duration: 0.3, ease: "power1.out" }
       );
     } else {
       gsap.fromTo(
         el,
         { autoAlpha: 1, y: 0 },
-        { autoAlpha: 0, y: 70, duration: 0.3, ease: "power1.out" }
+        { autoAlpha: 0, y: 60, duration: 0.3, ease: "power1.out" }
       );
     }
   }, [open]);
@@ -264,7 +297,7 @@ function DropDownHolder({
   return (
     <div
       ref={menuRef}
-      className="fixed top-[78px] bg-light-bg shadow z-10 w-screen"
+      className="fixed top-[75px] bg-light-bg shadow z-10 w-screen"
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
       onClickCapture={onClickCapture}
