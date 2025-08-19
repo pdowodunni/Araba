@@ -21,7 +21,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
     },
     {
       span: 4,
-      assetLink: "/images/casestudy/sd-1.jpg",
+      assetLink: "/images/casestudy/sd-1.webp",
       assetType: "image",
       title: "Doyin & Shimon Atunde",
       desc: "Non-profit, Education, Impact Storytelling",
