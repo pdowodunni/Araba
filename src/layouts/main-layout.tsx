@@ -10,6 +10,7 @@ import Shido from "../pages/case-study/shimon-doyin";
 import TaleTwoHouse from "../pages/case-study/tales-two-house";
 import Unscene from "../pages/case-study/unscenes";
 import MusicSoundDesign from "../pages/music-sound-design";
+import Google from "../pages/case-study/google";
 
 function MainLayout() {
   return (
@@ -24,6 +25,7 @@ function MainLayout() {
         <Route path="/our-work/tale-two-house" element={<TaleTwoHouse />} />
         <Route path="/our-work/unscene" element={<Unscene />} />
         <Route path="/our-work/yascf" element={<Yascf />} />
+        <Route path="/our-work/google" element={<Google />} />
 
         <Route
           path="/service/music-sound-design"

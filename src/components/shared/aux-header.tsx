@@ -4,7 +4,7 @@ function AuxHeader() {
   return (
     <header
       style={{
-        backgroundImage: "url('/images/2.webp')",
+        backgroundImage: "url('/images/2.jpg')",
         backgroundPosition: "center",
         backgroundSize: "cover",
       }}

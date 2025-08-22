@@ -40,7 +40,11 @@ export function ShowCaseCardHorizontal({
                   transition-all
                   duration-300
                 "
-              style={{ backgroundImage: `url('${assetLink}')` }}
+              style={{
+                backgroundImage: `url('${assetLink}')`,
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}
             />
           ) : assetType === "video" ? (
             <div
