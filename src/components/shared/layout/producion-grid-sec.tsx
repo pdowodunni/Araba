@@ -74,7 +74,7 @@ function ProdGrdSec() {
           </h4>
         </div>
         <div>
-          <ProductionGrid items={items} baseRow={200} />
+          <ProductionGrid items={items} />
         </div>
       </div>
     </section>

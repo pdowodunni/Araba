@@ -1,10 +1,10 @@
-// components/AiProductionGrid.tsx
+// components/ProductionGrid.tsx
 import React from "react";
 
 type GridItem = {
   id?: string | number;
-  col: number; // 1–12
-  row: number; // row span in auto-rows units
+  col: number; // 1–12 (used from lg and up)
+  row: number; // row span units (used from lg and up)
   image: string;
   eyebrow?: string;
   title: string;
@@ -13,22 +13,17 @@ type GridItem = {
   dark?: boolean;
 };
 
-export function ProductionGrid({
-  items,
-  baseRow = 200,
-}: {
-  items: GridItem[];
-  baseRow?: number;
-}) {
+export function ProductionGrid({ items }: { items: GridItem[] }) {
   return (
     <section className="bg-light-bg">
       <div className="mx-container py-12 md:py-16">
         <div
           className="
             grid gap-4 md:gap-6
-            grid-cols-1 sm:grid-cols-2 md:grid-cols-6 xl:grid-cols-12
+            grid-cols-1 lg:grid-cols-12
+            auto-rows-[minmax(240px,42vh)]
+            lg:auto-rows-[150px] 2xl:auto-rows-[200px]
           "
-          style={{ gridAutoRows: `${baseRow}px` }}
         >
           {items.map((it, i) => (
             <Card key={it.id ?? i} {...it} />
@@ -49,32 +44,31 @@ function Card({
   href,
   dark = true,
 }: GridItem) {
-  const wrapperStyle: React.CSSProperties = {
-    gridColumn: `span ${col} / span ${col}`,
-    gridRow: `span ${row} / span ${row}`,
-  };
+  const spanVars = {
+    ["--col" as any]: col,
+    ["--row" as any]: row,
+  } as React.CSSProperties;
+
+  const baseClasses =
+    "group relative w-full h-full rounded-xl overflow-hidden lg:[grid-column:span_var(--col)_/_span_var(--col)] lg:[grid-row:span_var(--row)_/_span_var(--row)]";
 
   const Wrapper: React.FC<React.PropsWithChildren> = ({ children }) =>
     href ? (
       <a
         href={href}
-        style={wrapperStyle}
-        className="group relative block w-full h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg rounded-xl overflow-hidden"
+        style={spanVars}
+        className={`${baseClasses} focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-light-bg block`}
       >
         {children}
       </a>
     ) : (
-      <div
-        style={wrapperStyle}
-        className="group relative w-full h-full rounded-xl overflow-hidden"
-      >
+      <div style={spanVars} className={baseClasses}>
         {children}
       </div>
     );
 
   return (
     <Wrapper>
-      {/* Image */}
       <img
         src={image}
         alt=""
@@ -82,7 +76,6 @@ function Card({
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      {/* Overlay */}
       <div
         className={`absolute inset-0 transition-colors duration-300 ${
           dark
@@ -91,12 +84,9 @@ function Card({
         }`}
       />
 
-      {/* Text */}
       <div
         className="relative z-[1] flex h-full flex-col p-5 md:p-6 text-light-bg"
-        style={{
-          justifyContent: row === 4 ? "space-between" : "",
-        }}
+        style={{ justifyContent: row === 4 ? "space-between" : undefined }}
       >
         <div>
           {eyebrow && (
@@ -104,17 +94,10 @@ function Card({
               {eyebrow}
             </span>
           )}
-          <h5 className="">{title}</h5>
+          <h5>{title}</h5>
         </div>
         {description && (
-          <p
-            className=""
-            style={{
-              marginTop: row === 4 ? "" : "10px",
-            }}
-          >
-            {description}
-          </p>
+          <p className={row === 4 ? "" : "mt-2"}>{description}</p>
         )}
       </div>
     </Wrapper>

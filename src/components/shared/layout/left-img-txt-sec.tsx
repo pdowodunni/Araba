@@ -32,11 +32,11 @@ function LeftImgTextSec() {
 
   return (
     <section className="flex flex-col gap-12 bg-[#dcf0e3]">
-      <div className="mx-container w-full pr-0 sm:pr-0 lg:pr-0 relative">
+      <div className="w-full relative max-w-[1680px] mx-auto px-0 sm:px-0 lg:px-8">
         <div className="grid items-stretch gap-12 xl:grid-cols-[1fr_1fr]">
           {/* IMAGE */}
-          <div className="relative min-h-[560px]">
-            <div className="absolute inset-y-0 right-0 left-[calc(100%-50vw)]">
+          <div className="relative aspect-[1/1.3] xl:aspect-auto xl:min-h-[560px] order-2 xl:order-1 bg-red-500">
+            <div className="absolute inset-y-0 right-0 xl:left-[calc(100%-50vw)] w-full xl:w-auto">
               <div
                 className="h-full w-full max-w-[1500px] bg-cover bg-center"
                 style={{ backgroundImage: "url('/images/111.jpg')" }}
@@ -45,8 +45,8 @@ function LeftImgTextSec() {
           </div>
 
           {/* CONTENT */}
-          <div className="w-full flex items-center py-sm-pad">
-            <div className="flex flex-col gap-2">
+          <div className="w-full flex items-center py-sm-pad order-1 xl:order-2 mr-assist">
+            <div className="flex flex-col gap-2 px-4 sm:px-6 xl:px-0">
               <div className="flex flex-col gap-4 mb-4">
                 {/* <span className="s-heading border-b border-primary">
                   SONIC STORIES, POWERFULLY TOLD

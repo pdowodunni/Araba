@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import OneImgCrd from "../../components/shared/case-study/1-image-card";
 import ReactPlayer from "react-player";
-import FourimgCrd from "../../components/shared/case-study/4-image-card";
+import { TwoRow } from "./tales-two-house";
 import BreadCrumb, {
   type BreadcrumbPagesProps,
 } from "../../components/shared/case-study/breadcrumb";
@@ -35,7 +35,7 @@ function Google() {
     },
     {
       text: (
-        <div>
+        <div className="w-full">
           <SmallVideo
             videoLink="https://youtu.be/lYlpLwkweBs?si=xbTEvSDUAnVO84np"
             text=" Polished, Techie, Informed"
@@ -176,10 +176,6 @@ function Google() {
 
 export default Google;
 
-const TwoRow = ({ children }: { children: ReactNode }) => {
-  return <div className="grid grid-cols-[400px_1fr] gap-8">{children}</div>;
-};
-
 const SmallVideo = ({
   videoLink,
   text,
@@ -189,7 +185,7 @@ const SmallVideo = ({
 }) => {
   const [loaded, setloaded] = useState(false);
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col w-full gap-5">
       <div className="w-full aspect-[16/9] h-full bg-center rounded-lg transition-all duration-300 relative overflow-hidden">
         <ReactPlayer
           src={videoLink}
@@ -212,10 +208,10 @@ const SmallVideo = ({
           onReady={() => setloaded(true)}
           className="absolute top-0 left-0 w-full h-full"
         />
-
+        {/* 
         {!loaded && (
-          <div className="absolute top-0 left-0 w-full h-full bg-black " />
-        )}
+          <div className="absolute top-0 left-0 w-full h-full bg-red-700 " />
+        )} */}
       </div>
       <span className="p-lg">{text}</span>
     </div>

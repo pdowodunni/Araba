@@ -135,7 +135,16 @@
            2xl:text-[4.5rem];
   }
   .p-lg {
-    @apply text-2xl mb-2;
+    @apply md:text-xl lg:text-2xl mb-2;
+  }
+  .mx-assist {
+    @apply px-0 md:px-10 lg:px-15 2xl:px-0;
+  }
+  .ml-assist {
+    @apply pl-0 md:pl-10 lg:pl-15 2xl:pl-0;
+  }
+  .mr-assist {
+    @apply pr-0 md:pr-10 lg:pr-15 2xl:pr-0;
   }
 }
 

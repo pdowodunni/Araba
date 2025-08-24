@@ -9,12 +9,12 @@ function MusicSoundDesign() {
   return (
     <main className="z-[-1]">
       <AuxHeader />
-      <div className="mx-container py-sm-pad flex flex-col gap-12">
+      {/* <div className="mx-container py-sm-pad flex flex-col gap-12">
         <span className="s-heading flex justify-center text-sm">
           Trusted by 50+ of the world's biggest brands
         </span>
         <LogoCarousel />
-      </div>
+      </div> */}
       <LeftImgTextSec />
       <TxtImgSec />
       <RightImgTextSec />

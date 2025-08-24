@@ -183,9 +183,9 @@ function TaleTwoHouse() {
         aboutHead="A Tale of Two Houses by Niyi Adekunle began as a values-driven book centred on Family, Faith, Finance, and Values."
         aboutBody="We transformed it into a full-cast immersive audio drama,  reimagining the story for the ear, bringing characters to life with multiple voices (including the author himself), cinematic sound design, and chapter-by-chapter engagement tools.
 From script adaptation and casting to marketing content creation and multi-platform distribution, we delivered the project end-to-end."
-        client="The New"
+        client="Niyi Adekunle"
         year="2024"
-        industry="Faith Culture & Experimental Events"
+        industry=" Family • Faith • Finance • Values"
         service="Script Adaptation • Voice Casting & Direction • Audio Production & Sound Design • Content Creation • Marketing Assets • Distribution"
       />
 
@@ -391,6 +391,10 @@ From script adaptation and casting to marketing content creation and multi-platf
 
 export default TaleTwoHouse;
 
-const TwoRow = ({ children }: { children: ReactNode }) => {
-  return <div className="grid grid-cols-[400px_1fr] gap-8">{children}</div>;
+export const TwoRow = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="grid grid-cols-1 xl:grid-cols-[400px_1fr] gap-2 xl:gap-4 2xl:gap-8">
+      {children}
+    </div>
+  );
 };
