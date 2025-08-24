@@ -9,8 +9,9 @@ import {
   useEffect,
 } from "react";
 import HoverContainer from "../shared/hover-continer";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Equal } from "lucide-react";
 import gsap from "gsap";
+import MobileNavPanel from "./mobile-nav-panel";
 
 type DropRenderable = ReactNode | (() => JSX.Element);
 
@@ -109,6 +110,7 @@ function NavigationBar() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const [panelOpen, setPanelOpen] = useState(false);
   const [solidBG, setSolidBG] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -152,7 +154,7 @@ function NavigationBar() {
     openTimer.current = window.setTimeout(() => {
       setActiveIdx(idx);
       setPanelOpen(true);
-    }, 500); // 0.5s delay
+    }, 300); // 0.5s delay
   };
 
   const maybeClose = () => {
@@ -192,12 +194,10 @@ function NavigationBar() {
         className={`${
           solidBG ? pageBg : `bg-transparent ${initialText}`
         } w-screen fixed top-0 z-50 transform duration-400`}
-        /* no transition classes -> instantaneous swap at 200px */
       >
         {panelOpen && (
           <div className="top-[74px] absolute left-0 w-screen h-screen inset-0 bg-black/10 backdrop-blur-md" />
         )}
-
         <div className="mx-container h-[78px] flex items-center justify-between">
           <div>
             <Link to={"/"}>
@@ -209,7 +209,7 @@ function NavigationBar() {
             </Link>
           </div>
 
-          <nav>
+          <nav className="hidden md:block">
             <ul className="flex gap-10 justify-center items-center">
               {NAV_LINKS.map((i, idx) => {
                 const hasDD = Boolean(i.dropDown);
@@ -259,7 +259,7 @@ function NavigationBar() {
             </ul>
           </nav>
 
-          <div className="flex gap-4 justify-center items-center">
+          <div className="hidden md:flex gap-4 justify-center items-center">
             <SlideUpButton
               type="fill"
               bgColor="var(--color-green-accent"
@@ -268,7 +268,32 @@ function NavigationBar() {
               Let's talk
             </SlideUpButton>
           </div>
+
+          {/* HAMBURGER */}
+          <div
+            onClick={() => {
+              setMobileOpen(true);
+            }}
+            className="block md:hidden"
+          >
+            <span className="w-10 h-10 flex items-center justify-center rounded-lg md:hidden cursor-pointer select-none">
+              <Equal size={32} />
+            </span>
+          </div>
+
+          {/* HAMBURGER */}
         </div>
+
+        <MobileNavPanel
+          open={mobileOpen}
+          textClass={textClass}
+          initialText={initialText}
+          pageBg={pageBg}
+          logo={logo}
+          onClosed={() => {
+            setMobileOpen(false);
+          }}
+        />
 
         {panelOpen && rawDrop && (
           <DropDownHolder
@@ -316,14 +341,14 @@ function DropDownHolder({
     if (open) {
       gsap.fromTo(
         el,
-        { autoAlpha: 0, y: 60 },
-        { autoAlpha: 1, y: 0, duration: 0.3, ease: "power1.out" }
+        { autoAlpha: 0, y: 50 },
+        { autoAlpha: 1, y: 0, duration: 0.4, ease: "power1.out" }
       );
     } else {
       gsap.fromTo(
         el,
         { autoAlpha: 1, y: 0 },
-        { autoAlpha: 0, y: 60, duration: 0.3, ease: "power1.out" }
+        { autoAlpha: 0, y: 50, duration: 0.4, ease: "power1.out" }
       );
     }
   }, [open]);

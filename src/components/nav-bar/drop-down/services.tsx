@@ -79,9 +79,9 @@ export default function ServicesDropDown() {
   ];
 
   return (
-    <div className="relative z-5 bg-red-700">
-      <div className="pointer-events-auto relative top-full left-0 w-screen bg-light-bg shadow-lg pt-12">
-        <div className="grid grid-cols-3 gap-8 mx-container h-fit">
+    <div className="relative z-5">
+      <div className="pointer-events-auto relative top-full left-0 w-screen bg-light-bg md:shadow-lg pt-2 md:pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mx-container h-fit">
           {/* Column 1 */}
           <div>
             <HeaderBadge textColor="#0A221F" bgColor="#D8FF85">
@@ -159,7 +159,7 @@ export default function ServicesDropDown() {
             <HeaderBadge textColor="#0A221F" bgColor="#E6D3B0">
               Marketing services
             </HeaderBadge>
-            <ul className="flex flex-col gap-7 mb-10">
+            <ul className="flex flex-col gap-7 mb-0 md:mb-10">
               {VISUAL_STORYTELLING_SERVICES.map((it, idx) => {
                 return (
                   <li key={idx} className="cursor-pointer w-fit">
