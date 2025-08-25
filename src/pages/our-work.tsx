@@ -7,7 +7,9 @@ function OurWork() {
     <main className="p-main">
       <Header />
       <div className="mx-container">
-        <LogoCarousel />
+        <div className="flex justify-center items-center">
+          <LogoCarousel />
+        </div>
       </div>
       <Portfolio />
     </main>

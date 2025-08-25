@@ -18,7 +18,7 @@ type Props = {
   open: boolean;
   onClosed?: () => void;
   textClass: string;
-  initialText: string; // (kept for API parity, unused here)
+  initialText: string;
   pageBg: string;
   logo: string;
 };
@@ -124,7 +124,6 @@ export default function MobileNavPanel({
       return;
     }
 
-    // Accordion behavior: close previous, open new (or toggle same)
     if (openIdx === idx) {
       closeDD(idx);
       setOpenIdx(null);
@@ -153,7 +152,15 @@ export default function MobileNavPanel({
         aria-hidden={!open}
         className="fixed inset-x-0 top-0 z-50 text-white will-change-transform"
       >
-        <div className="h-[90vh] overflow-y-scroll scrollbar-hide">
+        <div
+          className="max-h-[90vh] overflow-y-scroll scrollbar-hide"
+          style={{
+            backgroundColor:
+              pageBg === "bg-light-bg"
+                ? "var(--color-light-bg)"
+                : "var(--color-primary)",
+          }}
+        >
           {/* Header */}
           <div
             className="px-4 py-4 flex justify-between items-center"
@@ -172,7 +179,10 @@ export default function MobileNavPanel({
               />
             </Link>
             <span
-              onClick={() => onClosed?.()}
+              onClick={() => {
+                onClosed?.();
+                setOpenIdx(null);
+              }}
               className="cursor-pointer w-10 h-10 flex items-center justify-center rounded-lg select-none"
             >
               <X size={32} className={textClass} />
@@ -286,7 +296,10 @@ export default function MobileNavPanel({
               WebkitBackdropFilter: "blur(var(--ov-blur))",
             } as React.CSSProperties
           }
-          onClick={() => onClosed?.()}
+          onClick={() => {
+            onClosed?.();
+            console.log("blur clicked");
+          }}
         />
       </div>
     </>

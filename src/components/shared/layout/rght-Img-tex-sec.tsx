@@ -1,7 +1,7 @@
 import { Percent, Rocket, Shuffle, TriangleRight } from "lucide-react";
 import SlideUpButton from "../slide-up-button";
 
-function RightImgTextSec() {
+function RightImgTextSec({}) {
   const DATA = [
     {
       head: "Boost conversions",

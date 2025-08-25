@@ -2,34 +2,6 @@ import { Percent, Rocket, Shuffle, TriangleRight } from "lucide-react";
 import SlideUpButton from "../slide-up-button";
 
 function LeftImgTextSec() {
-  const DATA = [
-    {
-      head: "Boost conversions",
-      text: "Emotional sound design enhances viewer retention and influences purchase decisions.",
-      Icon: Rocket,
-    },
-    {
-      head: "Increase recall",
-      text: "Jingles and audio logos are 90% more likely to be remembered than visuals alone.",
-      Icon: TriangleRight,
-    },
-    {
-      head: "Build brand equity",
-      text: "Your sound becomes an integral part of your identity, spanning platforms, campaigns, and years.",
-      Icon: Shuffle,
-    },
-    {
-      head: "Elevate perception",
-      text: "Great sound makes you look (and sound) more premium, polished, and credible.",
-      Icon: Percent,
-    },
-    {
-      head: "Drive emotion",
-      text: "Music and audio cues trigger feelings faster than visuals can. Period.",
-      Icon: Percent,
-    },
-  ];
-
   return (
     <section className="flex flex-col gap-12 bg-[#dcf0e3]">
       <div className="w-full relative max-w-[1680px] mx-auto px-0 sm:px-0 lg:px-8">
@@ -48,28 +20,28 @@ function LeftImgTextSec() {
           <div className="w-full flex items-center py-sm-pad order-1 xl:order-2 mr-assist">
             <div className="flex flex-col gap-2 px-4 sm:px-6 xl:px-0">
               <div className="flex flex-col gap-4 mb-4">
-                {/* <span className="s-heading border-b border-primary">
+                <span className="s-heading border-b border-primary">
                   SONIC STORIES, POWERFULLY TOLD
-                </span> */}
+                </span>
                 <h3 className="font-medium leading-tight">
-                  <em className="font-instrumental-serif">It Looks Great… </em>
-                  But It Still Feels Empty.
+                  It Looks Great… But It Still Feels{" "}
+                  <em className="font-instrumental-serif">Empty.</em>
                 </h3>
               </div>
 
-              <div className="flex flex-col gap-8">
-                <h5 className="">
+              <div className="flex flex-col ">
+                <p className="p-lg">
                   You've got the visuals, the story, the strategy. But
                   something's missing… and you can feel it.
-                </h5>
-                <h5 className="">
+                </p>
+                <p className="p-lg">
                   Maybe the edit is clean… But the emotion? Nowhere to be found.
-                </h5>
+                </p>
                 <p className="p-lg">
                   If you're here, maybe this sounds familiar:
                 </p>
                 <div>
-                  <ul className="mt-2 p-lg flex flex-col gap-2 list-disc pl-10">
+                  <ul className="mt-2 p-lg flex flex-col gap-2 list-disc pl-5 xl:pl-10">
                     <li>
                       You used a stock music bed that sounds like every other ad
                       on the internet.
@@ -104,7 +76,7 @@ function LeftImgTextSec() {
                   </p>
                 </div>
 
-                <div className="flex gap-4">
+                <div className="flex mt-8">
                   <SlideUpButton
                     type="fill"
                     bgColor="var(--color-primary)"
