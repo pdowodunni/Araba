@@ -1,12 +1,20 @@
-import { Percent, Rocket, Shuffle, TriangleRight } from "lucide-react";
-import SlideUpButton from "../slide-up-button";
+import type { ReactNode } from "react";
 
-function LeftImgTextSec() {
+function LeftImgTextSec({
+  heading,
+  subheading,
+  text,
+}: {
+  heading: string;
+  subheading: ReactNode;
+  text: ReactNode;
+}) {
   return (
     <section className="flex flex-col gap-12 bg-[#dcf0e3]">
       <div className="w-full relative max-w-[1680px] mx-auto px-0 sm:px-0 lg:px-8">
         <div className="grid items-stretch gap-12 xl:grid-cols-[1fr_1fr]">
           {/* IMAGE */}
+
           <div className="relative aspect-[1/1.3] xl:aspect-auto xl:min-h-[560px] order-2 xl:order-1 bg-red-500">
             <div className="absolute inset-y-0 right-0 xl:left-[calc(100%-50vw)] w-full xl:w-auto">
               <div
@@ -21,71 +29,11 @@ function LeftImgTextSec() {
             <div className="flex flex-col gap-2 px-4 sm:px-6 xl:px-0">
               <div className="flex flex-col gap-4 mb-4">
                 <span className="s-heading border-b border-primary">
-                  SONIC STORIES, POWERFULLY TOLD
+                  {heading}
                 </span>
-                <h3 className="font-medium leading-tight">
-                  It Looks Great… But It Still Feels{" "}
-                  <em className="font-instrumental-serif">Empty.</em>
-                </h3>
+                <div>{subheading}</div>
               </div>
-
-              <div className="flex flex-col ">
-                <p className="p-lg">
-                  You've got the visuals, the story, the strategy. But
-                  something's missing… and you can feel it.
-                </p>
-                <p className="p-lg">
-                  Maybe the edit is clean… But the emotion? Nowhere to be found.
-                </p>
-                <p className="p-lg">
-                  If you're here, maybe this sounds familiar:
-                </p>
-                <div>
-                  <ul className="mt-2 p-lg flex flex-col gap-2 list-disc pl-5 xl:pl-10">
-                    <li>
-                      You used a stock music bed that sounds like every other ad
-                      on the internet.
-                    </li>
-                    <li>
-                      You're struggling to find a sound that feels as unique as
-                      your brand.
-                    </li>
-                    <li>
-                      Your film has drama, but the sound design is flat or
-                      nonexistent.
-                    </li>
-                    <li>
-                      You've got great dialogue, but there's hum, hiss, or echo
-                      and you don't know how to fix it.
-                    </li>
-                    <li>
-                      You've tried freelance composers—but the back-and-forth
-                      killed the vibe.
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p className="p-lg">Here's the truth:</p>
-                  <p className="p-lg font-interTight-semibold mt-5">
-                    Sound is the secret ingredient to{" "}
-                    <em className=""> unforgettable storytelling.</em>
-                  </p>
-                  <p className="p-lg">
-                    But when it's done wrong, people can't quite explain why
-                    your project didn't land… they just move on.
-                  </p>
-                </div>
-
-                <div className="flex mt-8">
-                  <SlideUpButton
-                    type="fill"
-                    bgColor="var(--color-primary)"
-                    textColor="white"
-                  >
-                    Get started
-                  </SlideUpButton>
-                </div>
-              </div>
+              <div>{text}</div>
             </div>
           </div>
           {/* /CONTENT */}

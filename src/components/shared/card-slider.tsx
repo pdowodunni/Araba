@@ -5,59 +5,52 @@ type Item = { backgroundLink: string; text: string };
 
 export default function CardSlider({
   items,
-  speed = 0.03,
+  speed = 0.015,
+  gapPx = 12, // gap between cards
+  trackGapPx = 12, // gap between the two duplicate tracks (batch spacing)
+  coverFactor = 2.4, // how many times the container width each track should cover
 }: {
   items: Item[];
   speed?: number;
+  gapPx?: number;
+  trackGapPx?: number;
+  coverFactor?: number;
 }) {
-  // readiness (avoid flicker/shift)
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const trackA = useRef<HTMLDivElement | null>(null);
+  const trackB = useRef<HTMLDivElement | null>(null);
+
+  const rafId = useRef<number | null>(null);
+  const x = useRef(0);
+  const dir = useRef<1 | -1>(1);
+  const boost = useRef(1);
+
+  const [dupes, setDupes] = useState(1); // dynamic duplication count
   const [ready, setReady] = useState(false);
 
-  // refs for the four tracks (two per row)
-  const topA = useRef<HTMLDivElement | null>(null);
-  const topB = useRef<HTMLDivElement | null>(null);
-  const botA = useRef<HTMLDivElement | null>(null);
-  const botB = useRef<HTMLDivElement | null>(null);
+  // Build extended list based on dupes
+  const extended = Array.from({ length: dupes }).flatMap(() => items);
 
-  // animation state
-  const rafId = useRef<number | null>(null);
-  const xTop = useRef(0);
-  const xBot = useRef(0);
-  const dirRef = useRef<1 | -1>(1);
-  const boostRef = useRef(1);
-  const lastY = useRef(0);
-
-  // tick
   const step = () => {
-    const a1 = topA.current,
-      a2 = topB.current;
-    const b1 = botA.current,
-      b2 = botB.current;
+    boost.current += (1 - boost.current) * 0.08;
+    x.current += dir.current * speed * boost.current;
+    if (x.current <= -100) x.current = 0;
+    if (x.current > 0) x.current = -100;
 
-    // ease boost back toward 1
-    boostRef.current += (1 - boostRef.current) * 0.08;
-
-    // top follows scroll direction
-    xTop.current += dirRef.current * speed * boostRef.current;
-    if (xTop.current <= -100) xTop.current = 0;
-    if (xTop.current > 0) xTop.current = -100;
-
-    // bottom moves opposite
-    xBot.current -= dirRef.current * speed * boostRef.current;
-    if (xBot.current <= -100) xBot.current = 0;
-    if (xBot.current > 0) xBot.current = -100;
-
-    if (a1 && a2) gsap.set([a1, a2], { xPercent: xTop.current });
-    if (b1 && b2) gsap.set([b1, b2], { xPercent: xBot.current });
+    const a = trackA.current,
+      b = trackB.current;
+    if (a && b) gsap.set([a, b], { xPercent: x.current });
 
     rafId.current = requestAnimationFrame(step);
   };
 
-  // preload then start
+  // Preload images -> measure -> set dupes -> start anim (hidden until ready)
   useLayoutEffect(() => {
+    if (!items || items.length === 0) return;
+
     let cancelled = false;
 
-    const urls = Array.from(new Set([...items].map((i) => i.backgroundLink)));
+    const urls = Array.from(new Set(items.map((i) => i.backgroundLink)));
     Promise.all(
       urls.map(
         (src) =>
@@ -70,70 +63,107 @@ export default function CardSlider({
     ).then(() => {
       if (cancelled) return;
 
-      setReady(true);
-      xTop.current = 0;
-      xBot.current = 0;
-      lastY.current = window.scrollY || 0;
+      // Ensure at least one render to measure base width
+      requestAnimationFrame(() => {
+        const cont = containerRef.current;
+        const a = trackA.current;
+        if (!cont || !a) return;
 
-      // listeners
-      const onScroll = () => {
-        const y = window.scrollY || 0;
-        const d = y - lastY.current;
-        lastY.current = y;
-        if (d === 0) return;
-        dirRef.current = d > 0 ? 1 : -1;
-        boostRef.current = 6;
-      };
-      const onWheel = (e: WheelEvent) => {
-        if (e.deltaY === 0) return;
-        dirRef.current = e.deltaY > 0 ? 1 : -1;
-        boostRef.current = 6;
-      };
+        // Base width of ONE set: temporarily assume dupes is current dupes (1 at first render)
+        const currentDupes = Math.max(1, dupes);
+        const baseWidth = a.scrollWidth / currentDupes; // includes card gap
+        const need =
+          baseWidth > 0
+            ? Math.max(
+                2,
+                Math.ceil((cont.clientWidth * coverFactor) / baseWidth)
+              )
+            : 2;
 
-      window.addEventListener("scroll", onScroll, { passive: true });
-      window.addEventListener("wheel", onWheel, { passive: true });
+        // Apply dupes, then after it renders, start the animation and reveal
+        setDupes(need);
 
-      rafId.current = requestAnimationFrame(step);
+        requestAnimationFrame(() => {
+          // Safety: measure again after dupes applied
+          const a2 = trackA.current;
+          if (!a2) return;
 
-      return () => {
-        if (rafId.current !== null) cancelAnimationFrame(rafId.current);
-        window.removeEventListener("scroll", onScroll);
-        window.removeEventListener("wheel", onWheel);
-      };
+          x.current = 0;
+          // listeners
+          const onWheel = (e: WheelEvent) => {
+            const mag =
+              Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+            if (mag === 0) return;
+            dir.current = mag > 0 ? 1 : -1;
+            boost.current = 6;
+          };
+          const onScroll = () => {
+            // Optional: if you want scroll direction to affect direction:
+            // dir.current = (window.scrollY - lastY) > 0 ? 1 : -1; (track lastY if needed)
+            boost.current = 6;
+          };
+
+          window.addEventListener("wheel", onWheel, { passive: true });
+          window.addEventListener("scroll", onScroll, { passive: true });
+
+          rafId.current = requestAnimationFrame(step);
+          setReady(true);
+
+          return () => {
+            window.removeEventListener("wheel", onWheel);
+            window.removeEventListener("scroll", onScroll);
+          };
+        });
+      });
     });
 
     return () => {
       cancelled = true;
-      if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      if (rafId.current != null) cancelAnimationFrame(rafId.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [speed, items]);
+  }, [items, speed, coverFactor, gapPx, trackGapPx]);
 
   return (
     <div
-      className={`relative overflow-hidden py-6 transition-opacity duration-300 ${
+      ref={containerRef}
+      className={`relative w-full overflow-hidden py-6 transition-opacity duration-300 ${
         ready ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
     >
-      <div className="relative w-full overflow-hidden mb-4">
-        <div className="flex flex-nowrap gap-4">
-          {/* track A */}
+      <div className="relative w-full overflow-hidden">
+        <div
+          className="flex flex-nowrap items-center"
+          style={{ columnGap: `${trackGapPx}px` }} // space between Track A & B
+        >
+          {/* Track A */}
           <div
-            ref={topA}
-            className="flex flex-nowrap gap-4 shrink-0 will-change-transform"
+            ref={trackA}
+            className="flex flex-nowrap shrink-0 will-change-transform"
+            style={{ gap: `${gapPx}px` }}
           >
-            {items.map((it, i) => (
-              <TxtImgCard key={`tA-${i}`} {...it} />
+            {extended.map((it, i) => (
+              <TxtImgCard
+                key={`A-${i}`}
+                backgroundLink={it.backgroundLink}
+                text={it.text}
+              />
             ))}
           </div>
-          {/* track B (duplicate) */}
+
+          {/* Track B (duplicate) */}
           <div
-            ref={topB}
-            className="flex flex-nowrap gap-4 shrink-0 will-change-transform"
+            ref={trackB}
+            className="flex flex-nowrap shrink-0 will-change-transform"
+            style={{ gap: `${gapPx}px` }}
             aria-hidden="true"
           >
-            {items.map((it, i) => (
-              <TxtImgCard key={`tB-${i}`} {...it} />
+            {extended.map((it, i) => (
+              <TxtImgCard
+                key={`B-${i}`}
+                backgroundLink={it.backgroundLink}
+                text={it.text}
+              />
             ))}
           </div>
         </div>
@@ -150,16 +180,16 @@ const TxtImgCard = ({
   text: string;
 }) => {
   return (
-    <div className="w-fit h-fit p-1 rounded-lg bg-light-bg flex gap-4 justify-between items-center">
+    <div className="w-fit h-fit p-1 rounded-lg bg-light-bg flex gap-4 items-center">
       <div
-        className="w-[62px] rounded-lg h-[62px] bg-amber-600"
+        className="w-[62px] h-[62px] rounded-lg"
         style={{
           backgroundImage: `url('${backgroundLink}')`,
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
       />
-      <span className="mr-2">{text}</span>
+      <span className="mr-2 whitespace-nowrap">{text}</span>
     </div>
   );
 };
