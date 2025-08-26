@@ -11,30 +11,32 @@ import TaleTwoHouse from "../pages/case-study/tales-two-house";
 import Unscene from "../pages/case-study/unscenes";
 import MusicSoundDesign from "../pages/music-sound-design";
 import Google from "../pages/case-study/google";
+import VoiceOverService from "../pages/servicesVoice";
 
 function MainLayout() {
-  return (
-    <>
-      <ScrollToTop />
-      <NavigationBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/our-work" element={<OurWork />} />
-        <Route path="/our-work/ina" element={<Ina />} />
-        <Route path="/our-work/shimon-doyin" element={<Shido />} />
-        <Route path="/our-work/tale-two-house" element={<TaleTwoHouse />} />
-        <Route path="/our-work/unscene" element={<Unscene />} />
-        <Route path="/our-work/yascf" element={<Yascf />} />
-        <Route path="/our-work/google" element={<Google />} />
+	return (
+		<>
+			<ScrollToTop />
+			<NavigationBar />
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/our-work" element={<OurWork />} />
+				<Route path="/our-work/ina" element={<Ina />} />
+				<Route path="/our-work/shimon-doyin" element={<Shido />} />
+				<Route path="/our-work/tale-two-house" element={<TaleTwoHouse />} />
+				<Route path="/our-work/unscene" element={<Unscene />} />
+				<Route path="/our-work/yascf" element={<Yascf />} />
+				<Route path="/our-work/google" element={<Google />} />
 
-        <Route
-          path="/service/music-sound-design"
-          element={<MusicSoundDesign />}
-        />
-      </Routes>
-      <Footer />
-    </>
-  );
+				<Route path="/service/voice-over" element={<VoiceOverService />} />
+				<Route
+					path="/service/music-sound-design"
+					element={<MusicSoundDesign />}
+				/>
+			</Routes>
+			<Footer />
+		</>
+	);
 }
 
 export default MainLayout;
