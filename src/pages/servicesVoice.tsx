@@ -20,6 +20,7 @@ function VoiceOverService() {
 
 export default VoiceOverService;
 
+//remaining one section to be added
 // Carousel at hero section not added
 
 function ServiceHero() {
