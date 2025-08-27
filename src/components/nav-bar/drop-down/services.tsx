@@ -33,7 +33,7 @@ export default function ServicesDropDown() {
     {
       mainText: "Phygital Storytelling",
       subText: "Bridge real and digital into one story.",
-      href: "#",
+      href: "/service/phygital-storytelling",
     },
     {
       mainText: "Podcast Production",

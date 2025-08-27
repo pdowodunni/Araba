@@ -1,45 +1,13 @@
 import AuxHeader from "../components/shared/aux-header";
 import TxtImgSec from "../components/shared/layout/text-image-sec";
-import RightImgTextSec from "../components/shared/layout/rght-Img-tex-sec";
-import ProdGrdSec from "../components/shared/layout/producion-grid-sec";
-import LeftImgTextSec from "../components/shared/layout/left-img-txt-sec";
 import SlideUpButton from "../components/shared/slide-up-button";
-import { Percent, Rocket, Shuffle, TriangleRight } from "lucide-react";
 import LogoCarousel from "../components/shared/logo-carousel";
 import VerticalSnapCarousel from "../components/shared/testimonial";
 import { type Item } from "../components/shared/card-slider";
 import WorkShowcase from "../components/hero/our-work";
-import TwoRowGrdTxtHolder from "../components/shared/2-row-grid-text-holder";
+import TwoRowGrdTxtHolder from "../components/shared/layout/2-row-grid-text-holder";
 
 function ImmersiveAudio() {
-  const DATA = [
-    {
-      head: "Boost conversions",
-      text: "Emotional sound design enhances viewer retention and influences purchase decisions.",
-      Icon: Rocket,
-    },
-    {
-      head: "Increase recall",
-      text: "Jingles and audio logos are 90% more likely to be remembered than visuals alone.",
-      Icon: TriangleRight,
-    },
-    {
-      head: "Build brand equity",
-      text: "Your sound becomes an integral part of your identity, spanning platforms, campaigns, and years.",
-      Icon: Shuffle,
-    },
-    {
-      head: "Elevate perception",
-      text: "Great sound makes you look (and sound) more premium, polished, and credible.",
-      Icon: Percent,
-    },
-    {
-      head: "Drive emotion",
-      text: "Music and audio cues trigger feelings faster than visuals can. Period.",
-      Icon: Percent,
-    },
-  ];
-
   const TEXT_IMAGE_SEC_DATA = {
     heading: "BUILT FOR THE SENSES",
     subheading: (
@@ -385,6 +353,7 @@ function ImmersiveAudio() {
     <main className="">
       <AuxHeader
         listItems={SCROLL_ITEMS}
+        sHeading="AUDIOSTORYTELLING BY SOUNDBAKING COMPANY"
         backgroundImageLink="/images/20.png"
         {...AUX_HEADER_DATA}
       />

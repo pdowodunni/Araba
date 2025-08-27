@@ -12,6 +12,7 @@ import Unscene from "../pages/case-study/unscenes";
 import MusicSoundDesign from "../pages/music-sound-design";
 import Google from "../pages/case-study/google";
 import ImmersiveAudio from "../pages/immersive-audio";
+import PhygitalStorytelling from "../pages/phygital-storytelling";
 
 function MainLayout() {
   return (
@@ -35,6 +36,10 @@ function MainLayout() {
         <Route
           path="/service/immersive-experiential-audio"
           element={<ImmersiveAudio />}
+        />
+        <Route
+          path="/service/phygital-storytelling"
+          element={<PhygitalStorytelling />}
         />
       </Routes>
       <Footer />

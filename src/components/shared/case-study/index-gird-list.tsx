@@ -18,7 +18,7 @@ function IndxGrdLt({ data }: { data: { text: ReactNode }[] }) {
 
 export default IndxGrdLt;
 
-const Holder = ({ index, text }: { index: string; text: ReactNode }) => {
+export const Holder = ({ index, text }: { index: string; text: ReactNode }) => {
   return (
     <div className="flex flex-col gap-4">
       <span className="s-heading w-full border-b-2 border-[#D9D9D9]">

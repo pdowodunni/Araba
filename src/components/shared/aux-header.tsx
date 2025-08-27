@@ -5,10 +5,12 @@ import CardSlider, { type Item } from "./card-slider";
 function AuxHeader({
   listItems,
   backgroundImageLink,
+  sHeading = "Creative Design Service",
   head,
   text,
 }: {
   listItems: Item[];
+  sHeading?: string;
   backgroundImageLink: string;
   head: ReactNode;
   text: ReactNode;
@@ -27,7 +29,7 @@ function AuxHeader({
           <div className="flex pt-md-pad pb-sm-pad mx-assist mt-40 md:mt-0">
             <div className="flex flex-col gap-3 lg:gap-5 xl:gap-10">
               <div className="max-w-[560px] xl:max-w-[820px] text-white">
-                <span className="s-heading mb-2">Creative Design Service</span>
+                <span className="s-heading mb-2">{sHeading}</span>
                 {head}
               </div>
               <div>{text}</div>
