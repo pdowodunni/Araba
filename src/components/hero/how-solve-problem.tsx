@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import ShowcaseCardVertical from "../shared/showcase-card-vertical";
 import StickyStackCardsGSAP from "../shared/sticky-card";
 
@@ -9,7 +10,15 @@ import StickyStackCardsGSAP from "../shared/sticky-card";
   */
 }
 
-const FEATURES = [
+// Add interface for Feature
+export interface Feature {
+	title: ReactElement;
+	text: string;
+	img: string;
+	bg: string;
+}
+
+const FEATURES: Feature[] = [
 	{
 		title: (
 			<h5>
@@ -60,18 +69,18 @@ export default function HowWeSolveProblem() {
 							through three core pillars of storytelling
 						</h4>
 					</div>
-					<StickyCard />
+					<StickyCard features={FEATURES} />
 				</div>
 			</section>
 		</>
 	);
 }
 
-function StickyCard() {
+export function StickyCard({ features }: { features: Feature[] }) {
 	return (
 		<>
 			<div className="scrollbar-hide overflow-x-scroll w-screen hidden md:flex  max-w-[1680px] px-4 sm:px-6 lg:px-8 mx-auto lg:w-fit lg:grid gap-4 lg:grid-cols-3">
-				{FEATURES.map(({ title, text, img, bg }, idx) => (
+				{features.map(({ title, text, img, bg }, idx) => (
 					<div key={idx}>
 						<ShowcaseCardVertical title={title} text={text} img={img} bg={bg} />
 					</div>
