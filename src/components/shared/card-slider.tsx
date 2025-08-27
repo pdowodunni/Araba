@@ -1,14 +1,14 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-type Item = { backgroundLink: string; text: string };
+export type Item = { backgroundLink: string; text: string };
 
 export default function CardSlider({
   items,
-  speed = 0.015,
-  gapPx = 12, // gap between cards
-  trackGapPx = 12, // gap between the two duplicate tracks (batch spacing)
-  coverFactor = 2.4, // how many times the container width each track should cover
+  speed = 0.01,
+  gapPx = 12,
+  trackGapPx = 12,
+  coverFactor = 2.4,
 }: {
   items: Item[];
   speed?: number;

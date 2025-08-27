@@ -11,6 +11,7 @@ import TaleTwoHouse from "../pages/case-study/tales-two-house";
 import Unscene from "../pages/case-study/unscenes";
 import MusicSoundDesign from "../pages/music-sound-design";
 import Google from "../pages/case-study/google";
+import ImmersiveAudio from "../pages/immersive-audio";
 
 function MainLayout() {
   return (
@@ -30,6 +31,10 @@ function MainLayout() {
         <Route
           path="/service/music-sound-design"
           element={<MusicSoundDesign />}
+        />
+        <Route
+          path="/service/immersive-experiential-audio"
+          element={<ImmersiveAudio />}
         />
       </Routes>
       <Footer />

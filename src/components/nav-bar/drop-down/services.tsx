@@ -25,7 +25,7 @@ export default function ServicesDropDown() {
     {
       mainText: "Immersive & Experiential Audio",
       subText: "Audio worlds you can step into.",
-      href: "#",
+      href: "/service/immersive-experiential-audio",
     },
   ];
 

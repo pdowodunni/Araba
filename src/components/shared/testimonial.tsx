@@ -5,10 +5,8 @@ import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp } from "lucide-react";
 
 type Props = {
   showGuides?: boolean;
-  /** px offset from the true center: + moves RIGHT on <xl, + moves DOWN on ≥xl */
   centerOffsetSm?: number;
   centerOffsetLg?: number;
-  /** autoplay interval in ms; 0 disables */
   autoPlayMs?: number;
 };
 

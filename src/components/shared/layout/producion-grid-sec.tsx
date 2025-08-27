@@ -66,7 +66,7 @@ function ProdGrdSec() {
 
   return (
     <section className="">
-      <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-15">
+      <div className="py-sm-pad flex flex-col">
         <div className="flex flex-col gap-8 mb-4 items-center max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8">
           <h4 className="m-0 p-0 max-w-[520px] leading-tight text-center">
             Here's What We Bring to{" "}
