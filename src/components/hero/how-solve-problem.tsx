@@ -87,7 +87,7 @@ export function StickyCard({ features }: { features: Feature[] }) {
 				))}
 			</div>
 			<div className="block md:hidden">
-				<StickyStackCardsGSAP topOffset={-20} items={FEATURES} />
+				<StickyStackCardsGSAP topOffset={-20} items={features} />
 			</div>
 		</>
 	);
