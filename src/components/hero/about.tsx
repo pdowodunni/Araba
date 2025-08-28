@@ -20,22 +20,14 @@ export default function About() {
             </div>
 
             <div className="flex flex-col gap-8 max-w-[760px]">
-              <h5>
-                Araba Collective is{" "}
-                {/* <em className="font-instrumental-serif"> */}
-                {/* Pan-African Storytelling and Communications Company helping */}
-                {/* </em>{" "} */}
-                brands across {/* <em className="font-instrumental-serif"> */}
-                Africa and the Global South
-                {/* </em>{" "} */}
-                connect with people through{" "}
-                {/* <em className="font-instrumental-serif"> */}
-                Emotionally Intelligent, Culturally Grounded, {/* </em>{" "} */}
-                and {/* <em className="font-instrumental-serif"> */}
-                Tech-Enhanced storytelling.
-                {/* </em> */}
-              </h5>
-              <p>
+              <p className="p-lg">
+                Araba Collective is a Pan-African Storytelling and
+                Communications Company helping brands across Africa and the
+                Global South connect with people through Emotionally
+                Intelligent, Culturally Grounded, and Tech-Enhanced
+                storytelling.
+              </p>
+              <p className="p-lg">
                 We specialize in High-Impact, Story-led experiences delivered
                 across three formats: Strategy, Sound, and Screen.
               </p>

@@ -15,6 +15,7 @@ import ImmersiveAudio from "../pages/immersive-audio";
 import PhygitalStorytelling from "../pages/phygital-storytelling";
 import VideoProduction from "../pages/video-production";
 import VoiceOver from "../pages/voiceover-services";
+import AudiobookProduction from "../pages/audiobook-production";
 
 function MainLayout() {
   return (
@@ -45,6 +46,10 @@ function MainLayout() {
         />
         <Route path="/service/video-production" element={<VideoProduction />} />
         <Route path="/service/voiceover-services" element={<VoiceOver />} />
+        <Route
+          path="/service/audiobook-production"
+          element={<AudiobookProduction />}
+        />
       </Routes>
       <Footer />
     </>
