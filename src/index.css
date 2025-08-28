@@ -117,6 +117,9 @@
   .s-heading {
     @apply flex w-full pb-3 uppercase tracking-[2px];
   }
+  .s-index {
+    @apply opacity-40 text-[14px] mr-3;
+  }
   .p-main {
     @apply pt-[100px] min-h-screen;
   }

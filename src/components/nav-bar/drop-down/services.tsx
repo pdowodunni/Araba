@@ -3,19 +3,11 @@ import HoverContainer from "../../shared/hover-continer";
 import { Link } from "react-router-dom";
 
 export default function ServicesDropDown() {
-  {
-    /* 
-    ============================= 
-    Move all these to the config folder later.
-    ============================= 
-  */
-  }
-
   const AUDIO_EXPERIENCE_SERVICES = [
     {
       mainText: "Voiceover Services",
       subText: "Distinct voices that sound like your brand.",
-      href: "#",
+      href: "/service/voiceover-services",
     },
     {
       mainText: "Music & Sound design",
@@ -64,7 +56,7 @@ export default function ServicesDropDown() {
     {
       mainText: "Video Production",
       subText: "Cinematic stories built for every channel.",
-      href: "#",
+      href: "/service/video-production",
     },
     {
       mainText: "Motion Graphics & Animation",

@@ -103,6 +103,20 @@ const PAGE_STYLES: Record<
     logo: "/images/logo-color.webp",
     initailLogo: "/images/logo.webp",
   },
+  "/service/video-production": {
+    bg: "bg-light-bg",
+    text: "text-primary",
+    initialText: "text-light-bg",
+    logo: "/images/logo-color.webp",
+    initailLogo: "/images/logo.webp",
+  },
+  "/service/voiceover-services": {
+    bg: "bg-light-bg",
+    text: "text-primary",
+    initialText: "text-light-bg",
+    logo: "/images/logo-color.webp",
+    initailLogo: "/images/logo.webp",
+  },
 };
 
 const DEFAULT_STYLE = {

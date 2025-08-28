@@ -13,6 +13,8 @@ import MusicSoundDesign from "../pages/music-sound-design";
 import Google from "../pages/case-study/google";
 import ImmersiveAudio from "../pages/immersive-audio";
 import PhygitalStorytelling from "../pages/phygital-storytelling";
+import VideoProduction from "../pages/video-production";
+import VoiceOver from "../pages/voiceover-services";
 
 function MainLayout() {
   return (
@@ -41,6 +43,8 @@ function MainLayout() {
           path="/service/phygital-storytelling"
           element={<PhygitalStorytelling />}
         />
+        <Route path="/service/video-production" element={<VideoProduction />} />
+        <Route path="/service/voiceover-services" element={<VoiceOver />} />
       </Routes>
       <Footer />
     </>

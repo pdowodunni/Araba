@@ -4,14 +4,17 @@ import SlideUpButton from "../components/shared/slide-up-button";
 import LogoCarousel from "../components/shared/logo-carousel";
 import VerticalSnapCarousel from "../components/shared/testimonial";
 import { type Item } from "../components/shared/card-slider";
-import WorkShowcase from "../components/hero/our-work";
 import TwoRowGrdTxtHolder from "../components/shared/layout/2-row-grid-text-holder";
+import { Holder } from "../components/shared/case-study/index-gird-list";
 import TxtVidSecSmRight from "../components/shared/layout/text-video-sm-right";
 import TxtVidSecSmLeft from "../components/shared/layout/text-video-sm-left";
-import { Holder } from "../components/shared/case-study/index-gird-list";
+import RightImgTextSec from "../components/shared/layout/rght-Img-tex-sec";
+import NumberedPoint from "../components/shared/numbered-points";
 
 function PhygitalStorytelling() {
-  const TEXT_IMAGE_SEC_DATA = {
+  /* ===== DATA ===== */
+
+  const ABOUT_PHYGITAL_STORYTELLING = {
     heading: "About Phygital Storytelling",
     subheading: (
       <h4 className="font-medium leading-tight text-gray-900">
@@ -41,7 +44,28 @@ function PhygitalStorytelling() {
     ),
   };
 
-  const TEXT_IMAGE_SEC_DATA_TWO = {
+  const WHAT_YOU_GET = {
+    heading: "Why This Matters",
+    subheading: (
+      <h3>
+        Stories outlive <em className="font-instrumental-serif">statistics.</em>
+      </h3>
+    ),
+    text: (
+      <div className="flex flex-col gap-6">
+        <p className="p-lg">
+          Your audience won't remember the agenda. But they'll remember how your
+          event made them feel.
+        </p>
+        <p className="p-lg">
+          When funders, partners, or future participants ask what impact your
+          event created, you'll have a story to show, not just a report to send.
+        </p>
+      </div>
+    ),
+  };
+
+  const WHAT_MAKES_THIS_DIFFERENT = {
     heading: "What Makes This Different",
     subheading: (
       <p className="p-lg">
@@ -52,13 +76,19 @@ function PhygitalStorytelling() {
     ),
     text: (
       <div className="flex flex-col gap-6">
-        <p className="">
-          A human-first approach to immersive event coverage. We go beyond
-          highlight reels and create a layered archive of your event, complete
-          with video storytelling, presenter-led narratives,
-          micro-documentaries, interviews, photo essays, and platform-ready
-          social content.
-        </p>
+        <div>
+          <ul className="list-disc list-inside flex flex-col gap-2">
+            <li className="text-lg">Reflect the energy of the event</li>
+            <li className="text-lg">Drive community memory</li>
+            <li className="text-lg">Spark FOMO for the next edition</li>
+            <li className="text-lg">
+              Help attract funders and future partners
+            </li>
+            <li className="text-lg">
+              Leave a footprint beyond location and time
+            </li>
+          </ul>
+        </div>
         <div className="flex gap-4">
           <SlideUpButton
             type="fill"
@@ -72,9 +102,9 @@ function PhygitalStorytelling() {
     ),
   };
 
-  const TEXT_VIDEO_SEC_DATA_TWO = {
+  const WHAT_YOU_GET__RIGHT_VIDEO = {
     heading: "what you get",
-    subheading: <div></div>,
+    subheading: <div />,
     text: (
       <div className="flex flex-col gap-3">
         <p className="">
@@ -82,10 +112,10 @@ function PhygitalStorytelling() {
           event documentation
         </p>
         <p className="">
-          Content optimised for
+          Content optimised for{" "}
           <em className="font-interTight-semibold">
             YouTube, Instagram, LinkedIn, TikTok
-          </em>{" "}
+          </em>
         </p>
         <p className="">
           <em className="font-interTight-semibold">
@@ -114,9 +144,9 @@ function PhygitalStorytelling() {
     ),
   };
 
-  const TEXT_VIDEO_SEC_DATA_THREE = {
+  const WHO_IS_THIS_FOR = {
     heading: "who is this for",
-    subheading: <div></div>,
+    subheading: <div />,
     text: (
       <div className="flex flex-col gap-3">
         <p className="p-lg">This offer is designed for:</p>
@@ -130,87 +160,34 @@ function PhygitalStorytelling() {
             <p className="">Culture-focused or Movement-centred Events</p>,
             <p className="">Government-backed or Pan-African Initiatives</p>,
             <p className="">Story-rich community or grassroots activations</p>,
-          ].map((itm, idx) => {
-            return (
-              <div key={idx}>
-                <Holder index={`${idx + 1}`} text={itm} />
-              </div>
-            );
-          })}
+          ].map((itm, idx) => (
+            <div key={idx}>
+              <Holder index={`${idx + 1}`} text={itm} />
+            </div>
+          ))}
         </div>
-        {/* <div className="flex gap-4 mt-6">
-          <SlideUpButton
-            type="fill"
-            bgColor="var(--color-primary)"
-            textColor="white"
-          >
-            Get started
-          </SlideUpButton>
-        </div> */}
       </div>
     ),
   };
 
   const SCROLL_ITEMS: Item[] = [
-    {
-      backgroundLink: "/images/13.jpg",
-      text: "Web development",
-    },
-    {
-      backgroundLink: "/images/110.jpg",
-      text: "Design",
-    },
-    {
-      backgroundLink: "/images/17.jpg",
-      text: "Voice Over",
-    },
-    {
-      backgroundLink: "/images/111.jpg",
-      text: "Story telling",
-    },
-    {
-      backgroundLink: "/images/15.jpg",
-      text: "Mark Up",
-    },
-    {
-      backgroundLink: "/images/18.jpg",
-      text: "Antopoly study",
-    },
-    {
-      backgroundLink: "/images/14.jpg",
-      text: "Sound design",
-    },
-    {
-      backgroundLink: "/images/13.jpg",
-      text: "Web development",
-    },
-    {
-      backgroundLink: "/images/110.jpg",
-      text: "Design",
-    },
-    {
-      backgroundLink: "/images/17.jpg",
-      text: "Voice Over",
-    },
-    {
-      backgroundLink: "/images/111.jpg",
-      text: "Story telling",
-    },
-    {
-      backgroundLink: "/images/15.jpg",
-      text: "Mark Up",
-    },
-    {
-      backgroundLink: "/images/18.jpg",
-      text: "Antopoly study",
-    },
-    {
-      backgroundLink: "/images/14.jpg",
-      text: "Sound design",
-    },
+    { backgroundLink: "/images/13.jpg", text: "Web development" },
+    { backgroundLink: "/images/110.jpg", text: "Design" },
+    { backgroundLink: "/images/17.jpg", text: "Voice Over" },
+    { backgroundLink: "/images/111.jpg", text: "Story telling" },
+    { backgroundLink: "/images/15.jpg", text: "Mark Up" },
+    { backgroundLink: "/images/18.jpg", text: "Antopoly study" },
+    { backgroundLink: "/images/14.jpg", text: "Sound design" },
+    { backgroundLink: "/images/13.jpg", text: "Web development" },
+    { backgroundLink: "/images/110.jpg", text: "Design" },
+    { backgroundLink: "/images/17.jpg", text: "Voice Over" },
+    { backgroundLink: "/images/111.jpg", text: "Story telling" },
+    { backgroundLink: "/images/15.jpg", text: "Mark Up" },
+    { backgroundLink: "/images/18.jpg", text: "Antopoly study" },
+    { backgroundLink: "/images/14.jpg", text: "Sound design" },
   ];
 
-  const AUX_HEADER_DATA = {
+  const PHYGITAL_STORYTELLING = {
     head: (
       <h1 className=" font-instrumental-regular leading-tight xl:leading-[90px] text-start text-[44px] md:text-[70px] xl:text-[100px]">
         <span>Phygital Storytelling</span>
@@ -234,50 +211,147 @@ function PhygitalStorytelling() {
     ),
   };
 
+  const WHATS_INCLUDED = [
+    {
+      head: "Pre-Event Planning",
+      text: (
+        <div className="flex flex-col gap-4">
+          <ul className="pl-5 list-disc p-lg flex flex-col gap-2">
+            <li>Discovery call + story strategy session</li>
+            <li>Moodboard + narrative map (What story are we telling?)</li>
+            <li>Platform planning (Where does this story live and how?)</li>
+            <li>Creative direction + team assignment</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      head: "On-Ground Execution",
+      text: (
+        <div className="flex flex-col gap-4">
+          <ul className="pl-5 list-disc p-lg flex flex-col gap-2">
+            <li>Video coverage (human-centered, not just highlights)</li>
+            <li>Interviews with key participants and organizers</li>
+            <li>Presenter-style reporting (optional)</li>
+            <li>B-roll capturing energy, emotions, and moments</li>
+            <li>
+              Photography add-on (for memories + social + future marketing)
+            </li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      head: "Post-Event Storytelling",
+      text: (
+        <div className="flex flex-col gap-4">
+          <ul className="pl-5 list-disc p-lg flex flex-col gap-2">
+            <li>
+              Social-first content for Instagram, TikTok, LinkedIn, YouTube
+            </li>
+            <li>
+              Short-form edits (30s–3 mins) that build presence + provoke
+              emotion
+            </li>
+            <li>A cinematic event documentary (2–7 mins depending on scope)</li>
+            <li>Testimonials, bite-sized reactions, and audio snippets</li>
+            <li>Story copywriting (captions, quotes, headlines)</li>
+            <li>Dedicated folder for future reuse</li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      head: "Add-Ons (Optional but Game-Changing)",
+      text: (
+        <div className="flex flex-col gap-4">
+          <ul className="pl-5 list-disc p-lg flex flex-col gap-2">
+            <li>Live tweeting and real-time social coverage</li>
+            <li>Event soundtrack or audio storytelling</li>
+            <li>Podcast-style post-event reflections</li>
+            <li>Visual branding templates and overlays</li>
+            <li>Campaign design to repurpose the content over 3–6 months</li>
+          </ul>
+        </div>
+      ),
+    },
+  ];
+
+  const WHAT_YOU_GET__RIGHT_IMAGE = {
+    heading: "what you get",
+    subheading: <div />,
+    text: (
+      <div className="flex flex-col gap-3">
+        {[
+          "A full storytelling team (directors, writers, producers, editors)",
+          "Up to 50+ content pieces across formats",
+          "A documentary-style film",
+          "Social media buzz + storytelling that resonates",
+          "An emotional, evergreen asset that lives far beyond the event",
+        ].map((itm, idx) => (
+          <NumberedPoint
+            key={idx}
+            item={itm}
+            idx={idx}
+            itemClassName={"p-lg"}
+          />
+        ))}
+      </div>
+    ),
+  };
+
+  /* ===== RENDER ===== */
+
   return (
-    <main className="">
+    <main>
       <AuxHeader
         listItems={SCROLL_ITEMS}
         backgroundImageLink="/images/21.jpg"
         sHeading="CREATIVE SERVICES"
-        {...AUX_HEADER_DATA}
+        {...PHYGITAL_STORYTELLING}
       />
+
       <div className="mx-container py-sm-pad flex flex-col gap-15">
         <span className="s-heading flex justify-center text-sm">
           Trusted by 50+ of the world's biggest brands
         </span>
         <div className="flex justify-center items-center">
-          {" "}
           <LogoCarousel />
         </div>
       </div>
-      <TxtImgSec {...TEXT_IMAGE_SEC_DATA} />
+
+      <TxtImgSec {...ABOUT_PHYGITAL_STORYTELLING} />
+
       <TxtVidSecSmRight
-        {...TEXT_VIDEO_SEC_DATA_TWO}
+        {...WHAT_YOU_GET__RIGHT_VIDEO}
         videoLink="/video/video.mp4"
       />
-      <TxtVidSecSmLeft
-        {...TEXT_VIDEO_SEC_DATA_THREE}
-        videoLink="/video/video.mp4"
-      />
-      <TxtImgSec {...TEXT_IMAGE_SEC_DATA_TWO} />
-      {/* <WorkShowcase /> */}
-      {/* <section>
+
+      <TxtVidSecSmLeft {...WHO_IS_THIS_FOR} videoLink="/video/video.mp4" />
+
+      <TxtImgSec {...WHAT_MAKES_THIS_DIFFERENT} />
+
+      <section>
         <div className="mx-container">
           <div className="pt-md-pad pb-sm-pad flex flex-col gap-20">
             <div className="flex flex-col gap-2">
-              <p className="text-sm uppercase tracking-wide">OUR PROCESS</p>
-              <h3 className="m-0 p-0">
-                How me make the{" "}
-                <em className="font-instrumental-serif">magic happen</em>
-              </h3>
+              <p className="s-heading">What's Included</p>
+              <h5 className="">
+                We customise based on your goals, but here's a glimpse into the
+                modular layers we offer:
+              </h5>
             </div>
             <div>
-              <TwoRowGrdTxtHolder data={TWO_GRD_DATA} />
+              <TwoRowGrdTxtHolder data={WHATS_INCLUDED} />
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
+
+      <RightImgTextSec {...WHAT_YOU_GET__RIGHT_IMAGE} />
+
+      <TxtImgSec {...WHAT_YOU_GET} />
+
       <VerticalSnapCarousel />
     </main>
   );
