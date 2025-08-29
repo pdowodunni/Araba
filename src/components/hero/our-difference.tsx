@@ -56,7 +56,7 @@ export default function OurDifferenceSection() {
                   {label}
                 </span>
                 <h5 className="p-0 m-0">{title}</h5>
-                <p className="">{description}</p>
+                <p className="p-lg">{description}</p>
               </div>
             ))}
           </div>

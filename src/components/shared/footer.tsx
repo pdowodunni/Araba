@@ -5,78 +5,90 @@ import {
   Music,
   ArrowUpRight,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
-{
-  /* 
-    ============================= 
-    Move all these to the config folder later.
-    ============================= 
-  */
-}
-const SERVICES = [
+/* ---------------- data ---------------- */
+
+const AUDIO_EXPERIENCE_SERVICES = [
   {
-    title: "Creative design services",
-    links: [
-      "Ad creative",
-      "Social media creative",
-      "Presentation design",
-      "Illustration design",
-      "Branding services",
-      "Email creation",
-      "Web design",
-      "eBooks & report design",
-      "Concept creation",
-      "Print design",
-      "Packaging & merchandise design",
-    ],
+    mainText: "Voiceover Services",
+    subText: "Distinct voices that sound like your brand.",
+    href: "/service/voiceover-services",
   },
   {
-    title: "Specialized production services",
-    links: ["Video production", "Motion design", "3D & AR design"],
+    mainText: "Music & Sound design",
+    subText: "Original scores and soundscapes that stick.",
+    href: "/service/music-sound-design",
   },
   {
-    title: "AI services",
-    links: ["AI enhanced creative", "AI consulting"],
-  },
-  {
-    title: "Marketing services",
-    links: ["Marketing strategy"],
+    mainText: "Immersive & Experiential Audio",
+    subText: "Audio worlds you can step into.",
+    href: "/service/immersive-experiential-audio",
   },
 ];
 
-const NAV = {
-  Main: [
-    "Our work",
-    "Our people",
-    "About us",
-    "Pricing",
-    "Trust center",
-    "Careers",
-    "Araba vs. Alternatives",
-    "Forrester TEI Report",
-  ],
-  Learn: [
-    "Blog",
-    "Events & Summits",
-    "Guides & Reports",
-    "Customer Stories",
-    "Video Library",
-    "Playbooks",
-    "What's new",
-  ],
-};
+const SPECIALIZED_SERVICES = [
+  {
+    mainText: "Phygital Storytelling",
+    subText: "Bridge real and digital into one story.",
+    href: "/service/phygital-storytelling",
+  },
+  {
+    mainText: "Podcast Production",
+    subText: "Concept, booking, recording, polish, done.",
+    href: "#",
+  },
+  {
+    mainText: "Audiobook Production",
+    subText: "Books performed with nuance and pace.",
+    href: "/service/audiobook-production",
+  },
+  {
+    mainText: "Storytelling Sprint",
+    subText: "Tight timelines, strong ideas, shipped.",
+    href: "#",
+  },
+];
+
+const STRATEGIC_STORYTELLING_SERVICES = [
+  {
+    mainText: "Marketing Strategy",
+    subText: "Positioning, messaging, and measurable plans.",
+    href: "#",
+  },
+];
+
+const VISUAL_STORYTELLING_SERVICES = [
+  {
+    mainText: "Video Production",
+    subText: "Cinematic stories built for every channel.",
+    href: "/service/video-production",
+  },
+  {
+    mainText: "Motion Graphics & Animation",
+    subText: "Punchy animations that explain fast.",
+    href: "#",
+  },
+  {
+    mainText: "AI-Storytelling",
+    subText: "Co-created with AI for speed and scale.",
+    href: "#",
+  },
+];
+
+const SERVICE_GROUPS = [
+  { title: "Audio Experience", items: AUDIO_EXPERIENCE_SERVICES },
+  { title: "Specialized Production", items: SPECIALIZED_SERVICES },
+  { title: "Strategic Storytelling", items: STRATEGIC_STORYTELLING_SERVICES },
+  { title: "Visual Storytelling", items: VISUAL_STORYTELLING_SERVICES },
+];
+
+/* ---------------- component ---------------- */
 
 export default function Footer() {
-  {
-    /* 
-    ============================= 
-    Break this up later.
-    ============================= 
-  */
-  }
   return (
     <>
-      <section>
+      {/* <section>
         <div className="bg-primary text-white">
           <div className="mx-container flex justify-center py-sm-pad">
             <div className="max-w-5xl">
@@ -87,41 +99,51 @@ export default function Footer() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
       <footer className="bg-primary text-white py-16">
         <div className="mx-container">
-          <div className="mx-auto grid gap-12 lg:grid-cols-5">
+          <div className="mx-auto grid gap-12">
             {/* Services */}
-            <div className="lg:col-span-3 grid grid-cols-2 gap-8">
-              {SERVICES.map(({ title, links }) => (
+
+            <div className="lg:col-span-3 grid grid-cols-3 gap-8">
+              {SERVICE_GROUPS.map(({ title, items }) => (
                 <div key={title}>
-                  <h3 className="text-[20px] font-medium mb-4 flex items-center">
+                  <h5 className="font-medium mb-4 flex items-center">
                     {title}
                     <ArrowUpRight className="ml-2" size={26} strokeWidth={1} />
-                  </h3>
-                  <ul className="space-y-2 text text-white/40">
-                    {links.map((txt) => (
-                      <li key={txt} className="cursor-pointer">
-                        {txt}
+                  </h5>
+                  <ul className="space-y-3">
+                    {items.map(({ mainText, subText, href }) => (
+                      <li key={mainText}>
+                        <Link to={href} className="group block">
+                          <div className="text-[20px] font-medium group-hover:underline">
+                            {mainText}
+                          </div>
+                          <div className=" text-white/50">{subText}</div>
+                        </Link>
                       </li>
                     ))}
                   </ul>
                 </div>
               ))}
             </div>
-            {/* Navigation */}
-            <div className="lg:col-span-2 grid grid-cols-2 gap-8">
-              {Object.entries(NAV).map(([section, items]) => (
-                <div key={section}>
-                  <h3 className="text-lg font-medium mb-4">{section}</h3>
-                  <ul className="space-y-2 text-sm text-white/80">
-                    {items.map((txt) => (
-                      <li key={txt}>{txt}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
+
+            {/* Navigation (Main only) */}
+            {/* <div className="lg:col-span-2 grid grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-lg font-medium mb-4">Main</h3>
+                <ul className="space-y-2 p-lg text-white/80">
+                  {NAV_MAIN.map((txt) => (
+                    <li key={txt}>
+                      <Link to={`/${txt.toLowerCase().replace(/\s+/g, "-")}`}>
+                        {txt}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div> */}
           </div>
 
           <div className="mt-12 border-t border-white/20 pt-8 flex flex-col md:flex-row items-center justify-between">
@@ -131,22 +153,17 @@ export default function Footer() {
                 alt="araba's logo"
                 className="w-[90px] select-none pointer-events-none"
               />
-              <span className="text-sm">
-                © 2025 Araba. All rights reserved.
-              </span>
+              <span className="">© 2025 Araba. All rights reserved.</span>
             </div>
             <div className="flex items-center space-x-6">
-              <a href="#" className="text-sm text-white/80 hover:text-white">
-                Privacy policy
+              <a href="#" className="text-white/80 hover:text-white">
+                Our Work
               </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
-                Terms of use
+              <a href="#" className="text-white/80 hover:text-white">
+                Resources
               </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
-                Status page
-              </a>
-              <a href="#" className="text-sm text-white/80 hover:text-white">
-                DMCA
+              <a href="#" className="text-white/80 hover:text-white">
+                About Us
               </a>
             </div>
             <div className="mt-6 md:mt-0 flex space-x-4">
