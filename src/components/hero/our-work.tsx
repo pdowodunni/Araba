@@ -1,9 +1,5 @@
 import SlideUpButton from "../shared/slide-up-button";
-// import ScrollReveal from "../shared/scrool-reveal";
-import {
-  ShowCaseCardHorizontal,
-  type ShowcaseCardHorizontalProps,
-} from "../shared/showcase-card-horizontal";
+import { ShowCaseCardHorizontal } from "../shared/showcase-card-horizontal";
 import { PROJECT_LIST } from "../../config/case-study";
 
 export default function WorkShowcase() {
@@ -11,7 +7,6 @@ export default function WorkShowcase() {
     <section className="text-light-bg bg-primary">
       <div className="mx-container">
         <div className="pt-lg-pad pb-md-pad flex flex-col gap-10 md:gap-20">
-          {/* <ScrollReveal> */}
           <div className="flex justify-between flex-col gap-4 xl:flex-row">
             <div className="flex flex-col gap-2">
               <p className="text-sm uppercase tracking-wide">Our Work</p>
@@ -26,13 +21,13 @@ export default function WorkShowcase() {
                   type="outline"
                   bgColor="var(--color-light-bg)"
                   textColor="var(--color-light-bg)"
+                  to="/our-work"
                 >
                   Explore all our work
                 </SlideUpButton>
               </div>
             </div>
           </div>
-          {/* </ScrollReveal> */}
           <div className="flex flex-col gap-2 md:gap-20">
             {PROJECT_LIST.map((row, i) => (
               <div key={i} className="mx-auto w-full flex justify-center">

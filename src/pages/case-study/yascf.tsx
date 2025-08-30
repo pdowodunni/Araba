@@ -70,11 +70,11 @@ function Yascf() {
                 feels like <em className="font-interTight-semibold">US</em> .
                 Grounded. Humble. Transformational.
               </h5>
-              <p className=" text-center">
+              <p className="p-lg text-center">
                 They had a version of the story that didn't quite communicate
                 the essence of their work…
               </p>
-              <p className=" text-center font-instrumental-serif">
+              <p className="p-lg text-center font-instrumental-serif">
                 “Can you help us bring this back to life?”
               </p>
             </div>
@@ -93,12 +93,12 @@ function Yascf() {
               INSIGHT & CREATIVE STRATEGY
             </span>
             <div className="flex flex-col gap-6">
-              <p className="text-xl text-center">
+              <p className="p-lg text-center">
                 We were given what already existed: interviews, b-roll,
                 reactions, half-finished thoughts… and our job was to find the
                 story inside the noise.
               </p>
-              <p className="text-xl text-center">
+              <p className="p-lg text-center">
                 Our Approach? Piece by Piece, Frame by Frame
               </p>
             </div>

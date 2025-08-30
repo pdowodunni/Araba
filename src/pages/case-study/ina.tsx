@@ -66,13 +66,13 @@ function Ina() {
             <span className="s-heading w-full flex justify-center">
               The brief
             </span>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 items-center">
               <h5 className="text-center">
                 “We want to give a creative spin to a spiritual event that will
                 spark curiosity. People shouldn't know what the event is about
                 until they get here”
               </h5>
-              <p className=" text-center">
+              <p className="p-lg max-w-[800px] text-center">
                 The “ask” was simple… craft an unforgettable prelude that would
                 stir emotions, raise anticipation, and set the tone for the
                 meeting.
@@ -96,7 +96,7 @@ function Ina() {
               INSIGHT & CREATIVE STRATEGY
             </span>
             <div className="flex flex-col gap-6">
-              <p className="text-xl text-center">
+              <p className="p-lg text-center">
                 We asked: “What if we told a story in a different language. We
                 had the idea of writing a part of the story in Greek. Since the
                 new testament bible was originally written in Greek, Hebrew and
@@ -110,7 +110,7 @@ function Ina() {
                   (Is there smoke without fire or fire without light?)
                 </h5>
               </span>
-              <p className="text-xl text-center">
+              <p className="p-lg text-center">
                 The “ask” was simple… craft an unforgettable prelude that would
                 stir emotions, raise anticipation, and set the tone for the
                 meeting.

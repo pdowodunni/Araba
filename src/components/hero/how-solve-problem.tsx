@@ -27,7 +27,7 @@ const FEATURES = [
         Soundbaking Company
       </h5>
     ),
-    text: "From cinematic voiceovers to textured soundscapes, Soundbaking Company.",
+    text: "From cinematic voiceovers to textured soundscapes, Soundbaking Company creates audio that breathes, pulses, and persuades.",
     img: "/images/114.webp",
     bg: "bg-mid-bg text-primary",
   },
@@ -37,7 +37,7 @@ const FEATURES = [
         <em className="font-instrumental-serif">Visual</em> Storytelling
       </h5>
     ),
-    text: "We remix your raw moments, missions, or memories into films that feel.",
+    text: "We remix your raw moments, missions, or memories into films that feel like art, speak like truth, and play like culture.",
     img: "/images/115.webp",
     bg: "bg-green-accent text-primary",
   },

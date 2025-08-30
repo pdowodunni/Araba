@@ -123,7 +123,7 @@ function MusicSoundDesign() {
         <div className="mx-0 lg:mx-auto grid gap-8 lg:gap-15 sm:grid-cols-1 lg:grid-cols-2">
           {DATA.map(({ Icon, head, text }, idx) => (
             <div key={idx} className="flex flex-col gap-2 lg:gap-5">
-              <div className="mx-0 mb-2 flex h-16 w-16 items-center justify-center rounded-lg bg-black/8 scale-100">
+              <div className="logo-box">
                 <Icon color="#0a221f" />
               </div>
               <h5 className="m-0 p-0">{head}</h5>

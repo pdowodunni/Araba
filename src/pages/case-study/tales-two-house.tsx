@@ -182,7 +182,7 @@ function TaleTwoHouse() {
         assetLink="https://youtu.be/nVhvJo_y-kQ?si=0llwXWWoNMHWHeHJ"
         aboutHead="A Tale of Two Houses by Niyi Adekunle began as a values-driven book centred on Family, Faith, Finance, and Values."
         aboutBody="We transformed it into a full-cast immersive audio drama,  reimagining the story for the ear, bringing characters to life with multiple voices (including the author himself), cinematic sound design, and chapter-by-chapter engagement tools.
-From script adaptation and casting to marketing content creation and multi-platform distribution, we delivered the project end-to-end."
+          From script adaptation and casting to marketing content creation and multi-platform distribution, we delivered the project end-to-end."
         client="Niyi Adekunle"
         year="2024"
         industry=" Family • Faith • Finance • Values"

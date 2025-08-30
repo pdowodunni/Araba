@@ -1,5 +1,6 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 {
   /* 
@@ -17,6 +18,7 @@ interface SlideUpButtonProps {
   bgColor: string;
   textColor: string;
   children?: React.ReactNode;
+  to?: string;
 }
 
 function SlideUpButton({
@@ -24,6 +26,7 @@ function SlideUpButton({
   bgColor,
   textColor,
   children,
+  to,
 }: SlideUpButtonProps) {
   const buttonText = useRef<HTMLDivElement>(null);
   const hamburgerTextRef = useRef<HTMLDivElement>(null);
@@ -50,33 +53,35 @@ function SlideUpButton({
   });
 
   return (
-    <div
-      className={`flex justify-center items-center text-sm py-[16px] px-[24px] relative rounded-full cursor-pointer`}
-      style={{
-        backgroundColor: `${type === "fill" ? bgColor : "transparent"}`,
-        border: type === "outline" ? `1px solid ${bgColor}` : "none",
-      }}
-      ref={buttonText}
-    >
-      <div className="h-[18px] relative overflow-y-hidden">
-        <div
-          ref={hamburgerTextRef}
-          className="relative right-0 w-full h-[40px] flex flex-col justify-between items-center font-interTight-semibold pointer-none:"
-          style={{ color: textColor }}
-        >
-          {Array.from({ length: 2 }).map((_, idx) => (
-            <span
-              key={idx}
-              className={`relative ${
-                idx === 1 && "font-instrumental-serif text-[18px]"
-              }`}
-            >
-              {children}
-            </span>
-          ))}
+    <Link to={to || "#"}>
+      <div
+        className={`flex justify-center items-center text-sm py-[16px] px-[24px] relative rounded-full cursor-pointer`}
+        style={{
+          backgroundColor: `${type === "fill" ? bgColor : "transparent"}`,
+          border: type === "outline" ? `1px solid ${bgColor}` : "none",
+        }}
+        ref={buttonText}
+      >
+        <div className="h-[18px] relative overflow-y-hidden">
+          <div
+            ref={hamburgerTextRef}
+            className="relative right-0 w-full h-[40px] flex flex-col justify-between items-center font-interTight-semibold pointer-none:"
+            style={{ color: textColor }}
+          >
+            {Array.from({ length: 2 }).map((_, idx) => (
+              <span
+                key={idx}
+                className={`relative ${
+                  idx === 1 && "font-instrumental-serif text-[18px]"
+                }`}
+              >
+                {children}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

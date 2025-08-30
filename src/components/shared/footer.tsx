@@ -106,7 +106,7 @@ export default function Footer() {
           <div className="mx-auto grid gap-12">
             {/* Services */}
 
-            <div className="lg:col-span-3 grid grid-cols-3 gap-8">
+            <div className="lg:col-span-3 grid grid-cols-2 xl:grid-cols-3 gap-8">
               {SERVICE_GROUPS.map(({ title, items }) => (
                 <div key={title}>
                   <h5 className="font-medium mb-4 flex items-center">
@@ -117,10 +117,12 @@ export default function Footer() {
                     {items.map(({ mainText, subText, href }) => (
                       <li key={mainText}>
                         <Link to={href} className="group block">
-                          <div className="text-[20px] font-medium group-hover:underline">
+                          <div className="text-[18px] xl:text-[20px] font-medium group-hover:underline">
                             {mainText}
                           </div>
-                          <div className=" text-white/50">{subText}</div>
+                          <div className=" text-white/50 text-[14px]">
+                            {subText}
+                          </div>
                         </Link>
                       </li>
                     ))}
@@ -128,22 +130,6 @@ export default function Footer() {
                 </div>
               ))}
             </div>
-
-            {/* Navigation (Main only) */}
-            {/* <div className="lg:col-span-2 grid grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-lg font-medium mb-4">Main</h3>
-                <ul className="space-y-2 p-lg text-white/80">
-                  {NAV_MAIN.map((txt) => (
-                    <li key={txt}>
-                      <Link to={`/${txt.toLowerCase().replace(/\s+/g, "-")}`}>
-                        {txt}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div> */}
           </div>
 
           <div className="mt-12 border-t border-white/20 pt-8 flex flex-col md:flex-row items-center justify-between">

@@ -1482,8 +1482,8 @@ export const PenIcon = ({ color = "#0A221F" }: { color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="2.5em"
-      height="2.5em"
+      width="2.0em"
+      height="2.0em"
       fill={color}
       viewBox="0 0 256 256"
     >
@@ -1495,8 +1495,8 @@ export const CheckNoteIcon = ({ color = "#0A221F" }: { color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="2.5em"
-      height="2.5em"
+      width="2.0em"
+      height="2.0em"
       fill={color}
       viewBox="0 0 256 256"
     >
@@ -1508,8 +1508,8 @@ export const StarIcon = ({ color = "#0A221F" }: { color: string }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="2.5em"
-      height="2.5em"
+      width="2.0em"
+      height="2.0em"
       fill={color}
       viewBox="0 0 256 256"
     >
