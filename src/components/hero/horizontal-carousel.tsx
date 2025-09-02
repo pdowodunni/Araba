@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, useEffect } from "react";
 import gsap from "gsap";
 
 type Item = { image: string; Logo: React.FC };
@@ -12,10 +12,11 @@ export default function HorizontalOpposedMarquees({
   rowB?: Item[];
   speed?: number;
 }) {
-  // readiness (avoid flicker/shift)
   const [ready, setReady] = useState(false);
 
-  // refs for the four tracks (two per row)
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+
+  // tracks
   const topA = useRef<HTMLDivElement | null>(null);
   const topB = useRef<HTMLDivElement | null>(null);
   const botA = useRef<HTMLDivElement | null>(null);
@@ -28,24 +29,27 @@ export default function HorizontalOpposedMarquees({
   const dirRef = useRef<1 | -1>(1);
   const boostRef = useRef(1);
   const lastY = useRef(0);
+  const speedRef = useRef(speed);
 
-  // tick
+  useEffect(() => {
+    speedRef.current = speed;
+  }, [speed]);
+
   const step = () => {
     const a1 = topA.current,
       a2 = topB.current;
     const b1 = botA.current,
       b2 = botB.current;
 
-    // ease boost back toward 1
     boostRef.current += (1 - boostRef.current) * 0.08;
 
     // top follows scroll direction
-    xTop.current += dirRef.current * speed * boostRef.current;
+    xTop.current += dirRef.current * speedRef.current * boostRef.current;
     if (xTop.current <= -100) xTop.current = 0;
     if (xTop.current > 0) xTop.current = -100;
 
     // bottom moves opposite
-    xBot.current -= dirRef.current * speed * boostRef.current;
+    xBot.current -= dirRef.current * speedRef.current * boostRef.current;
     if (xBot.current <= -100) xBot.current = 0;
     if (xBot.current > 0) xBot.current = -100;
 
@@ -55,12 +59,12 @@ export default function HorizontalOpposedMarquees({
     rafId.current = requestAnimationFrame(step);
   };
 
-  // preload then start
+  // preload then start; reveal ONLY after all images are ready
   useLayoutEffect(() => {
     let cancelled = false;
 
     const urls = Array.from(new Set([...rowA, ...rowB].map((i) => i.image)));
-    Promise.all(
+    const preload = Promise.all(
       urls.map(
         (src) =>
           new Promise<void>((res) => {
@@ -69,53 +73,60 @@ export default function HorizontalOpposedMarquees({
             img.src = src;
           })
       )
-    ).then(() => {
+    );
+
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const d = y - lastY.current;
+      lastY.current = y;
+      if (d === 0) return;
+      dirRef.current = d > 0 ? 1 : -1;
+      boostRef.current = 6;
+    };
+    const onWheel = (e: WheelEvent) => {
+      if (!e.deltaY && !e.deltaX) return;
+      const mag =
+        Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+      dirRef.current = mag > 0 ? 1 : -1;
+      boostRef.current = 6;
+    };
+
+    preload.then(() => {
       if (cancelled) return;
 
       setReady(true);
+      const wrap = wrapRef.current;
+      if (wrap)
+        gsap.fromTo(
+          wrap,
+          { autoAlpha: 0 },
+          { autoAlpha: 1, duration: 0.3, ease: "power2.out" }
+        );
+
       xTop.current = 0;
       xBot.current = 0;
       lastY.current = window.scrollY || 0;
-
-      // listeners
-      const onScroll = () => {
-        const y = window.scrollY || 0;
-        const d = y - lastY.current;
-        lastY.current = y;
-        if (d === 0) return;
-        dirRef.current = d > 0 ? 1 : -1;
-        boostRef.current = 6;
-      };
-      const onWheel = (e: WheelEvent) => {
-        if (e.deltaY === 0) return;
-        dirRef.current = e.deltaY > 0 ? 1 : -1;
-        boostRef.current = 6;
-      };
 
       window.addEventListener("scroll", onScroll, { passive: true });
       window.addEventListener("wheel", onWheel, { passive: true });
 
       rafId.current = requestAnimationFrame(step);
-
-      return () => {
-        if (rafId.current !== null) cancelAnimationFrame(rafId.current);
-        window.removeEventListener("scroll", onScroll);
-        window.removeEventListener("wheel", onWheel);
-      };
     });
 
     return () => {
       cancelled = true;
       if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("wheel", onWheel);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [speed, rowA, rowB]);
+  }, [rowA, rowB]);
 
   return (
     <div
-      className={`relative overflow-hidden py-6 transition-opacity duration-300 ${
-        ready ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
+      ref={wrapRef}
+      className="relative overflow-hidden py-6"
+      style={{ visibility: ready ? "visible" : "hidden" }}
     >
       {/* Fades */}
       <div className="pointer-events-none absolute left-0 top-0 h-full w-24 md:w-40 z-10 bg-[linear-gradient(to_right,var(--color-primary),transparent)]" />
@@ -124,7 +135,6 @@ export default function HorizontalOpposedMarquees({
       {/* TOP ROW */}
       <div className="relative w-full overflow-hidden mb-4">
         <div className="flex flex-nowrap gap-4">
-          {/* track A */}
           <div
             ref={topA}
             className="flex flex-nowrap gap-4 shrink-0 will-change-transform"
@@ -133,7 +143,6 @@ export default function HorizontalOpposedMarquees({
               <Card key={`tA-${i}`} {...it} />
             ))}
           </div>
-          {/* track B (duplicate) */}
           <div
             ref={topB}
             className="flex flex-nowrap gap-4 shrink-0 will-change-transform"
@@ -178,10 +187,7 @@ function Card({ image, Logo }: Item) {
       <img
         src={image}
         className="w-[140px] h-[200px] rounded-lg block"
-        style={{
-          objectPosition: "center",
-          objectFit: "cover",
-        }}
+        style={{ objectPosition: "center", objectFit: "cover" }}
         alt=""
         loading="lazy"
       />

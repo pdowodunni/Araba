@@ -43,16 +43,21 @@
   --color-green-accent: #d8ff85;
   --color-green-accent-dark: #2a4e45;
 
-  --font-instrumental-serif: "InstrumentSerif-Italic";
+  --font-instrumental-serif: "InstrumentSerif-Italic", "Instrument Serif",
+    Georgia, "Times New Roman", ui-serif, "Palatino Linotype", Palatino,
+    "Book Antiqua", serif;
   --font-instrumental-regular: "InstrumentSerif-Regular";
 
   --font-interTight-medium: "InterTight-Medium";
   --font-interTight-semibold: "InterTight-SemiBold";
-  --font-interTight-regular: "InterTight-Regular";
+  --font-interTight-regular: "InterTight-Regular", Inter, ui-sans-serif,
+    "Helvetica Neue", Arial;
 }
 
 :root {
-  font-family: "InterTight-Regular", Helvetica, Arial, sans-serif;
+  font-family: "InterTight-Regular", Inter, ui-sans-serif, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 
   color-scheme: light dark;
   color: var(--color-primary);

@@ -1,5 +1,6 @@
 import NavigationBar from "../components/nav-bar";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { TransitionGroup, Transition } from "react-transition-group";
 import Home from "../pages/Home";
 import Footer from "../components/shared/footer";
 import OurWork from "../pages/our-work";
@@ -16,42 +17,104 @@ import PhygitalStorytelling from "../pages/phygital-storytelling";
 import VideoProduction from "../pages/video-production";
 import VoiceOver from "../pages/voiceover-services";
 import AudiobookProduction from "../pages/audiobook-production";
+import { useRef } from "react";
+import gsap from "gsap";
 
 function MainLayout() {
+  const location = useLocation();
+  const nodeRef = useRef<HTMLDivElement>(null);
+  const reduce =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const enter = (node: HTMLElement) => {
+    gsap.killTweensOf(node);
+    if (reduce) {
+      gsap.set(node, { autoAlpha: 1, clearProps: "filter" });
+      return;
+    }
+    gsap
+      .timeline({ defaults: { ease: "power2.out" } })
+      .set(node, { autoAlpha: 0, filter: "blur(8px)" })
+      .to(node, { autoAlpha: 1, duration: 0.5 })
+      .to(node, { filter: "blur(0px)", duration: 0.6 });
+  };
+
+  const exit = (node: HTMLElement) => {
+    gsap.killTweensOf(node);
+    if (reduce) return;
+    gsap
+      .timeline({ defaults: { ease: "power2.in" } })
+      .to(node, { autoAlpha: 0, filter: "blur(8px)", duration: 0.35 });
+  };
+
   return (
     <>
-      <ScrollToTop />
       <NavigationBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/our-work" element={<OurWork />} />
-        <Route path="/our-work/ina" element={<Ina />} />
-        <Route path="/our-work/shimon-doyin" element={<Shido />} />
-        <Route path="/our-work/tale-two-house" element={<TaleTwoHouse />} />
-        <Route path="/our-work/unscene" element={<Unscene />} />
-        <Route path="/our-work/yascf" element={<Yascf />} />
-        <Route path="/our-work/google" element={<Google />} />
-
-        <Route
-          path="/service/music-sound-design"
-          element={<MusicSoundDesign />}
-        />
-        <Route
-          path="/service/immersive-experiential-audio"
-          element={<ImmersiveAudio />}
-        />
-        <Route
-          path="/service/phygital-storytelling"
-          element={<PhygitalStorytelling />}
-        />
-        <Route path="/service/video-production" element={<VideoProduction />} />
-        <Route path="/service/voiceover-services" element={<VoiceOver />} />
-        <Route
-          path="/service/audiobook-production"
-          element={<AudiobookProduction />}
-        />
-      </Routes>
-      <Footer />
+      <TransitionGroup component={null}>
+        <Transition
+          key={location.pathname}
+          nodeRef={nodeRef}
+          timeout={{ enter: 500, exit: 400 }} // cover GSAP durations
+          onEnter={() => {
+            const node = nodeRef.current!;
+            enter(node);
+          }}
+          onExit={() => {
+            const node = nodeRef.current!;
+            exit(node);
+          }}
+          mountOnEnter
+          unmountOnExit
+        >
+          {/* Only page content fades/blur-transitions */}
+          <div
+            ref={nodeRef}
+            className="min-h-screen"
+            style={{ willChange: "opacity, filter" }}
+          >
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/our-work" element={<OurWork />} />
+              <Route path="/our-work/ina" element={<Ina />} />
+              <Route path="/our-work/shimon-doyin" element={<Shido />} />
+              <Route
+                path="/our-work/tale-two-house"
+                element={<TaleTwoHouse />}
+              />
+              <Route path="/our-work/unscene" element={<Unscene />} />
+              <Route path="/our-work/yascf" element={<Yascf />} />
+              <Route path="/our-work/google" element={<Google />} />
+              <Route
+                path="/service/music-sound-design"
+                element={<MusicSoundDesign />}
+              />
+              <Route
+                path="/service/immersive-experiential-audio"
+                element={<ImmersiveAudio />}
+              />
+              <Route
+                path="/service/phygital-storytelling"
+                element={<PhygitalStorytelling />}
+              />
+              <Route
+                path="/service/video-production"
+                element={<VideoProduction />}
+              />
+              <Route
+                path="/service/voiceover-services"
+                element={<VoiceOver />}
+              />
+              <Route
+                path="/service/audiobook-production"
+                element={<AudiobookProduction />}
+              />
+            </Routes>
+            <Footer />
+          </div>
+        </Transition>
+      </TransitionGroup>
     </>
   );
 }

@@ -1,8 +1,9 @@
 import { type ReactNode } from "react";
 import HoverContainer from "../../shared/hover-continer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ServicesDropDown() {
+  const navigate = useNavigate();
   const AUDIO_EXPERIENCE_SERVICES = [
     {
       mainText: "Voiceover Services",
@@ -70,6 +71,12 @@ export default function ServicesDropDown() {
     },
   ];
 
+  const go = (href: string) => {
+    if (!href || href === "#") return;
+    console.log("clicked", href);
+    navigate(href);
+  };
+
   return (
     <div className="relative z-5">
       <div className="pointer-events-auto relative top-full left-0 w-screen bg-light-bg md:shadow-lg pt-2 md:pt-12">
@@ -83,16 +90,16 @@ export default function ServicesDropDown() {
               {AUDIO_EXPERIENCE_SERVICES.map((it, idx) => {
                 return (
                   <li key={idx} className="cursor-pointer w-fit">
-                    <Link to={it.href}>
-                      <div className="relative group">
-                        <HoverContainer color="#0a211f">
-                          <p className="text-[#0a211f] ">{it.mainText}</p>
-                        </HoverContainer>
-                        <p className="text-sm text-[#0a211f] mt-2">
-                          {it.subText}
-                        </p>
-                      </div>
-                    </Link>
+                    {/* <Link to={it.href}> */}
+                    <div className="relative group" onClick={() => go(it.href)}>
+                      <HoverContainer color="#0a211f">
+                        <p className="text-[#0a211f] ">{it.mainText}</p>
+                      </HoverContainer>
+                      <p className="text-sm text-[#0a211f] mt-2">
+                        {it.subText}
+                      </p>
+                    </div>
+                    {/* </Link> */}
                   </li>
                 );
               })}
@@ -108,16 +115,16 @@ export default function ServicesDropDown() {
               {SPECIALIZED_SERVICES.map((it, idx) => {
                 return (
                   <li key={idx} className="cursor-pointer w-fit">
-                    <Link to={it.href}>
-                      <div className="relative group">
-                        <HoverContainer color="#0a211f">
-                          <p className="text-[#0a211f] ">{it.mainText}</p>
-                        </HoverContainer>
-                        <p className="text-sm text-[#0a211f] mt-2">
-                          {it.subText}
-                        </p>
-                      </div>
-                    </Link>
+                    {/* <Link to={it.href}> */}
+                    <div className="relative group" onClick={() => go(it.href)}>
+                      <HoverContainer color="#0a211f">
+                        <p className="text-[#0a211f] ">{it.mainText}</p>
+                      </HoverContainer>
+                      <p className="text-sm text-[#0a211f] mt-2">
+                        {it.subText}
+                      </p>
+                    </div>
+                    {/* </Link> */}
                   </li>
                 );
               })}
@@ -133,16 +140,16 @@ export default function ServicesDropDown() {
               {STRATEGIC_STORYTELLING_SERVICES.map((it, idx) => {
                 return (
                   <li key={idx} className="cursor-pointer w-fit">
-                    <Link to={it.href}>
-                      <div className="relative group">
-                        <HoverContainer color="#0a211f">
-                          <p className="text-[#0a211f] ">{it.mainText}</p>
-                        </HoverContainer>
-                        <p className="text-sm text-[#0a211f] mt-2">
-                          {it.subText}
-                        </p>
-                      </div>
-                    </Link>
+                    {/* <Link to={it.href}> */}
+                    <div className="relative group" onClick={() => go(it.href)}>
+                      <HoverContainer color="#0a211f">
+                        <p className="text-[#0a211f] ">{it.mainText}</p>
+                      </HoverContainer>
+                      <p className="text-sm text-[#0a211f] mt-2">
+                        {it.subText}
+                      </p>
+                    </div>
+                    {/* </Link> */}
                   </li>
                 );
               })}
@@ -155,16 +162,16 @@ export default function ServicesDropDown() {
               {VISUAL_STORYTELLING_SERVICES.map((it, idx) => {
                 return (
                   <li key={idx} className="cursor-pointer w-fit">
-                    <Link to={it.href}>
-                      <div className="relative group">
-                        <HoverContainer color="#0a211f">
-                          <p className="text-[#0a211f] ">{it.mainText}</p>
-                        </HoverContainer>
-                        <p className="text-sm text-[#0a211f] mt-2">
-                          {it.subText}
-                        </p>
-                      </div>
-                    </Link>
+                    {/* <Link to={it.href}> */}
+                    <div className="relative group" onClick={() => go(it.href)}>
+                      <HoverContainer color="#0a211f">
+                        <p className="text-[#0a211f] ">{it.mainText}</p>
+                      </HoverContainer>
+                      <p className="text-sm text-[#0a211f] mt-2">
+                        {it.subText}
+                      </p>
+                    </div>
+                    {/* </Link> */}
                   </li>
                 );
               })}

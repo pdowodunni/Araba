@@ -152,7 +152,7 @@ function NavigationBar() {
       const atOrPast = window.scrollY >= 200;
       setSolidBG(atOrPast);
     };
-    onScroll(); // set initial
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -208,6 +208,11 @@ function NavigationBar() {
       clearCloseTimer();
     };
   }, []);
+  useEffect(() => {
+    // any path change: close desktop dropdown + mobile panel
+    closePanelNow();
+    setMobileOpen(false);
+  }, [location.pathname]);
 
   const rawDrop: DropRenderable | null =
     activeIdx != null

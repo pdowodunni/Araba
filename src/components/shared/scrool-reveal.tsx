@@ -3,40 +3,36 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
-{
-  /* 
-    ============================= 
-    Logic for that revealing stuff using scrollTrigger
-
-    Would tweak it later, It's too slow as at now.
-    ============================= 
-  */
-}
 
 const ScrollReveal = ({ children }: { children: ReactNode }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
-    const el = ref.current;
-    gsap.fromTo(
-      el,
-      { opacity: 0, filter: "blur(4px)" },
-      {
-        opacity: 1,
-        delay: 0.2,
-        filter: "blur(0px)",
-        ease: "power2.out",
-        duration: 0.7,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      }
-    );
+    const ctx = gsap.context(() => {
+      const el = ref.current!;
+      gsap.set(el, { opacity: 0, filter: "blur(8px)" });
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        })
+        .to(el, { opacity: 1, duration: 0.6, ease: "power2.out" })
+        .to({}, { duration: 0.4 })
+        .to(el, { filter: "blur(0px)", duration: 0.7, ease: "power2.out" });
+    }, ref);
+
+    return () => ctx.revert();
   }, []);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} style={{ willChange: "opacity, filter" }}>
+      {children}
+    </div>
+  );
 };
 
 export default ScrollReveal;
