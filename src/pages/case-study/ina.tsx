@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import AnimatedNumber from "../../components/animate-counter";
 import AnimatedCounter from "../../components/animate-counter";
 import TwoImgCrdRow from "../../components/shared/case-study/2-image-card-row";
@@ -62,45 +63,51 @@ function Ina() {
           "/images/casestudy/ina-12.png",
         ]}
       /> */}
-      {/* THE BRIEF */}
 
+      {/* THE BRIEF */}
       <section>
         <div className="case-container">
           <div className="pt-sm-pad flex flex-col gap-8">
-            <span className="s-heading w-full flex justify-center">
-              The brief
-            </span>
-            <div className="flex flex-col gap-6 items-center">
-              <h5 className="text-center">
-                “We want to give a creative spin to a spiritual event that will
-                spark curiosity. People shouldn't know what the event is about
-                until they get here”
-              </h5>
-              <p className="p-lg max-w-[800px] text-center">
-                The “ask” was simple… craft an unforgettable prelude that would
-                stir emotions, raise anticipation, and set the tone for the
-                meeting.
-              </p>
-            </div>
+            <TwoRow>
+              <span className="s-heading w-full flex justify-start">
+                The brief
+              </span>
+              <div className="flex flex-col gap-3">
+                <h5 className="">
+                  “We want to give a creative spin to a spiritual event that
+                  will spark curiosity. People shouldn't know what the event is
+                  about until they get here”
+                </h5>
+                <p className="p-lg  ">
+                  The “ask” was simple… craft an unforgettable prelude that
+                  would stir emotions, raise anticipation, and set the tone for
+                  the meeting.
+                </p>
+              </div>
+            </TwoRow>
           </div>
         </div>
+        {/* </div> */}
       </section>
       {/* THE BRIEF */}
+
       {/* <TwoImgCrdRow
         imagesUrl={[
           "/images/casestudy/ina-11.png",
           "/images/casestudy/ina-4.png",
         ]}
       /> */}
+
       {/* INSIGHT & CREATIVE STRATEGY */}
       <section>
         <div className="case-container">
-          <div className=" py-sm-pad flex flex-col gap-8">
-            <span className="s-heading w-full flex justify-center">
+          {/* <div className=" py-sm-pad flex flex-col gap-8"> */}
+          <TwoRow>
+            <span className="s-heading w-full flex justify-start">
               INSIGHT & CREATIVE STRATEGY
             </span>
             <div className="flex flex-col gap-6">
-              <p className="p-lg text-center">
+              <p className="p-lg text-start">
                 We asked: “What if we told a story in a different language. We
                 had the idea of writing a part of the story in Greek. Since the
                 new testament bible was originally written in Greek, Hebrew and
@@ -114,14 +121,15 @@ function Ina() {
                   (Is there smoke without fire or fire without light?)
                 </h5>
               </span>
-              <p className="p-lg text-center">
+              <p className="p-lg text-start">
                 The “ask” was simple… craft an unforgettable prelude that would
                 stir emotions, raise anticipation, and set the tone for the
                 meeting.
               </p>
             </div>
-          </div>
+          </TwoRow>
         </div>
+        {/* </div> */}
       </section>
       {/* INSIGHT & CREATIVE STRATEGY */}
       {/* <FourimgCrd
@@ -134,7 +142,7 @@ function Ina() {
       /> */}
       <section>
         <div className="case-container">
-          <div className=" py-sm-pad flex flex-col gap-8">
+          <div className="py-sm-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">
               Execution & Experience Design
             </span>
@@ -175,5 +183,12 @@ function Ina() {
     </main>
   );
 }
-
 export default Ina;
+
+export const TwoRow = ({ children }: { children: ReactNode }) => {
+  return (
+    <div className="grid grid-cols-1 xl:grid-cols-[200px_1fr] gap-2 xl:gap-4 2xl:gap-8">
+      {children}
+    </div>
+  );
+};

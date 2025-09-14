@@ -33,7 +33,7 @@ function HeroHeader() {
                   bgColor="var(--color-green-accent)"
                   textColor="var(--color-primary)"
                 >
-                  Book a demo
+                  Let's talk
                 </SlideUpButton>
               </div>
             </div>

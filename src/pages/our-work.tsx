@@ -5,14 +5,21 @@ import ScrollReveal from "../components/shared/scrool-reveal";
 
 function OurWork() {
   return (
-    <main className="p-main">
-      {/* <ScrollReveal> */}
+    <main
+      className="p-main"
+      style={{
+        backgroundImage: "url('/images/n-b.png')",
+        backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <Header />
-      {/* </ScrollReveal> */}
       <div className="mx-container">
-        <div className="flex justify-center items-center">
-          <LogoCarousel />
-        </div>
+        <ScrollReveal>
+          <div className="flex justify-center items-center">
+            <LogoCarousel />
+          </div>
+        </ScrollReveal>
       </div>
       <Portfolio />
     </main>
