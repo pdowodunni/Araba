@@ -15,7 +15,7 @@ function HeroHeader() {
             <div className="flex flex-col justify-center items-center xl:items-start gap-3 xl:gap-8  px-4 sm:px-6 lg:px-8">
               <h2 className="text-[#8DFDBA] font-interTight-regular leading-tight max-w-[560px] xl:max-w-[540px] text-center xl:text-start">
                 <span>
-                  Your brands{" "}
+                  Your brand's{" "}
                   <span className="font-instrumental-serif">
                     storytelling engine
                   </span>{" "}
@@ -23,7 +23,8 @@ function HeroHeader() {
               </h2>
               <div className="">
                 <p className="text-white p-lg max-w-[500px] text-center xl:text-start">
-                  Storytelling that Moves People and Drives Results.
+                  Storytelling that moves. Strategy that connects. Contents that
+                  last.
                 </p>
               </div>
               <div className="flex">

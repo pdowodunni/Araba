@@ -35,8 +35,8 @@ export default function OurDifferenceSection() {
             </span>
             <h4 className="m-0 p-0 max-w-[820px] leading-tight text-center">
               Araba is the{" "}
-              <em className="font-instrumental-serif">perfect fit</em> for fast
-              moving brands
+              <em className="font-instrumental-serif">built for brands</em> that
+              move hearts, not just metrics
             </h4>
           </div>
           <div className="mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

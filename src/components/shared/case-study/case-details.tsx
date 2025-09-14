@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactPlayer from "react-player";
 import { Volume2, VolumeX } from "lucide-react";
+import SoundButton from "../sound-button";
 
 function CaseDetails({
   assetType,
@@ -100,15 +101,7 @@ function CaseDetails({
                   onReady={() => setLoaded(true)}
                   className="absolute top-0 left-0 w-full h-full"
                 />
-                <button
-                  type="button"
-                  onClick={() => setMuted((m) => !m)}
-                  className="absolute bottom-4 right-4 z-10 rounded-full bg-black/60 text-white px-2 py-2 text-sm"
-                  aria-pressed={!muted}
-                  aria-label={muted ? "Unmute video" : "Mute video"}
-                >
-                  {muted ? <Volume2 /> : <VolumeX />}
-                </button>
+                <SoundButton muted={muted} setMuted={setMuted} />
               </div>
             ) : (
               <div

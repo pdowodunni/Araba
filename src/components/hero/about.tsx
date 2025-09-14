@@ -13,31 +13,51 @@ export default function About() {
               <span className="block w-full pb-3 uppercase tracking-wide border-b border-primary font-interTight-regular">
                 Who we are
               </span>
-              <h3 className="font-medium leading-tight text-gray-900">
-                Your brand's{" "}
-                <em className="font-instrumental-serif">storytelling engine</em>
-              </h3>
+              <h5 className="font-medium leading-tight text-gray-900">
+                <em className="font-interTight-medium">Araba Collective</em> is
+                a{" "}
+                <em className="font-interTight-medium">
+                  Pan-African Storytelling and Communications Company
+                </em>{" "}
+                that helps brands become{" "}
+                <em className="font-interTight-medium">
+                  memorable, meaningful, and strategically sound.
+                </em>
+              </h5>
             </div>
 
-            <div className="flex flex-col gap-8 max-w-[760px]">
+            <div className="flex flex-col gap-4 max-w-[760px]">
               <p className="p-lg">
-                Araba Collective is a Pan-African Storytelling and
-                Communications Company helping brands across Africa and the
-                Global South connect with people through Emotionally
-                Intelligent, Culturally Grounded, and Tech-Enhanced
-                storytelling.
+                We craft emotionally intelligent, culturally grounded, and
+                tech-enhanced storytelling that{" "}
+                <em className="font-interTight-semibold">
+                  connects, resonates, and moves people to action.
+                </em>
               </p>
               <p className="p-lg">
-                We specialize in High-Impact, Story-led experiences delivered
-                across three formats: Strategy, Sound, and Screen.
+                Through{" "}
+                <em className="font-interTight-semibold">
+                  strategy, sound, and screen,
+                </em>{" "}
+                we design high-impact, story-led experiences that scale{" "}
+                <em className="font-interTight-semibold">trust, visibility,</em>{" "}
+                and <em className="font-interTight-semibold">loyalty.</em>
+              </p>
+              <p className="p-lg">
+                Our purpose is simple: to build meaningful systems that outlive
+                campaigns and outlast trends.
+              </p>
+              <p className="p-lg font-instrumental-serif">
+                …because emotions move money, and communities drive change.
               </p>
               <div className="flex gap-4">
                 <SlideUpButton
                   type="fill"
                   bgColor="var(--color-primary)"
                   textColor="white"
+                  to="mailto:hello@arabacollective"
                 >
-                  Book a demo
+                  Let's talk
                 </SlideUpButton>
               </div>
             </div>

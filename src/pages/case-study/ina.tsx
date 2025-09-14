@@ -1,3 +1,5 @@
+import AnimatedNumber from "../../components/animate-counter";
+import AnimatedCounter from "../../components/animate-counter";
 import TwoImgCrdRow from "../../components/shared/case-study/2-image-card-row";
 import ThreeImgCrdRow from "../../components/shared/case-study/3-image-card-row";
 import FourimgCrd from "../../components/shared/case-study/4-image-card";
@@ -37,6 +39,7 @@ function Ina() {
   ];
   return (
     <main className="p-main">
+      {/* <AnimatedNumber /> */}
       <BreadCrumb pages={BREADCRUMB_PAGES} />
       {/* YT not available */}
       <CaseStudyVideoHeader videoUrl={"/video/ina-disp.mp4"} />
@@ -52,17 +55,18 @@ function Ina() {
         industry="Faith Culture & Experimental Events"
         service="Scriptwriting & Concept Development • Voice Casting • Voice Acting • Sound Design • Creative Direction"
       />
-      <ThreeImgCrdRow
+      {/* <ThreeImgCrdRow
         imagesUrl={[
           "/images/casestudy/ina-14.png",
           "/images/casestudy/ina-15.png",
           "/images/casestudy/ina-12.png",
         ]}
-      />
+      /> */}
       {/* THE BRIEF */}
+
       <section>
         <div className="case-container">
-          <div className="py-sm-pad flex flex-col gap-8">
+          <div className="pt-sm-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">
               The brief
             </span>
@@ -82,12 +86,12 @@ function Ina() {
         </div>
       </section>
       {/* THE BRIEF */}
-      <TwoImgCrdRow
+      {/* <TwoImgCrdRow
         imagesUrl={[
           "/images/casestudy/ina-11.png",
           "/images/casestudy/ina-4.png",
         ]}
-      />
+      /> */}
       {/* INSIGHT & CREATIVE STRATEGY */}
       <section>
         <div className="case-container">
@@ -120,14 +124,14 @@ function Ina() {
         </div>
       </section>
       {/* INSIGHT & CREATIVE STRATEGY */}
-      <FourimgCrd
+      {/* <FourimgCrd
         imagesUrl={[
           "/images/casestudy/ina-1.png",
           "/images/casestudy/ina-6.png",
           "/images/casestudy/ina-3.png",
           "/images/casestudy/ina-8.png",
         ]}
-      />
+      /> */}
       <section>
         <div className="case-container">
           <div className=" py-sm-pad flex flex-col gap-8">
@@ -141,7 +145,7 @@ function Ina() {
       {/* RESULT */}
       <section>
         <div className="case-container">
-          <div className=" py-sm-pad flex flex-col gap-8">
+          <div className="py-sm-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">Result</span>
             <div>
               <p className="text-xl">
@@ -168,7 +172,6 @@ function Ina() {
         </div>
       </section>
       <ProjectPager />
-      {/* RESULT */}
     </main>
   );
 }

@@ -17,12 +17,24 @@ import PhygitalStorytelling from "../pages/phygital-storytelling";
 import VideoProduction from "../pages/video-production";
 import VoiceOver from "../pages/voiceover-services";
 import AudiobookProduction from "../pages/audiobook-production";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 
 function MainLayout() {
   const location = useLocation();
-  const nodeRef = useRef<HTMLDivElement>(null);
+
+  // 1) Keep a distinct ref per pathname
+  const refMap = useRef(new Map<string, React.RefObject<HTMLDivElement>>());
+  const getNodeRef = (key: string) => {
+    let r = refMap.current.get(key);
+    if (!r) {
+      r = React.createRef<HTMLDivElement>();
+      refMap.current.set(key, r);
+    }
+    return r;
+  };
+  const nodeRef = getNodeRef(location.pathname);
+
   const reduce =
     typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -36,26 +48,31 @@ function MainLayout() {
     gsap
       .timeline({ defaults: { ease: "power2.out" } })
       .set(node, { autoAlpha: 0, filter: "blur(8px)" })
-      .to(node, { autoAlpha: 1, duration: 0.5 })
-      .to(node, { filter: "blur(0px)", duration: 0.6 });
+      .to(node, { autoAlpha: 1, duration: 0.6 }, 0)
+      .to(node, { filter: "blur(0px)", duration: 1 }, 0);
   };
 
   const exit = (node: HTMLElement) => {
     gsap.killTweensOf(node);
     if (reduce) return;
-    gsap
-      .timeline({ defaults: { ease: "power2.in" } })
-      .to(node, { autoAlpha: 0, filter: "blur(8px)", duration: 0.35 });
+    gsap.to(node, {
+      autoAlpha: 0,
+      filter: "blur(8px)",
+      duration: 0.35,
+      ease: "power2.in",
+    });
   };
 
   return (
     <>
+      {/* Keep navbar outside the animated container so it stays fixed */}
       <NavigationBar />
+
       <TransitionGroup component={null}>
         <Transition
           key={location.pathname}
           nodeRef={nodeRef}
-          timeout={{ enter: 500, exit: 400 }} // cover GSAP durations
+          timeout={{ enter: 700, exit: 500 }}
           onEnter={() => {
             const node = nodeRef.current!;
             enter(node);
@@ -67,7 +84,6 @@ function MainLayout() {
           mountOnEnter
           unmountOnExit
         >
-          {/* Only page content fades/blur-transitions */}
           <div
             ref={nodeRef}
             className="min-h-screen"
