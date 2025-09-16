@@ -5,6 +5,7 @@ import IndxGrdLt from "../components/shared/case-study/index-gird-list";
 import TwoRowGrdTxtHolder from "../components/shared/layout/2-row-grid-text-holder";
 import TxtImgSec from "../components/shared/layout/text-image-sec";
 import LogoCarousel from "../components/shared/logo-carousel";
+import ScrollReveal from "../components/shared/scrool-reveal";
 import SlideUpButton from "../components/shared/slide-up-button";
 import VerticalSnapCarousel from "../components/shared/testimonial";
 
@@ -17,21 +18,34 @@ function VoiceOver() {
       </h1>
     ),
     text: (
-      <div className="flex flex-col gap-5 max-w-[650px]">
-        <p className="text-white font-instrumental-serif text-start xl:text-xl">
-          “In a fast-scrolling world, only real voices are remembered.”
+      <div className="flex flex-col gap-2 max-w-[1000px]">
+        <p className="text-white font-instrumental-serif text-start p-lg">
+          “In a noisy, fast-scrolling world, only the brands that sound real
+          will be remembered.”
         </p>
+        <div className="flex flex-col gap-0 my-4">
+          <p className="text-white text-start md:text-xl">
+            Let's be honest. You've got a message worth hearing! But …
+          </p>
+          <ul className="pl-5 list-disc xl:text-xl flex flex-col gap-0 mt-2 text-white">
+            <li>
+              You're stuck using whoever's available, not who fits the story.
+            </li>
+            <li>
+              Your script sounds like a script, not like real people talking.
+            </li>
+            <li>
+              You're wasting time giving feedback, doing pickups, and still not
+              getting what you want.
+            </li>
+            <li>
+              You're using AI voice tools… but deep down, you know they're
+              missing a soul.
+            </li>
+          </ul>
+        </div>
         <p className="text-white text-start xl:text-xl">
-          Your message deserves a human, story-fit performance not a generic
-          read. No more miscast voices, flat takes, or endless pickups.
-        </p>
-        <ul className="pl-5 list-disc xl:text-xl flex flex-col gap-2 mt-2 text-white">
-          <li>Expert casting matched to your brand</li>
-          <li>Directed, emotive delivery</li>
-          <li>Fast turnarounds & clean, broadcast-ready audio</li>
-        </ul>
-        <p className="text-white text-start xl:text-xl">
-          And that’s where we come in.
+          And that's where we come in.
         </p>
       </div>
     ),
@@ -106,10 +120,10 @@ function VoiceOver() {
     ),
     text: (
       <div className="flex flex-col gap-6">
-        <p className="p-lg">
+        <h5 className="leading-tight">
           Whether you're voicing a product, a mission, a moment, or a full-blown
           brand anthem…we help you make it hit home.
-        </p>
+        </h5>
         <p className="p-lg">
           From casting to coaching to post-production, we handle the magic
           behind the mic, because when the right voice meets the right emotion,
@@ -122,7 +136,7 @@ function VoiceOver() {
             bgColor="var(--color-primary)"
             textColor="white"
           >
-            Get started
+            Let's talk
           </SlideUpButton>
         </div>
       </div>
@@ -228,6 +242,7 @@ function VoiceOver() {
       text: <p className="p-lg">And finally sound like them</p>,
     },
   ];
+
   return (
     <main>
       <AuxHeader
@@ -237,20 +252,19 @@ function VoiceOver() {
         {...AUX_HEADER_DATA}
       />
 
-      <div className="mx-container py-sm-pad flex flex-col gap-15">
-        <span className="s-heading flex justify-center text-sm">
-          Trusted by 50+ of the world's biggest brands
-        </span>
-        <div className="flex justify-center items-center">
-          {" "}
-          <LogoCarousel />
+      <ScrollReveal>
+        <div className="mx-container py-sm-pad flex flex-col gap-15">
+          <span className="s-heading flex justify-center text-sm">
+            Trusted by 50+ of the world's biggest brands
+          </span>
+          <div className="flex justify-center items-center">
+            {" "}
+            <LogoCarousel />
+          </div>
         </div>
-      </div>
-
-      <TxtImgSec {...ENGINEERED_EMOTION} />
-
-      <WorkShowcase />
-
+      </ScrollReveal>
+      {/* <TxtImgSec {...ENGINEERED_EMOTION} /> */}
+      {/* <WorkShowcase /> */}
       <section>
         <div className="mx-container">
           <div className="pt-md-pad pb-sm-pad flex flex-col gap-20">
@@ -270,7 +284,7 @@ function VoiceOver() {
 
       <VerticalSnapCarousel />
 
-      <section>
+      {/* <section>
         <div className="mx-container">
           <div className="pt-md-pad pb-sm-pad flex flex-col gap-20">
             <div className="flex flex-col gap-2">
@@ -287,7 +301,7 @@ function VoiceOver() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

@@ -30,24 +30,27 @@ export default function About() {
               <p className="p-lg">
                 We craft emotionally intelligent, culturally grounded, and
                 tech-enhanced storytelling that{" "}
-                <em className="font-interTight-semibold">
+                <em className="font-instrumental-serif font-bold">
                   connects, resonates, and moves people to action.
                 </em>
               </p>
               <p className="p-lg">
                 Through{" "}
-                <em className="font-interTight-semibold">
+                <em className="font-instrumental-serif font-bold">
                   strategy, sound, and screen,
                 </em>{" "}
                 we design high-impact, story-led experiences that scale{" "}
-                <em className="font-interTight-semibold">trust, visibility,</em>{" "}
-                and <em className="font-interTight-semibold">loyalty.</em>
+                <em className="font-instrumental-serif font-bold">
+                  trust, visibility,
+                </em>{" "}
+                and{" "}
+                <em className="font-instrumental-serif font-bold">loyalty.</em>
               </p>
               <p className="p-lg">
                 Our purpose is simple: to build meaningful systems that outlive
                 campaigns and outlast trends.
               </p>
-              <p className="p-lg font-instrumental-serif">
+              <p className="">
                 …because emotions move money, and communities drive change.
               </p>
               <div className="flex gap-4">

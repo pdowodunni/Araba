@@ -38,7 +38,14 @@ function Yascf() {
     },
   ];
   return (
-    <main className="p-main">
+    <main
+      className="p-main"
+      style={{
+        backgroundImage: "url('/images/n-b.png')",
+        backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
       <BreadCrumb pages={BREADCRUMB_PAGES} />
 
       <CaseStudyVideoHeader

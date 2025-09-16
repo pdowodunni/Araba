@@ -39,7 +39,14 @@ function Ina() {
     },
   ];
   return (
-    <main className="p-main">
+    <main
+      className="p-main"
+      style={{
+        backgroundImage: "url('/images/n-b.png')",
+        backgroundRepeat: "repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
       {/* <AnimatedNumber /> */}
       <BreadCrumb pages={BREADCRUMB_PAGES} />
       {/* YT not available */}
@@ -142,7 +149,7 @@ function Ina() {
       /> */}
       <section>
         <div className="case-container">
-          <div className="py-sm-pad flex flex-col gap-8">
+          <div className="pt-sm-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">
               Execution & Experience Design
             </span>

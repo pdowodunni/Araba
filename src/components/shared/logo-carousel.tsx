@@ -24,8 +24,8 @@ function LogoCarousel() {
   });
   return (
     <div className="max-w-[1385px] w-screen mx-10 flex whitespace-nowrap min-h-20 gap-20 relative overflow-x-hidden">
-      <div className="bg-gradient-to-r from-light-bg to-transparent w-[50px] md:w-[200px] h-[100%] absolute top-0 z-4 left-0" />
-      <div className="bg-gradient-to-l from-light-bg to-transparent w-[50px] md:w-[200px] h-[100%] absolute top-0 z-4 right-0" />
+      <div className="bg-gradient-to-r  from-light-bg to-transparent w-[50px] md:w-[200px] h-[100%] absolute top-0 z-4 left-0" />
+      <div className="bg-gradient-to-l  from-light-bg to-transparent w-[50px] md:w-[200px] h-[100%] absolute top-0 z-4 right-0" />
       <div className="flex gap-20" ref={firstTextRef}>
         {CAROUSEL_BRANDS.map((Icon, index) => {
           return (

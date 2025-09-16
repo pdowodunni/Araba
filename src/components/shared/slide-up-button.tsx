@@ -53,7 +53,7 @@ function SlideUpButton({
   });
 
   return (
-    <Link to={to || "#"}>
+    <Link to={to || "mailto:hello@arabacollective"}>
       <div
         className={`flex justify-center items-center text-sm py-[16px] px-[24px] relative rounded-full cursor-pointer`}
         style={{

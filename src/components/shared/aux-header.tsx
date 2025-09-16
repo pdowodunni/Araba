@@ -12,8 +12,8 @@ function AuxHeader({
   listItems: Item[];
   sHeading?: string;
   backgroundImageLink: string;
-  head: ReactNode;
-  text: ReactNode;
+  head?: ReactNode;
+  text?: ReactNode;
 }) {
   return (
     <header
@@ -24,7 +24,7 @@ function AuxHeader({
         backgroundColor: "var(--color-primary)",
       }}
     >
-      <div className="flex h-fit  pt-[78px]">
+      <div className="flex h-fit pt-[78px]">
         <div className="mx-container w-full">
           <div className="flex pt-md-pad pb-sm-pad mx-assist mt-40 md:mt-0">
             <div className="flex flex-col gap-3 lg:gap-5 xl:gap-10">
@@ -39,14 +39,14 @@ function AuxHeader({
                   bgColor="var(--color-green-accent)"
                   textColor="var(--color-primary)"
                 >
-                  Book a demo
+                  Let's talk
                 </SlideUpButton>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className=" pb-4 lg:pb-10">
+      <div className="pb-4 lg:pb-10">
         <CardSlider items={listItems} />
       </div>
     </header>

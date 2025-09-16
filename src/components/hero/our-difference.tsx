@@ -34,9 +34,9 @@ export default function OurDifferenceSection() {
               OUR DIFFERENCE
             </span>
             <h4 className="m-0 p-0 max-w-[820px] leading-tight text-center">
-              Araba is the{" "}
-              <em className="font-instrumental-serif">built for brands</em> that
-              move hearts, not just metrics
+              Africa-rooted.{" "}
+              <em className="font-instrumental-serif">Globally Relevant.</em>{" "}
+              Creatively Dangerous.
             </h4>
           </div>
           <div className="mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">

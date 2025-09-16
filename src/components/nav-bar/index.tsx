@@ -27,9 +27,9 @@ const PAGE_STYLES: Record<
   }
 > = {
   "/": {
-    bg: "bg-primary",
-    text: "text-white",
-    initialText: "text-light-bg",
+    bg: "bg-primary text-light-bg",
+    text: "text-light-bg",
+    initialText: "bg-transparent text-light-bg",
     logo: "/images/logo.webp",
     initailLogo: "/images/logo.webp",
   }, // landing
@@ -393,7 +393,6 @@ function DropDownHolder({
     }
   }, [open]);
 
-  // Close on any anchor (or explicit marker) click inside the dropdown
   const onClickCapture: React.MouseEventHandler<HTMLDivElement> = (e) => {
     const target = e.target as HTMLElement | null;
     if (!target) return;
