@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import AnimatedNumber from "../../components/animate-counter";
 import AnimatedCounter from "../../components/animate-counter";
 import TwoImgCrdRow from "../../components/shared/case-study/2-image-card-row";
@@ -38,6 +38,28 @@ function Ina() {
       text: "Mythical textures blended with suspenseful pads.",
     },
   ];
+
+  // SOUND CLOUD STUFF
+  // const iframeRef = useRef(null);
+
+  // useEffect(() => {
+  //   // Load SoundCloud widget API
+  //   const script = document.createElement("script");
+  //   script.src = "https://w.soundcloud.com/player/api.js";
+  //   script.async = true;
+  //   document.body.appendChild(script);
+
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   };
+  // }, []);
+
+  // const playTrack = () => {
+  //   if (window.SC && iframeRef.current) {
+  //     const widget = window.SC.Widget(iframeRef.current);
+  //     widget.play();
+  //   }
+  // };
   return (
     <main
       className="p-main"
@@ -47,6 +69,37 @@ function Ina() {
         backgroundAttachment: "fixed",
       }}
     >
+      {/* SOUNDCLOUD  */}
+      {/* <div>
+        <button onClick={playTrack}>▶ Play Track</button>
+
+        <iframe
+          ref={iframeRef}
+          width="0"
+          height="0"
+          style={{ display: "none" }}
+          scrolling="no"
+          frameBorder="no"
+          allow="autoplay"
+          src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/zachtop/track-11"
+          title="Hidden SoundCloud Player"
+        ></iframe>
+      </div> */}
+      {/* SOUNDCLOUD  */}
+      {/* SPOTIFY */}
+      {/* <div className="">
+        <iframe
+          data-testid="embed-iframe"
+          style={{ borderRadius: "12px", width: "100%", height: "100%" }}
+          src="https://open.spotify.com/embed/track/716GnuBzDqqebPIzsEUjcm?utm_source=generator"
+          frameBorder="0"
+          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+          loading="lazy"
+          allowFullScreen
+          title="Spotify Player"
+        ></iframe>
+      </div> */}
+      {/* SPOTIFY */}
       {/* <AnimatedNumber /> */}
       <BreadCrumb pages={BREADCRUMB_PAGES} />
       {/* YT not available */}

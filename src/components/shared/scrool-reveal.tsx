@@ -17,6 +17,7 @@ const ScrollReveal = ({ children }: { children: ReactNode }) => {
           scrollTrigger: {
             trigger: el,
             start: "top 80%",
+            // markers: true,
             toggleActions: "play none none none",
           },
         })

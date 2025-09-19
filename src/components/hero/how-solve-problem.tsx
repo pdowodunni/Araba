@@ -62,20 +62,20 @@ export default function HowWeSolveProblem() {
             </h4>
           </div>
 
-          <ScrollReveal>
-            <div className="scrollbar-hide overflow-x-scroll w-screen hidden md:flex  max-w-[1680px] px-4 sm:px-6 lg:px-8 mx-auto lg:w-fit lg:grid gap-4 lg:grid-cols-3">
-              {FEATURES.map(({ title, text, img, bg }, idx) => (
-                <div key={idx}>
-                  <ShowcaseCardVertical
-                    title={title}
-                    text={text}
-                    img={img}
-                    bg={bg}
-                  />
-                </div>
-              ))}
-            </div>
-          </ScrollReveal>
+          {/* <ScrollReveal> */}
+          <div className="scrollbar-hide overflow-x-scroll w-screen hidden md:flex  max-w-[1680px] px-4 sm:px-6 lg:px-8 mx-auto lg:w-fit lg:grid gap-4 lg:grid-cols-3">
+            {FEATURES.map(({ title, text, img, bg }, idx) => (
+              <div key={idx}>
+                <ShowcaseCardVertical
+                  title={title}
+                  text={text}
+                  img={img}
+                  bg={bg}
+                />
+              </div>
+            ))}
+          </div>
+          {/* </ScrollReveal> */}
           <div className="block md:hidden">
             <StickyStackCardsGSAP topOffset={-20} items={FEATURES} />
           </div>

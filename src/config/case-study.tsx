@@ -4,8 +4,8 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
   [
     {
       span: 2,
-      assetLink: "/video/ina-stretch.webm",
-      assetType: "video",
+      assetLink: "/images/casestudy/ina-bg.png",
+      assetType: "image",
       title: "INA",
       desc: "Faith, Culture & Experiential Events",
       href: "/our-work/ina",
@@ -13,15 +13,15 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
     },
     {
       span: 2,
-      assetLink: "/images/casestudy/yascf-2.png",
+      assetLink: "/images/casestudy/unseen.png",
       assetType: "image",
-      title: "YASCF",
-      desc: "Non-profit, Education, Impact Storytelling",
-      href: "/our-work/yascf",
+      title: "The Un-scenes",
+      desc: "Phygital Documentary Prototype",
+      href: "/our-work/unscene",
     },
     {
       span: 4,
-      assetLink: "/images/casestudy/sd-1.webp",
+      assetLink: "/images/casestudy/Doyin_Shimom.png",
       assetType: "image",
       title: "Doyin & Shimon Atunde",
       desc: "Non-profit, Education, Impact Storytelling",
@@ -31,15 +31,15 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
   [
     {
       span: 4,
-      assetLink: "/images/casestudy/unscene-1.webp",
+      assetLink: "/images/casestudy/YASCF.png",
       assetType: "image",
-      title: "The Un-scenes",
-      desc: "Phygital Documentary Prototype",
-      href: "/our-work/unscene",
+      title: "YASCF",
+      desc: "Non-profit, Education, Impact Storytelling",
+      href: "/our-work/yascf",
     },
     {
       span: 2,
-      assetLink: "/images/casestudy/tth-1.webp",
+      assetLink: "/images/casestudy/Niyi_Adekunle.png",
       assetType: "image",
       title: "Niyi Adekunle",
       desc: "Family, Faith, Finance, Values",
