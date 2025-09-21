@@ -9,6 +9,7 @@ import LogoCarousel from "../components/shared/logo-carousel";
 import VerticalSnapCarousel from "../components/shared/testimonial";
 import { type Item } from "../components/shared/card-slider";
 import ScrollReveal from "../components/shared/scrool-reveal";
+import BrandCarousel from "../components/hero/brand-carousel";
 
 function MusicSoundDesign() {
   const LEFT_SEC_DATA = {
@@ -275,17 +276,7 @@ function MusicSoundDesign() {
         {...AUX_HEADER_DATA}
       />
 
-      <ScrollReveal>
-        <div className="mx-container py-sm-pad flex flex-col gap-15">
-          <span className="s-heading flex justify-center text-sm">
-            Trusted by 50+ of the world's biggest brands
-          </span>
-          <div className="flex justify-center items-center">
-            {" "}
-            <LogoCarousel />
-          </div>
-        </div>
-      </ScrollReveal>
+      <BrandCarousel />
       <LeftImgTextSec {...LEFT_SEC_DATA} />
       <TxtImgSec {...TEXT_IMAGE_SEC_DATA} />
       <RightImgTextSec {...RIGHT_SEC_DATA} />

@@ -47,7 +47,7 @@ export const PROJECT_LIST: ShowcaseCardHorizontalProps[][] = [
     },
     {
       span: 2,
-      assetLink: "/images/casestudy/google-5.jpg",
+      assetLink: "/images/casestudy/Google.png",
       assetType: "image",
       title: "Google",
       desc: "Fashion, Tech, Culture, Event Storytelling",

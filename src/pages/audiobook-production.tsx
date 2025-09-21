@@ -1,3 +1,4 @@
+import BrandCarousel from "../components/hero/brand-carousel";
 import WorkShowcase from "../components/hero/our-work";
 import AuxHeader from "../components/shared/aux-header";
 import type { Item } from "../components/shared/card-slider";
@@ -430,18 +431,11 @@ function AudiobookProduction() {
       <AuxHeader
         listItems={SCROLL_ITEMS}
         sHeading="CREATIVE SERVICES"
-        backgroundImageLink="/images/24.jpg"
+        backgroundImageLink="/images/AudioExperiences.png"
         {...AUX_HEADER_DATA}
       />
 
-      <div className="mx-container py-sm-pad flex flex-col gap-15">
-        <span className="s-heading flex justify-center text-sm">
-          Trusted by 50+ of the world's biggest brands
-        </span>
-        <div className="flex justify-center items-center">
-          <LogoCarousel />
-        </div>
-      </div>
+      <BrandCarousel />
 
       <TxtVidSecSmRight {...IS_THIS_YOU} videoLink="/video/video.mp4" />
 

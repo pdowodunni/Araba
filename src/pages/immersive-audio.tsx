@@ -6,6 +6,7 @@ import VerticalSnapCarousel from "../components/shared/testimonial";
 import { type Item } from "../components/shared/card-slider";
 import WorkShowcase from "../components/hero/our-work";
 import TwoRowGrdTxtHolder from "../components/shared/layout/2-row-grid-text-holder";
+import BrandCarousel from "../components/hero/brand-carousel";
 
 function ImmersiveAudio() {
   const TEXT_IMAGE_SEC_DATA = {
@@ -357,15 +358,7 @@ function ImmersiveAudio() {
         backgroundImageLink="/images/20.png"
         {...AUX_HEADER_DATA}
       />
-      <div className="mx-container py-sm-pad flex flex-col gap-15">
-        <span className="s-heading flex justify-center text-sm">
-          Trusted by 50+ of the world's biggest brands
-        </span>
-        <div className="flex justify-center items-center">
-          {" "}
-          <LogoCarousel />
-        </div>
-      </div>
+      <BrandCarousel />
       <TxtImgSec {...TEXT_IMAGE_SEC_DATA} />
       <WorkShowcase />
       <section>

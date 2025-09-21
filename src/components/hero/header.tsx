@@ -23,8 +23,8 @@ function HeroHeader() {
               </h2>
               <div className="">
                 <p className="text-white p-lg max-w-[500px] text-center xl:text-start">
-                  Storytelling that moves. Strategy that connects. Contents that
-                  last.
+                  Storytelling that moves. Strategy that connects. Content that
+                  lasts.
                 </p>
               </div>
               <div className="flex">
