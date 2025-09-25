@@ -47,7 +47,10 @@ export default function StickyStackCards({
 
   return (
     <section className="w-full">
-      <div ref={rootRef} className="mx-container">
+      <div
+        // ref={rootRef}
+        className="mx-container"
+      >
         {items.map((it, i) => {
           return (
             <article

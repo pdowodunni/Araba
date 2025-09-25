@@ -1,15 +1,18 @@
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import BrandCarousel from "../components/hero/brand-carousel";
 import WorkShowcase from "../components/hero/our-work";
 import AuxHeader from "../components/shared/aux-header";
 import type { Item } from "../components/shared/card-slider";
 import IndxGrdLt from "../components/shared/case-study/index-gird-list";
-import TwoRowGrdTxtHolder from "../components/shared/layout/2-row-grid-text-holder";
 import TxtVidSecSmRight from "../components/shared/layout/text-video-sm-right";
-import LogoCarousel from "../components/shared/logo-carousel";
 import NumberedPoint from "../components/shared/numbered-points";
 import SlideUpButton from "../components/shared/slide-up-button";
+import gsap from "gsap";
+import { ChevronDown, Plus } from "lucide-react";
 
 function AudiobookProduction() {
+  type FAQItem = { id: number; q: string; a: ReactNode };
+  type FAQGroup = { title: string; items: FAQItem[] };
   /* ===== AUXHEADER DATA ===== */
   const AUX_HEADER_DATA = {
     head: (
@@ -18,21 +21,27 @@ function AudiobookProduction() {
       </h1>
     ),
     text: (
-      <div className="flex flex-col gap-5 max-w-[650px]">
-        <p className="text-white font-instrumental-serif text-start xl:text-xl">
+      <div className="flex flex-col gap-2 max-w-[650px]">
+        <p className="text-white p-lg font-instrumental-serif text-start">
           “My Book Is Great... But No I'm Still Unknown.”
         </p>
-        <p className="text-white text-start xl:text-xl">
-          Transform your book into an immersive audio experience.
+        <p className="text-white text-start p-lg">
+          Remember when you decided to write that book? You wrote it to live. To
+          breathe. To move people.
         </p>
-        <ul className="pl-5 list-disc xl:text-xl flex flex-col gap-2 text-white">
-          <li>Authentic narration — your voice or a perfectly matched pro</li>
-          <li>Cinematic sound — music and sound design that serve the story</li>
-          <li>End-to-end production — direction, editing, mastering</li>
-          <li>Ready for everywhere — Audible, Spotify, Apple, and more</li>
-        </ul>
-        <p className="text-white text-start xl:text-xl">
-          Turn print into presence. Make every word felt.
+        <div>
+          <p className="text-white text-start p-lg">Now picture this:</p>
+          <ul className="pl-5 list-disc xl:text-xl flex flex-col gap-2 text-white">
+            <li>AYour book read in your voice, or one that tells the story.</li>
+            <li>Infused with the emotional touch of sound design...</li>
+            <li>…and have people everywhere listen on the go.</li>
+          </ul>
+        </div>
+        <p className="text-white text-start p-lg">
+          Welcome to the{" "}
+          <em className="font-interTight-semibold">
+            Araba Audiobook-to-Audio Experience
+          </em>
         </p>
       </div>
     ),
@@ -166,11 +175,11 @@ function AudiobookProduction() {
         </h5>
         <div className="flex flex-col gap-3 mt-3">
           {[
-            "A full storytelling team (directors, writers, producers, editors)",
-            "Up to 50+ content pieces across formats",
-            "A documentary-style film",
-            "Social media buzz + storytelling that resonates",
-            "An emotional, evergreen asset that lives far beyond the event",
+            "No one’s buying it.",
+            "You’re struggling to get it into new hands.",
+            "You’re busy, and recording it yourself sounds like a tech nightmare.",
+            "You want to monetise your message and grow a bigger audience.",
+            "You want a powerful product that reflects your voice, values, and vision.",
           ].map((itm, idx) => (
             <NumberedPoint
               key={idx}
@@ -243,8 +252,9 @@ function AudiobookProduction() {
   /* ===== ARABA PROCESS DATA ===== */
   const ARABA_PROCESS_DATA = [
     {
-      head: "STEP 1: DISCOVERY & CREATIVE DIRECTION",
-      text: (
+      id: 1,
+      q: "STEP 1: DISCOVERY & CREATIVE DIRECTION",
+      a: (
         <div className="flex flex-col gap-2">
           <p className="p-lg">
             Whether you have a print book, an ebook, or just an idea, we begin
@@ -281,8 +291,9 @@ function AudiobookProduction() {
       ),
     },
     {
-      head: "STEP 2: VOICE CASTING & TESTING",
-      text: (
+      id: 2,
+      q: "STEP 2: VOICE CASTING & TESTING",
+      a: (
         <div className="flex flex-col gap-2">
           <div>
             <ul className="pl-10 list-disc p-lg flex flex-col gap-1 mt-3">
@@ -307,8 +318,9 @@ function AudiobookProduction() {
       ),
     },
     {
-      head: "STEP 3: STUDIO RECORDING",
-      text: (
+      id: 3,
+      q: "STEP 3: STUDIO RECORDING",
+      a: (
         <div className="flex flex-col gap-2">
           <div>
             <ul className="pl-10 list-disc p-lg flex flex-col gap-1 mt-3">
@@ -319,7 +331,7 @@ function AudiobookProduction() {
               </li>
               <li>A diction coach sits in for pronunciation and fluency.</li>
               <li>
-                Recordings typically take 2–5 sessions, depending on the length
+                Recordings typically take 2-5 sessions, depending on the length
                 and complexity of the book.
               </li>
             </ul>
@@ -331,8 +343,9 @@ function AudiobookProduction() {
       ),
     },
     {
-      head: "STEP 4: POST-PRODUCTION & SOUND DESIGN",
-      text: (
+      id: 4,
+      q: "STEP 4: POST-PRODUCTION & SOUND DESIGN",
+      a: (
         <div className="flex flex-col gap-2">
           <div>
             <ul className="pl-10 list-disc p-lg flex flex-col gap-1 mt-3">
@@ -360,13 +373,14 @@ function AudiobookProduction() {
       ),
     },
     {
-      head: "STEP 5: MARKETING CONTENT CREATION",
-      text: (
+      id: 5,
+      q: "STEP 5: MARKETING CONTENT CREATION",
+      a: (
         <div className="flex flex-col gap-2">
           <p className="p-lg">
             We produce{" "}
             <em className="font-interTight-semibold">
-              10–15 pieces of scroll-stopping content:
+              10-15 pieces of scroll-stopping content:
             </em>
           </p>
           <div>
@@ -385,8 +399,9 @@ function AudiobookProduction() {
       ),
     },
     {
-      head: "STEP 6: DISTRIBUTION & LAUNCH",
-      text: (
+      id: 6,
+      q: "STEP 6: DISTRIBUTION & LAUNCH",
+      a: (
         <div className="flex flex-col gap-2">
           <div>
             <ul className="pl-10 list-disc p-lg flex flex-col gap-1 mt-3">
@@ -402,14 +417,15 @@ function AudiobookProduction() {
             </ul>
           </div>
           <p className="p-lg">
-            Your audiobook typically goes live within 4–6 weeks of approval.
+            Your audiobook typically goes live within 4-6 weeks of approval.
           </p>
         </div>
       ),
     },
     {
-      head: "STEP 7 (OPTIONAL): TRAFFIC & GROWTH",
-      text: (
+      id: 7,
+      q: "STEP 7 (OPTIONAL): TRAFFIC & GROWTH",
+      a: (
         <div className="flex flex-col gap-2">
           <p className="p-lg">
             Want to reach even more people? We offer optional support to:
@@ -426,6 +442,54 @@ function AudiobookProduction() {
     },
   ];
 
+  // LOGICS
+  const midpoint = Math.ceil(ARABA_PROCESS_DATA.length / 2);
+  const leftGroups = ARABA_PROCESS_DATA.slice(0, midpoint);
+  const rightGroups = ARABA_PROCESS_DATA.slice(midpoint);
+
+  const [openId, setOpenId] = useState<number | null>(null);
+  const answerRefs = useRef<Record<number, HTMLDivElement>>({});
+  const iconRefs = useRef<Record<number, SVGSVGElement>>({});
+
+  useLayoutEffect(() => {
+    ARABA_PROCESS_DATA.forEach(({ id }) => {
+      const ans = answerRefs.current[id];
+      if (ans) gsap.set(ans, { height: 0, opacity: 0 });
+    });
+  }, []);
+
+  const closeItem = (id: number) => {
+    const ans = answerRefs.current[id];
+    const icon = iconRefs.current[id];
+    if (!ans || !icon) return;
+    gsap.to(ans, { height: 0, opacity: 0, duration: 0.3, ease: "power1.in" });
+    gsap.to(icon, { rotate: 0, duration: 0.3, ease: "power1.in" });
+  };
+
+  const openItem = (id: number) => {
+    const ans = answerRefs.current[id];
+    const icon = iconRefs.current[id];
+    if (!ans || !icon) return;
+    gsap.to(ans, {
+      height: "auto",
+      opacity: 1,
+      duration: 0.4,
+      ease: "power1.in",
+    });
+    gsap.to(icon, { rotate: 180, duration: 0.4, ease: "power1.in" });
+  };
+
+  const toggle = (id: number) => {
+    if (openId === id) {
+      closeItem(id);
+      setOpenId(null);
+    } else {
+      if (openId !== null) closeItem(openId);
+      openItem(id);
+      setOpenId(id);
+    }
+  };
+
   return (
     <main>
       <AuxHeader
@@ -437,7 +501,10 @@ function AudiobookProduction() {
 
       <BrandCarousel />
 
-      <TxtVidSecSmRight {...IS_THIS_YOU} videoLink="/video/video.mp4" />
+      <TxtVidSecSmRight
+        {...IS_THIS_YOU}
+        videoLink="https://youtu.be/nVhvJo_y-kQ"
+      />
 
       <section>
         <div className="case-container">
@@ -453,7 +520,7 @@ function AudiobookProduction() {
         </div>
       </section>
 
-      <section className="bg-mid-bg">
+      {/* <section className="bg-mid-bg">
         <div className="mx-container ">
           <div className="pt-md-pad pb-sm-pad flex flex-col gap-20">
             <div className="flex flex-col gap-2">
@@ -470,7 +537,7 @@ function AudiobookProduction() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <WorkShowcase />
 
@@ -484,8 +551,45 @@ function AudiobookProduction() {
                 <em className="font-instrumental-serif">How It Works</em>
               </h3>
             </div>
-            <div>
+            {/* <div>
               <TwoRowGrdTxtHolder data={ARABA_PROCESS_DATA} />
+            </div> */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-15">
+              {[leftGroups, rightGroups].map((groups, idx) => (
+                <div key={idx} className="space-y-6">
+                  {groups.map(({ id, q, a }) => (
+                    <div
+                      key={id}
+                      className="border-b border-primary py-4 cursor-pointer"
+                    >
+                      <button
+                        type="button"
+                        aria-expanded={openId === id}
+                        onClick={() => toggle(id)}
+                        className="w-full grid grid-cols-[1fr_30px] cursor-pointer gap-5 items-center text-left"
+                      >
+                        <p className="text-3xl">{q}</p>
+                        <ChevronDown
+                          size={28}
+                          strokeWidth={1.5}
+                          ref={(el) => {
+                            if (el) iconRefs.current[id] = el;
+                          }}
+                          className="transition-transform"
+                        />
+                      </button>
+                      <div
+                        ref={(el) => {
+                          if (el) answerRefs.current[id] = el;
+                        }}
+                        className="overflow-hidden mt-2"
+                      >
+                        <div className="py-2">{a}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>

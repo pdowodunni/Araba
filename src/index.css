@@ -157,6 +157,9 @@
   .logo-box {
     @apply mx-0 mb-2 flex h-16 w-16 items-center justify-center rounded-lg bg-black/8 scale-100;
   }
+  .logo-box-fill {
+    @apply mx-0 mb-2 flex h-16 w-16 items-center justify-center rounded-lg bg-light-bg/85 scale-100;
+  }
 }
 
 @layer base {

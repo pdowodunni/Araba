@@ -1,22 +1,29 @@
-import { CheckNoteIcon, PenIcon, StarIcon } from "../../assets/icons";
+import {
+  AI,
+  CheckNoteIcon,
+  Flexible,
+  PenIcon,
+  Scalable,
+  StarIcon,
+} from "../../assets/icons";
 
 const ITEMS = [
   {
-    icon: PenIcon,
+    icon: Scalable,
     label: "Scalable",
     title: "Grow your impact, not your overhead",
     description:
       "Whether it's one story or a storytelling ecosystem, we scale with you across projects, formats, and channels without breaking the rhythm.",
   },
   {
-    icon: CheckNoteIcon,
+    icon: Flexible,
     label: "Flexible",
     title: "Plug us in where you need magic",
     description:
       "Need voice casting today, a documentary next week, or a full campaign by month's end? We shape-shift to meet your story where it's hot.",
   },
   {
-    icon: StarIcon,
+    icon: AI,
     label: "Tech-Enhanced",
     title: "Human-first, AI-smart",
     description:

@@ -27,14 +27,14 @@ function TxtVidSecSmLeft({
                 playing={true}
                 muted={true}
                 loop={true}
-                playsInline={true}
+                playsInline={false}
                 config={{
                   youtube: {
                     playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
                   },
                   file: {
                     attributes: {
-                      playsInline: true,
+                      playsInline: false,
                     },
                   },
                 }}

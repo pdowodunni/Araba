@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ReactPlayer from "react-player";
 
 const SpotifyPlayback = ({ src }: { src: string }) => {
   const [loading, setLoading] = useState(true);
@@ -14,40 +15,63 @@ const SpotifyPlayback = ({ src }: { src: string }) => {
   };
 
   return (
-    <div className="relative h-[352px] w-full">
-      {loading && !error && (
-        <div
-          className="absolute inset-0 flex items-center justify-center bg-gray-100 text-white"
-          style={{
-            backgroundImage: "url('/images/disc-sm-b.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        >
-          Loading player...
-        </div>
-      )}
+    // <div className="relative h-[352px] w-full">
+    //   {loading && !error && (
+    //     <div
+    //       className="absolute inset-0 flex items-center justify-center bg-gray-100 text-white"
+    //       style={{
+    //         backgroundImage: "url('/images/disc-sm-b.png')",
+    //         backgroundSize: "cover",
+    //         backgroundPosition: "center",
+    //       }}
+    //     >
+    //       Loading player...
+    //     </div>
+    //   )}
 
-      {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-red-100 text-red-600">
-          Failed to load Spotify player.
-        </div>
-      )}
-      {!error && (
-        <iframe
-          data-testid="embed-iframe"
-          style={{ borderRadius: "12px" }}
-          src={src}
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          title="Spotify Player"
-          onLoad={handleLoad}
-          onError={handleError}
-        ></iframe>
-      )}
+    //   {error && (
+    //     <div className="absolute inset-0 flex items-center justify-center bg-red-100 text-red-600">
+    //       Failed to load Spotify player.
+    //     </div>
+    //   )}
+    //   {!error && (
+    //     <iframe
+    //       data-testid="embed-iframe"
+    //       style={{ borderRadius: "12px" }}
+    //       src={src}
+    //       width="100%"
+    //       height="100%"
+    //       frameBorder="0"
+    //       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    //       loading="lazy"
+    //       title="Spotify Player"
+    //       onLoad={handleLoad}
+    //       onError={handleError}
+    //     ></iframe>
+    //   )}
+    // </div>
+    <div className="relative w-full aspect-square">
+      <ReactPlayer
+        src={src}
+        width="100%"
+        height="100%"
+        playing={false}
+        muted={false}
+        loop={false}
+        playsInline={false}
+        config={{
+          youtube: {
+            playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
+          },
+          file: {
+            attributes: {
+              playsInline: true,
+            },
+          },
+        }}
+        onReady={() => setLoading(true)}
+        className="absolute top-0 left-0 w-full h-full"
+      />
     </div>
   );
 };

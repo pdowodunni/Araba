@@ -256,8 +256,8 @@ function VoiceOver() {
               <div className="mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {WHATS_INCLUDED.map(({ head, text, Icon }, idx) => (
                   <div key={idx} className="flex gap-3 flex-col items-center">
-                    <div className="logo-box">
-                      <Icon color="#f6f9f2" />
+                    <div className="logo-box-fill">
+                      <Icon color="#0a221f" />
                     </div>
                     <h5 className="p-0 m-0 font-interTight-medium text-center">
                       {head}
@@ -271,7 +271,7 @@ function VoiceOver() {
         </div>
       </section>
 
-      {/* <WorkShowcase /> */}
+      <WorkShowcase />
 
       <VerticalSnapCarousel />
 
@@ -299,405 +299,112 @@ function VoiceOver() {
 
 export default VoiceOver;
 
-// function WorkShowcase() {
-//   const PROJECT_LIST = [
-//     [
-//       {
-//         span: 2,
-//         src: "https://open.spotify.com/embed/track/716GnuBzDqqebPIzsEUjcm?utm_source=generator",
-//         frame: (
-//           <div>
-//             <iframe
-//               width="100%"
-//               height="166"
-//               scrolling="no"
-//               frameBorder="0"
-//               allow="autoplay"
-//               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1879421190&color=%234c3c0c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-//               title="PCNG MULTILINGUAL RADIO - Soundbaking company"
-//               style={{ border: "none", borderRadius: "8px" }}
-//             ></iframe>
+function WorkShowcase() {
+  const PROJECT_LIST = [
+    [
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=Y7RMppGSS_Q&si=K78waKqP56-skoh5",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=e903-3RyiNg&si=7hMBdqkmNXYYQ8It",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=mdZ1MCelWdM&si=w-6VF7Z6ygYpTLFb",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=kMnlZodrTqA&si=JN93VRzR6GvT7hWc",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=HSSmEn8NTWM&si=2Qag-yknAYZfkKLh",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=99kD-frNymo&si=OVa_82eOl-2SZ0FY",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=tQiNQL-FEgU&si=-HYCv4AdZNVN_8Y_",
+      },
+      {
+        span: 2,
+        src: "https://music.youtube.com/watch?v=l_7SxoQW11g&si=rLSCa9WqvSMGKGjf",
+      },
+    ],
+  ];
 
-//             <div
-//               style={{
-//                 fontSize: "10px",
-//                 color: "#cccccc",
-//                 lineBreak: "anywhere",
-//                 wordBreak: "normal",
-//                 overflow: "hidden",
-//                 whiteSpace: "nowrap",
-//                 textOverflow: "ellipsis",
-//                 fontFamily:
-//                   "Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
-//                 fontWeight: 100,
-//                 marginTop: "6px",
-//               }}
-//             >
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company"
-//                 title="Soundbaking company"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 Soundbaking company
-//               </a>{" "}
-//               ·{" "}
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company/pcng-multilingual-radio"
-//                 title="PCNG MULTILINGUAL RADIO"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 PCNG MULTILINGUAL RADIO
-//               </a>
-//             </div>
-//           </div>
-//         ),
-//       },
-//       {
-//         span: 2,
-//         src: "https://open.spotify.com/embed/track/2Udl0TzzW2pYjPmf6P9M2W?utm_source=generator",
-//         frame: (
-//           <div>
-//             <iframe
-//               width="100%"
-//               height="166"
-//               scrolling="no"
-//               frameBorder="0"
-//               allow="autoplay"
-//               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1556102719&color=%234c3c0c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-//               title="MORE DATA - CORPORATE CONVERSATIONAL COMMERCIAL FOR 9MOBILE - Soundbaking company"
-//               style={{ border: "none", borderRadius: "8px" }}
-//             ></iframe>
+  return (
+    <section
+    // className="text-light-bg bg-primary"
+    >
+      <div className="mx-container">
+        <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
+          <div className="flex flex-col gap-2 items-center">
+            <p className="text-sm uppercase tracking-wide">WORKS</p>
+            <h3 className="m-0 p-0 max-w-[1000px] text-center">
+              Voiceover samples from Our{" "}
+              <em className="font-instrumental-serif">Client Collaborations</em>
+            </h3>
+          </div>
+          <div className="flex flex-col gap-2 md:gap-4">
+            {PROJECT_LIST.map((row, i) => (
+              <div key={i} className="mx-auto w-full flex justify-center">
+                <div className="block xl:grid w-full grid-cols-8 md:gap-4">
+                  {row.map((item, idx) => (
+                    <div
+                      // data-cursor-target
+                      // data-cursor-text="PLAY AUDIO"
+                      className="mt-3 xl:mt-0 rounded-lg overflow-hidden"
+                      key={idx}
+                      style={{
+                        gridColumn: `span ${item.span} / span ${item.span}`,
+                      }}
+                    >
+                      {/* <div>
+                        <div className="group w-full flex flex-col cursor-pointer gap-6 mb-12 md:mb-0">
+                          <div
+                            className="
+                                w-full h-[180px] xl:h-[396px] rounded-lg
+                                bg-center
+                                bg-[length:100%]
+                                group-hover:bg-[length:115%]
+                                transition-all
+                                duration-300
+                              "
+                            style={{
+                              backgroundImage: `url('${item.assetLink}')`,
+                              backgroundPosition: "center",
+                              backgroundSize: "cover",
+                            }}
+                          />
 
-//             <div
-//               style={{
-//                 fontSize: "10px",
-//                 color: "#cccccc",
-//                 lineBreak: "anywhere",
-//                 wordBreak: "normal",
-//                 overflow: "hidden",
-//                 whiteSpace: "nowrap",
-//                 textOverflow: "ellipsis",
-//                 fontFamily:
-//                   "Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
-//                 fontWeight: 100,
-//                 marginTop: "6px",
-//               }}
-//             >
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company"
-//                 title="Soundbaking company"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 Soundbaking company
-//               </a>{" "}
-//               ·{" "}
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company/more-data-corporate-conversational-commercial-for-9mobile"
-//                 title="MORE DATA - CORPORATE CONVERSATIONAL COMMERCIAL FOR 9MOBILE"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 MORE DATA - CORPORATE CONVERSATIONAL COMMERCIAL FOR 9MOBILE
-//               </a>
-//             </div>
-//           </div>
-//         ),
-//       },
-//       {
-//         span: 4,
-//         src: "https://open.spotify.com/embed/track/716GnuBzDqqebPIzsEUjcm?utm_source=generator",
-//         frame: (
-//           <div>
-//             <iframe
-//               width="100%"
-//               height="166"
-//               scrolling="no"
-//               frameBorder="0"
-//               allow="autoplay"
-//               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1964817215&color=%234c3c0c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-//               title="LIGHT AND FIRE PROMOTION - Soundbaking company"
-//               style={{ border: "none", borderRadius: "8px" }}
-//             ></iframe>
-
-//             <div
-//               style={{
-//                 fontSize: "10px",
-//                 color: "#cccccc",
-//                 lineBreak: "anywhere",
-//                 wordBreak: "normal",
-//                 overflow: "hidden",
-//                 whiteSpace: "nowrap",
-//                 textOverflow: "ellipsis",
-//                 fontFamily:
-//                   "Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
-//                 fontWeight: 100,
-//                 marginTop: "6px",
-//               }}
-//             >
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company"
-//                 title="Soundbaking company"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 Soundbaking company
-//               </a>{" "}
-//               ·{" "}
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company/light-and-fire-promotion"
-//                 title="LIGHT AND FIRE PROMOTION"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 LIGHT AND FIRE PROMOTION
-//               </a>
-//             </div>
-//           </div>
-//         ),
-//       },
-//     ],
-//     [
-//       {
-//         span: 4,
-//         src: "https://open.spotify.com/embed/track/5IJoT05BMfQsvisqGPfdxK?utm_source=generator",
-//         frame: (
-//           <div>
-//             <iframe
-//               width="100%"
-//               height="166"
-//               scrolling="no"
-//               frameBorder="0"
-//               allow="autoplay"
-//               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1964895867&color=%234c3c0c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-//               title="LETSHEGO ENGLISH UPDATE - Soundbaking company"
-//               style={{ border: "none", borderRadius: "8px" }}
-//             ></iframe>
-
-//             <div
-//               style={{
-//                 fontSize: "10px",
-//                 color: "#cccccc",
-//                 lineBreak: "anywhere",
-//                 wordBreak: "normal",
-//                 overflow: "hidden",
-//                 whiteSpace: "nowrap",
-//                 textOverflow: "ellipsis",
-//                 fontFamily:
-//                   "Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
-//                 fontWeight: 100,
-//                 marginTop: "6px",
-//               }}
-//             >
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company"
-//                 title="Soundbaking company"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 Soundbaking company
-//               </a>{" "}
-//               ·{" "}
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company/letshego-english-update"
-//                 title="LETSHEGO ENGLISH UPDATE"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 LETSHEGO ENGLISH UPDATE
-//               </a>
-//             </div>
-//           </div>
-//         ),
-//       },
-//       {
-//         span: 2,
-//         src: "https://open.spotify.com/embed/track/76Rgxf2M8Uger78wSBI4Fh?utm_source=generator",
-//         frame: (
-//           <div>
-//             <iframe
-//               width="100%"
-//               height="166"
-//               scrolling="no"
-//               frameBorder="0"
-//               allow="autoplay"
-//               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1964912715&color=%234c3c0c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-//               title="COWRYWISE SAVINGS CHALLENGE - Soundbaking company"
-//               style={{ border: "none", borderRadius: "8px" }}
-//             ></iframe>
-
-//             <div
-//               style={{
-//                 fontSize: "10px",
-//                 color: "#cccccc",
-//                 lineBreak: "anywhere",
-//                 wordBreak: "normal",
-//                 overflow: "hidden",
-//                 whiteSpace: "nowrap",
-//                 textOverflow: "ellipsis",
-//                 fontFamily:
-//                   "Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
-//                 fontWeight: 100,
-//                 marginTop: "6px",
-//               }}
-//             >
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company"
-//                 title="Soundbaking company"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 Soundbaking company
-//               </a>{" "}
-//               ·{" "}
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company/cowrywise-savings-challenge"
-//                 title="COWRYWISE SAVINGS CHALLENGE"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 COWRYWISE SAVINGS CHALLENGE
-//               </a>
-//             </div>
-//           </div>
-//         ),
-//       },
-//       {
-//         span: 2,
-//         src: "https://open.spotify.com/embed/track/716GnuBzDqqebPIzsEUjcm?utm_source=generator",
-//         frame: (
-//           <div>
-//             <iframe
-//               width="100%"
-//               height="166"
-//               scrolling="no"
-//               frameBorder="0"
-//               allow="autoplay"
-//               src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1556102719&color=%234c3c0c&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-//               title="MORE DATA - CORPORATE CONVERSATIONAL COMMERCIAL FOR 9MOBILE - Soundbaking company"
-//               style={{ border: "none", borderRadius: "8px" }}
-//             ></iframe>
-
-//             <div
-//               style={{
-//                 fontSize: "10px",
-//                 color: "#cccccc",
-//                 lineBreak: "anywhere",
-//                 wordBreak: "normal",
-//                 overflow: "hidden",
-//                 whiteSpace: "nowrap",
-//                 textOverflow: "ellipsis",
-//                 fontFamily:
-//                   "Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana, Tahoma, sans-serif",
-//                 fontWeight: 100,
-//                 marginTop: "6px",
-//               }}
-//             >
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company"
-//                 title="Soundbaking company"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 Soundbaking company
-//               </a>{" "}
-//               ·{" "}
-//               <a
-//                 href="https://soundcloud.com/soundbaking-company/more-data-corporate-conversational-commercial-for-9mobile"
-//                 title="MORE DATA - CORPORATE CONVERSATIONAL COMMERCIAL FOR 9MOBILE"
-//                 target="_blank"
-//                 rel="noreferrer"
-//                 style={{ color: "#cccccc", textDecoration: "none" }}
-//               >
-//                 MORE DATA - CORPORATE CONVERSATIONAL COMMERCIAL FOR 9MOBILE
-//               </a>
-//             </div>
-//           </div>
-//         ),
-//       },
-//     ],
-//   ];
-
-//   return (
-//     <section
-//     // className="text-light-bg bg-primary"
-//     >
-//       <div className="mx-container">
-//         <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
-//           <div className="flex flex-col gap-2 items-center">
-//             <p className="text-sm uppercase tracking-wide">WORKS</p>
-//             <h3 className="m-0 p-0 max-w-[1000px] text-center">
-//               Voiceover samples from Our{" "}
-//               <em className="font-instrumental-serif">Client Collaborations</em>
-//             </h3>
-//           </div>
-//           <div className="flex flex-col gap-2 md:gap-20">
-//             {PROJECT_LIST.map((row, i) => (
-//               <div key={i} className="mx-auto w-full flex justify-center">
-//                 <div className="block xl:grid w-full grid-cols-8 md:gap-4">
-//                   {row.map((item, idx) => (
-//                     <div
-//                       // data-cursor-target
-//                       // data-cursor-text="PLAY AUDIO"
-//                       className="mt-3 xl:mt-0"
-//                       style={{
-//                         gridColumn: `span ${item.span} / span ${item.span}`,
-//                       }}
-//                     >
-//                       {/* <div>
-//                         <div className="group w-full flex flex-col cursor-pointer gap-6 mb-12 md:mb-0">
-//                           <div
-//                             className="
-//                                 w-full h-[180px] xl:h-[396px] rounded-lg
-//                                 bg-center
-//                                 bg-[length:100%]
-//                                 group-hover:bg-[length:115%]
-//                                 transition-all
-//                                 duration-300
-//                               "
-//                             style={{
-//                               backgroundImage: `url('${item.assetLink}')`,
-//                               backgroundPosition: "center",
-//                               backgroundSize: "cover",
-//                             }}
-//                           />
-
-//                           <div>
-//                             <div className="flex items-center gap-1">
-//                               <h5 className="font-instrumental-serif m-0">
-//                                 {item.title}
-//                               </h5>
-//                               <span className="transform xl:-translate-x-2 xl:translate-y-0 scale-100 xl:scale-0 opacity-100 xl:opacity-0 group-hover:translate-x-1.5 group-hover:-translate-y-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-//                                 <CirclePlay strokeWidth={1.5} size={30} />
-//                               </span>
-//                             </div>
-//                             <p className="m-0">{item.desc}</p>
-//                           </div>
-//                         </div>
-//                       </div> */}{" "}
-//                       {/* <SpotifyPlayback src={item.src} /> */}
-//                       <item.frame />
-//                     </div>
-//                   ))}
-//                 </div>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
+                          <div>
+                            <div className="flex items-center gap-1">
+                              <h5 className="font-instrumental-serif m-0">
+                                {item.title}
+                              </h5>
+                              <span className="transform xl:-translate-x-2 xl:translate-y-0 scale-100 xl:scale-0 opacity-100 xl:opacity-0 group-hover:translate-x-1.5 group-hover:-translate-y-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                                <CirclePlay strokeWidth={1.5} size={30} />
+                              </span>
+                            </div>
+                            <p className="m-0">{item.desc}</p>
+                          </div>
+                        </div>
+                      </div>{" "} */}
+                      <SpotifyPlayback src={item.src} />
+                      {/* <item.frame /> */}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

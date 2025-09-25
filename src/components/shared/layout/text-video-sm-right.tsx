@@ -32,7 +32,7 @@ function TxtVidSecSmRight({
           </div>
 
           <div className="flex flex-1 items-center justify-center">
-            <div className="w-full aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
+            <div className="w-full aspect-[16/10] h-full bg-center rounded-2xl transition-all duration-300 relative overflow-hidden pointer-events-none">
               <ReactPlayer
                 src={videoLink}
                 width="100%"
@@ -40,7 +40,7 @@ function TxtVidSecSmRight({
                 playing={true}
                 muted={true}
                 loop={true}
-                playsInline={true}
+                playsInline={false}
                 config={{
                   youtube: {
                     playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
@@ -52,7 +52,7 @@ function TxtVidSecSmRight({
                   },
                 }}
                 onReady={() => setLoaded(true)}
-                className="absolute top-0 left-0 w-full h-full"
+                className="absolute top-0 left-0 scale-125 w-full h-full"
               />
 
               {!loaded && (

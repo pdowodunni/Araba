@@ -1,15 +1,17 @@
 import { useState } from "react";
 import SlideUpButton from "../shared/slide-up-button";
+import ReactPlayer from "react-player";
 
 export default function About() {
   const [loaded, setLoaded] = useState(false);
+  const videoLink = "https://youtu.be/j85n9WHF-1w?si=-FtT22fJDOtDevwx";
 
   return (
     <section className="flex flex-col gap-12 pt-sm-pad pb-0 xl:pb-md-pad">
       <div className="mx-container w-full">
         <div className="grid gap-12 xl:grid-cols-2">
           <div className="flex flex-col xl:justify-between gap-2 ">
-            <div className="flex flex-col gap-8 mb-4">
+            <div className="flex flex-col gap-4 mb-4">
               <span className="block w-full pb-3 uppercase tracking-wide border-b border-primary font-interTight-regular">
                 Who we are
               </span>
@@ -26,7 +28,7 @@ export default function About() {
               </h5>
             </div>
 
-            <div className="flex flex-col gap-4 max-w-[760px]">
+            <div className="flex flex-col gap-1 max-w-[760px]">
               <p className="p-lg">
                 We craft emotionally intelligent, culturally grounded, and
                 tech-enhanced storytelling that{" "}
@@ -55,7 +57,7 @@ export default function About() {
               <p className="">
                 …because emotions move money, and communities drive change.
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 mt-2">
                 <SlideUpButton
                   type="fill"
                   bgColor="var(--color-primary)"
@@ -68,22 +70,30 @@ export default function About() {
             </div>
           </div>
 
-          <div className="hidden xl:flex flex-1 items-center justify-center">
-            <div
-              className="relative w-full xl:w-[36rem] 2xl:w-[48.25rem] bg-primary aspect-video xl:rounded-lg overflow-hidden flex items-center justify-center"
-              data-cursor-target
-              data-cursor-text="PLAY VIDEO"
-            >
-              <video
-                playsInline
-                autoPlay
-                muted
-                loop
-                onLoadedData={() => setLoaded(true)}
-                className="absolute inset-0 w-full h-full object-cover"
-              >
-                <source src="/video/video.mp4" type="video/mp4" />
-              </video>
+          <div className="hidden xl:flex flex-1 items-center justify-center pointer-events-none">
+            <div className="w-full rounded-2xl aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
+              <ReactPlayer
+                src={videoLink}
+                width="100%"
+                height="100%"
+                playing={true}
+                muted={true}
+                loop={true}
+                playsInline={true}
+                config={{
+                  youtube: {
+                    playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
+                  },
+                  file: {
+                    attributes: {
+                      playsInline: true,
+                    },
+                  },
+                }}
+                onReady={() => setLoaded(true)}
+                className="absolute top-0 left-0 w-full h-full scale-120"
+              />
+
               {!loaded && (
                 <img
                   src="/images/thumb.jpg"
@@ -96,21 +106,29 @@ export default function About() {
         </div>
       </div>
       <div className="flex xl:hidden flex-1 items-center justify-center">
-        <div
-          className="relative w-screen xl:w-[36rem] 2xl:w-[48.25rem] bg-primary aspect-video xl:rounded-lg overflow-hidden flex items-center justify-center"
-          data-cursor-target
-          data-cursor-text="PLAY VIDEO"
-        >
-          <video
-            playsInline
-            autoPlay
-            muted
-            loop
-            onLoadedData={() => setLoaded(true)}
-            className="absolute inset-0 w-full h-full object-cover"
-          >
-            <source src="/video/video.mp4" type="video/mp4" />
-          </video>
+        <div className="w-full rounded-0 aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
+          <ReactPlayer
+            src={videoLink}
+            width="100%"
+            height="100%"
+            playing={true}
+            muted={true}
+            loop={true}
+            playsInline={true}
+            config={{
+              youtube: {
+                playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
+              },
+              file: {
+                attributes: {
+                  playsInline: true,
+                },
+              },
+            }}
+            onReady={() => setLoaded(true)}
+            className="absolute top-0 left-0 w-full h-full scale-120"
+          />
+
           {!loaded && (
             <img
               src="/images/thumb.jpg"
