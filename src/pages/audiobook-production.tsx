@@ -1,6 +1,5 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import BrandCarousel from "../components/hero/brand-carousel";
-import WorkShowcase from "../components/hero/our-work";
 import AuxHeader from "../components/shared/aux-header";
 import type { Item } from "../components/shared/card-slider";
 import IndxGrdLt from "../components/shared/case-study/index-gird-list";
@@ -12,6 +11,7 @@ import { ChevronDown, Plus } from "lucide-react";
 import { Coach, EndToEnd, Global, Market, Voice } from "../assets/icons";
 import ThreeImgCrdRow from "../components/shared/case-study/3-image-card-row";
 import OneImgCrd from "../components/shared/case-study/1-image-card";
+import SpotifyPlayback from "../components/spotify-playback";
 
 function AudiobookProduction() {
   /* ===== AUXHEADER DATA ===== */
@@ -662,3 +662,84 @@ function AudiobookProduction() {
 }
 
 export default AudiobookProduction;
+
+function WorkShowcase() {
+  const PROJECT_LIST = [
+    [
+      {
+        name: "A Tale of Two Houes",
+        span: 2,
+        src: "/audio/tth.mp3",
+        image: "/images/tth-a.jpg",
+      },
+
+      {
+        name: "A Story of Yuri Kochiama",
+        span: 2,
+        src: "/audio/yori.mp3",
+        image: "/images/disc-sm-b.png",
+      },
+      {
+        name: "DEBBY - Real Person Narration",
+        span: 4,
+        src: "/audio/narration.mp3",
+        image: "/images/four.jpg",
+      },
+      {
+        name: "If Wallas Couls Speak (HAVILAH)",
+        span: 4,
+        src: "/audio/wallascoules.mp3",
+        image: "/images/hallalujah.jpg",
+      },
+      {
+        name: "AI Playbook Excerpt",
+        span: 4,
+        src: "/audio/ai_playbook.mp3",
+        image: "/images/22.jpg",
+      },
+    ],
+  ];
+
+  return (
+    <section
+    // className="text-light-bg bg-primary"
+    >
+      <div className="mx-container">
+        <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
+          <div className="flex flex-col gap-2 items-center">
+            <p className="text-sm uppercase tracking-wide">WORKS</p>
+            <h3 className="m-0 p-0 max-w-[1000px] text-center">
+              Audio samples from Our{" "}
+              <em className="font-instrumental-serif">Client Collaborations</em>
+            </h3>
+          </div>
+          <div className="flex flex-col gap-2 md:gap-4">
+            {PROJECT_LIST.map((row, i) => (
+              <div key={i} className="mx-auto w-full flex justify-center">
+                <div className="block xl:grid w-full grid-cols-8 md:gap-4">
+                  {row.map((item, idx) => (
+                    <div
+                      // data-cursor-target
+                      // data-cursor-text="PLAY AUDIO"
+                      className="mt-3 xl:mt-0 rounded-lg overflow-hidden"
+                      key={idx}
+                      style={{
+                        gridColumn: `span ${item.span} / span ${item.span}`,
+                      }}
+                    >
+                      <SpotifyPlayback
+                        src={item.src}
+                        name={item.name}
+                        image={item.image}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

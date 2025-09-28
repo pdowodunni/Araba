@@ -1,9 +1,11 @@
 import { useState } from "react";
 import SlideUpButton from "../shared/slide-up-button";
 import ReactPlayer from "react-player";
+import SoundButton from "../shared/sound-button";
 
 export default function About() {
   const [loaded, setLoaded] = useState(false);
+  const [muted, setMuted] = useState(true);
   const videoLink = "https://youtu.be/j85n9WHF-1w?si=-FtT22fJDOtDevwx";
 
   return (
@@ -70,14 +72,14 @@ export default function About() {
             </div>
           </div>
 
-          <div className="hidden xl:flex flex-1 items-center justify-center pointer-events-none">
+          <div className="hidden xl:flex flex-1 items-center justify-center pointer-events-non relative">
             <div className="w-full rounded-2xl aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
               <ReactPlayer
                 src={videoLink}
                 width="100%"
                 height="100%"
                 playing={true}
-                muted={true}
+                muted={muted}
                 loop={true}
                 playsInline={true}
                 config={{
@@ -93,19 +95,12 @@ export default function About() {
                 onReady={() => setLoaded(true)}
                 className="absolute top-0 left-0 w-full h-full scale-120"
               />
-
-              {!loaded && (
-                <img
-                  src="/images/thumb.jpg"
-                  alt="background logo"
-                  className="opacity-0"
-                />
-              )}
             </div>
+            <SoundButton muted={muted} setMuted={setMuted} />
           </div>
         </div>
       </div>
-      <div className="flex xl:hidden flex-1 items-center justify-center">
+      <div className="flex xl:hidden flex-1 items-center justify-center pointer-events-none">
         <div className="w-full rounded-0 aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
           <ReactPlayer
             src={videoLink}
@@ -129,13 +124,7 @@ export default function About() {
             className="absolute top-0 left-0 w-full h-full scale-120"
           />
 
-          {!loaded && (
-            <img
-              src="/images/thumb.jpg"
-              alt="background logo"
-              className="opacity-0"
-            />
-          )}
+          <SoundButton muted={muted} setMuted={setMuted} />
         </div>
       </div>
     </section>
