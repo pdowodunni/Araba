@@ -3,7 +3,6 @@ import BreadCrumb, {
   type BreadcrumbPagesProps,
 } from "../../components/shared/case-study/breadcrumb";
 import CaseDetails from "../../components/shared/case-study/case-details";
-import Execution from "../../components/shared/case-study/execution";
 import ProjectPager from "../../components/shared/case-study/project-pager";
 import CaseStudyVideoHeader from "../../components/shared/case-study/video-header";
 
@@ -105,9 +104,6 @@ function Yascf() {
                 reactions, half-finished thoughts… and our job was to find the
                 story inside the noise.
               </p>
-              <p className="p-lg text-center">
-                Our Approach? Piece by Piece, Frame by Frame
-              </p>
             </div>
           </div>
         </div>
@@ -120,7 +116,22 @@ function Yascf() {
             <span className="s-heading w-full flex justify-center">
               Execution & Experience Design
             </span>
-            <Execution data={EXECUTION_DATA} />
+
+            <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 justify-between gap-10 sm:gap-5 lg:gap-10 xl:gap-25">
+              {EXECUTION_DATA.map((itm, idx) => {
+                return (
+                  <div key={idx}>
+                    <div className="flex flex-col gap-4">
+                      <span className="s-heading w-full border-b-2 border-[#D9D9D9]">
+                        0{idx + 1}
+                      </span>
+                      <h5>{itm.title}</h5>
+                      <p className="max-w-[600px] p-lg">{itm.text}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
@@ -132,12 +143,12 @@ function Yascf() {
         <div className="case-container">
           <div className=" py-sm-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">Result</span>
-            <div>
-              <p className="text-xl">
-                In less than 5days, we transformed raw, unstructured footage
-                into a cohesive, emotionally resonant documentary:
-              </p>
-              <p className="text-xl">
+            <div className="flex flex-col gap-6">
+              <h5 className="text-center">
+                In less than 5 days, we transformed raw, unstructured footage
+                into a cohesive, emotionally resonant documentary.
+              </h5>
+              <p className="p-lg text-center">
                 It became the core material for YASCF's 10-year anniversary,
                 used to engage donors, showcase legacy, and inspire future
                 growth.

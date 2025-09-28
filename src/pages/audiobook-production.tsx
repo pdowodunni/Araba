@@ -35,11 +35,10 @@ function AudiobookProduction() {
           <ul className="pl-5 list-disc xl:text-xl flex flex-col gap-2 text-white">
             <li>Your book read in your voice, or one that tells the story.</li>
             <li>Infused with the emotional touch of sound design...</li>
+            <li> …and have people everywhere listen on the go</li>
           </ul>
         </div>
-        <p className="text-white text-start p-lg">
-          …and have people everywhere listen on the go
-        </p>
+
         <p className="text-white text-start p-lg">
           Welcome to the{" "}
           <em className="font-interTight-semibold">
@@ -503,7 +502,7 @@ function AudiobookProduction() {
       <AuxHeader
         listItems={SCROLL_ITEMS}
         sHeading="CREATIVE SERVICES"
-        backgroundImageLink="/images/casestudy/tth-9.webp"
+        backgroundImageLink="/images/tth-10.jpg"
         {...AUX_HEADER_DATA}
       />
 
@@ -521,7 +520,7 @@ function AudiobookProduction() {
               What you get
             </span>
 
-            <div className="mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            {/* <div className="mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {WHAT_YOU_GET_DATA.map(({ head, text, Icon }, idx) => (
                 <div key={idx} className="flex gap-3 flex-col items-center">
                   <div className="logo-box">
@@ -533,6 +532,36 @@ function AudiobookProduction() {
                   <div className="text-center">{text}</div>
                 </div>
               ))}
+            </div> */}
+
+            {/* NEW LINE */}
+
+            <div
+              className="grid gap-y-12 gap-x-8 
+                        sm:grid-cols-2 
+                        md:grid-cols-6 
+                        items-start"
+            >
+              {WHAT_YOU_GET_DATA.map(({ head, text, Icon }, idx) => {
+                let classes =
+                  "flex flex-col items-center text-center space-y-4 sm:px-4";
+                if (idx < 3) classes += " md:col-span-2";
+                if (idx === 3) classes += " md:col-start-2 md:col-span-2";
+                if (idx === 4) classes += " md:col-start-4 md:col-span-2";
+                return (
+                  <div key={idx} className={classes}>
+                    <div key={idx} className="flex gap-3 flex-col items-center">
+                      <div className="logo-box">
+                        <Icon color="#0a221f" />
+                      </div>
+                      <h5 className="p-0 m-0 font-interTight-medium text-center">
+                        {head}
+                      </h5>
+                      <div className="text-center">{text}</div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

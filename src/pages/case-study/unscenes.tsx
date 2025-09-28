@@ -8,7 +8,9 @@ import BreadCrumb, {
 } from "../../components/shared/case-study/breadcrumb";
 import CaseDetails from "../../components/shared/case-study/case-details";
 import Execution from "../../components/shared/case-study/execution";
-import IndxGrdLt from "../../components/shared/case-study/index-gird-list";
+import IndxGrdLt, {
+  Holder,
+} from "../../components/shared/case-study/index-gird-list";
 import ProjectPager from "../../components/shared/case-study/project-pager";
 import CaseStudyVideoHeader from "../../components/shared/case-study/video-header";
 
@@ -27,7 +29,7 @@ function Unscene() {
   const BRIEF_DATA = [
     {
       text: (
-        <p>
+        <p className="p-lg">
           <em className="font-interTight-semibold">
             Inspires the congregation
           </em>{" "}
@@ -37,7 +39,7 @@ function Unscene() {
     },
     {
       text: (
-        <p>
+        <p className="p-lg">
           <em className="font-interTight-semibold">
             Strengthens community and teamwork
           </em>{" "}
@@ -47,7 +49,7 @@ function Unscene() {
     },
     {
       text: (
-        <p>
+        <p className="p-lg">
           <em className="font-interTight-semibold">Drives emotional buy-in</em>{" "}
           for the upcoming Fusion Center (The New’s permanent worship home)
         </p>
@@ -55,7 +57,7 @@ function Unscene() {
     },
     {
       text: (
-        <p>
+        <p className="p-lg">
           <em className="font-interTight-semibold">
             Raises awareness and support
           </em>{" "}
@@ -134,9 +136,22 @@ function Unscene() {
               The brief
             </span>
             <div className="flex flex-col gap-10">
-              <p className="p-lg">Create a documentary that:</p>
+              <h5 className="">Create a documentary that:</h5>
               <div>
-                <IndxGrdLt data={BRIEF_DATA} />
+                <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 justify-between gap-10 sm:gap-5 lg:gap-10 xl:gap-25">
+                  {BRIEF_DATA.map((itm, idx) => {
+                    return (
+                      <div key={idx}>
+                        <div className="flex flex-col gap-4">
+                          <span className="s-heading w-full border-b-2 border-[#D9D9D9]">
+                            0{idx + 1}
+                          </span>
+                          <div className="max-w-[600px]">{itm.text}</div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>

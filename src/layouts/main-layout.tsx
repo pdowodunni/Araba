@@ -19,6 +19,7 @@ import VoiceOver from "../pages/voiceover-services";
 import AudiobookProduction from "../pages/audiobook-production";
 import React, { useRef } from "react";
 import gsap from "gsap";
+import ScrollRestorationFix from "../components/scroll-restore";
 
 function MainLayout() {
   const location = useLocation();
@@ -66,6 +67,8 @@ function MainLayout() {
   return (
     <>
       {/* Keep navbar outside the animated container so it stays fixed */}
+      <ScrollRestorationFix />
+      <ScrollToTop />
       <NavigationBar />
 
       <TransitionGroup component={null}>
@@ -89,7 +92,6 @@ function MainLayout() {
             className="min-h-screen"
             style={{ willChange: "opacity, filter" }}
           >
-            <ScrollToTop />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/our-work" element={<OurWork />} />
