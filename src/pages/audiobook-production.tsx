@@ -9,10 +9,11 @@ import NumberedPoint from "../components/shared/numbered-points";
 import SlideUpButton from "../components/shared/slide-up-button";
 import gsap from "gsap";
 import { ChevronDown, Plus } from "lucide-react";
+import { Coach, EndToEnd, Global, Market, Voice } from "../assets/icons";
+import ThreeImgCrdRow from "../components/shared/case-study/3-image-card-row";
+import OneImgCrd from "../components/shared/case-study/1-image-card";
 
 function AudiobookProduction() {
-  type FAQItem = { id: number; q: string; a: ReactNode };
-  type FAQGroup = { title: string; items: FAQItem[] };
   /* ===== AUXHEADER DATA ===== */
   const AUX_HEADER_DATA = {
     head: (
@@ -21,7 +22,7 @@ function AudiobookProduction() {
       </h1>
     ),
     text: (
-      <div className="flex flex-col gap-2 max-w-[650px]">
+      <div className="flex flex-col gap-2 max-w-[1050px]">
         <p className="text-white p-lg font-instrumental-serif text-start">
           “My Book Is Great... But No I'm Still Unknown.”
         </p>
@@ -32,11 +33,13 @@ function AudiobookProduction() {
         <div>
           <p className="text-white text-start p-lg">Now picture this:</p>
           <ul className="pl-5 list-disc xl:text-xl flex flex-col gap-2 text-white">
-            <li>AYour book read in your voice, or one that tells the story.</li>
+            <li>Your book read in your voice, or one that tells the story.</li>
             <li>Infused with the emotional touch of sound design...</li>
-            <li>…and have people everywhere listen on the go.</li>
           </ul>
         </div>
+        <p className="text-white text-start p-lg">
+          …and have people everywhere listen on the go
+        </p>
         <p className="text-white text-start p-lg">
           Welcome to the{" "}
           <em className="font-interTight-semibold">
@@ -109,31 +112,34 @@ function AudiobookProduction() {
   /* ===== WHAT YOU GET DATA ===== */
   const WHAT_YOU_GET_DATA = [
     {
+      head: "End-to-End Audiobook Production",
+      Icon: EndToEnd,
       text: (
         <div>
-          <h5>End-to-End Audiobook Production</h5>
           <p className="p-lg">
-            We take your story from script to studio to Streaming. You don’t
+            We take your story from script to studio to Streaming. You don't
             need to stress the how—we handle everything.
           </p>
         </div>
       ),
     },
     {
+      head: "Voice Coaching or Casting",
+      Icon: Coach,
       text: (
         <div>
-          <h5>Voice Coaching or Casting</h5>
           <p className="p-lg">
-            Whether it’s your voice or one from our curated roster, we coach,
+            Whether it's your voice or one from our curated roster, we coach,
             direct, or cast for the right sound.
           </p>
         </div>
       ),
     },
     {
+      head: "Global Distribution",
+      Icon: Global,
       text: (
         <div>
-          <h5>Global Distribution</h5>
           <p className="p-lg">
             We take your story from script to studio to Streaming. You don’t
             need to stress the how—we handle everything.
@@ -142,9 +148,10 @@ function AudiobookProduction() {
       ),
     },
     {
+      head: "Optional Immersive Sound Design",
+      Icon: Voice,
       text: (
         <div>
-          <h5>Optional Immersive Sound Design</h5>
           <p className="p-lg">
             Transform your book into an audio drama or cinematic journey with
             layered sound, music, and emotion.
@@ -153,9 +160,10 @@ function AudiobookProduction() {
       ),
     },
     {
+      head: "Marketing Content Bundle",
+      Icon: Market,
       text: (
         <div>
-          <h5>Marketing Content Bundle</h5>
           <p className="p-lg">
             We create audiograms, reels, and promo assets to help you drive
             listens, sales, and visibility.
@@ -495,7 +503,7 @@ function AudiobookProduction() {
       <AuxHeader
         listItems={SCROLL_ITEMS}
         sHeading="CREATIVE SERVICES"
-        backgroundImageLink="/images/AudioExperiences.png"
+        backgroundImageLink="/images/casestudy/tth-9.webp"
         {...AUX_HEADER_DATA}
       />
 
@@ -503,18 +511,28 @@ function AudiobookProduction() {
 
       <TxtVidSecSmRight
         {...IS_THIS_YOU}
-        videoLink="https://youtu.be/nVhvJo_y-kQ"
+        videoLink="https://youtu.be/F_Q_oKSMDKY"
       />
 
       <section>
         <div className="case-container">
-          <div className="py-sm-pad flex flex-col gap-8">
+          <div className="py-sm-pad flex flex-col gap-20">
             <span className="s-heading w-full flex justify-center">
               What you get
             </span>
 
-            <div>
-              <IndxGrdLt data={WHAT_YOU_GET_DATA} />
+            <div className="mx-auto grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+              {WHAT_YOU_GET_DATA.map(({ head, text, Icon }, idx) => (
+                <div key={idx} className="flex gap-3 flex-col items-center">
+                  <div className="logo-box">
+                    <Icon color="#0a221f" />
+                  </div>
+                  <h5 className="p-0 m-0 font-interTight-medium text-center">
+                    {head}
+                  </h5>
+                  <div className="text-center">{text}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -540,6 +558,22 @@ function AudiobookProduction() {
       </section> */}
 
       <WorkShowcase />
+
+      <section>
+        <div>
+          <ThreeImgCrdRow
+            imagesUrl={[
+              "/images/casestudy/tth-1.webp",
+              "/images/casestudy/tth-4.webp",
+              "/images/casestudy/tth-6.webp",
+            ]}
+          />
+          <OneImgCrd
+            assetLink="/images/casestudy/tth-7.webp"
+            assetType="image"
+          />
+        </div>
+      </section>
 
       <section className="">
         <div className="mx-container ">

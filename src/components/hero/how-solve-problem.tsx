@@ -18,7 +18,7 @@ const FEATURES = [
       </h5>
     ),
     text: "We shape narratives that spark emotion, drive clarity, and move your audience to action.",
-    img: "/images/placeholder.jpg",
+    img: "/images/Vector_Strategic_Storytelling.png",
     bg: "bg-green-accent-dark text-[#8DFDBA]",
   },
   {
@@ -29,7 +29,7 @@ const FEATURES = [
       </h5>
     ),
     text: "From cinematic voiceovers to textured soundscapes, Soundbaking Company creates audio that breathes, pulses, and persuades.",
-    img: "/images/114.webp",
+    img: "/images/Vector_Audio_Experiences.png",
     bg: "bg-mid-bg text-primary",
   },
   {
@@ -39,7 +39,7 @@ const FEATURES = [
       </h5>
     ),
     text: "We remix your raw moments, missions, or memories into films that feel like art, speak like truth, and play like culture.",
-    img: "/images/115.webp",
+    img: "/images/Vector_Visual_Storytelling.png",
     bg: "bg-green-accent text-primary",
   },
 ];

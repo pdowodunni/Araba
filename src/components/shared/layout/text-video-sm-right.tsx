@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
 import ReactPlayer from "react-player";
+import SoundButton from "../sound-button";
 
 function TxtVidSecSmRight({
   heading,
@@ -13,7 +14,7 @@ function TxtVidSecSmRight({
   text: ReactNode;
   videoLink: string;
 }) {
-  const [loaded, setLoaded] = useState(false);
+  const [muted, setMuted] = useState(true);
   return (
     <section className="flex flex-col gap-12 pt-sm-pad pb-0 xl:pb-sm-pad">
       <div className="mx-container w-full">
@@ -32,13 +33,13 @@ function TxtVidSecSmRight({
           </div>
 
           <div className="flex flex-1 items-center justify-center">
-            <div className="w-full aspect-[16/10] h-full bg-center rounded-2xl transition-all duration-300 relative overflow-hidden pointer-events-none">
+            <div className="w-full aspect-[16/10] h-full bg-center rounded-2xl transition-all duration-300 relative overflow-hidden">
               <ReactPlayer
                 src={videoLink}
                 width="100%"
                 height="100%"
                 playing={true}
-                muted={true}
+                muted={muted}
                 loop={true}
                 playsInline={false}
                 config={{
@@ -51,17 +52,10 @@ function TxtVidSecSmRight({
                     },
                   },
                 }}
-                onReady={() => setLoaded(true)}
-                className="absolute top-0 left-0 scale-125 w-full h-full"
+                className="absolute top-0 left-0 scale-135 w-full h-full pointer-events-none"
               />
 
-              {!loaded && (
-                <img
-                  src="/images/thumb.jpg"
-                  alt="background logo"
-                  className="opacity-0"
-                />
-              )}
+              <SoundButton muted={muted} setMuted={setMuted} />
             </div>
           </div>
         </div>

@@ -101,25 +101,6 @@ function Unscene() {
     },
   ];
 
-  const IMPACT_DATA = [
-    {
-      text: (
-        <p className="p-lg">
-          15.7% volunteer sign-ups, especially in backend roles
-        </p>
-      ),
-    },
-    {
-      text: <p className="p-lg">20% Increased social traction via snippets</p>,
-    },
-    {
-      text: <p className="p-lg">Direct CTA for Fusion Centre fundraising</p>,
-    },
-    {
-      text: <p className="p-lg">Higher appreciation of volunteers & culture</p>,
-    },
-  ];
-
   return (
     <main
       className="p-main"
@@ -145,10 +126,6 @@ function Unscene() {
         industry="Faith Culture & Experimental Events"
         service="Phygital Documentary Prototype"
       />
-      {/* <OneImgCrd
-        assetType="image"
-        assetLink="/images/casestudy/unscene-1.webp"
-      /> */}
       {/* THE BRIEF */}
       <section>
         <div className="case-container">
@@ -156,7 +133,7 @@ function Unscene() {
             <span className="s-heading w-full flex justify-center">
               The brief
             </span>
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-10">
               <p className="p-lg">Create a documentary that:</p>
               <div>
                 <IndxGrdLt data={BRIEF_DATA} />
@@ -166,10 +143,7 @@ function Unscene() {
         </div>
       </section>
       {/* THE BRIEF */}
-      <OneImgCrd
-        assetType="video"
-        assetLink="https://youtu.be/MFpBx706e3E?si=08ei5_bstXYTjdUB"
-      />
+      <OneImgCrd assetType="video" assetLink="https://youtu.be/r_ZRiLQR5KY" />
       {/* Execution & Experience Design */}
       <section>
         <div className="case-container">
@@ -196,18 +170,6 @@ function Unscene() {
         </div>
       </section>
       {/* RESULT */}
-      {/* Measured Impact */}
-      <section>
-        <div className="case-container">
-          <div className=" py-sm-pad flex flex-col gap-8">
-            <span className="s-heading w-full flex justify-center">
-              Measured Impact (Post-Launch)
-            </span>
-            <IndxGrdLt data={IMPACT_DATA} />
-          </div>
-        </div>
-      </section>
-      {/* Measured Impact */}
       <ProjectPager />
     </main>
   );

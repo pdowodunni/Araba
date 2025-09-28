@@ -39,10 +39,10 @@ const AnimatedNumber = () => {
     tl3.current?.kill();
     stRef.current?.kill();
 
-    const TOTAL = 7;
+    const TOTAL = 20;
     const DELAY_ONES = 0.0;
-    const DELAY_TENS = 1.0;
-    const DELAY_HUND = 2.0;
+    const DELAY_TENS = -4.0;
+    const DELAY_HUND = -8.0;
 
     const stepsOnes = THIRD_ARRAY.length - 1;
     const stepsTens = SECOND_ARRAY.length - 1;

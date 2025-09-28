@@ -178,6 +178,10 @@ body {
   min-height: 100vh;
   background-color: var(--color-light-bg);
 }
+::selection {
+  background: #d8ff85;
+  color: #0a221f;
+}
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
