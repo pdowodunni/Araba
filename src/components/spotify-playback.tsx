@@ -74,7 +74,7 @@ const SpotifyPlayback = ({
         style={{
           backgroundImage: `url('${image}')`,
           backgroundPosition: "center",
-          // backgroundSize: "cover",
+          backgroundSize: "cover",
         }}
       >
         <ReactPlayer

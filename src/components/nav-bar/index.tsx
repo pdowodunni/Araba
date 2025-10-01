@@ -382,13 +382,13 @@ function DropDownHolder({
       gsap.fromTo(
         el,
         { autoAlpha: 0, y: 50 },
-        { autoAlpha: 1, y: 0, duration: 0.4, ease: "power1.out" }
+        { autoAlpha: 1, y: 0, duration: 0.15, ease: "power1.out" }
       );
     } else {
       gsap.fromTo(
         el,
         { autoAlpha: 1, y: 0 },
-        { autoAlpha: 0, y: 50, duration: 0.4, ease: "power1.out" }
+        { autoAlpha: 0, y: 50, duration: 0.15, ease: "power1.out" }
       );
     }
   }, [open]);

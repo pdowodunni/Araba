@@ -513,7 +513,7 @@ function AudiobookProduction() {
         videoLink="https://youtu.be/F_Q_oKSMDKY"
       />
 
-      <section>
+      <section className="bg-mid-bg">
         <div className="case-container">
           <div className="py-sm-pad flex flex-col gap-20">
             <span className="s-heading w-full flex justify-center">
@@ -707,7 +707,7 @@ function WorkShowcase() {
       <div className="mx-container">
         <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
           <div className="flex flex-col gap-2 items-center">
-            <p className="text-sm uppercase tracking-wide">WORKS</p>
+            <p className="text-sm uppercase tracking-wide">OUR WORKS</p>
             <h3 className="m-0 p-0 max-w-[1000px] text-center">
               Audio samples from Our{" "}
               <em className="font-instrumental-serif">Client Collaborations</em>

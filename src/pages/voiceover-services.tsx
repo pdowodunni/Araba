@@ -303,36 +303,53 @@ function WorkShowcase() {
   const PROJECT_LIST = [
     [
       {
+        name: "AI Player Excerpt",
         span: 2,
-        src: "https://music.youtube.com/watch?v=Y7RMppGSS_Q&si=K78waKqP56-skoh5",
+        src: "/audio/ai_playbook.mp3",
+        image: "/images/tth-a.jpg",
+      },
+
+      {
+        name: "I still dream in code",
+        span: 2,
+        src: "/audio/i_still_dream_code.mp3",
+        image: "/images/disc-sm-b.png",
       },
       {
+        name: "Leadway Assurance Final",
         span: 2,
-        src: "https://music.youtube.com/watch?v=e903-3RyiNg&si=7hMBdqkmNXYYQ8It",
+        src: "/audio/leadway_assurance.mp3",
+        image: "/images/four.jpg",
       },
       {
+        name: "Light and Fire Promotion",
         span: 2,
-        src: "https://music.youtube.com/watch?v=mdZ1MCelWdM&si=w-6VF7Z6ygYpTLFb",
+        src: "/audio/light_fire.mp3",
+        image: "/images/hallalujah.jpg",
       },
       {
+        name: "One Day NIKE Promo",
         span: 2,
-        src: "https://music.youtube.com/watch?v=kMnlZodrTqA&si=JN93VRzR6GvT7hWc",
+        src: "/audio/one_day_nike.mp3",
+        image: "/images/22.jpg",
       },
       {
+        name: "Quickbooks Online",
         span: 2,
-        src: "https://music.youtube.com/watch?v=HSSmEn8NTWM&si=2Qag-yknAYZfkKLh",
+        src: "/audio/quickbooks_online.mp3",
+        image: "/images/22.jpg",
       },
       {
+        name: "The Project 100 by the Development School Africa",
         span: 2,
-        src: "https://music.youtube.com/watch?v=99kD-frNymo&si=OVa_82eOl-2SZ0FY",
+        src: "/audio/project_100.mp3",
+        image: "/images/22.jpg",
       },
       {
+        name: "Think Travel Think Wakanow",
         span: 2,
-        src: "https://music.youtube.com/watch?v=tQiNQL-FEgU&si=-HYCv4AdZNVN_8Y_",
-      },
-      {
-        span: 2,
-        src: "https://music.youtube.com/watch?v=l_7SxoQW11g&si=rLSCa9WqvSMGKGjf",
+        src: "/audio/wakanow.mp3",
+        image: "/images/22.jpg",
       },
     ],
   ];
@@ -346,7 +363,7 @@ function WorkShowcase() {
           <div className="flex flex-col gap-2 items-center">
             <p className="text-sm uppercase tracking-wide">WORKS</p>
             <h3 className="m-0 p-0 max-w-[1000px] text-center">
-              Voiceover samples from Our{" "}
+              Audio samples from Our{" "}
               <em className="font-instrumental-serif">Client Collaborations</em>
             </h3>
           </div>
@@ -364,39 +381,11 @@ function WorkShowcase() {
                         gridColumn: `span ${item.span} / span ${item.span}`,
                       }}
                     >
-                      {/* <div>
-                        <div className="group w-full flex flex-col cursor-pointer gap-6 mb-12 md:mb-0">
-                          <div
-                            className="
-                                w-full h-[180px] xl:h-[396px] rounded-lg
-                                bg-center
-                                bg-[length:100%]
-                                group-hover:bg-[length:115%]
-                                transition-all
-                                duration-300
-                              "
-                            style={{
-                              backgroundImage: `url('${item.assetLink}')`,
-                              backgroundPosition: "center",
-                              backgroundSize: "cover",
-                            }}
-                          />
-
-                          <div>
-                            <div className="flex items-center gap-1">
-                              <h5 className="font-instrumental-serif m-0">
-                                {item.title}
-                              </h5>
-                              <span className="transform xl:-translate-x-2 xl:translate-y-0 scale-100 xl:scale-0 opacity-100 xl:opacity-0 group-hover:translate-x-1.5 group-hover:-translate-y-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                                <CirclePlay strokeWidth={1.5} size={30} />
-                              </span>
-                            </div>
-                            <p className="m-0">{item.desc}</p>
-                          </div>
-                        </div>
-                      </div>{" "} */}
-                      <SpotifyPlayback src={item.src} />
-                      {/* <item.frame /> */}
+                      <SpotifyPlayback
+                        src={item.src}
+                        name={item.name}
+                        image={item.image}
+                      />
                     </div>
                   ))}
                 </div>
