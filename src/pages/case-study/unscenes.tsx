@@ -13,6 +13,8 @@ import IndxGrdLt, {
 } from "../../components/shared/case-study/index-gird-list";
 import ProjectPager from "../../components/shared/case-study/project-pager";
 import CaseStudyVideoHeader from "../../components/shared/case-study/video-header";
+import NumberedPoint from "../../components/shared/numbered-points";
+import TwoRowGrdTxtHolder from "../../components/shared/layout/2-row-grid-text-holder";
 
 function Unscene() {
   const BREADCRUMB_PAGES: BreadcrumbPagesProps[] = [
@@ -103,6 +105,48 @@ function Unscene() {
     },
   ];
 
+  const WHATS_INCLUDED = [
+    {
+      head: "Essentials",
+      text: (
+        <div>
+          {[
+            "Scriptwriting",
+            "Story arc development",
+            "Voice Casting",
+            "Visual Storytelling",
+          ].map((item, idx) => (
+            <NumberedPoint
+              key={idx}
+              item={item}
+              idx={idx}
+              itemClassName="p-lg"
+            />
+          ))}
+        </div>
+      ),
+    },
+    {
+      head: "Results",
+      text: (
+        <div>
+          {[
+            "45-min Documentary",
+            "Social Media Cutdowns for Instagram, WhatsApp & Facebook",
+            "Branded Video Assets for partnership, volunteer onboarding, and fundraising",
+          ].map((item, idx) => (
+            <NumberedPoint
+              key={idx}
+              item={item}
+              idx={idx}
+              itemClassName="p-lg"
+            />
+          ))}
+        </div>
+      ),
+    },
+  ];
+
   return (
     <main
       className="p-main"
@@ -184,6 +228,15 @@ function Unscene() {
           </div>
         </div>
       </section>
+
+      <section>
+        <div className="mx-container">
+          <div>
+            <TwoRowGrdTxtHolder data={WHATS_INCLUDED} />
+          </div>
+        </div>
+      </section>
+
       {/* RESULT */}
       <ProjectPager />
     </main>

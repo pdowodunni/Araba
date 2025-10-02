@@ -8,7 +8,7 @@ export default function NumberedPoint({
   idx: number;
 }) {
   return (
-    <p key={idx} className={itemClassName}>
+    <p key={idx} className={`${itemClassName} grid grid-cols-[14px_1fr] gap-3`}>
       <span className="s-index">{idx + 1}</span> {item}
     </p>
   );
