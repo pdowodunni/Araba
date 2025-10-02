@@ -14,7 +14,7 @@ export default function About() {
         <div className="grid gap-12 xl:grid-cols-2">
           <div className="flex flex-col xl:justify-between gap-2 ">
             <div className="flex flex-col gap-4 mb-4">
-              <span className="block w-full pb-3 uppercase tracking-wide border-b border-primary font-interTight-regular">
+              <span className="s-heading border-b border-primary font-interTight-regular">
                 Who we are
               </span>
               <h5 className="font-medium leading-tight text-gray-900">
@@ -30,27 +30,27 @@ export default function About() {
               </h5>
             </div>
 
-            <div className="flex flex-col gap-1 max-w-[760px]">
+            <div className="flex flex-col gap-1.5 md:gap-1 max-w-[760px]">
               <p className="p-lg">
                 We craft emotionally intelligent, culturally grounded, and
                 tech-enhanced storytelling that{" "}
-                <h5 className="inline font-instrumental-serif font-bold">
+                <em className="inline font-instrumental-serif md:text-2xl lg:text-3xl font-bold">
                   connects, resonates, and moves people to action.
-                </h5>
+                </em>
               </p>
               <p className="p-lg">
                 Through{" "}
-                <h5 className="inline font-instrumental-serif font-bold">
+                <em className="inline font-instrumental-serif text-lg md:text-2xl lg:text-3xl font-bold">
                   strategy, sound, and screen,
-                </h5>{" "}
+                </em>{" "}
                 we design high-impact, story-led experiences that scale{" "}
-                <h5 className="inline font-instrumental-serif font-bold">
+                <em className="inline font-instrumental-serif md:text-2xl lg:text-3xl font-bold">
                   trust, visibility,
-                </h5>{" "}
+                </em>{" "}
                 and{" "}
-                <h5 className="inline font-instrumental-serif font-bold">
+                <em className="inline font-instrumental-serif md:text-2xl lg:text-3xl font-bold">
                   loyalty.
-                </h5>
+                </em>
               </p>
               <p className="p-lg">
                 Our purpose is simple: to build meaningful systems that outlive
@@ -59,7 +59,7 @@ export default function About() {
               <p className="">
                 …because emotions move money, and communities drive change.
               </p>
-              <div className="flex gap-4 mt-2">
+              <div className="flex gap-4 mt-4">
                 <SlideUpButton
                   type="fill"
                   bgColor="var(--color-primary)"
@@ -72,7 +72,7 @@ export default function About() {
             </div>
           </div>
 
-          <div className="hidden xl:flex flex-1 items-center justify-center pointer-events-non relative">
+          <div className="hidden xl:flex flex-1 items-center justify-center relative">
             <div className="w-full rounded-2xl aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
               <ReactPlayer
                 src={videoLink}
@@ -100,7 +100,7 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="flex xl:hidden flex-1 items-center justify-center pointer-events-none">
+      <div className="flex xl:hidden flex-1 items-center justify-center">
         <div className="w-full rounded-0 aspect-[16/10] h-full bg-center transition-all duration-300 relative overflow-hidden">
           <ReactPlayer
             src={videoLink}

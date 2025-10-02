@@ -33,10 +33,10 @@ const ITEMS = [
 
 export default function OurDifferenceSection() {
   return (
-    <section className="">
+    <section className="bg-light-bg">
       <div className="mx-container">
         <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
-          <div className="flex flex-col gap-8 mb-4 items-center">
+          <div className="flex flex-col gap-3 md:gap-8 mb-4 items-center">
             <span className="s-heading flex justify-center w-full">
               OUR DIFFERENCE
             </span>

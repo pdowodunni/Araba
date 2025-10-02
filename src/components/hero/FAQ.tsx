@@ -328,9 +328,9 @@ export default function FaqAccordion() {
   return (
     <section className="bg-primary text-light-bg">
       <div className="mx-container">
-        <div className="pt-lg-pad pb-md-pad flex flex-col gap-20">
-          <div className="flex flex-col gap-2">
-            <p className="text-sm uppercase tracking-wide">FAQ</p>
+        <div className="pt-lg-pad pb-md-pad flex flex-col gap-6 md:gap-20">
+          <div className="flex flex-col gap-3 md:gap-8">
+            <p className="ts-heading flex">FAQ</p>
             <h3 className="m-0 p-0">
               Frequently asked{" "}
               <em className="font-instrumental-serif">questions</em>
@@ -341,7 +341,7 @@ export default function FaqAccordion() {
             {[leftGroups, rightGroups].map((groupCol, colIdx) => (
               <div key={colIdx} className="space-y-8">
                 {groupCol.map((group, gi) => (
-                  <div key={`${group.title}-${gi}`} className="space-y-4">
+                  <div key={`${group.title}-${gi}`} className="space-y-1">
                     <h6 className="s-heading opacity-60">{group.title}</h6>
                     <div className="space-y-3">
                       {group.items.map(({ id, q, a }) => (

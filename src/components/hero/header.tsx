@@ -11,7 +11,7 @@ function HeroHeader() {
     <header>
       <div className="flex items-center justify-center h-fit xl:h-[656px] 2xl:h-[965px] bg-primary">
         <div className="max-w-[1680px] mx-auto">
-          <div className="flex flex-col pt-[100px] xl:pt-0 xl:grid xl:grid-cols-2 gap-1 xl:gap-8">
+          <div className="flex flex-col pt-[100px] xl:pt-0 xl:grid xl:grid-cols-2 gap-2 xl:gap-8">
             <div className="flex flex-col justify-center items-center xl:items-start gap-3 xl:gap-8  px-4 sm:px-6 lg:px-8">
               <h2 className="text-[#8DFDBA] font-interTight-regular leading-tight max-w-[560px] xl:max-w-[540px] text-center xl:text-start">
                 <span>

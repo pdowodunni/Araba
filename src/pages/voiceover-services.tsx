@@ -243,7 +243,7 @@ function VoiceOver() {
         className="bg-primary text-light-bg"
       >
         <div className="mx-container">
-          <div className="pt-md-pad pb-sm-pad flex flex-col gap-20">
+          <div className="pt-md-pad pb-md-pad flex flex-col gap-20">
             <div className="flex flex-col gap-2">
               <p className="text-sm uppercase tracking-wide">WHY US</p>
               <h3 className="m-0 p-0 max-w-[700px]">

@@ -26,7 +26,7 @@ function AuxHeader({
     >
       <div className="flex h-fit pt-[78px]">
         <div className="mx-container w-full">
-          <div className="flex pt-md-pad pb-sm-pad mx-assist mt-40 md:mt-0">
+          <div className="flex pt-md-pad pb-sm-pad mx-assist mt-10 md:mt-0">
             <div className="flex flex-col gap-3 lg:gap-5 xl:gap-10">
               <div className="max-w-[560px] xl:max-w-[820px] text-white">
                 <span className="s-heading mb-2">{sHeading}</span>

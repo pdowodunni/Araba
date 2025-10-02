@@ -49,7 +49,7 @@ export default function HowWeSolveProblem() {
     <>
       <section>
         <div className="pt-md-pad pb-md-pad flex flex-col gap-6 md:gap-20">
-          <div className="flex flex-col gap-3 mb-4 items-center max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-3 md:gap-8 items-center max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8">
             <span className="s-heading flex justify-center">
               How we solve problems
             </span>

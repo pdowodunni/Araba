@@ -32,7 +32,7 @@
 
 @theme {
   --spacing-sm-pad: clamp(2rem, 6vw, 5rem);
-  --spacing-md-pad: clamp(4rem, 8vw, 8rem);
+  --spacing-md-pad: clamp(3rem, 8vw, 8rem);
   --spacing-lg-pad: clamp(4rem, 10vw, 13rem);
 
   --breakpoint-2xl: 103.125rem;
@@ -120,7 +120,7 @@
     @apply max-w-[1680px] mx-auto px-4 sm:px-6 lg:px-8;
   }
   .s-heading {
-    @apply flex w-full pb-3 uppercase tracking-[2px];
+    @apply flex w-full pb-3 uppercase tracking-[1px] md:tracking-[2px] text-[14px] md:text-[16px];
   }
   .s-index {
     @apply opacity-50 text-[16px] mr-0;

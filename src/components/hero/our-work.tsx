@@ -6,10 +6,10 @@ export default function WorkShowcase() {
   return (
     <section className="text-light-bg bg-primary">
       <div className="mx-container">
-        <div className="pt-lg-pad pb-md-pad flex flex-col gap-10 md:gap-20">
+        <div className="pt-lg-pad pb-5 md:pb-md-pad flex flex-col gap-10 md:gap-20">
           <div className="flex justify-between flex-col gap-4 xl:flex-row">
-            <div className="flex flex-col gap-2">
-              <p className="text-sm uppercase tracking-wide">Our Work</p>
+            <div className="flex flex-col gap-3 md:gap-8">
+              <p className="s-heading flex">Our Work</p>
               <h3 className="m-0 p-0">
                 See how <em className="font-instrumental-serif">top brands</em>{" "}
                 use Araba Collective
