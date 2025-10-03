@@ -16,7 +16,7 @@ type GridItem = {
 export function ProductionGrid({ items }: { items: GridItem[] }) {
   return (
     <section className="bg-light-bg">
-      <div className="mx-container pt-sm-pad">
+      <div className="mx-container">
         <div
           className="
             grid gap-4 md:gap-6

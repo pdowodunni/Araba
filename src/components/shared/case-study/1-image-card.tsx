@@ -47,7 +47,7 @@ function OneImgCrd({
                   },
                 }}
                 onReady={() => setLoaded(true)}
-                className="absolute top-0 left-0 w-full h-full"
+                className="absolute top-0 left-0 w-full h-full pointer-events-none"
               />
               <SoundButton muted={muted} setMuted={setMuted} />
               {!loaded && (

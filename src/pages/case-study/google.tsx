@@ -148,7 +148,24 @@ function Google() {
                   <h5>Recording and Vocal Direction </h5>
                 </div>
                 <div className="w-full">
-                  <IndxGrdLt data={RECORDING_DATA} />
+                  {/* <IndxGrdLt data={RECORDING_DATA} /> */}
+
+                  <section>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-between gap-10 sm:gap-5">
+                      {RECORDING_DATA.map((itm, idx) => {
+                        return (
+                          <div key={idx}>
+                            <div className="flex flex-col gap-4">
+                              <span className="s-heading w-full border-b-2 border-[#D9D9D9]">
+                                0{idx}
+                              </span>
+                              <div className="">{itm.text}</div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </section>
                 </div>
               </TwoRow>
             </div>
@@ -162,7 +179,7 @@ function Google() {
       {/* THE WIN */}
       <section>
         <div className="case-container">
-          <div className=" py-sm-pad flex flex-col gap-8">
+          <div className="py-sm-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">
               The win
             </span>
@@ -219,7 +236,6 @@ const SmallVideo = ({
               },
             },
           }}
-          // onReady={() => setloaded(true)}
           className="absolute top-0 left-0 w-full h-full pointer-events-none"
         />
         <SoundButton muted={muted} setMuted={setMuted} />

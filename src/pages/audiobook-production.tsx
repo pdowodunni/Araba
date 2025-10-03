@@ -588,7 +588,14 @@ function AudiobookProduction() {
 
       <WorkShowcase />
 
-      <section>
+      <section
+        style={{
+          backgroundImage: "url('/images/n-b.png')",
+          backgroundRepeat: "repeat",
+          backgroundAttachment: "fixed",
+        }}
+        className="py-sm-pad"
+      >
         <div>
           <ThreeImgCrdRow
             imagesUrl={[
@@ -705,7 +712,7 @@ function WorkShowcase() {
     // className="text-light-bg bg-primary"
     >
       <div className="mx-container">
-        <div className="pt-md-pad pb-md-pad flex flex-col gap-10 md:gap-20">
+        <div className="pt-sm-pad pb-sm-pad flex flex-col gap-10 md:gap-20">
           <div className="flex flex-col gap-2 items-center">
             <p className="text-sm uppercase tracking-wide">OUR WORKS</p>
             <h3 className="m-0 p-0 max-w-[1000px] text-center">
