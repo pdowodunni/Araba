@@ -22,7 +22,7 @@ import {
 } from "../assets/icons";
 
 export const CAROUSEL_BRANDS = [
-  GtB,
+  // GtB,
   Google,
   Stanbic,
   CM,
@@ -39,7 +39,8 @@ export const CAROUSEL_BRANDS = [
 export const TESTIMONIALS = [
   {
     id: 0,
-    Logo: GtB,
+    Logo: GF,
+    logoWidth: 60,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “Working with {"  "}
@@ -60,6 +61,7 @@ export const TESTIMONIALS = [
   {
     id: 1,
     Logo: Seid,
+    logoWidth: 80,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “One of the major things I look at when working with anyone is
@@ -78,6 +80,7 @@ export const TESTIMONIALS = [
   {
     id: 2,
     Logo: SaroAfrice,
+    logoWidth: 80,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “
@@ -98,6 +101,7 @@ export const TESTIMONIALS = [
   {
     id: 3,
     Logo: JM,
+    logoWidth: 90,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “Few partners can handle pressure and still bring excellence. For the
@@ -115,6 +119,7 @@ export const TESTIMONIALS = [
   {
     id: 4,
     Logo: SeamlessHR,
+    logoWidth: 100,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “
@@ -133,6 +138,7 @@ export const TESTIMONIALS = [
   {
     id: 5,
     Logo: Shopify,
+    logoWidth: 50,
     quote: (
       <p className="text-xl 2xl:text-3xl">
         “

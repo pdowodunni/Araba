@@ -384,7 +384,7 @@ export default function VerticalSnapCarousel({
             className="max-w-3xl min-h-[360px] mx-auto flex flex-col gap-6 items-center"
           >
             <div className="scale-120 flex items-center justify-center">
-              <data.Logo />
+              <data.Logo width={data.logoWidth} color="#0A221F" />
             </div>
             {data.quote}
             <p>
@@ -432,12 +432,15 @@ export default function VerticalSnapCarousel({
               ref={detailsRefLg}
               className="max-w-4xl mx-auto flex-1 flex flex-col gap-16"
             >
-              <div className="flex flex-col gap-10">
+              {/* <div className="flex flex-col gap-10"> */}
+              <div className="grid grid-rows-[70px_1fr_40px] min-h-[440px] h-full">
                 <div className="flex items-center justify-start w-40">
-                  <data.Logo />
+                  <data.Logo width={data.logoWidth} color="#0A221F" />
                 </div>
-                {data.quote}
-                <p>
+                <div className="flex items-center justify-center">
+                  {data.quote}
+                </div>
+                <p className="">
                   {data.author}, {data.role}
                 </p>
               </div>

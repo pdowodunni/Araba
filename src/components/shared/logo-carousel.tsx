@@ -30,7 +30,7 @@ function LogoCarousel() {
         {CAROUSEL_BRANDS.map((Icon, index) => {
           return (
             <div key={index} className="flex items-center justify-center">
-              <Icon color="#0A221F" />
+              <Icon color="#0A221F" width={50} />
             </div>
           );
         })}
@@ -39,7 +39,7 @@ function LogoCarousel() {
         {CAROUSEL_BRANDS.map((Icon, index) => {
           return (
             <div key={index} className="flex items-center justify-center">
-              <Icon color="#0A221F" />
+              <Icon color="#0A221F" width={50} />
             </div>
           );
         })}
