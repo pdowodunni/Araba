@@ -9,6 +9,8 @@ import CaseDetails from "../../components/shared/case-study/case-details";
 import IndxGrdLt from "../../components/shared/case-study/index-gird-list";
 import ProjectPager from "../../components/shared/case-study/project-pager";
 import CaseStudyVideoHeader from "../../components/shared/case-study/video-header";
+import TwoImgCrdRow from "../../components/shared/case-study/2-image-card-row";
+import SoundButton from "../../components/shared/sound-button";
 
 function Google() {
   const BREADCRUMB_PAGES: BreadcrumbPagesProps[] = [
@@ -28,7 +30,7 @@ function Google() {
         <div>
           <SmallVideo
             videoLink="https://youtu.be/URrne-G7xq0?si=BOJtevHbCO4ih4jF"
-            text="Attitude"
+            text="Attitude, Energy, fun, familiar"
           />
         </div>
       ),
@@ -57,16 +59,16 @@ function Google() {
         </div>
       ),
     },
-    {
-      text: (
-        <div>
-          <SmallVideo
-            videoLink="https://youtu.be/AAOln1Hr_Mc?si=CUlySCBS2rKILCaE"
-            text=" Energy, fun, familiar"
-          />
-        </div>
-      ),
-    },
+    // {
+    //   text: (
+    //     <div>
+    //       <SmallVideo
+    //         videoLink="https://youtu.be/AAOln1Hr_Mc?si=CUlySCBS2rKILCaE"
+    //         text="Energy, fun, familiar"
+    //       />
+    //     </div>
+    //   ),
+    // },
   ];
 
   return (
@@ -87,7 +89,7 @@ function Google() {
 
       <CaseDetails
         assetType="video"
-        assetLink="https://youtu.be/nVhvJo_y-kQ?si=0llwXWWoNMHWHeHJ"
+        assetLink="https://youtu.be/AAOln1Hr_Mc?si=CUlySCBS2rKILCaE"
         aboutHead="Riquesa Turns Nigeria's Year-in-Search into a Fashion Show"
         aboutBody="Every December, Google releases Year in Search—the moments people searched, obsessed over, cried about, danced to, and argued about. Riquesa reimagined it for Nigeria: each top search category became its own runway segment—movies, music, food, loss, trending words, and gadgets—complete with styling, models, and distinct themes."
         client="Riquesa x Google"
@@ -96,12 +98,10 @@ function Google() {
         service="Voice Casting • Voice Direction • Voiceover Recording"
       />
 
-      <OneImgCrd assetType="image" assetLink="/images/casestudy/google-2.png" />
-
       {/* THE BRIEF */}
       <section>
         <div className="case-container">
-          <div className="py-sm-pad flex flex-col gap-8">
+          <div className="pb-sm-pad pt-md-pad flex flex-col gap-8">
             <span className="s-heading w-full flex justify-center">
               The brief
             </span>
@@ -116,7 +116,12 @@ function Google() {
       </section>
       {/* THE BRIEF */}
 
-      <OneImgCrd assetLink="/images/casestudy/google-1.png" assetType="image" />
+      <TwoImgCrdRow
+        imagesUrl={[
+          "/images/casestudy/google-1.png",
+          "/images/casestudy/google-2.png",
+        ]}
+      />
 
       {/* INSIGHT & CREATIVE STRATEGY */}
       <section className="">
@@ -152,7 +157,7 @@ function Google() {
       </section>
       {/* INSIGHT & CREATIVE STRATEGY */}
 
-      <OneImgCrd assetLink="/images/casestudy/google-5.jpg" assetType="image" />
+      {/* <OneImgCrd assetLink="/images/casestudy/google-5.jpg" assetType="image" /> */}
 
       {/* THE WIN */}
       <section>
@@ -162,15 +167,17 @@ function Google() {
               The win
             </span>
             <div>
-              <p className="p-lg">
-                We brought life to the show in a way that visuals alone couldn’t
+              <h5 className="text-center">
+                We brought life to the show in a way that visuals alone couldn't
                 carry.
-              </p>
-              <p className="p-lg">And the best part? The client was hype.</p>
-              <p className="p-lg">
+              </h5>
+              <h5 className="text-center">
+                And the best part? The client was hype.
+              </h5>
+              <h5 className="text-center">
                 The voices became part of the experience — not an add-on, but an
                 anchor.
-              </p>
+              </h5>
             </div>
           </div>
         </div>
@@ -190,7 +197,7 @@ const SmallVideo = ({
   videoLink: string;
   text: string;
 }) => {
-  const [loaded, setloaded] = useState(false);
+  const [muted, setMuted] = useState(true);
   return (
     <div className="flex flex-col w-full gap-5">
       <div className="w-full aspect-[16/9] h-full bg-center rounded-lg transition-all duration-300 relative overflow-hidden">
@@ -199,7 +206,7 @@ const SmallVideo = ({
           width="100%"
           height="100%"
           playing={true}
-          muted={true}
+          muted={muted}
           loop={true}
           playsInline={true}
           config={{
@@ -212,13 +219,10 @@ const SmallVideo = ({
               },
             },
           }}
-          onReady={() => setloaded(true)}
-          className="absolute top-0 left-0 w-full h-full"
+          // onReady={() => setloaded(true)}
+          className="absolute top-0 left-0 w-full h-full pointer-events-none"
         />
-        {/* 
-        {!loaded && (
-          <div className="absolute top-0 left-0 w-full h-full bg-red-700 " />
-        )} */}
+        <SoundButton muted={muted} setMuted={setMuted} />
       </div>
       <span className="p-lg">{text}</span>
     </div>
