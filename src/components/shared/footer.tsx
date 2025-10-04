@@ -33,11 +33,11 @@ const SPECIALIZED_SERVICES = [
     subText: "Bridge real and digital into one story.",
     href: "/service/phygital-storytelling",
   },
-  {
-    mainText: "Podcast Production",
-    subText: "Concept, booking, recording, polish, done.",
-    href: "#",
-  },
+  // {
+  //   mainText: "Podcast Production",
+  //   subText: "Concept, booking, recording, polish, done.",
+  //   href: "#",
+  // },
   {
     mainText: "Audiobook Production",
     subText: "Books performed with nuance and pace.",
@@ -101,28 +101,32 @@ export default function Footer() {
         </div>
       </section> */}
 
-      <footer className="bg-primary text-white py-16">
+      <footer className="bg-primary text-white py-16 border-t border-white/20">
         <div className="mx-container">
           <div className="mx-auto grid gap-12">
             {/* Services */}
 
-            <div className="lg:col-span-3 grid grid-cols-2 xl:grid-cols-3 gap-8">
+            <div className="lg:col-span-3 grid grid-cols-2 xl:grid-cols-4 gap-8">
               {SERVICE_GROUPS.map(({ title, items }) => (
                 <div key={title}>
-                  <h5 className="font-medium mb-4 flex items-center">
-                    {title}
-                    <ArrowUpRight className="ml-2" size={26} strokeWidth={1} />
-                  </h5>
-                  <ul className="space-y-3">
+                  <div className="mb-8">
+                    <p className="p-lg flex items-center">{title}</p>
+                  </div>
+                  <ul className="space-y-2">
                     {items.map(({ mainText, subText, href }) => (
                       <li key={mainText}>
                         <Link to={href} className="group block">
-                          <div className="text-[18px] xl:text-[20px] font-medium group-hover:underline">
-                            {mainText}
+                          <div className="text-[16px] xl:text-[20px] text-white/50 font-medium group-hover:underline flex gap-0 justify-start items-center">
+                            {mainText}{" "}
+                            <ArrowUpRight
+                              className="ml-2"
+                              size={20}
+                              strokeWidth={2}
+                            />
                           </div>
-                          <div className=" text-white/50 text-[14px]">
+                          {/* <div className=" text-white/50 text-[14px]">
                             {subText}
-                          </div>
+                          </div> */}
                         </Link>
                       </li>
                     ))}
