@@ -1,10 +1,13 @@
+import { useState } from "react";
 import WorkShowcase from "../components/hero/our-work";
 import AuxHeader from "../components/shared/aux-header";
 import type { Item } from "../components/shared/card-slider";
 import TwoRowGrdTxtHolder from "../components/shared/layout/2-row-grid-text-holder";
 import LogoCarousel from "../components/shared/logo-carousel";
+import SoundButton from "../components/shared/sound-button";
 import VerticalSnapCarousel from "../components/shared/testimonial";
-import OurWork from "./our-work";
+// import OurWork from "./our-work";
+import ReactPlayer from "react-player";
 
 function VideoProduction() {
   /* ===== AUXHEADER DATA ===== */
@@ -47,7 +50,10 @@ function VideoProduction() {
     {
       head: "Brand Marketing Videos",
       text: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <SmallVideo videoLink="https://youtu.be/Ut2hIaw3Gls" />
+          </div>
           <p className="p-lg">
             Brand films, campaigns, and value-driven videos that bring your
             brand voice, tone, and vision to life—with clarity and flair.
@@ -63,118 +69,103 @@ function VideoProduction() {
     {
       head: "Product Videos",
       text: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <SmallVideo videoLink="https://youtu.be/Ut2hIaw3Gls" />
+          </div>
           <p className="p-lg">
             Cut through the noise with video ads that entertain, educate, and
             convert across platforms like YouTube, Instagram, and more.
           </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Built for performance across social and digital channels</li>
-            <li>Combines strategy, story, and strong CTA hooks</li>
-            <li>Optimised for awareness, leads, or sales</li>
-          </ul> */}
         </div>
       ),
     },
     {
       head: "Customer Testimonials",
       text: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <SmallVideo videoLink="https://youtu.be/RfUnIeUOkl8" />
+          </div>
           <p className="p-lg">
             Authentic, well-edited testimonial videos that build trust and show
             proof—without sounding staged.
           </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Boosts credibility and drives conversions</li>
-            <li>Real people, real stories, real impact</li>
-            <li>Shot remotely or on-site, based on your brand feel</li>
-          </ul> */}
         </div>
       ),
     },
     {
       head: "Social Media Videos",
       text: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <SmallVideo videoLink="https://youtube.com/shorts/HPd4jzALYHU?si=_91khv4_yCWHtI6U" />
+          </div>
           <p className="p-lg">
             Creative, mobile-first videos that stop the scroll and start a
             conversation, tailored for TikTok, Reels, LinkedIn, and more.
           </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Trend-savvy formats with storytelling at the core</li>
-            <li>Quick edits, catchy hooks, branded overlays</li>
-            <li>Ideal for campaigns, thought leadership, or UGC collabs</li>
-          </ul> */}
         </div>
       ),
     },
     {
       head: "Documentary Storytelling",
       text: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <SmallVideo videoLink="https://www.youtube.com/watch?v=r_ZRiLQR5KY" />
+          </div>
           <p className="p-lg">
             From sweet wedding stories that spark tears (and laughter), to raw
             social impact docs that drive real action, our style blends
             vlog-like authenticity with emotional depth. And even if all you’ve
             got is old footage—we’ll make it look brand new.
           </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Wedding stories with 100% rewatch value</li>
-            <li>SDG, NGO, and brand docs that spark real conversations</li>
-            <li>Real, raw, and rooted in culture—just like Araba</li>
-            <li>We repurpose, remix, and reimagine your footage</li>
-          </ul> */}
         </div>
       ),
     },
-    {
-      head: "E-learning Videos",
-      text: (
-        <div className="flex flex-col gap-4">
-          <p className="p-lg">
-            <em className="font-interTight-semibold">
-              Learning content that doesn't make learners snooze Professional
-            </em>{" "}
-            training and instructional videos that feel human, not robotic. For
-            teams, schools, or course creators.
-          </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Built with clarity, engagement, and retention in mind</li>
-            <li>Incorporates voiceovers, motion graphics, and interactivity</li>
-            <li>Ideal for onboarding, LMS content, or microlearning</li>
-          </ul> */}
-        </div>
-      ),
-    },
-    {
-      head: "Explainer Videos",
-      text: (
-        <div className="flex flex-col gap-4">
-          <p className="p-lg">
-            Animated or live-action explainer videos that simplify, educate, and
-            entertain—without boring your viewers.
-          </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Story-driven structure + clear visuals</li>
-            <li>Great for pitching concepts, onboarding, and launches</li>
-            <li>Script, voiceover, and animation handled end-to-end</li>
-          </ul> */}
-        </div>
-      ),
-    },
+    // {
+    //   head: "E-learning Videos",
+    //   text: (
+    //     <div className="flex flex-col gap-2">
+    //       <div>
+    //         <SmallVideo videoLink="https://youtu.be/Ut2hIaw3Gls" />
+    //       </div>
+    //       <p className="p-lg">
+    //         <em className="font-interTight-semibold">
+    //           Learning content that doesn't make learners snooze Professional
+    //         </em>{" "}
+    //         training and instructional videos that feel human, not robotic. For
+    //         teams, schools, or course creators.
+    //       </p>
+    //     </div>
+    //   ),
+    // },
+    // {
+    //   head: "Explainer Videos",
+    //   text: (
+    //     <div className="flex flex-col gap-2">
+    //       <div>
+    //         <SmallVideo videoLink="https://youtu.be/Ut2hIaw3Gls" />
+    //       </div>
+    //       <p className="p-lg">
+    //         Animated or live-action explainer videos that simplify, educate, and
+    //         entertain—without boring your viewers.
+    //       </p>
+    //     </div>
+    //   ),
+    // },
     {
       head: "Corporate Videos",
       text: (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <div>
+            <SmallVideo videoLink="https://youtu.be/S6vH3tqk11Y" />
+          </div>
           <p className="p-lg">
             Whether it's a culture video, internal comms, or brand film—these
             videos help your company show up, stand out, and stay memorable.
           </p>
-          {/* <ul className="pl-5 list-disc p-lg flex flex-col gap-2 mt-2">
-            <li>Studio or documentary-style formats available</li>
-            <li>Captures leadership, teams, and core messages</li>
-            <li>Suitable for town halls, recruitment, and investor decks</li>
-          </ul> */}
         </div>
       ),
     },
@@ -221,3 +212,41 @@ function VideoProduction() {
 }
 
 export default VideoProduction;
+
+const SmallVideo = ({
+  videoLink,
+  text,
+}: {
+  videoLink: string;
+  text?: string;
+}) => {
+  const [muted, setMuted] = useState(true);
+  return (
+    <div className="flex flex-col w-full gap-5">
+      <div className="w-full aspect-[16/9] h-full bg-center rounded-lg transition-all duration-300 relative overflow-hidden">
+        <ReactPlayer
+          src={videoLink}
+          width="100%"
+          height="100%"
+          playing={true}
+          muted={muted}
+          loop={true}
+          playsInline={true}
+          // config={{
+          //   youtube: {
+          //     playerVars: { autoplay: 1, playsinline: 1, rel: 0 },
+          //   },
+          //   file: {
+          //     attributes: {
+          //       playsInline: true,
+          //     },
+          //   },
+          // }}
+          className="absolute top-0 left-0 w-full h-full pointer-events-none"
+        />
+        <SoundButton muted={muted} setMuted={setMuted} />
+      </div>
+      <span className="p-lg">{text}</span>
+    </div>
+  );
+};

@@ -244,9 +244,9 @@ function VoiceOver() {
       >
         <div className="mx-container">
           <div className="pt-md-pad pb-md-pad flex flex-col gap-20">
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 items-center">
               <p className="text-sm uppercase tracking-wide">WHY US</p>
-              <h3 className="m-0 p-0 max-w-[700px]">
+              <h3 className="m-0 p-0 max-w-[700px] text-center">
                 Here’s Why Clients Choose Us{" "}
                 <em className="font-instrumental-serif">(Again and Again)</em>
               </h3>
