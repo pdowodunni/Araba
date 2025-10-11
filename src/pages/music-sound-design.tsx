@@ -192,59 +192,77 @@ function MusicSoundDesign() {
   const SCROLL_ITEMS: Item[] = [
     {
       backgroundLink: "/images/13.jpg",
-      text: "Web development",
+      text: "Jingles",
     },
     {
       backgroundLink: "/images/110.jpg",
-      text: "Design",
+      text: "Sonic Branding",
     },
     {
       backgroundLink: "/images/17.jpg",
-      text: "Voice Over",
+      text: "Sound Design for film",
     },
     {
       backgroundLink: "/images/111.jpg",
-      text: "Story telling",
+      text: "Dialogue Clean-up",
     },
     {
       backgroundLink: "/images/15.jpg",
-      text: "Mark Up",
+      text: "Original Music Production",
     },
     {
       backgroundLink: "/images/18.jpg",
-      text: "Antopoly study",
+      text: "Audio Mixing & Mastering",
     },
-    {
-      backgroundLink: "/images/14.jpg",
-      text: "Sound design",
-    },
+
     {
       backgroundLink: "/images/13.jpg",
-      text: "Web development",
+      text: "Jingles",
     },
     {
       backgroundLink: "/images/110.jpg",
-      text: "Design",
+      text: "Sonic Branding",
     },
     {
       backgroundLink: "/images/17.jpg",
-      text: "Voice Over",
+      text: "Sound Design for film",
     },
     {
       backgroundLink: "/images/111.jpg",
-      text: "Story telling",
+      text: "Dialogue Clean-up",
     },
     {
       backgroundLink: "/images/15.jpg",
-      text: "Mark Up",
+      text: "Original Music Production",
     },
     {
       backgroundLink: "/images/18.jpg",
-      text: "Antopoly study",
+      text: "Audio Mixing & Mastering",
+    },
+
+    {
+      backgroundLink: "/images/13.jpg",
+      text: "Jingles",
     },
     {
-      backgroundLink: "/images/14.jpg",
-      text: "Sound design",
+      backgroundLink: "/images/110.jpg",
+      text: "Sonic Branding",
+    },
+    {
+      backgroundLink: "/images/17.jpg",
+      text: "Sound Design for film",
+    },
+    {
+      backgroundLink: "/images/111.jpg",
+      text: "Dialogue Clean-up",
+    },
+    {
+      backgroundLink: "/images/15.jpg",
+      text: "Original Music Production",
+    },
+    {
+      backgroundLink: "/images/18.jpg",
+      text: "Audio Mixing & Mastering",
     },
   ];
 

@@ -65,7 +65,7 @@ const SpotifyPlayback = ({
     // </div>
     <div className="group w-full flex flex-col cursor-pointer gap-3 mb-4 md:mb-0">
       <div
-        className="relative w-full h-[300px] xl:h-[396px] bg-red-800 rounded-[28px] bg-center
+        className="relative w-full h-[300px] xl:h-[396px] bg-mid-bg rounded-[28px] bg-center
                   bg-[length:100%]
                   group-hover:bg-[length:115%]
                   transition-all

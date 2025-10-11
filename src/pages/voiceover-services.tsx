@@ -148,7 +148,6 @@ function VoiceOver() {
   };
 
   /* ===== CLIENTS DATA ===== */
-
   const WHATS_INCLUDED = [
     {
       head: "Concepting",
@@ -303,53 +302,53 @@ function WorkShowcase() {
   const PROJECT_LIST = [
     [
       {
-        name: "AI Player Excerpt",
+        name: "AI Playbook for Aficaan Children",
         span: 2,
         src: "/audio/ai_playbook.mp3",
-        image: "/images/tth-a.jpg",
+        image: "/images/Video/AI_PLAYBOOK.png",
       },
 
       {
         name: "I still dream in code",
         span: 2,
         src: "/audio/i_still_dream_code.mp3",
-        image: "/images/disc-sm-b.png",
+        image: "/images/Video/I_STILL_DREAM_IN_CODE.png",
       },
       {
-        name: "Leadway Assurance Final",
+        name: "Leadway Assurance",
         span: 2,
         src: "/audio/leadway_assurance.mp3",
-        image: "/images/four.jpg",
+        image: "/images/Video/LEADWAY_ASSURANCE.png",
       },
       {
-        name: "Light and Fire Promotion",
+        name: "Light and Fire",
         span: 2,
         src: "/audio/light_fire.mp3",
-        image: "/images/hallalujah.jpg",
+        image: "/images/Video/LIGHT_AND_FIRE.png",
       },
       {
-        name: "One Day NIKE Promo",
+        name: "NIKE",
         span: 2,
         src: "/audio/one_day_nike.mp3",
-        image: "/images/22.jpg",
+        image: "/images/Video/NIKE.png",
       },
       {
         name: "Quickbooks Online",
         span: 2,
         src: "/audio/quickbooks_online.mp3",
-        image: "/images/22.jpg",
+        image: "/images/Video/INTUIT_QUICKBOOKS.png",
       },
       {
-        name: "The Project 100 by the Development School Africa",
+        name: "The Project 100",
         span: 2,
         src: "/audio/project_100.mp3",
-        image: "/images/22.jpg",
+        image: "/images/Video/The_Development_School.png",
       },
       {
-        name: "Think Travel Think Wakanow",
+        name: "Wakanow",
         span: 2,
         src: "/audio/wakanow.mp3",
-        image: "/images/22.jpg",
+        image: "/images/Video/Wakanow.jpg",
       },
     ],
   ];
