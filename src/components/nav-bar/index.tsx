@@ -33,6 +33,13 @@ const PAGE_STYLES: Record<
     logo: "/images/logo.webp",
     initailLogo: "/images/logo.webp",
   }, // landing
+  "/lets-talk": {
+    bg: "bg-primary text-light-bg",
+    text: "text-light-bg",
+    initialText: "bg-transparent text-light-bg",
+    logo: "/images/logo.webp",
+    initailLogo: "/images/logo.webp",
+  },
   "/our-work": {
     bg: "bg-light-bg",
     text: "text-primary",
@@ -304,6 +311,7 @@ function NavigationBar() {
               type="fill"
               bgColor="var(--color-green-accent"
               textColor="var(--color-primary)"
+              to="/lets-talk"
             >
               Let's talk
             </SlideUpButton>
