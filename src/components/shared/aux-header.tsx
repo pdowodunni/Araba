@@ -8,12 +8,14 @@ function AuxHeader({
   sHeading = "Creative Design Service",
   head,
   text,
+  showCard = true,
 }: {
   listItems: Item[];
   sHeading?: string;
   backgroundImageLink: string;
   head?: ReactNode;
   text?: ReactNode;
+  showCard?: boolean;
 }) {
   return (
     <header
@@ -33,22 +35,26 @@ function AuxHeader({
                 {head}
               </div>
               <div>{text}</div>
-              <div className="flex">
-                <SlideUpButton
-                  type="fill"
-                  bgColor="var(--color-green-accent)"
-                  textColor="var(--color-primary)"
-                >
-                  Let's talk
-                </SlideUpButton>
-              </div>
+              {showCard && (
+                <div className="flex">
+                  <SlideUpButton
+                    type="fill"
+                    bgColor="var(--color-green-accent)"
+                    textColor="var(--color-primary)"
+                  >
+                    Let's talk
+                  </SlideUpButton>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-      <div className="pb-4 lg:pb-10">
-        <CardSlider items={listItems} />
-      </div>
+      {showCard && (
+        <div className="pb-4 lg:pb-10">
+          <CardSlider items={listItems} />
+        </div>
+      )}
     </header>
   );
 }
