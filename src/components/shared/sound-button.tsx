@@ -88,24 +88,25 @@ function SoundButton({
   return (
     <button
       type="button"
-      ref={btnRef}
+      // ref={btnRef}
       onClick={() => setMuted((m: boolean) => !m)}
-      onMouseEnter={showLabel}
-      onMouseLeave={hideLabel}
-      onFocus={showLabel}
-      onBlur={hideLabel}
+      // onMouseEnter={showLabel}
+      // onMouseLeave={hideLabel}
+      // onFocus={showLabel}
+      // onBlur={hideLabel}
       className="absolute top-4 right-4 z-10 rounded-full bg-black/60 text-white px-2 py-2 text-sm flex cursor-pointer items-center"
       aria-pressed={!muted}
       aria-label={muted ? "Unmute video" : "Mute video"}
     >
       {muted ? <Volume2 /> : <VolumeX />}
       <span
-        ref={textRef}
-        style={{
-          display: "inline-block",
-          verticalAlign: "middle",
-        }}
-        aria-hidden="true"
+        // ref={textRef}
+        // style={{
+        //   display: "inline-block",
+        //   verticalAlign: "middle",
+        // }}
+        // aria-hidden="true"
+        className="ms-2"
       >
         {muted ? "Tap to unmute" : "Tap to mute"}
       </span>

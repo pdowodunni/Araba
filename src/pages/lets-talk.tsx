@@ -2,8 +2,7 @@
 import AuxHeader from "../components/shared/aux-header";
 import type { Item } from "../components/shared/card-slider";
 import { X } from "lucide-react";
-import React, { useEffect } from "react";
-import SlideUpButton from "../components/shared/slide-up-button";
+import React from "react";
 
 function LetsTalk() {
   /* ===== AUXHEADER DATA ===== */
@@ -195,7 +194,7 @@ function LetsTalk() {
       setFormError(errors);
       return;
     }
-    console.log("✅ Sanitized and Validated Form:", sanitized, errors);
+    console.log(sanitized, errors);
   };
 
   // useEffect(() => {
@@ -345,7 +344,9 @@ function LetsTalk() {
                     {SERVICE_OPTIONS.map((it, idx) => {
                       return (
                         <option key={idx} value={it.mainText}>
-                          {it.mainText}
+                          {it.mainText !== ""
+                            ? it.mainText
+                            : "Select a service"}
                         </option>
                       );
                     })}
