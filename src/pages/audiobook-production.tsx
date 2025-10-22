@@ -52,59 +52,131 @@ function AudiobookProduction() {
   const SCROLL_ITEMS: Item[] = [
     {
       backgroundLink: "/images/13.jpg",
-      text: "Web development",
+      text: "Fiction",
     },
     {
       backgroundLink: "/images/110.jpg",
-      text: "Design",
+      text: "Short Stories",
     },
     {
       backgroundLink: "/images/17.jpg",
-      text: "Voice Over",
+      text: "African Folklore & Mythology",
     },
     {
       backgroundLink: "/images/111.jpg",
-      text: "Story telling",
+      text: "Historical Drama",
     },
     {
       backgroundLink: "/images/15.jpg",
-      text: "Mark Up",
+      text: "Romance & Relationships",
     },
     {
       backgroundLink: "/images/18.jpg",
-      text: "Antopoly study",
+      text: "Mystery & Thriller",
     },
     {
       backgroundLink: "/images/14.jpg",
-      text: "Sound design",
+      text: "Fantasy & Adventure",
     },
     {
       backgroundLink: "/images/13.jpg",
-      text: "Web development",
+      text: "Memoirs & Biographies",
     },
     {
       backgroundLink: "/images/110.jpg",
-      text: "Design",
+      text: "Cultural & Heritage Stories",
     },
     {
       backgroundLink: "/images/17.jpg",
-      text: "Voice Over",
+      text: "Faith & Spiritual Journeys",
     },
     {
       backgroundLink: "/images/111.jpg",
-      text: "Story telling",
+      text: "Business & Leadership",
     },
     {
       backgroundLink: "/images/15.jpg",
-      text: "Mark Up",
+      text: "Personal Development",
     },
     {
       backgroundLink: "/images/18.jpg",
-      text: "Antopoly study",
+      text: "Education & E-Learning",
     },
     {
       backgroundLink: "/images/14.jpg",
-      text: "Sound design",
+      text: "Motivation & Wellness",
+    },
+    {
+      backgroundLink: "/images/14.jpg",
+      text: "Documentary",
+    },
+    {
+      backgroundLink: "/images/14.jpg",
+      text: "Non-Fiction",
+    },
+    {
+      backgroundLink: "/images/13.jpg",
+      text: "Fiction",
+    },
+    {
+      backgroundLink: "/images/110.jpg",
+      text: "Short Stories",
+    },
+    {
+      backgroundLink: "/images/17.jpg",
+      text: "African Folklore & Mythology",
+    },
+    {
+      backgroundLink: "/images/111.jpg",
+      text: "Historical Drama",
+    },
+    {
+      backgroundLink: "/images/15.jpg",
+      text: "Romance & Relationships",
+    },
+    {
+      backgroundLink: "/images/18.jpg",
+      text: "Mystery & Thriller",
+    },
+    {
+      backgroundLink: "/images/14.jpg",
+      text: "Fantasy & Adventure",
+    },
+    {
+      backgroundLink: "/images/13.jpg",
+      text: "Memoirs & Biographies",
+    },
+    {
+      backgroundLink: "/images/110.jpg",
+      text: "Cultural & Heritage Stories",
+    },
+    {
+      backgroundLink: "/images/17.jpg",
+      text: "Faith & Spiritual Journeys",
+    },
+    {
+      backgroundLink: "/images/111.jpg",
+      text: "Business & Leadership",
+    },
+    {
+      backgroundLink: "/images/15.jpg",
+      text: "Personal Development",
+    },
+    {
+      backgroundLink: "/images/18.jpg",
+      text: "Education & E-Learning",
+    },
+    {
+      backgroundLink: "/images/14.jpg",
+      text: "Motivation & Wellness",
+    },
+    {
+      backgroundLink: "/images/14.jpg",
+      text: "Documentary",
+    },
+    {
+      backgroundLink: "/images/14.jpg",
+      text: "Non-Fiction",
     },
   ];
 

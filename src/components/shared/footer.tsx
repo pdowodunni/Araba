@@ -146,12 +146,15 @@ export default function Footer() {
               <span className="">© 2025 Araba. All rights reserved.</span>
             </div>
             <div className="flex items-center space-x-6">
-              <a href="#" className="text-white/80 hover:text-white">
+              <Link to="/our-work" className="text-white/80 hover:text-white">
                 Our Work
-              </a>
-              <a href="#" className="text-white/80 hover:text-white">
+              </Link>
+              <Link
+                to="https://arabacollective.co/r"
+                className="text-white/80 hover:text-white"
+              >
                 Resources
-              </a>
+              </Link>
               <a href="#" className="text-white/80 hover:text-white">
                 About Us
               </a>

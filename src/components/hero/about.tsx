@@ -64,7 +64,8 @@ export default function About() {
                   type="fill"
                   bgColor="var(--color-primary)"
                   textColor="white"
-                  to="mailto:hello@arabacollective"
+                  // to="mailto:hello@arabacollective"
+                   to="/lets-talk"
                 >
                   Let's talk
                 </SlideUpButton>
