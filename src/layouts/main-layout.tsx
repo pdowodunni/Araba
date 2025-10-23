@@ -21,6 +21,7 @@ import React, { useRef } from "react";
 import gsap from "gsap";
 import ScrollRestorationFix from "../components/scroll-restore";
 import LetsTalk from "../pages/lets-talk";
+import AboutUs from "../pages/about-us";
 
 function MainLayout() {
   const location = useLocation();
@@ -96,6 +97,7 @@ function MainLayout() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/lets-talk" element={<LetsTalk />} />
+              <Route path="/about-us" element={<AboutUs />} />
               <Route path="/our-work" element={<OurWork />} />
               <Route path="/our-work/ina" element={<Ina />} />
               <Route path="/our-work/shimon-doyin" element={<Shido />} />

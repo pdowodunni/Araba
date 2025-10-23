@@ -47,6 +47,13 @@ const PAGE_STYLES: Record<
     logo: "/images/logo-color.webp",
     initailLogo: "/images/logo-color.webp",
   },
+  "/about-us": {
+    bg: "bg-light-bg",
+    text: "text-primary",
+    initialText: "bg-transparent text-primary",
+    logo: "/images/logo-color.webp",
+    initailLogo: "/images/logo-color.webp",
+  },
   "/our-work/tale-two-house": {
     bg: "bg-light-bg",
     text: "text-primary",
