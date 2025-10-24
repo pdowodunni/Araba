@@ -12,9 +12,9 @@ function RightImgTextSec({
   return (
     <section className="flex flex-col gap-12 bg-[#dceaf0]">
       <div className="w-full relative max-w-[1680px] mx-auto px-0 sm:px-0 xl:px-8">
-        <div className="grid items-stretch gap-12 xl:grid-cols-[1.3fr_1fr]">
+        <div className="grid items-stretch gap-0 xl:grid-cols-[1fr_1fr]">
           {/* CONTENT */}
-          <div className="w-full flex items-center py-sm-pad ml-assist">
+          <div className="w-full flex items-center xl:pr-12 py-sm-pad ml-assist">
             <div className="flex flex-col gap-2 px-4 sm:px-6 xl:px-0">
               <div className="flex flex-col gap-4 mb-4">
                 <span className="s-heading border-b border-primary">

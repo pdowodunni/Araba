@@ -7,31 +7,31 @@ const CARDS = [
     id: 1,
     title: "Enterprise Analytics",
     subtitle: "Dashboards, dbt & pipelines",
-    img: "https://picsum.photos/seed/algora1/1280/720",
+    img: "/images/casestudy/shido-1.webp",
   },
   {
     id: 2,
     title: "Credit Risk Models",
     subtitle: "AUC, KS, ECL, staging",
-    img: "https://picsum.photos/seed/algora2/1280/720",
+    img: "/images/casestudy/tth-6.webp",
   },
   {
     id: 3,
     title: "Training Programs",
     subtitle: "Excel, SQL, Power BI, Python",
-    img: "https://picsum.photos/seed/algora3/1280/720",
+    img: "/images/casestudy/ina-4.png",
   },
   {
     id: 4,
     title: "Virtual Internships",
     subtitle: "Real-world data projects",
-    img: "https://picsum.photos/seed/algora4/1280/720",
+    img: "/images/casestudy/shido-6.webp",
   },
   {
     id: 5,
     title: "AI Assistants",
     subtitle: "Streamlit, LangChain, OpenAI",
-    img: "https://picsum.photos/seed/algora5/1280/720",
+    img: "/images/casestudy/yascf-1.jpg",
   },
 ];
 
