@@ -27,7 +27,7 @@ const CARDS = [
   {
     id: 5,
     img: "/images/casestudy/yascf-1.jpg",
-    title: "TASCF",
+    title: "YASCF",
   },
 ];
 

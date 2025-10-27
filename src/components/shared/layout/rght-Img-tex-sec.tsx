@@ -4,13 +4,20 @@ function RightImgTextSec({
   heading,
   subheading,
   text,
+  bgImage = "/images/18.jpg",
+  bgColor = "#dceaf0",
 }: {
   heading: string;
   subheading: ReactNode;
   text: ReactNode;
+  bgImage?: string;
+  bgColor?: string;
 }) {
   return (
-    <section className="flex flex-col gap-12 bg-[#dceaf0]">
+    <section
+      className="flex flex-col gap-12 "
+      style={{ backgroundColor: bgColor }}
+    >
       <div className="w-full relative max-w-[1680px] mx-auto px-0 sm:px-0 xl:px-8">
         <div className="grid items-stretch gap-0 xl:grid-cols-[1fr_1fr]">
           {/* CONTENT */}
@@ -31,7 +38,7 @@ function RightImgTextSec({
             <div className="absolute inset-y-0 left-0 right-0 xl:right-[calc(100%-50vw)] w-full xl:w-auto">
               <div
                 className="h-full w-full lg:max-w-[1500px] bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/18.jpg')" }}
+                style={{ backgroundImage: `url('${bgImage}')` }}
               />
             </div>
           </div>

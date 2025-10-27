@@ -4,10 +4,12 @@ function TxtImgSec({
   heading,
   subheading,
   text,
+  bgImage = "/images/17.jpg",
 }: {
   heading: string;
   subheading: ReactNode;
   text: ReactNode;
+  bgImage?: string;
 }) {
   return (
     <section className="flex flex-col gap-12 pt-sm-pad pb-0 xl:pb-sm-pad">
@@ -30,7 +32,7 @@ function TxtImgSec({
             <div
               className="relative w-full xl:w-[36rem] 2xl:w-[48.25rem] bg-primary aspect-square xl:rounded-lg overflow-hidden"
               style={{
-                backgroundImage: `url('/images/17.jpg')`,
+                backgroundImage: `url('${bgImage}')`,
                 backgroundPosition: "center",
                 backgroundSize: "cover",
               }}

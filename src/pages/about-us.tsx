@@ -5,6 +5,8 @@ import LeftImgTextSec from "../components/shared/layout/left-img-txt-sec";
 import TxtImgSec from "../components/shared/layout/text-image-sec";
 
 const WHO_WE_ARE = {
+  bgImage: "/images/51.jpg",
+  bgColor: "#F4E9DC",
   heading: "WHO ARE WE",
   subheading: (
     <div>
@@ -51,6 +53,8 @@ const WHO_WE_ARE = {
   ),
 };
 const A_QUICK_BACK_STORY = {
+  bgImage: "/images/5.jpg",
+  bgColor: "#EEE3D0",
   heading: "A QUICK BACK STORY",
   subheading: <div />,
   text: (
@@ -116,6 +120,7 @@ const WHY_DO_WE_EXIST = {
 };
 const THE_ARABIAN_CODE = {
   heading: "THE ARABIAN CODE",
+  bgImage: "/images/52.jpg",
   subheading: (
     // <h4 className="font-medium leading-tight text-gray-900">
     //   What Is Phygital Storytelling{" "}

@@ -4,13 +4,20 @@ function LeftImgTextSec({
   heading,
   subheading,
   text,
+  bgImage = "/images/111.jpg",
+  bgColor = "#dcf0e3",
 }: {
   heading: string;
   subheading: ReactNode;
   text: ReactNode;
+  bgImage?: string;
+  bgColor?: string;
 }) {
   return (
-    <section className="flex flex-col gap-12 bg-[#dcf0e3]">
+    <section
+      className="flex flex-col gap-12"
+      style={{ backgroundColor: bgColor }}
+    >
       <div className="w-full relative max-w-[1680px] mx-auto px-0 sm:px-0 lg:px-8">
         <div className="grid items-stretch gap-0 xl:grid-cols-[1fr_1fr]">
           {/* IMAGE */}
@@ -19,7 +26,7 @@ function LeftImgTextSec({
             <div className="absolute inset-y-0 right-0 xl:left-[calc(100%-50vw)] w-full xl:w-auto">
               <div
                 className="h-full w-full max-w-[1500px] bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/111.jpg')" }}
+                style={{ backgroundImage: `url('${bgImage}')` }}
               />
             </div>
           </div>
