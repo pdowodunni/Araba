@@ -5,33 +5,29 @@ import gsap from "gsap";
 const CARDS = [
   {
     id: 1,
-    title: "Enterprise Analytics",
-    subtitle: "Dashboards, dbt & pipelines",
     img: "/images/casestudy/shido-1.webp",
+    title: "Shimon and Doyin",
   },
   {
     id: 2,
-    title: "Credit Risk Models",
-    subtitle: "AUC, KS, ECL, staging",
     img: "/images/casestudy/tth-6.webp",
+    title: "Tale of Two Houses",
   },
   {
     id: 3,
-    title: "Training Programs",
-    subtitle: "Excel, SQL, Power BI, Python",
     img: "/images/casestudy/ina-4.png",
+    title: "Ina",
   },
   {
     id: 4,
-    title: "Virtual Internships",
     subtitle: "Real-world data projects",
     img: "/images/casestudy/shido-6.webp",
+    title: "Shimon and Doyin",
   },
   {
     id: 5,
-    title: "AI Assistants",
-    subtitle: "Streamlit, LangChain, OpenAI",
     img: "/images/casestudy/yascf-1.jpg",
+    title: "TASCF",
   },
 ];
 
@@ -87,7 +83,10 @@ export default function InfiniteCardSlider() {
       wrapper.className = "card-wrapper";
       // React not used here for performance of measuring; we inject minimal HTML
       wrapper.innerHTML = `
-        <div class=''>
+        <div class='relative'>
+            <div class="absolute top-0 left-0 w-full h-full rounded-2xl bg-gradient-to-b from-black/50 to-transparent">
+            <h4 class="text-white font-instrumental-serif text-center pt-8">${item.title}</h4>
+            </div>
             <div class='w-[550px] aspect-[9/12]'>
               <img src='${item.img}' alt='${item.title}' class='w-full h-full object-cover rounded-2xl' loading='lazy' />
             </div>
