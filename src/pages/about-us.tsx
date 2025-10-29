@@ -189,22 +189,27 @@ function AboutUs() {
                   souls?”
                 </em>{" "}
               </h2>
-              {/* <div className="max-w-[600px]">
-                <p className="md:text-2xl text-xl text-center">
-                  We help the world's leading brands create standout ads and
-                  campaigns at speed—from concept to execution to results.
+              <div className="max-w-[1400px]">
+                <p className="md:text-3xl text-xl text-center">
+                  We grew up on stories that fed us — under skies heavy with
+                  stars, on raffia mats that held the weight of wonder. We
+                  listened to the rhythm of mothers’ voices, to laughter carried
+                  by the wind, to the wisdom of the tortoise and the magic of
+                  the moonlight. Stories weren’t entertainment. They were food.
+                  They fed our imagination, our identity, our belonging. But
+                  somewhere along the way, storytelling became background noise
+                  — flattened into campaigns, ads, and noise that no one felt.
+                  And we missed it…that power to connect, to remember, to care.
+                  So, we began again.
                 </p>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section>
-        <InfiniteCardSlider />
-      </section>
-      <section className="mx-container">
+      {/* <section className="mx-container">
         <div className="pt-md-pad pb-md-pad">
-          <p className="p-lg">
+          <p className="p-lg text-center">
             We grew up on stories that fed us — under skies heavy with stars, on
             raffia mats that held the weight of wonder. We listened to the
             rhythm of mothers’ voices, to laughter carried by the wind, to the
@@ -216,6 +221,9 @@ function AboutUs() {
             remember, to care. So, we began again.
           </p>
         </div>
+      </section> */}
+      <section>
+        <InfiniteCardSlider />
       </section>
 
       <RightImgTextSec {...A_QUICK_BACK_STORY} />
